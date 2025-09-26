@@ -1,0 +1,39 @@
+
+[
+    {
+        "username": "MAK524",
+        "password": "password",
+        "settings": [{
+            "volume": 5,
+            "difficulty": 2
+        }],
+        "progress": [{
+            "puzzlesSolved": [{"UUID":"d6ff9f1f-b3d0-4e5b-92ec-a9b0255afc81","Puzzle":"d6ff9f1f-b3d0-4e5b-92ec-a9b0255afc81"
+            }, {"UUID":"b4f232a6-cb12-428d-8127-4961d8a27457","Puzzle":"b4f232a6-cb12-428d-8127-4961d8a27457"
+            }]
+        }],
+        "rooms": [
+            {"UUID":"d8b9e9e2-e9a3-4b49-818a-976c61288ae4","Room":"d8b9e9e2-e9a3-4b49-818a-976c61288ae4"},
+            {"UUID":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb","Room":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"}
+        ],
+        "currentRoom": "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
+    },
+    {
+        "username": "randomname",
+        "password": "it%j3o!'kfU",
+        "settings": [{
+            "volume": 4,
+            "difficulty": 3
+        }],
+        "progress": [{
+            "puzzlesSolved": [{"UUID":"d6ff9f1f-b3d0-4e5b-92ec-a9b0255afc81","Puzzle":"d6ff9f1f-b3d0-4e5b-92ec-a9b0255afc81"
+            }, {"UUID":"b4f232a6-cb12-428d-8127-4961d8a27457","Puzzle":"b4f232a6-cb12-428d-8127-4961d8a27457"
+            }]
+        }],
+        "rooms": [
+            {"UUID":"d8b9e9e2-e9a3-4b49-818a-976c61288ae4","Room":"d8b9e9e2-e9a3-4b49-818a-976c61288ae4"},
+            {"UUID":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb","Room":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"}
+        ],
+        "currentRoom": "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
+    }
+]
