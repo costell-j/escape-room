@@ -1,0 +1,44 @@
+[
+    {
+       "id": "d8b9e9e2-e9a3-4b49-818a-976c61288ae4",
+       "map": {"mapName":"map", "height":500, "length":500},
+       "timer": 3000,
+       "puzzles": [
+        {
+            "id":"d6ff9f1f-b3d0-4e5b-92ec-a9b0255afc81",
+            "description":"logic puzzle",
+            "hints":["hint 1", "hint 2", "hint 3"],
+            "solution":"solution",
+            "isSolved":true 
+        },
+        {
+            "id":"b4f232a6-cb12-428d-8127-4961d8a27457",
+            "description":"math puzzle",
+            "hints":["hint 1", "hint 2", "hint 3"],
+            "solution":"solution",
+            "isSolved":false 
+        }],
+         "difficulty": 2
+    },
+    {
+       "id": "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb",
+       "map": {"mapName":"special map", "height":1200, "length":800},
+       "timer": 2000,
+       "puzzles": [
+        {
+            "id":"d6ff9f1f-b3d0-4e5b-92ec-a9b0255afc81",
+            "description":"logic puzzle",
+            "hints":["hint 1", "hint 2", "hint 3"],
+            "solution":"solution",
+            "isSolved":true 
+        },
+        {
+            "id":"b4f232a6-cb12-428d-8127-4961d8a27457",
+            "description":"math puzzle",
+            "hints":["hint 1", "hint 2", "hint 3"],
+            "solution":"solution",
+            "isSolved":false 
+        }],
+         "difficulty": 3
+    }
+]
