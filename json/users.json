@@ -8,8 +8,18 @@
             "difficulty": 2
         }],
         "progress": [{
-            "puzzlesSolved": [{"UUID":"d6ff9f1f-b3d0-4e5b-92ec-a9b0255afc81","Puzzle":"d6ff9f1f-b3d0-4e5b-92ec-a9b0255afc81"
-            }, {"UUID":"b4f232a6-cb12-428d-8127-4961d8a27457","Puzzle":"b4f232a6-cb12-428d-8127-4961d8a27457"
+            "puzzlesSolved": [{"description":"puzzle1","Puzzle":{
+                "description":"puzzle1",
+                "hints":["hint1", "hint2", "hint3"],
+                "solution":"solution1",
+                "isSolved":true
+            }},
+             {"description":"puzzle2","Puzzle":{
+                "description":"puzzle2",
+                "hints":["hint1", "hint2", "hint3"],
+                "solution":"solution2",
+                "isSolved":false
+             }
             }]
         }],
         "rooms": [
@@ -26,8 +36,18 @@
             "difficulty": 3
         }],
         "progress": [{
-            "puzzlesSolved": [{"UUID":"d6ff9f1f-b3d0-4e5b-92ec-a9b0255afc81","Puzzle":"d6ff9f1f-b3d0-4e5b-92ec-a9b0255afc81"
-            }, {"UUID":"b4f232a6-cb12-428d-8127-4961d8a27457","Puzzle":"b4f232a6-cb12-428d-8127-4961d8a27457"
+            "puzzlesSolved": [{"description":"puzzle1","Puzzle":{
+                "description":"puzzle1",
+                "hints":["hint1", "hint2", "hint3"],
+                "solution":"solution1",
+                "isSolved":true
+            }},
+             {"description":"puzzle2","Puzzle":{
+                "description":"puzzle2",
+                "hints":["hint1", "hint2", "hint3"],
+                "solution":"solution2",
+                "isSolved":false
+             }
             }]
         }],
         "rooms": [
