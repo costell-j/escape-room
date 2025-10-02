@@ -32,7 +32,8 @@
                 "settings":{"volume":10,"difficulty":3},
                 "rooms":[{"UUID":"8b9e9e2-e9a3-4b49-818a-976c61288ae4", "Room":"8b9e9e2-e9a3-4b49-818a-976c61288ae4"},
             {"UUID":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb","Room":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"}],
-            "currentRoom":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"}]
+            "currentRoom":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
+            }}]
         }
     },
     {
