@@ -7,4 +7,11 @@ package com.escape.code;
 
 public class DataWriter {
     
+    public static boolean saveUsers() {
+        return true;
+    }
+
+    public static boolean saveRooms() {
+        return true;
+    }
 }
