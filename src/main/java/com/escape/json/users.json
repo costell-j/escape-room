@@ -8,13 +8,13 @@
             "difficulty": 2
         }],
         "progress": [{
-            "puzzlesSolved": [{"description":"puzzle1","Puzzle":{
+            "puzzlesSolved": [{"String":"puzzle1","Puzzle":{
                 "description":"puzzle1",
                 "hints":["hint1", "hint2", "hint3"],
                 "solution":"solution1",
                 "isSolved":true
             }},
-             {"description":"puzzle2","Puzzle":{
+             {"String":"puzzle2","Puzzle":{
                 "description":"puzzle2",
                 "hints":["hint1", "hint2", "hint3"],
                 "solution":"solution2",
@@ -36,13 +36,13 @@
             "difficulty": 3
         }],
         "progress": [{
-            "puzzlesSolved": [{"description":"puzzle1","Puzzle":{
+            "puzzlesSolved": [{"String":"puzzle1","Puzzle":{
                 "description":"puzzle1",
                 "hints":["hint1", "hint2", "hint3"],
                 "solution":"solution1",
                 "isSolved":true
             }},
-             {"description":"puzzle2","Puzzle":{
+             {"String":"puzzle2","Puzzle":{
                 "description":"puzzle2",
                 "hints":["hint1", "hint2", "hint3"],
                 "solution":"solution2",
