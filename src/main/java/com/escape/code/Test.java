@@ -1,4 +1,4 @@
-package com.escape.module;
+package com.escape.code;
 
 public class Test {
     public static void main(String[] args) {
