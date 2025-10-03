@@ -10,6 +10,8 @@ public class Achievement {
     }
 
     public void unlock() {
-        
+        if (unlocked) {
+            unlocked = true;
+        }
     }
 }
