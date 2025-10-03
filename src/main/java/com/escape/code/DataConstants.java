@@ -6,9 +6,9 @@ package com.escape.code;
  */
 
 public abstract class DataConstants {
-    protected static final String USER_FILE_NAME = "src/main/java/com/json/users.json";
+    protected static final String USER_FILE_NAME = "src/main/java/com/escape/json/users.json";
     //User Constants
-    protected static final String USER_USER_NAME = "userName";
+    protected static final String USER_USER_NAME = "username";
     protected static final String USER_PASSWORD = "password";
     //Settings Constants
     protected static final String USER_SETTINGS = "settings";
@@ -21,6 +21,10 @@ public abstract class DataConstants {
     protected static final String USER_PUZZLE_HASH_VAL = "Puzzle";
     protected static final String USER_PUZZLE_DESC = "description";
     protected static final String USER_PUZZLE_HINTS = "hints";
+    protected static final String USER_CLUES_USED = "cluesUsed";
+    protected static final String USER_ACHIEVEMENTS = "achievements";
+    protected static final String USER_ACHIEVEMENT_TITLE = "title";
+    protected static final String USER_ACHIEVEMENT_UNLOCKED = "unlocked";
     protected static final String USER_PUZZLE_SOLUTION = "solution";
     protected static final String USER_PUZZLE_SOLVED = "isSolved";
     //User-Room Constants

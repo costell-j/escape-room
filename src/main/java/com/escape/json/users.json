@@ -3,11 +3,11 @@
     {
         "username": "MAK524",
         "password": "password",
-        "settings": [{
+        "settings": {
             "volume": 5,
             "difficulty": 2
-        }],
-        "progress": [{
+        },
+        "progress": {
             "puzzlesSolved": [{"String":"puzzle1","Puzzle":{
                 "description":"puzzle1",
                 "hints":["hint1", "hint2", "hint3"],
@@ -20,22 +20,27 @@
                 "solution":"solution2",
                 "isSolved":false
              }
+            }],
+            "cluesUsed":2,
+            "achievements":[{
+                "title":"lkhalhjg",
+                "unlocked":true
+            }, {
+                "title":"utyuiyoiuo",
+                "unlocked":false
             }]
-        }],
-        "rooms": [
-            {"UUID":"d8b9e9e2-e9a3-4b49-818a-976c61288ae4","Room":"d8b9e9e2-e9a3-4b49-818a-976c61288ae4"},
-            {"UUID":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb","Room":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"}
-        ],
+        },
+        "rooms":["e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb", "d8b9e9e2-e9a3-4b49-818a-976c61288ae4"],
         "currentRoom": "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
     },
     {
         "username": "randomname",
         "password": "it%j3o!'kfU",
-        "settings": [{
+        "settings": {
             "volume": 4,
             "difficulty": 3
-        }],
-        "progress": [{
+        },
+        "progress": {
             "puzzlesSolved": [{"String":"puzzle1","Puzzle":{
                 "description":"puzzle1",
                 "hints":["hint1", "hint2", "hint3"],
@@ -48,12 +53,17 @@
                 "solution":"solution2",
                 "isSolved":false
              }
+            }],
+            "cluesUsed":2,
+            "achievements":[{
+                "title":"lkhalhjg",
+                "unlocked":true
+            }, {
+                "title":"utyuiyoiuo",
+                "unlocked":false
             }]
-        }],
-        "rooms": [
-            {"UUID":"d8b9e9e2-e9a3-4b49-818a-976c61288ae4","Room":"d8b9e9e2-e9a3-4b49-818a-976c61288ae4"},
-            {"UUID":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb","Room":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"}
-        ],
+        },
+        "rooms":["e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb", "d8b9e9e2-e9a3-4b49-818a-976c61288ae4"],
         "currentRoom": "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
     }
 ]

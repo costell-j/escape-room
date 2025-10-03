@@ -3,8 +3,8 @@ package com.escape.code;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import json.simple.JSONArray;
-import json.simple.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 /**
  * Class for writing to JSON files

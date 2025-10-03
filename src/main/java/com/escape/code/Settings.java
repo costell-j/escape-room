@@ -15,5 +15,10 @@ public class Settings {
     public void changeDifficulty(int difficulty){
         this.difficulty = difficulty;
     }
+
+    @Override
+    public String toString() {
+        return "Volume: "+this.volume+"\nDifficulty: "+this.difficulty+"\n";
+    }
     
 }

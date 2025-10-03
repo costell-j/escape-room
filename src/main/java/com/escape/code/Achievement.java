@@ -1,11 +1,11 @@
 package com.escape.code;
 
 public class Achievement {
-    private String description;
+    private String title;
     private boolean unlocked;
 
-    public Achievement(String description, boolean unlocked){
-        this.description = description;
+    public Achievement(String title, boolean unlocked){
+        this.title = title;
         this.unlocked = unlocked;
     }
 
@@ -13,5 +13,10 @@ public class Achievement {
         if (unlocked) {
             unlocked = true;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Title: "+this.title+"\nUnlocked: "+this.unlocked+"/n";
     }
 }

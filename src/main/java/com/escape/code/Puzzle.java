@@ -21,4 +21,13 @@ public class Puzzle {
             isSolved = true;
         }
     }
+
+    @Override
+    public String toString() {
+        String puzzle = "Description: "+this.description+"\nSolution: "+this.solution+"\nSolved: "+this.isSolved+"\nHints:\n";
+        for(int i=0; i<this.hints.size(); i++) {
+            puzzle += this.hints.get(i)+"\n";
+        }
+        return puzzle;
+    }
 }

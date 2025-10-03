@@ -15,4 +15,16 @@ public class Progress {
         this.cluesUsed = cluesUsed;
         this.achievements = achievements;
     }
+
+    @Override
+    public String toString() {
+        String progress = "ID: "+room+"\nClues Used: "+this.cluesUsed+"\nAchievements:\n";
+        for(int i=0; i<this.achievements.size(); i++) {
+            progress += this.achievements.get(i).toString();
+        }
+        for(String line : this.puzzlesSolved.keySet()) {
+            progress += "Key: "+line+" Value: "+this.puzzlesSolved.get(line);
+        }
+        return progress;
+    }
 }

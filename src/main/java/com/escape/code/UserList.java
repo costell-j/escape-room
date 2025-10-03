@@ -17,11 +17,12 @@ public class UserList {
         return userList;
     }
     public User getUser(String username, String password) {
-        return new User();
+        User user = new User(username, password, null, null, null, null);
+        return user;
     }
-    public void addUser(String name, String username, String password, 
-                        Settings settings, HashMap<UUID, Room> rooms, Room currentRoom) {
-        users.add(new User());
+    public void addUser(String name, String username, String password, Settings settings, HashMap<UUID, Room> rooms, Room currentRoom) {
+        User user = new User(username, password, null, null, null, null);
+        users.add(user);
     } 
 
     
