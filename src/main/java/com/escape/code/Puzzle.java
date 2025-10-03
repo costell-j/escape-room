@@ -16,4 +16,9 @@ public class Puzzle {
         this.isSolved = isSolved;
     }
     
+    public void solvePuzzle(){
+        if(isSolved){
+            isSolved = true;
+        }
+    }
 }
