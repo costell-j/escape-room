@@ -9,5 +9,12 @@ public class Settings {
         this.volume = volume;
         this.difficulty = difficulty;
     }
+
+    public void changeVolume(int volume) {
+
+    }
+    public void changeDifficulty(int difficulty){
+        
+    }
     
 }
