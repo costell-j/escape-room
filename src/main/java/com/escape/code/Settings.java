@@ -1,7 +1,6 @@
 package com.escape.code;
 
-public class Settings {
-
+public class Settings { 
     private int volume;
     private int difficulty;
 

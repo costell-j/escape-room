@@ -16,7 +16,7 @@ public class Progress {
         this.achievements = achievements;
     }
 
-    public void solvePuzzle(UUID id){
+    public void solvePuzzle(String id){ 
         
     }
 }
