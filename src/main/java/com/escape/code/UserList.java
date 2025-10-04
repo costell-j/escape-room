@@ -8,16 +8,16 @@ public class UserList {
     private static UserList userList;
     private ArrayList<User> users;
 
-    private UserList() {//Removing static for now bc VS code doesnt like it
-       userList.getInstance();
+    private UserList() {
+       users = DataLoader.getUsers();
     }
-    public UserList getInstance() {
+    public static UserList getInstance() {
         if(userList == null)
             userList = new UserList();
         return userList;
     }
     public User getUser(String username, String password) {
-        User user = new User(username, password, null, null, null, null);
+       User user = User(username, passwordusername, password, null, null, null, null);
         return user;
     }
     public void addUser(String name, String username, String password, Settings settings, HashMap<UUID, Room> rooms, Room currentRoom) {
