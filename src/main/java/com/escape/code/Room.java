@@ -38,4 +38,14 @@ public class Room {
         }
 
     }
+
+    @Override
+    public String toString() {
+        String desc = "ID: "+this.id+"\nMap: "+this.map.toString()+"\nLeaderboard: "+this.leaderboard.toString();
+        desc += "\nTimer: "+this.timer+"\nDifficulty: "+this.difficulty+"\nPuzzles:\n";
+        for(Puzzle puzzle : this.puzzles) {
+            desc += puzzle.toString()+"\n";
+        }
+        return desc;
+    }
 }

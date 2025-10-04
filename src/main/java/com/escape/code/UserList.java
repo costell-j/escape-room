@@ -17,8 +17,8 @@ public class UserList {
         return userList;
     }
     public User getUser(String username, String password) {
-       User user = User(username, passwordusername, password, null, null, null, null);
-        return user;
+       User user = new User(username, password, null, null, null, null);
+       return user;
     }
     public void addUser(String name, String username, String password, Settings settings, HashMap<UUID, Room> rooms, Room currentRoom) {
         User user = new User(username, password, null, null, null, null);

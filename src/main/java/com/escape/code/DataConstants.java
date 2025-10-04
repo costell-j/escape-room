@@ -6,15 +6,13 @@ package com.escape.code;
  */
 
 public abstract class DataConstants {
-    protected static final String USER_FILE_NAME = "src/main/java/com/escape/json/users.json";
     //User Constants
+    protected static final String USER_FILE_NAME = "src/main/java/com/escape/json/users.json";
     protected static final String USER_USER_NAME = "username";
     protected static final String USER_PASSWORD = "password";
-    //Settings Constants
     protected static final String USER_SETTINGS = "settings";
     protected static final String USER_SETTINGS_VOLUME = "volume";
     protected static final String USER_SETTINGS_DIFFICULTY = "difficulty";
-    //Progress Constants
     protected static final String USER_PROGRESS = "progress";
     protected static final String USER_PUZZLES_SOLVED = "puzzlesSolved";
     protected static final String USER_PUZZLE_HASH_KEY = "String";
@@ -27,10 +25,26 @@ public abstract class DataConstants {
     protected static final String USER_ACHIEVEMENT_UNLOCKED = "unlocked";
     protected static final String USER_PUZZLE_SOLUTION = "solution";
     protected static final String USER_PUZZLE_SOLVED = "isSolved";
-    //User-Room Constants
     protected static final String USER_ROOMS = "rooms";
     protected static final String USER_ROOM_HASH_KEY = "UUID";
     protected static final String USER_ROOM_HASH_VAL = "Room";
     protected static final String USER_CURRENT_ROOM = "currentRoom";
+
+    //Room Constants
+    protected static final String ROOM_FILE_NAME = "src/main/java/com/escape/json/rooms.json";
+    protected static final String ROOM_ID = "id";
+    protected static final String ROOM_MAP = "map";
+    protected static final String ROOM_MAP_NAME = "mapName";
+    protected static final String ROOM_MAP_HEIGHT = "height";
+    protected static final String ROOM_MAP_LENGTH = "length";
+    protected static final String ROOM_TIMER = "timer";
+    protected static final String ROOM_PUZZLES = "puzzles";
+    protected static final String ROOM_DIFFICULTY = "difficulty";
+    protected static final String ROOM_LEADERBOARD = "leaderboard";
+    protected static final String ROOM_LEADERBOARD_PLAYERS = "players";
+    protected static final String ROOM_LEADERBOARD_HASH_KEY = "Integer";
+    protected static final String ROOM_LEADERBOARD_HASH_VAL = "User";
+    
+
 }
 

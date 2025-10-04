@@ -90,6 +90,7 @@ public class DataLoader extends DataConstants {
                 User user = new User(userName, password, settings, progress, rooms, currentRoom);
                 users.add(user);
             }
+            reader.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,16 +99,129 @@ public class DataLoader extends DataConstants {
         return users;
     }
 
+    @SuppressWarnings("ConvertToTryWithResources")
     public static ArrayList<Room> getRooms() {
         ArrayList<Room> rooms = new ArrayList<>();
+
+        try {
+            FileReader reader = new FileReader(ROOM_FILE_NAME);
+            JSONArray roomsJSON = (JSONArray)new JSONParser().parse(reader);
+
+            for(int i=0; i<roomsJSON.size(); i++) {
+                //Get Room JSON Object
+                JSONObject roomJSON = (JSONObject)roomsJSON.get(i);
+                UUID id = UUID.fromString((String)roomJSON.get(ROOM_ID));
+                int timer = ((Long)roomJSON.get(ROOM_TIMER)).intValue();
+                int difficulty = ((Long)roomJSON.get(USER_SETTINGS_DIFFICULTY)).intValue();
+
+                //Get Room Map JSON Object
+                JSONObject mapJSON = (JSONObject)roomJSON.get(ROOM_MAP);
+                String mapName = (String)mapJSON.get(ROOM_MAP_NAME);
+                int height = ((Long)mapJSON.get(ROOM_MAP_HEIGHT)).intValue();
+                int length = ((Long)mapJSON.get(ROOM_MAP_LENGTH)).intValue();
+                Map map = new Map(mapName, height, length);
+
+                //Get Room Puzzles JSON Array
+                JSONArray puzzlesJSON = (JSONArray)roomJSON.get(ROOM_PUZZLES);
+                ArrayList<Puzzle> puzzles = new ArrayList<>();
+                for(int j=0; j<puzzlesJSON.size(); j++) {
+                    JSONObject puzzleJSON = (JSONObject)puzzlesJSON.get(j);
+                    String description = (String)puzzleJSON.get(USER_PUZZLE_DESC);
+                    ArrayList<String> hints = new ArrayList<>();
+                    JSONArray hintsJSON = (JSONArray)puzzleJSON.get(USER_PUZZLE_HINTS);
+                    for(int k=0; k<hintsJSON.size(); k++) {
+                        String hint = (String)hintsJSON.get(k);
+                        hints.add(hint);
+                    }
+                    String solution = (String)puzzleJSON.get(USER_PUZZLE_SOLUTION);
+                    boolean isSolved = (boolean)puzzleJSON.get(USER_PUZZLE_SOLVED);
+                    Puzzle puzzle = new Puzzle(description, hints, solution, isSolved);
+                    puzzles.add(puzzle);
+                }
+
+                //Get Room Leaderboard Object
+                JSONObject leaderboardJSON = (JSONObject)roomJSON.get(ROOM_LEADERBOARD);
+                JSONArray playersJSON = (JSONArray)leaderboardJSON.get(ROOM_LEADERBOARD_PLAYERS);
+                HashMap<Integer, User> players = new HashMap<>();
+                for(int j=0; j<playersJSON.size(); j++) {
+                    //User JSON Object
+                    JSONObject playerJSON = (JSONObject)playersJSON.get(j);
+                    Integer key = ((Long)playerJSON.get(ROOM_LEADERBOARD_HASH_KEY)).intValue();
+                    JSONObject value = (JSONObject)playerJSON.get(ROOM_LEADERBOARD_HASH_VAL);
+                    String username = (String)value.get(USER_USER_NAME);
+                    String password = (String)value.get(USER_PASSWORD);
+
+                    //User Settings JSON Object
+                    JSONObject settingsJSON = (JSONObject)value.get(USER_SETTINGS);
+                    int volume = ((Long)settingsJSON.get(USER_SETTINGS_VOLUME)).intValue();
+                    int userDifficulty = ((Long)settingsJSON.get(USER_SETTINGS_DIFFICULTY)).intValue();
+                    Settings settings = new Settings(volume, userDifficulty);
+
+                    //User Progress JSON Object
+                    JSONObject progressJSON = (JSONObject)value.get(USER_PROGRESS);
+                    int cluesUsed = ((Long)progressJSON.get(USER_CLUES_USED)).intValue();
+
+                    //Puzzles Solved in Progress Object
+                    JSONArray puzzleProgressJSON = (JSONArray)progressJSON.get(USER_PUZZLES_SOLVED);
+                    HashMap<String, Puzzle> puzzleMap = new HashMap<>();
+                    for(int k=0; k<puzzles.size(); k++) {
+                        JSONObject puzzleJSON = (JSONObject)puzzleProgressJSON.get(k);
+                        String ProgressKey = (String)puzzleJSON.get(USER_PUZZLE_HASH_KEY);
+                        JSONObject ProgressValue = (JSONObject)puzzleJSON.get(USER_PUZZLE_HASH_VAL);
+                        String description = (String)ProgressValue.get(USER_PUZZLE_DESC);
+                        ArrayList<String> hints = new ArrayList<>();
+                        JSONArray hintsJSON = (JSONArray)ProgressValue.get(USER_PUZZLE_HINTS);
+                        for(int l=0; l<hintsJSON.size(); l++) {
+                            String hint = (String)hintsJSON.get(l);
+                            hints.add(hint);
+                        }
+                        String solution = (String)ProgressValue.get(USER_PUZZLE_SOLUTION);
+                        boolean isSolved = (boolean)ProgressValue.get(USER_PUZZLE_SOLVED);
+                        Puzzle puzzle = new Puzzle(description, hints, solution, isSolved);
+                        puzzleMap.put(ProgressKey, puzzle);
+                    }
+
+                    //Progress Achievements JSON Array
+                    JSONArray achievementsJSON = (JSONArray)progressJSON.get(USER_ACHIEVEMENTS);
+                    ArrayList<Achievement> achievements = new ArrayList<>();
+                    for(int k=0; k<achievementsJSON.size(); k++) {
+                        JSONObject achievementJSON = (JSONObject)achievementsJSON.get(k);
+                        String title = (String)achievementJSON.get(USER_ACHIEVEMENT_TITLE);
+                        boolean unlocked = (boolean)achievementJSON.get(USER_ACHIEVEMENT_UNLOCKED);
+                        Achievement achievement = new Achievement(title, unlocked);
+                        achievements.add(achievement);
+
+                    }
+                    Progress progress = new Progress(id, puzzleMap, cluesUsed, achievements);
+
+                    //List of Rooms for a User
+                    JSONArray userRoomsJSON = (JSONArray)value.get(USER_ROOMS);
+                    ArrayList<UUID> roomList = new ArrayList<>();
+                    for(int k=0; k<userRoomsJSON.size(); k++) {
+                        UUID room = UUID.fromString((String)userRoomsJSON.get(k));
+                        roomList.add(room);
+                    }
+                    UUID currentRoom = UUID.fromString((String)value.get(USER_CURRENT_ROOM));
+                    User player = new User(username, password, settings, progress, roomList, currentRoom);
+                    players.put(key, player);
+                }
+                Leaderboard leaderboard = Leaderboard.getInstance(players);
+                Room room = new Room(id, map, leaderboard, puzzles, timer, difficulty);
+                rooms.add(room);
+            }
+            reader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return rooms;
     }
 
     public static void main(String[] args) {
-        ArrayList<User> users = DataLoader.getUsers();
+        ArrayList<Room> rooms = DataLoader.getRooms();
 
-        for(User user : users) {
-            System.out.println(user);
+        for(Room room : rooms) {
+            System.out.println(room);
         }
     }
 

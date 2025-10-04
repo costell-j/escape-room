@@ -16,7 +16,8 @@ public class RoomList {
         return roomList;
     }
     public Room getRoom(UUID id) {
-       
+        Room room = new Room(id, null, null, null, 0, 0);
+       return room;
     }
     public void addRoom(Room room) {
         rooms.add(room);

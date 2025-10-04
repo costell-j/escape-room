@@ -18,21 +18,65 @@
         }],
         "difficulty": 2,
         "leaderboard":{
-            "players":[{"rank":1,"user": {
+            "players":[{"Integer":1,"User": {
                 "username":"name",
                 "password":"password",
                 "settings":{"volume":10,"difficulty":3},
-                "rooms":[{"UUID":"8b9e9e2-e9a3-4b49-818a-976c61288ae4", "Room":"8b9e9e2-e9a3-4b49-818a-976c61288ae4"},
-            {"UUID":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb","Room":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"}],
-            "currentRoom":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
+                "progress":{
+                    "puzzlesSolved": [{"String":"puzzle1","Puzzle":{
+                        "description":"puzzle1",
+                        "hints":["hint1", "hint2", "hint3"],
+                        "solution":"solution1",
+                        "isSolved":true
+                    }},
+                    {"String":"puzzle2","Puzzle":{
+                        "description":"puzzle2",
+                        "hints":["hint1", "hint2", "hint3"],
+                        "solution":"solution2",
+                        "isSolved":false
+                    }
+                    }],
+                    "cluesUsed":2,
+                    "achievements":[{
+                        "title":"lkhalhjg",
+                        "unlocked":true
+                    }, {
+                        "title":"utyuiyoiuo",
+                        "unlocked":false
+                    }]
+                },
+                "rooms":["8b9e9e2-e9a3-4b49-818a-976c61288ae4", "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"],
+                "currentRoom":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
             }},
-        {"rank":3,"user": {
+        {"Integer":3,"User": {
                 "username":"nam",
                 "password":"pass",
                 "settings":{"volume":10,"difficulty":3},
-                "rooms":[{"UUID":"8b9e9e2-e9a3-4b49-818a-976c61288ae4", "Room":"8b9e9e2-e9a3-4b49-818a-976c61288ae4"},
-            {"UUID":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb","Room":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"}],
-            "currentRoom":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
+                "progress":{
+                    "puzzlesSolved": [{"String":"puzzle1","Puzzle":{
+                        "description":"puzzle1",
+                        "hints":["hint1", "hint2", "hint3"],
+                        "solution":"solution1",
+                        "isSolved":true
+                    }},
+                    {"String":"puzzle2","Puzzle":{
+                        "description":"puzzle2",
+                        "hints":["hint1", "hint2", "hint3"],
+                        "solution":"solution2",
+                        "isSolved":false
+                    }
+                    }],
+                    "cluesUsed":2,
+                    "achievements":[{
+                        "title":"lkhalhjg",
+                        "unlocked":true
+                    }, {
+                        "title":"utyuiyoiuo",
+                        "unlocked":false
+                    }]
+                },
+                "rooms":["8b9e9e2-e9a3-4b49-818a-976c61288ae4", "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"],
+                "currentRoom":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
             }}]
         }
     },
@@ -42,19 +86,79 @@
        "timer": 2000,
        "puzzles": [
         {
-            "id":"d6ff9f1f-b3d0-4e5b-92ec-a9b0255afc81",
             "description":"logic puzzle",
             "hints":["hint 1", "hint 2", "hint 3"],
             "solution":"solution",
             "isSolved":true 
         },
         {
-            "id":"b4f232a6-cb12-428d-8127-4961d8a27457",
             "description":"math puzzle",
             "hints":["hint 1", "hint 2", "hint 3"],
             "solution":"solution",
             "isSolved":false 
         }],
-         "difficulty": 3
+         "difficulty": 3,
+         "leaderboard":{
+            "players":[{"Integer":1,"User": {
+                "username":"name",
+                "password":"password",
+                "settings":{"volume":10,"difficulty":3},
+                "progress":{
+                    "puzzlesSolved": [{"String":"puzzle1","Puzzle":{
+                        "description":"puzzle1",
+                        "hints":["hint1", "hint2", "hint3"],
+                        "solution":"solution1",
+                        "isSolved":true
+                    }},
+                    {"String":"puzzle2","Puzzle":{
+                        "description":"puzzle2",
+                        "hints":["hint1", "hint2", "hint3"],
+                        "solution":"solution2",
+                        "isSolved":false
+                    }
+                    }],
+                    "cluesUsed":2,
+                    "achievements":[{
+                        "title":"lkhalhjg",
+                        "unlocked":true
+                    }, {
+                        "title":"utyuiyoiuo",
+                        "unlocked":false
+                    }]
+                },
+                "rooms":["8b9e9e2-e9a3-4b49-818a-976c61288ae4", "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"],
+                "currentRoom":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
+            }},
+        {"Integer":3,"User": {
+                "username":"nam",
+                "password":"pass",
+                "settings":{"volume":10,"difficulty":3},
+                "progress":{
+                    "puzzlesSolved": [{"String":"puzzle1","Puzzle":{
+                        "description":"puzzle1",
+                        "hints":["hint1", "hint2", "hint3"],
+                        "solution":"solution1",
+                        "isSolved":true
+                    }},
+                    {"String":"puzzle2","Puzzle":{
+                        "description":"puzzle2",
+                        "hints":["hint1", "hint2", "hint3"],
+                        "solution":"solution2",
+                        "isSolved":false
+                    }
+                    }],
+                    "cluesUsed":2,
+                    "achievements":[{
+                        "title":"lkhalhjg",
+                        "unlocked":true
+                    }, {
+                        "title":"utyuiyoiuo",
+                        "unlocked":false
+                    }]
+                },
+                "rooms":["8b9e9e2-e9a3-4b49-818a-976c61288ae4", "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"],
+                "currentRoom":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
+            }}]
+        }
     }
 ]
