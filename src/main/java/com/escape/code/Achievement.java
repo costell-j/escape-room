@@ -15,6 +15,14 @@ public class Achievement {
         }
     }
 
+    public String getTitle(){
+        return title;
+    }
+
+    public boolean getUnlocked(){
+        return unlocked;
+    }
+
     @Override
     public String toString() {
         return "Title: "+this.title+"\nUnlocked: "+this.unlocked+"/n";
