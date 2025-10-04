@@ -30,9 +30,12 @@ public class Room {
         this.timer = timer--;
     }
     public void playPuzzle() {
-        
+        puzzles.get(0);
     }
     public void advancePuzzle() {
+        if(puzzles.get(0).isSolved) {
+            
+        }
 
     }
 }

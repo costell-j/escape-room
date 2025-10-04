@@ -8,20 +8,20 @@ public class UserList {
     private static UserList userList;
     private ArrayList<User> users;
 
-    private UserList() {//Removing static for now bc VS code doesnt like it
-       userList.getInstance();
+    private UserList() {
+       users = DataLoader.getUsers();
     }
-    public UserList getInstance() {
+    public static UserList getInstance() {
         if(userList == null)
             userList = new UserList();
         return userList;
     }
     public User getUser(String username, String password) {
-        return new User();
+       return User(username, password);
     }
-    public void addUser(String name, String username, String password, 
+    public void addUser(String username, String password, 
                         Settings settings, HashMap<UUID, Room> rooms, Room currentRoom) {
-        users.add(new User());
+        users.add(new User(username, password, settings, rooms, currentRoom));
     } 
 
     
