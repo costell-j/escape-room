@@ -10,6 +10,7 @@ public class Room {
     private int timer;
     private ArrayList<Puzzle> puzzles;
     private int difficulty;
+    private int currentPuzzle;
 
     public Room(UUID id, Map map, Leaderboard leaderboard, ArrayList<Puzzle> puzzles, int timer, int difficulty) {
         this.id = id;
@@ -18,6 +19,7 @@ public class Room {
         this.puzzles = puzzles;
         this.timer = timer;
         this.difficulty = difficulty;
+        this.currentPuzzle = 0;
     }
 
     public void setTime(int timer) {
@@ -30,15 +32,12 @@ public class Room {
         this.timer = timer--;
     }
     public void playPuzzle() {
-        puzzles.get(0);
+        puzzles.get(currentPuzzle);
     }
     public void advancePuzzle() {
-        if(puzzles.get(0).isSolved) {
-            
-        }
-
+        if(puzzles.get(currentPuzzle).isSolved) 
+            currentPuzzle++;
     }
-
     public UUID getId() {
         return this.id;
     }
