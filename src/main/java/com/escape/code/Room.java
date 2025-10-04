@@ -39,6 +39,11 @@ public class Room {
 
     }
 
+    public UUID getId() {
+        return this.id;
+    }
+ 
+    
     @Override
     public String toString() {
         String desc = "ID: "+this.id+"\nMap: "+this.map.toString()+"\nLeaderboard: "+this.leaderboard.toString();

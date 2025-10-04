@@ -16,9 +16,13 @@ public class RoomList {
         return roomList;
     }
     public Room getRoom(UUID id) {
-        Room room = new Room(id, null, null, null, 0, 0);
-       return room;
+        for( int i = 0; i < rooms.size(); i++) {
+            if(rooms.get(i).getId().equals(id))
+            return rooms.get(i);
+         }
+         return null;
     }
+ 
     public void addRoom(Room room) {
         rooms.add(room);
     }

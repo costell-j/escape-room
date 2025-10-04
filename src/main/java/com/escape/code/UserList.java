@@ -17,9 +17,13 @@ public class UserList {
         return userList;
     }
     public User getUser(String username, String password) {
-       User user = new User(username, password, null, null, null, null);
-       return user;
-    }
+        for( int i = 0; i < users.size(); i++) {
+           if(users.get(i).getUsername().equals(username) && users.get(i).getPassword().equals(password))
+           return users.get(i);
+        }
+        return null;
+        }
+     
     public void addUser(String name, String username, String password, Settings settings, HashMap<UUID, Room> rooms, Room currentRoom) {
         User user = new User(username, password, null, null, null, null);
         users.add(user);
