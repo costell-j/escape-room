@@ -8,6 +8,7 @@ package com.escape.code;
 public abstract class DataConstants {
     //User Constants
     protected static final String USER_FILE_NAME = "src/main/java/com/escape/json/users.json";
+    protected static final String USER_TEMP_FILE_NAME = "src/main/java/com/escape/json/users_temp.json";
     protected static final String USER_USER_NAME = "username";
     protected static final String USER_PASSWORD = "password";
     protected static final String USER_SETTINGS = "settings";

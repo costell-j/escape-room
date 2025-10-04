@@ -22,6 +22,22 @@ public class Puzzle {
         }
     }
 
+    public String getDescription() {
+        return this.description;
+    }
+
+    public ArrayList<String> getHints() {
+        return this.hints;
+    }
+
+    public String getSolution() {
+        return this.solution;
+    }
+
+    public boolean isSolved() {
+        return this.isSolved;
+    }
+
     @Override
     public String toString() {
         String puzzle = "Description: "+this.description+"\nSolution: "+this.solution+"\nSolved: "+this.isSolved+"\nHints:\n";

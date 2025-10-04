@@ -21,6 +21,30 @@ public class User {
         this.currentRoom = currentRoom;
     }
 
+    public String getUsername() {
+        return this.username;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public Settings getSettings() {
+        return this.settings;
+    }
+
+    public Progress getProgress() {
+        return this.progress;
+    }
+
+    public ArrayList<UUID> getRooms() {
+        return this.rooms;
+    }
+
+    public UUID getCurrentRoom() {
+        return this.currentRoom;
+    }
+
     @Override
     public String toString() {
         String userdata = "";

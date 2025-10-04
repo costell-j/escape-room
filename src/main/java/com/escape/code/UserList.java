@@ -22,7 +22,11 @@ public class UserList {
            return users.get(i);
         }
         return null;
-        }
+    }
+
+    public ArrayList<User> getUsers() {
+        return this.users;
+    }
      
     public void addUser(String name, String username, String password, Settings settings, HashMap<UUID, Room> rooms, Room currentRoom) {
         User user = new User(username, password, null, null, null, null);

@@ -27,4 +27,20 @@ public class Progress {
         }
         return progress;
     }
+
+    public UUID getRoom() {
+        return this.room;
+    }
+
+    public HashMap<String, Puzzle> getPuzzlesSolved() {
+        return this.puzzlesSolved;
+    }
+
+    public int getCluesUsed() {
+        return this.cluesUsed;
+    }
+
+    public ArrayList<Achievement> getAchievements() {
+        return this.achievements;
+    }
 }

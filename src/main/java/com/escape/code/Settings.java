@@ -9,6 +9,14 @@ public class Settings {
         this.difficulty = difficulty;
     }
 
+    public int getVolume() {
+        return this.volume;
+    }
+
+    public int getDifficulty() {
+        return this.difficulty;
+    }
+
     public void changeVolume(int volume) {
         this.volume = volume;
     }
