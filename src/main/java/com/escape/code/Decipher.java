@@ -1,5 +1,19 @@
 package com.escape.code;
 
-public class Decpiher {
+import java.util.ArrayList;
 
+public class Decipher extends Puzzle {
+
+    public Decipher(String description, ArrayList<String> hints,
+                    String solution, boolean isSolved) {
+        super(description, hints, solution, isSolved);
+    }
+
+    /** Stub: exact-match; later, decode input with the chosen cipher before compare. */
+    public boolean attempt(String answer) {
+        if (answer == null) return false;
+        boolean correct = answer.trim().equalsIgnoreCase(getSolution().trim());
+        if (correct) this.isSolved = true;
+        return correct;
+    }
 }
