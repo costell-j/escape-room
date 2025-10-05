@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Leaderboard {
     
-    private static HashMap<Integer, User> players;
+    private HashMap<Integer, User> players;
     private static Leaderboard leaderboard;
             
     private Leaderboard(HashMap<Integer, User> players) {
@@ -24,6 +24,7 @@ public class Leaderboard {
         }
         return desc;
     }
+    
     public HashMap<Integer, User> getPlayers() {
         return this.players;
     }
