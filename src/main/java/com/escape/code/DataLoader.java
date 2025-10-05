@@ -17,6 +17,10 @@ import org.json.simple.parser.JSONParser;;
 
 public class DataLoader extends DataConstants {
     
+    /**
+     * Reads a JSON file and provides a list of User Objects
+     * @return An ArrayList of Users read from a JSON file
+     */
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<>();
 
@@ -99,6 +103,10 @@ public class DataLoader extends DataConstants {
         return users;
     }
 
+    /**
+     * Reads a JSON file and provides a list of Room Objects
+     * @return An ArrayList of Rooms read from a JSON file
+     */
     @SuppressWarnings("ConvertToTryWithResources")
     public static ArrayList<Room> getRooms() {
         ArrayList<Room> rooms = new ArrayList<>();

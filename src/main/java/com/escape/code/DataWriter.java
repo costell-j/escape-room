@@ -16,6 +16,10 @@ import org.json.simple.JSONObject;
 
 public class DataWriter extends DataConstants {
     
+    /**
+     * Writes all User Objects to a JSON file for storage
+     * @return returns true after successful save
+     */
     @SuppressWarnings("unchecked")
     public static boolean saveUsers() {
         UserList users = UserList.getInstance();
@@ -38,6 +42,11 @@ public class DataWriter extends DataConstants {
         return true;
     }
 
+    /**
+     * Takes a User and serializes them into a JSON Object
+     * @param user A User Object to be serialized to a JSON Object
+     * @return a JSON Object representation of a User
+     */
     @SuppressWarnings("unchecked")
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
@@ -110,6 +119,10 @@ public class DataWriter extends DataConstants {
         return userDetails;
     }
 
+    /**
+     * Writes all Room Objects to a JSON file for storage
+     * @return returns true after successful save
+     */
     @SuppressWarnings("unchecked")
     public static boolean saveRooms() {
         RoomList rooms = RoomList.getInstance();
@@ -131,6 +144,10 @@ public class DataWriter extends DataConstants {
         return true;
     }
 
+    /**
+     * Takes a Room and serializes it into a JSON Object
+     * @param room A Room Object to be serialized to a JSON Object
+     */
     @SuppressWarnings("unchecked")
     public static JSONObject getRoomJSON(Room room) {
         JSONObject roomDetails = new JSONObject();
