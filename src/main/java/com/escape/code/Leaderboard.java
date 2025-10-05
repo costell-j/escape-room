@@ -24,4 +24,7 @@ public class Leaderboard {
         }
         return desc;
     }
+    public HashMap<Integer, User> getPlayers() {
+        return this.players;
+    }
 }

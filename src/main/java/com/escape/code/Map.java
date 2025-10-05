@@ -12,4 +12,16 @@ public class Map {
         this.length = length;
     }
 
+    public String getMapName() {
+        return this.mapName;
+    }
+
+    public int getHeight() {
+        return this.height;
+    }
+
+    public int getLength() {
+        return this.length;
+    }
+
 }

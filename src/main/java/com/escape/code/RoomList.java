@@ -23,6 +23,10 @@ public class RoomList {
          return null;
     }
  
+    public ArrayList<Room> getRooms() {
+        return this.rooms;
+    }
+
     public void addRoom(Room room) {
         rooms.add(room);
     }
