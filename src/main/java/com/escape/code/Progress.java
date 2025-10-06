@@ -2,7 +2,10 @@ package com.escape.code;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.ArrayList;
-
+/*
+ * Class used to track progress
+ * @Author Erin Check
+ */
 public class Progress {
     private UUID room;
     private HashMap<String, Puzzle> puzzlesSolved;
@@ -16,6 +19,21 @@ public class Progress {
         this.achievements = achievements;
     }
 
+    public UUID getRoom() {
+        return room;
+    }
+
+    public HashMap<String, Puzzle> getPuzzlesSolved() {
+        return puzzlesSolved;
+    }
+
+    public int getCluesUsed() {
+        return cluesUsed;
+    }
+
+    public ArrayList<Achievement> getAchievements() {
+        return achievements;
+    }
     @Override
     public String toString() {
         String progress = "ID: "+room+"\nClues Used: "+this.cluesUsed+"\nAchievements:\n";
@@ -26,21 +44,5 @@ public class Progress {
             progress += "Key: "+line+" Value: "+this.puzzlesSolved.get(line);
         }
         return progress;
-    }
-
-    public UUID getRoom() {
-        return this.room;
-    }
-
-    public HashMap<String, Puzzle> getPuzzlesSolved() {
-        return this.puzzlesSolved;
-    }
-
-    public int getCluesUsed() {
-        return this.cluesUsed;
-    }
-
-    public ArrayList<Achievement> getAchievements() {
-        return this.achievements;
     }
 }

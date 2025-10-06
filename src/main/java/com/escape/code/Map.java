@@ -1,5 +1,8 @@
 package com.escape.code;
-
+/*
+ * Class used as the map
+ * @Author Erin Check
+ */
 public class Map {
     
     private String mapName;

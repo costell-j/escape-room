@@ -2,7 +2,10 @@ package com.escape.code;
 
 import java.util.ArrayList;
 import java.util.UUID;
-
+/*
+ * Class used to create a new user
+ * @Author Erin Check
+ */
 public class User {
 
     private String username;
@@ -22,29 +25,26 @@ public class User {
     }
 
     public String getUsername() {
-        return this.username;
+        return username;
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     public Settings getSettings() {
-        return this.settings;
-    }
-
-    public Progress getProgress() {
-        return this.progress;
+        return settings;
     }
 
     public ArrayList<UUID> getRooms() {
-        return this.rooms;
+        return rooms;
     }
-
+    public Progress getProgress() {
+        return progress;
+    }
     public UUID getCurrentRoom() {
-        return this.currentRoom;
+        return currentRoom;
     }
-
     @Override
     public String toString() {
         String userdata = "";

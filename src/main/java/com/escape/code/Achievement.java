@@ -1,5 +1,8 @@
 package com.escape.code;
-
+/*
+ * Class used to track achievements
+ * @Author Erin Check
+ */
 public class Achievement {
     private String title;
     private boolean unlocked;
