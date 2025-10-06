@@ -9,7 +9,7 @@ public class Riddle extends Puzzle {
         super(description, hints, solution, isSolved);
     }
 
-    /** Stub: exact-match; you might want to allow close variants or synonyms. */
+   
     public boolean attempt(String answer) {
         if (answer == null) return false;
         boolean correct = answer.trim().equalsIgnoreCase(getSolution().trim());

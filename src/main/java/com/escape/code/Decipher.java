@@ -9,7 +9,7 @@ public class Decipher extends Puzzle {
         super(description, hints, solution, isSolved);
     }
 
-    /** Stub: exact-match; later, decode input with the chosen cipher before compare. */
+    
     public boolean attempt(String answer) {
         if (answer == null) return false;
         boolean correct = answer.trim().equalsIgnoreCase(getSolution().trim());
