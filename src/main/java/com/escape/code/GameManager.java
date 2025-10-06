@@ -22,7 +22,6 @@ public class GameManager {
     }
 
     public ArrayList<User> getUserList() {
-        
         return null;
     }
 
@@ -40,18 +39,17 @@ public class GameManager {
     }
 
     public User login(String username, String password) {
-       
-        return null;
+       return userList.getUser(username, password);
     }
 
     public boolean isMatch(String username, String password) {
-       
+        if (user.getUsername().equals(username) && user.getPassword().equals(password))
+            return true;
         return false;
     }
 
     public Room chooseRoom(UUID id) {
-        
-        return null;
+        return roomList.getRoom(id);
     }
 
     public void setDifficulty(int difficulty) {
@@ -69,7 +67,7 @@ public class GameManager {
     }
 
     public void saveGame() {
-       
+       DataWriter.saveRooms();
     }
 
     public String getHint() {

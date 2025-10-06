@@ -2,7 +2,10 @@ package com.escape.code;
 
 import java.util.ArrayList;
 import java.util.UUID;
-
+/**
+ * This class handles the Room and its methods
+ * @author Costell Johnson
+ */
 public class Room {
     private UUID id;
     private Map map;

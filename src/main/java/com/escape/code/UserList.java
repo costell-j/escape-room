@@ -3,7 +3,10 @@ package com.escape.code;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
-
+/**
+ * This class handles the UserList and its methods
+ * @author Costell Johnson
+ */
 public class UserList {
     private static UserList userList;
     private ArrayList<User> users;

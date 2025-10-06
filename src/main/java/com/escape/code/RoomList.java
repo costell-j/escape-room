@@ -2,7 +2,10 @@ package com.escape.code;
 
 import java.util.ArrayList;
 import java.util.UUID;
-
+/**
+ * This class handles the RoomList and its methods
+ * @author Costell Johnson
+ */
 public class RoomList {
     private static RoomList roomList;
     private ArrayList<Room> rooms;

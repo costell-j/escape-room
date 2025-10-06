@@ -1,7 +1,10 @@
 package com.escape.code;
 
 import java.util.HashMap;
-
+/**
+ * Classes used for the leaderboard and its functions
+ * @author Costell Johnson
+ */
 public class Leaderboard {
     
     private HashMap<Integer, User> players;
