@@ -11,15 +11,13 @@ public class User {
     private String username;
     private String password;
     private Settings settings;
-    private Progress progress;
-    private ArrayList<UUID> rooms;
-    private UUID currentRoom;
+    private ArrayList<Room> rooms;
+    private Room currentRoom;
     
-    public User(String username, String password, Settings settings, Progress progress, ArrayList<UUID> rooms, UUID currentRoom) {
+    public User(String username, String password, Settings settings, ArrayList<Room> rooms, Room currentRoom) {
         this.username = username;
         this.password = password;
         this.settings = settings;
-        this.progress = progress;
         this.rooms = rooms;
         this.currentRoom = currentRoom;
     }
@@ -36,20 +34,17 @@ public class User {
         return settings;
     }
 
-    public ArrayList<UUID> getRooms() {
+    public ArrayList<Room> getRooms() {
         return rooms;
     }
-    public Progress getProgress() {
-        return progress;
-    }
-    public UUID getCurrentRoom() {
+    public Room getCurrentRoom() {
         return currentRoom;
     }
     @Override
     public String toString() {
         String userdata = "";
         userdata += "Username: "+this.username+"\nPassword: "+this.password;
-        userdata += this.settings.toString()+this.progress.toString();
+        userdata += this.settings.toString();
         for(int i=0; i<this.rooms.size(); i++) {
             userdata += "ID: "+this.rooms.get(i)+"\n";
         }

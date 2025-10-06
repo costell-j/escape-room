@@ -14,7 +14,7 @@ public abstract class DataConstants {
     protected static final String USER_SETTINGS = "settings";
     protected static final String USER_SETTINGS_VOLUME = "volume";
     protected static final String USER_SETTINGS_DIFFICULTY = "difficulty";
-    protected static final String USER_PROGRESS = "progress";
+    protected static final String USER_PROGRESS = "Progress";
     protected static final String USER_PUZZLES_SOLVED = "puzzlesSolved";
     protected static final String USER_PUZZLE_HASH_KEY = "String";
     protected static final String USER_PUZZLE_HASH_VAL = "Puzzle";
@@ -37,6 +37,7 @@ public abstract class DataConstants {
     protected static final String ROOM_ID = "id";
     protected static final String ROOM_MAP = "map";
     protected static final String ROOM_MAP_NAME = "mapName";
+    protected static final String ROOM_PROGRESS_LIST = "progressList";
     protected static final String ROOM_MAP_HEIGHT = "height";
     protected static final String ROOM_MAP_LENGTH = "length";
     protected static final String ROOM_TIMER = "timer";

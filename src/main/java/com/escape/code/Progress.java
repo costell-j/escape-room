@@ -7,20 +7,14 @@ import java.util.ArrayList;
  * @Author Erin Check
  */
 public class Progress {
-    private UUID room;
     private HashMap<String, Puzzle> puzzlesSolved;
     private int cluesUsed; 
     private ArrayList<Achievement> achievements;
 
-    public Progress(UUID room, HashMap<String, Puzzle> puzzles, int cluesUsed, ArrayList<Achievement> achievements){
-        this.room = room;
+    public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, ArrayList<Achievement> achievements){
         this.puzzlesSolved = puzzles;
         this.cluesUsed = cluesUsed;
         this.achievements = achievements;
-    }
-
-    public UUID getRoom() {
-        return room;
     }
 
     public HashMap<String, Puzzle> getPuzzlesSolved() {
@@ -36,7 +30,7 @@ public class Progress {
     }
     @Override
     public String toString() {
-        String progress = "ID: "+room+"\nClues Used: "+this.cluesUsed+"\nAchievements:\n";
+        String progress = "ID:\nClues Used: "+this.cluesUsed+"\nAchievements:\n";
         for(int i=0; i<this.achievements.size(); i++) {
             progress += this.achievements.get(i).toString();
         }

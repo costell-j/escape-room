@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class RoomList {
     private static RoomList roomList;
-    private ArrayList<Room> rooms;
+    private static ArrayList<Room> rooms;
     
     private RoomList() {
         rooms = DataLoader.getRooms();
@@ -15,7 +15,7 @@ public class RoomList {
             roomList = new RoomList();
         return roomList;
     }
-    public Room getRoom(UUID id) {
+    public static Room getRoom(UUID id) {
         for( int i = 0; i < rooms.size(); i++) {
             if(rooms.get(i).getId().equals(id))
             return rooms.get(i);
