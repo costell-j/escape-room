@@ -65,27 +65,6 @@ public class Room {
     public UUID getId() {
         return this.id;
     }
-    public Map getMap() {
-        return this.map;
-    }
-    public Leaderboard getLeaderboard() {
-        return this.leaderboard;
-    }
-    public int getTimer() {
-        return this.timer;
-    }
-
-    public ArrayList<Puzzle> getPuzzles() {
-        return this.puzzles;
-    }
-
-    public int getDifficulty() {
-        return this.difficulty;
-    }
-
-    public int getCurrentPuzzle() {
-        return this.currentPuzzle;
-    }
 
     @Override
     public String toString() {
