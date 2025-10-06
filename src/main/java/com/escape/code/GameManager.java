@@ -3,11 +3,14 @@ package com.escape.code;
 import java.util.ArrayList;
 import java.util.UUID;
 
-/** Minimal stub aligned with your UML. Fill in once User/Room/etc. exist. */
+/*
+ * GameManager handles user sessions, room selection, and game state.
+ * It interacts with UserList and RoomList singletons to manage users and rooms.
+ */
 public class GameManager {
-    private User user;            // TODO: create class
-    private UserList userList;    // TODO: create class (singleton)
-    private RoomList roomList;    // TODO: create class (singleton)
+    private User user;            
+    private UserList userList;    
+    private RoomList roomList;    
 
     public GameManager() {
         // TODO: initialize userList = UserList.getInstance(); roomList = RoomList.getInstance();
