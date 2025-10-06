@@ -1,7 +1,9 @@
 package com.escape.code;
 
 import java.util.ArrayList;
-
+/*
+ * MathPuzzle is a type of Puzzle that involves solving mathematical problems or equations.
+ */
 public class MathPuzzle extends Puzzle {
 
     public MathPuzzle(String description, ArrayList<String> hints,
@@ -14,7 +16,7 @@ public class MathPuzzle extends Puzzle {
         if (answer == null) return false;
         boolean correct = answer.trim().equalsIgnoreCase(getSolution().trim());
         if (correct) {
-            // Consider making solvePuzzle() unconditionally set isSolved = true in Puzzle.
+            
             this.isSolved = true;
         }
         return correct;

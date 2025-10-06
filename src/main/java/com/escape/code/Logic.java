@@ -1,7 +1,9 @@
 package com.escape.code;
 
 import java.util.ArrayList;
-
+/*
+ * Logic is a type of Puzzle that involves reasoning and problem-solving skills.
+ */
 public class Logic extends Puzzle {
 
     public Logic(String description, ArrayList<String> hints,
