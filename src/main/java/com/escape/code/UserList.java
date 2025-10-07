@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 /**
- * This class handles the UserList and its methods
+ * This class handles the Usergit List and its methods
  * @author Costell Johnson
  */
 public class UserList {
@@ -32,7 +32,7 @@ public class UserList {
     }
      
     public void addUser(String name, String username, String password, Settings settings, HashMap<UUID, Room> rooms, Room currentRoom) {
-        User user = new User(username, password, null, null, null, null);
+        User user = new User(username, password, null, null, null);
         users.add(user);
     } 
 

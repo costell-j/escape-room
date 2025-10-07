@@ -3,12 +3,14 @@ package com.escape.code;
 import java.util.ArrayList;
 import java.util.UUID;
 
-/*
+/**
  * GameManager handles user sessions, room selection, and game state.
  * It interacts with UserList and RoomList singletons to manage users and rooms.
+ * @author Costell Johnson
  */
 public class GameManager {
-    private User user;            
+    private User user;    
+    private Room room;        
     private UserList userList;    
     private RoomList roomList;    
 
@@ -17,25 +19,24 @@ public class GameManager {
     }
 
     public User createAccount(String username, String password) {
-        
-        return null;
+        return new User(username, password, null, null, null);
     }
 
     public ArrayList<User> getUserList() {
-        return null;
+        return userList.getUsers();
     }
 
     public ArrayList<Room> getRoomList() {
-       
-        return null;
+        return roomList.getAllRooms();
     }
 
     public boolean logout() {
-       
-        return false;
+        saveGame();
+        return true;
     }
 
     public void exit() {
+        saveGame();
     }
 
     public User login(String username, String password) {
@@ -53,25 +54,23 @@ public class GameManager {
     }
 
     public void setDifficulty(int difficulty) {
-       
+        room.setDifficulty(difficulty);
     }
 
     public Leaderboard getLeaderboard() {
-        
-        return null;
+        return room.getLeaderboard();
     }
 
     public Map getMap() {
-        
-        return null;
+        return room.getMap();
     }
 
     public void saveGame() {
        DataWriter.saveRooms();
+       DataWriter.saveUsers();
     }
 
     public String getHint() {
-        
         return null;
     }
 }

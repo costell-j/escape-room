@@ -1,6 +1,7 @@
 package com.escape.code;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 /**
  * This class handles the Room and its methods
@@ -9,15 +10,19 @@ import java.util.UUID;
 public class Room {
     private UUID id;
     private Map map;
+    private HashMap<String, Progress> progressList;
+    private Progress progress;
     private Leaderboard leaderboard;
     private int timer;
     private ArrayList<Puzzle> puzzles;
     private int difficulty;
     private int currentPuzzle;
 
-    public Room(UUID id, Map map, Leaderboard leaderboard, ArrayList<Puzzle> puzzles, int timer, int difficulty) {
+    public Room(UUID id, Map map, HashMap<String, Progress> progressList, Progress progress, Leaderboard leaderboard, ArrayList<Puzzle> puzzles, int timer, int difficulty) {
         this.id = id;
         this.map = map;
+        this.progressList = progressList;
+        this.progress = progress;
         this.leaderboard = leaderboard;
         this.puzzles = puzzles;
         this.timer = timer;
@@ -32,7 +37,7 @@ public class Room {
         this.difficulty = difficulty;
     }
     public void modifyTime(int timer) {
-        this.timer = timer--;
+        this.timer -= timer;
     }
     public void playPuzzle() {
         puzzles.get(currentPuzzle);
