@@ -27,6 +27,14 @@ public class Room {
         this.currentPuzzle = 0;
     }
 
+    public HashMap<String, Progress> getProgressList() {
+        return this.progressList;
+    }
+
+    public Progress getProgress() {
+        return this.progress;
+    }
+
     public void setTime(int timer) {
         this.timer = timer;
     }

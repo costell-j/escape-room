@@ -23,22 +23,22 @@ public class User {
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public Settings getSettings() {
-        return settings;
+        return this.settings;
     }
 
     public ArrayList<Room> getRooms() {
-        return rooms;
+        return this.rooms;
     }
     public Room getCurrentRoom() {
-        return currentRoom;
+        return this.currentRoom;
     }
     @Override
     public String toString() {

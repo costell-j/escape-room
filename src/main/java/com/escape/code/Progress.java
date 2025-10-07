@@ -18,15 +18,15 @@ public class Progress {
     }
 
     public HashMap<String, Puzzle> getPuzzlesSolved() {
-        return puzzlesSolved;
+        return this.puzzlesSolved;
     }
 
     public int getCluesUsed() {
-        return cluesUsed;
+        return this.cluesUsed;
     }
 
     public ArrayList<Achievement> getAchievements() {
-        return achievements;
+        return this.achievements;
     }
     @Override
     public String toString() {
