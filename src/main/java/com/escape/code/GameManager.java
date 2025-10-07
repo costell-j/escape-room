@@ -12,10 +12,12 @@ public class GameManager {
     private User user;    
     private Room room;        
     private UserList userList;    
-    private RoomList roomList;    
+    private RoomList roomList;  
+    private Puzzle puzzle;  
 
     public GameManager() {
-      
+        this.userList = UserList.getInstance();
+        this.roomList = RoomList.getInstance();
     }
 
     public User createAccount(String username, String password) {
@@ -36,7 +38,7 @@ public class GameManager {
     }
 
     public void exit() {
-        saveGame();
+        System.exit(0);
     }
 
     public User login(String username, String password) {
@@ -70,7 +72,7 @@ public class GameManager {
        DataWriter.saveUsers();
     }
 
-    public String getHint() {
-        return null;
+    public ArrayList<String> getHints() {
+        return puzzle.getHints();
     }
 }
