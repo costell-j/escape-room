@@ -87,6 +87,11 @@ public class DataLoader extends DataConstants {
         return rooms;
     }
 
+    /**
+     * Extracts a JSONObject and constructs a Progress Object from the contained data
+     * @param parentJSON JSONObject to extract a progress JSONObject from
+     * @return a Progress Object
+     */
     private static Progress loadProgress(JSONObject parentJSON) {
         //User Progress JSON Object
         JSONObject progressJSON = (JSONObject)parentJSON.get(USER_PROGRESS);
@@ -128,6 +133,11 @@ public class DataLoader extends DataConstants {
         return progress;
     }
 
+    /**
+     * Extracts a JSONArray and constructs a HashMap from the contained data, providing a list of progress
+     * @param parentJSON JSONObject to extract a progressList JSONArray from
+     * @return a HashMap<String, Progress>
+     */
     private static HashMap<String, Progress> loadProgressList(JSONObject parentJSON) {
         JSONArray progressListJSON = (JSONArray)parentJSON.get(ROOM_PROGRESS_LIST);
         HashMap<String, Progress> progressList = new HashMap<>();
@@ -141,6 +151,11 @@ public class DataLoader extends DataConstants {
         return progressList;
     }
 
+    /**
+     * Extracts a JSONArray and constructs an ArrayList from the contained data, providing a list of rooms
+     * @param parentJSON JSONObject to extract a JSONArray from
+     * @return an ArrayList<Room>
+     */
     private static ArrayList<Room> loadRooms(JSONObject parentJSON) {
         //List of Rooms for a User
         RoomList roomlist = RoomList.getInstance();
@@ -156,6 +171,11 @@ public class DataLoader extends DataConstants {
         return roomList;
     }
 
+    /**
+     * Extracts a JSONObject and constructs a Settings Object from the contained data
+     * @param parentJSON a JSONObject to extract a Settings JSONObject from
+     * @return a Settings Object
+     */
     private static Settings loadSettings(JSONObject parentJSON) {
         //User Settings JSON Object
         JSONObject settingsJSON = (JSONObject)parentJSON.get(USER_SETTINGS);
@@ -166,6 +186,11 @@ public class DataLoader extends DataConstants {
         return settings;
     }
 
+    /**
+     * Extracts a JSONObject and constructs a Leaderboard Object from the contained data
+     * @param parentJSON a JSONObject to extract a Leaderboard JSONObject from
+     * @return a Leaderboard Object
+     */
     private static Leaderboard loadLeaderboard(JSONObject parentJSON) {
         //Get Room Leaderboard Object
         JSONObject leaderboardJSON = (JSONObject)parentJSON.get(ROOM_LEADERBOARD);
@@ -182,6 +207,11 @@ public class DataLoader extends DataConstants {
         return leaderboard;
     }
 
+    /**
+     * Extracts a JSONObject and constructs a Map Object from the contained data
+     * @param parentJSON a JSONObject to extract a Map JSONObject from
+     * @return a Map Object
+     */
     private static Map loadMap(JSONObject parentJSON) {
         //Get Room Map JSON Object
         JSONObject mapJSON = (JSONObject)parentJSON.get(ROOM_MAP);
@@ -193,6 +223,11 @@ public class DataLoader extends DataConstants {
         return map;
     }
 
+    /**
+     * Extracts a JSONArray and constructs an ArrayList from the contained data, providing a list of puzzles
+     * @param parentJSON a JSONObject to extract a JSONArray from
+     * @return an ArrayList<Puzzle>
+     */
     private static ArrayList<Puzzle> loadPuzzles(JSONObject parentJSON) {
         //Get Room Puzzles JSON Array
         JSONArray puzzlesJSON = (JSONArray)parentJSON.get(ROOM_PUZZLES);

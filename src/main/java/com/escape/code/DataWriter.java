@@ -118,6 +118,11 @@ public class DataWriter extends DataConstants {
         return roomDetails;
     }
 
+    /**
+     * Extracts a HashMap of Puzzle Objects and adds them to a JSONArray
+     * @param room a Room Object to read data from for placement into a JSONArray
+     * @return a JSONArray containing a HashMap<String, Puzzle> in JSON format
+     */
     @SuppressWarnings("unchecked")
     private static JSONArray writePuzzleList(Room room) {
         //Puzzles JSON Array
@@ -145,6 +150,11 @@ public class DataWriter extends DataConstants {
         return puzzlesJSON;
     }
 
+    /**
+     * Extracts info from a Map Object from the passed Room and adds it to a JSONObject
+     * @param room a Room Object to read data from for placement into a JSONObject
+     * @return a JSONObject containing info from a Map Object
+     */
     @SuppressWarnings("unchecked")
     private static JSONObject writeMap(Room room) {
         JSONObject mapJSON = new JSONObject();
@@ -155,6 +165,11 @@ public class DataWriter extends DataConstants {
         return mapJSON;
     }
 
+    /**
+     * Extracts info from a Leaderboard Object from the passed Room and adds it to a JSONObject
+     * @param room a Room Object to read data from for placement into a JSONObject
+     * @return a JSONObject containing the info from a Leaderboard Object
+     */
     @SuppressWarnings("unchecked")
     private static JSONObject writeLeaderboard(Room room) {
         JSONObject leaderboardJSON = new JSONObject();
@@ -177,6 +192,11 @@ public class DataWriter extends DataConstants {
         return leaderboardJSON;
     }
 
+    /**
+     * Extracts info from a Progress Object from the passed Room and adds it to a JSONObject
+     * @param room a Room Object to read data from for placement into a JSONObject
+     * @return a JSONObject containing the info from a Progress Object
+     */
     @SuppressWarnings("unchecked")
     private static JSONObject writeProgress(Room room) {
         //Progress JSON Object
@@ -227,6 +247,11 @@ public class DataWriter extends DataConstants {
         return roomProgress;
     }
 
+    /**
+     * Extracts a HashMap of Progress Objects from the passed Room and adds them to a JSONArray
+     * @param room a Room Object to read data from for placement into a JSONArray
+     * @return a JSONArray containing a HashMap of usernames and Progress Objects
+     */
     @SuppressWarnings("unchecked")
     private static JSONArray writeProgressList(Room room) {
         JSONArray progressListJSON = new JSONArray();
@@ -248,6 +273,11 @@ public class DataWriter extends DataConstants {
         return progressListJSON;
     }
 
+    /**
+     * Extracts info from a Settings Object contained within the passed User and adds this info to a JSONObject
+     * @param user a User to read data from for placement into a JSONObject
+     * @return a JSONObject containing the data of a Settings Object
+     */
     @SuppressWarnings("unchecked")
     private static JSONObject writeSettings(User user) {
         //Settings JSON Object
@@ -258,6 +288,11 @@ public class DataWriter extends DataConstants {
         return userSettings;
     }
 
+    /**
+     * Extracts a list of room ids from a User Object and adds them to a JSONArray
+     * @param user a User to read data from for placement into a JSONArray
+     * @return a JSONArray containing a list of Room ids
+     */
     @SuppressWarnings("unchecked")
     private static JSONArray writeRoomList(User user) {
         //Rooms JSON Array
