@@ -75,4 +75,7 @@ public class GameManager {
     public ArrayList<String> getHints() {
         return puzzle.getHints();
     }
+    public void setVolume(int volume) {
+        user.getSettings().changeVolume(volume);
+    }
 }
