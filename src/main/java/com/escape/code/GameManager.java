@@ -78,4 +78,10 @@ public class GameManager {
     public void setVolume(int volume) {
         user.getSettings().changeVolume(volume);
     }
+    public boolean closeLeaderboard() {
+        return false;
+    }
+    public boolean closeMap() {
+        return false;
+    }
 }

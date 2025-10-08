@@ -8,6 +8,7 @@ import java.util.HashMap;
 public class Leaderboard {
     
     private HashMap<Integer, User> players;
+    private boolean open;
             
     private Leaderboard(HashMap<Integer, User> players) {
         this.players = players;
@@ -24,5 +25,8 @@ public class Leaderboard {
     
     public HashMap<Integer, User> getPlayers() {
         return this.players;
+    }
+    public boolean isOpen() {
+        return this.open;
     }
 }
