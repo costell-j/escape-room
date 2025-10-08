@@ -88,4 +88,8 @@ public class Room {
         }
         return desc;
     }
+
+    public void setLeaderboard(Leaderboard leaderboard) {
+        this.leaderboard = leaderboard;
+    }
 }

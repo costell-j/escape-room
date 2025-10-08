@@ -30,6 +30,14 @@ public class User {
         return this.password;
     }
 
+    public void setRooms(ArrayList<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
+    }
+
     public Settings getSettings() {
         return this.settings;
     }
@@ -46,9 +54,9 @@ public class User {
         userdata += "Username: "+this.username+"\nPassword: "+this.password;
         userdata += this.settings.toString();
         for(int i=0; i<this.rooms.size(); i++) {
-            userdata += "ID: "+this.rooms.get(i)+"\n";
+            userdata += "ID: "+this.rooms.get(i).getId()+"\n";
         }
-        userdata += "Current ID: "+this.currentRoom+"\n";
+        userdata += "Current ID: "+this.currentRoom.getId()+"\n";
         return userdata;
     }
 }

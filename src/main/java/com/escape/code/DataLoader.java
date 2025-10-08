@@ -34,10 +34,10 @@ public class DataLoader extends DataConstants {
                 String userName = (String)personJSON.get(USER_USER_NAME);
                 String password = (String)personJSON.get(USER_PASSWORD);
                 Settings settings = loadSettings(personJSON);
-                RoomList roomlist = RoomList.getInstance();
+                RoomList roomSet = RoomList.getInstance();
                 ArrayList<Room> rooms = loadRooms(personJSON);
                 UUID currentRoomID = UUID.fromString((String)personJSON.get(USER_CURRENT_ROOM));
-                Room currentRoom = RoomList.getRoom(currentRoomID);
+                Room currentRoom = roomSet.getRoom(currentRoomID);
 
                 //Create User Object & add to list
                 User user = new User(userName, password, settings, rooms, currentRoom);
@@ -74,7 +74,8 @@ public class DataLoader extends DataConstants {
                 HashMap<String, Progress> progressList = loadProgressList(roomJSON);
                 Progress progress = loadProgress(roomJSON);
                 ArrayList<Puzzle> puzzles = loadPuzzles(roomJSON);
-                Leaderboard leaderboard = loadLeaderboard(roomJSON);
+                //Leaderboard leaderboard = loadLeaderboard(roomJSON);
+                Leaderboard leaderboard = new Leaderboard();
 
                 Room room = new Room(id, map, progressList, progress, leaderboard, puzzles, timer, difficulty);
                 rooms.add(room);
@@ -163,7 +164,7 @@ public class DataLoader extends DataConstants {
         ArrayList<Room> roomList = new ArrayList<>();
         for(int i=0; i<userRoomsJSON.size(); i++) {
             UUID roomID = UUID.fromString((String)userRoomsJSON.get(i));
-            Room room = RoomList.getRoom(roomID);
+            Room room = roomlist.getRoom(roomID);
 
             roomList.add(room);
         }
@@ -191,20 +192,55 @@ public class DataLoader extends DataConstants {
      * @param parentJSON a JSONObject to extract a Leaderboard JSONObject from
      * @return a Leaderboard Object
      */
-    private static Leaderboard loadLeaderboard(JSONObject parentJSON) {
-        //Get Room Leaderboard Object
-        JSONObject leaderboardJSON = (JSONObject)parentJSON.get(ROOM_LEADERBOARD);
-        JSONArray playersJSON = (JSONArray)leaderboardJSON.get(ROOM_LEADERBOARD_PLAYERS);
-        HashMap<Integer, String> players = new HashMap<>();
-        for(int i=0; i<playersJSON.size(); i++) {
-            JSONObject hashSet = (JSONObject)playersJSON.get(i);
-            Integer key = ((Long)hashSet.get(ROOM_LEADERBOARD_HASH_KEY)).intValue();
-            String value = (String)hashSet.get(USER_PUZZLE_HASH_KEY);
-            players.put(key, value);
-        }
-        Leaderboard leaderboard = new Leaderboard(players);
+    private static void loadLeaderboards() {
 
-        return leaderboard;
+        try {
+            FileReader reader = new FileReader(ROOM_FILE_NAME);
+            JSONArray roomsJSON = (JSONArray)new JSONParser().parse(reader);
+            RoomList rooms = RoomList.getInstance();
+
+            for(int i=0; i<roomsJSON.size(); i++) {
+                JSONObject roomJSON = (JSONObject)roomsJSON.get(i);
+                UUID id = UUID.fromString((String)roomJSON.get(ROOM_ID));
+                //Get Room Leaderboard Object
+                JSONObject leaderboardJSON = (JSONObject)roomJSON.get(ROOM_LEADERBOARD);
+                JSONArray leaderHash = (JSONArray)leaderboardJSON.get(ROOM_LEADERBOARD_PLAYERS);
+                HashMap<Integer, User> players = new HashMap<>();
+                for(int j=0; j<leaderHash.size(); j++) {
+                    //User JSON Object
+                    JSONObject playerJSON = (JSONObject)leaderHash.get(j);
+                    Integer key = ((Long)playerJSON.get(ROOM_LEADERBOARD_HASH_KEY)).intValue();
+                    JSONObject value = (JSONObject)playerJSON.get(ROOM_LEADERBOARD_HASH_VAL);
+                    String username = (String)value.get(USER_USER_NAME);
+                    String password = (String)value.get(USER_PASSWORD);
+
+                    //User Settings JSON Object
+                    Settings settings = loadSettings(value);
+
+                    //List of Rooms for a User
+                    ArrayList<Room> roomList = loadRooms(value);
+
+                    UUID currentRoomID = UUID.fromString((String)roomJSON.get(ROOM_ID));
+                    Room currentRoom = rooms.getRoom(currentRoomID);
+
+                    User user = new User(username, password, settings, roomList, currentRoom);
+                    players.put(key, user);
+                }
+                Leaderboard leaderboard = new Leaderboard(players);
+                Room room = rooms.getRoom(id);
+                room.setLeaderboard(leaderboard);
+                rooms.removeRoom(id);
+                rooms.addRoom(room);
+                ArrayList<Room> newRooms = rooms.getAllRooms();
+
+                for(User user : players.values()) {
+                    user.setCurrentRoom(room);
+                    user.setRooms(newRooms);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -251,10 +287,12 @@ public class DataLoader extends DataConstants {
     }
 
     public static void main(String[] args) {
-        ArrayList<User> users = DataLoader.getUsers();
+        RoomList roomList = RoomList.getInstance();
+        loadLeaderboards();
+        ArrayList<Room> rooms = roomList.getAllRooms();
 
-        for(User user : users) {
-            System.out.println(user);
+        for(Room room : rooms) {
+            System.out.println(room);
         }
     }
 
