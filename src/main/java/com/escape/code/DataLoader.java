@@ -192,7 +192,7 @@ public class DataLoader extends DataConstants {
      * @param parentJSON a JSONObject to extract a Leaderboard JSONObject from
      * @return a Leaderboard Object
      */
-    private static void loadLeaderboards() {
+    public static void loadLeaderboards() {
 
         try {
             FileReader reader = new FileReader(ROOM_FILE_NAME);
@@ -287,12 +287,12 @@ public class DataLoader extends DataConstants {
     }
 
     public static void main(String[] args) {
-        RoomList roomList = RoomList.getInstance();
-        loadLeaderboards();
-        ArrayList<Room> rooms = roomList.getAllRooms();
+        UserList userList = UserList.getInstance();
+        //loadLeaderboards();
+        ArrayList<User> users = userList.getUsers();
 
-        for(Room room : rooms) {
-            System.out.println(room);
+        for(User user : users) {
+            System.out.println(user);
         }
     }
 

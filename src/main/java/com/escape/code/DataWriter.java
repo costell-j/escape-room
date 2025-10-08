@@ -75,6 +75,7 @@ public class DataWriter extends DataConstants {
     @SuppressWarnings("unchecked")
     public static boolean saveRooms() {
         RoomList rooms = RoomList.getInstance();
+        DataLoader.loadLeaderboards();
         ArrayList<Room> roomList = rooms.getRooms();
 
         JSONArray jsonUsers = new JSONArray();
@@ -172,22 +173,37 @@ public class DataWriter extends DataConstants {
      */
     @SuppressWarnings("unchecked")
     private static JSONObject writeLeaderboard(Room room) {
+        //Leaderboard JSON Object
         JSONObject leaderboardJSON = new JSONObject();
         JSONArray playersJSON = new JSONArray();
-        HashMap<Integer, String> players = room.getLeaderboard().getPlayers();
-        for(String string : players.values()) {
+        HashMap<Integer, User> players = room.getLeaderboard().getPlayers();
+        for(User user : players.values()) {
             JSONObject leaderHash = new JSONObject();
+            JSONObject playerJSON = new JSONObject();
             Integer key = 0;
             for(Integer val : players.keySet()) {
-                if(players.get(val).equals(string)) {
+                if(players.get(val) == user) {
                     key = val;
                 }
             }
             leaderHash.put(ROOM_LEADERBOARD_HASH_KEY, key);
-            leaderHash.put(ROOM_LEADERBOARD_HASH_VAL, string);
+            playerJSON.put(USER_USER_NAME, user.getUsername());
+            playerJSON.put(USER_PASSWORD, user.getPassword());
+            String currentRoom = ""+user.getCurrentRoom()+"";
+            playerJSON.put(USER_CURRENT_ROOM, currentRoom);
+
+            //Settings JSON Object
+            JSONObject settingsJSON = writeSettings(user);
+            playerJSON.put(USER_SETTINGS, settingsJSON);
+
+            //Rooms JSON Array
+            JSONArray roomsJSON = writeRoomList(user);
+            playerJSON.put(USER_ROOMS, roomsJSON);
+
+            leaderHash.put(ROOM_LEADERBOARD_HASH_VAL, playerJSON);
             playersJSON.add(leaderHash);
-        }
-        leaderboardJSON.put(ROOM_LEADERBOARD_PLAYERS, playersJSON);
+            }
+            leaderboardJSON.put(ROOM_LEADERBOARD_PLAYERS, playersJSON);
 
         return leaderboardJSON;
     }
