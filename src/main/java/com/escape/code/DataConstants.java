@@ -47,6 +47,7 @@ public abstract class DataConstants {
     protected static final String ROOM_LEADERBOARD_PLAYERS = "players";
     protected static final String ROOM_LEADERBOARD_HASH_KEY = "Integer";
     protected static final String ROOM_LEADERBOARD_HASH_VAL = "User";
+    protected static final String ROOM_PROGRESS_COMPLETION_TIME = "completionTime";
     
 
 }

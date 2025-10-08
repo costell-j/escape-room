@@ -95,9 +95,9 @@ public class DataLoader extends DataConstants {
      * @return a Progress Object
      */
     private static Progress loadProgress(JSONObject parentJSON) {
-        //User Progress JSON Object
         JSONObject progressJSON = (JSONObject)parentJSON.get(USER_PROGRESS);
         int cluesUsed = ((Long)progressJSON.get(USER_CLUES_USED)).intValue();
+        int completionTime = ((Long)progressJSON.get(ROOM_PROGRESS_COMPLETION_TIME)).intValue();
 
         //Puzzles Solved in Progress Object
         JSONArray puzzles = (JSONArray)progressJSON.get(USER_PUZZLES_SOLVED);
@@ -130,7 +130,7 @@ public class DataLoader extends DataConstants {
             achievements.add(achievement);
 
         }
-        Progress progress = new Progress(puzzleMap, cluesUsed, achievements);
+        Progress progress = new Progress(puzzleMap, cluesUsed, completionTime, achievements);
 
         return progress;
     }
@@ -286,12 +286,12 @@ public class DataLoader extends DataConstants {
     }
 
     public static void main(String[] args) {
-        UserList userList = UserList.getInstance();
-        //loadLeaderboards();
-        ArrayList<User> users = userList.getUsers();
+        RoomList roomList = RoomList.getInstance();
+        loadLeaderboards();
+        ArrayList<Room> rooms = roomList.getAllRooms();
 
-        for(User user : users) {
-            System.out.println(user);
+        for(Room room : rooms) {
+            System.out.println(room);
         }
     }
 
