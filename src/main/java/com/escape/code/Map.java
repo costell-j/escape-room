@@ -8,11 +8,13 @@ public class Map {
     private String mapName;
     private int height;
     private int length;
+    private boolean open;
 
-    public Map(String mapName, int height, int length) {
+    public Map(String mapName, int height, int length, boolean open) {
         this.mapName = mapName;
         this.height = height;
         this.length = length;
+        this.open = open;
     }
 
     public String getMapName() {
@@ -25,6 +27,10 @@ public class Map {
 
     public int getLength() {
         return this.length;
+    }
+
+    public boolean isOpen() {
+        return this.open;
     }
 
 }
