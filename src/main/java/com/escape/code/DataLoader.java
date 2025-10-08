@@ -53,7 +53,8 @@ public class DataLoader extends DataConstants {
     }
 
     /**
-     * Reads a JSON file and provides a list of Room Objects
+     * Loads in an ArrayList of Rooms from a json file
+     * all Room Objects are lazy loaded with a default Leaderboard to be filled later
      * @return An ArrayList of Rooms read from a JSON file
      */
     @SuppressWarnings("ConvertToTryWithResources")
@@ -188,9 +189,7 @@ public class DataLoader extends DataConstants {
     }
 
     /**
-     * Extracts a JSONObject and constructs a Leaderboard Object from the contained data
-     * @param parentJSON a JSONObject to extract a Leaderboard JSONObject from
-     * @return a Leaderboard Object
+     * Iterates over rooms.json objects to add filled out Leaderboards
      */
     public static void loadLeaderboards() {
 
