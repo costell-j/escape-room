@@ -20,39 +20,29 @@ public class GameManager {
         this.roomList = RoomList.getInstance();
     }
 
+    //User related methods
     public User createAccount(String username, String password) {
         return new User(username, password, null, null, null);
+    }
+
+    public User login(String username, String password) {
+        this.user = userList.getUser(username, password);
+        return this.user;
     }
 
     public ArrayList<User> getUserList() {
         return userList.getUsers();
     }
 
+    //Room related methods
     public ArrayList<Room> getRoomList() {
         return roomList.getAllRooms();
     }
 
-    public boolean logout() {
-        saveGame();
-        return true;
-    }
-
-    public void exit() {
-        System.exit(0);
-    }
-
-    public User login(String username, String password) {
-       return userList.getUser(username, password);
-    }
-
-    public boolean isMatch(String username, String password) {
-        if (user.getUsername().equals(username) && user.getPassword().equals(password))
-            return true;
-        return false;
-    }
-
     public Room chooseRoom(UUID id) {
-        return roomList.getRoom(id);
+        this.room = roomList.getRoom(id);
+        this.puzzle = room.getPuzzles().get(room.getCurrentPuzzle());
+        return this.room;
     }
 
     public void setDifficulty(int difficulty) {
@@ -66,22 +56,35 @@ public class GameManager {
     public Map getMap() {
         return room.getMap();
     }
-
-    public void saveGame() {
-       DataWriter.saveRooms();
-       DataWriter.saveUsers();
-    }
-
-    public ArrayList<String> getHints() {
-        return puzzle.getHints();
-    }
-    public void setVolume(int volume) {
-        user.getSettings().changeVolume(volume);
-    }
     public boolean closeLeaderboard() {
         return false;
     }
     public boolean closeMap() {
         return false;
+    }
+
+
+    //Puzzel related methods
+    public ArrayList<String> getHints() {
+        return puzzle.getHints();
+    }
+
+    //Settings related methosd
+    public void setVolume(int volume) {
+        user.getSettings().changeVolume(volume);
+    }
+    
+    public void saveGame() {
+        DataWriter.saveRooms();
+        DataWriter.saveUsers();
+    }
+
+    public boolean logout() {
+        saveGame();
+        return true;
+    }
+
+    public void exit() {
+        System.exit(0);
     }
 }
