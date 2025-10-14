@@ -1,7 +1,7 @@
 [
     {
        "id": "d8b9e9e2-e9a3-4b49-818a-976c61288ae4",
-       "map": {"mapName":"map", "height":500, "length":500},
+       "map": {"mapName":"map", "height":500, "length":500, "isOpen":false},
        "progressList":[{"String":"name","Progress":
        {
             "puzzlesSolved": [{"String":"puzzle1","Puzzle":{
@@ -109,7 +109,7 @@
     },
     {
        "id": "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb",
-       "map": {"mapName":"special map", "height":1200, "length":800},
+       "map": {"mapName":"special map", "height":1200, "length":800, "isOpen":false},
        "progressList":[{"String":"name","Progress":
        {
             "puzzlesSolved": [{"String":"puzzle1","Puzzle":{

@@ -25,20 +25,10 @@ public class RoomList {
          }
          return null;
     }
-<<<<<<< HEAD
-
-    public void removeRoom(UUID id) {
-        for( int i = 0; i < rooms.size(); i++) {
-            if(rooms.get(i).getId().equals(id)) {
-                rooms.remove(i);
-                break;
-            }
-=======
     public void deleteRoom(UUID id) {
         for( int i = 0; i < rooms.size(); i++) {
             if(rooms.get(i).getId().equals(id))
              rooms.remove(i);
->>>>>>> 57d412061454efa250af8f7acb5d81950322bc57
          }
     }
  

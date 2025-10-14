@@ -35,11 +35,7 @@ public class Progress {
 
     @Override
     public String toString() {
-<<<<<<< HEAD
         String progress = "Clues Used: "+this.cluesUsed+"\nAchievements:\n";
-=======
-        String progress = "ID:\nClues Used: "+this.cluesUsed+"Completion Time: "+this.completionTime+"\nAchievements:\n";
->>>>>>> json-restructuring
         for(int i=0; i<this.achievements.size(); i++) {
             progress += this.achievements.get(i).toString();
         }

@@ -228,7 +228,7 @@ public class DataLoader extends DataConstants {
                 Leaderboard leaderboard = new Leaderboard(players);
                 Room room = rooms.getRoom(id);
                 room.setLeaderboard(leaderboard);
-                rooms.removeRoom(id);
+                rooms.deleteRoom(id);
                 rooms.addRoom(room);
                 ArrayList<Room> newRooms = rooms.getAllRooms();
 
@@ -253,7 +253,8 @@ public class DataLoader extends DataConstants {
         String mapName = (String)mapJSON.get(ROOM_MAP_NAME);
         int height = ((Long)mapJSON.get(ROOM_MAP_HEIGHT)).intValue();
         int length = ((Long)mapJSON.get(ROOM_MAP_LENGTH)).intValue();
-        Map map = new Map(mapName, height, length);
+        boolean isOpen = (boolean)mapJSON.get(ROOM_MAP_ISOPEN);
+        Map map = new Map(mapName, height, length, isOpen);
 
         return map;
     }

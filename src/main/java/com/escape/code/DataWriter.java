@@ -162,6 +162,7 @@ public class DataWriter extends DataConstants {
         mapJSON.put(ROOM_MAP_NAME, room.getMap().getMapName());
         mapJSON.put(ROOM_MAP_HEIGHT, room.getMap().getHeight());
         mapJSON.put(ROOM_MAP_LENGTH, room.getMap().getLength());
+        mapJSON.put(ROOM_MAP_ISOPEN, room.getMap().isOpen());
 
         return mapJSON;
     }
