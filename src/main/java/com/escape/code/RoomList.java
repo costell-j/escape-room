@@ -25,6 +25,12 @@ public class RoomList {
          }
          return null;
     }
+    public void deleteRoom(UUID id) {
+        for( int i = 0; i < rooms.size(); i++) {
+            if(rooms.get(i).getId().equals(id))
+             rooms.remove(i);
+         }
+    }
  
     public ArrayList<Room> getRooms() {
         return this.rooms;
