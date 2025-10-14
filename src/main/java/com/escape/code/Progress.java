@@ -8,11 +8,13 @@ import java.util.ArrayList;
 public class Progress {
     private HashMap<String, Puzzle> puzzlesSolved;
     private int cluesUsed; 
+    private int completionTime;
     private ArrayList<Achievement> achievements;
 
-    public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, ArrayList<Achievement> achievements){
+    public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, int completionTime, ArrayList<Achievement> achievements){
         this.puzzlesSolved = puzzles;
         this.cluesUsed = cluesUsed;
+        this.completionTime = completionTime;
         this.achievements = achievements;
     }
 
@@ -27,9 +29,17 @@ public class Progress {
     public ArrayList<Achievement> getAchievements() {
         return this.achievements;
     }
+    public int getCompletionTime() {
+        return this.completionTime;
+    }
+
     @Override
     public String toString() {
+<<<<<<< HEAD
         String progress = "Clues Used: "+this.cluesUsed+"\nAchievements:\n";
+=======
+        String progress = "ID:\nClues Used: "+this.cluesUsed+"Completion Time: "+this.completionTime+"\nAchievements:\n";
+>>>>>>> json-restructuring
         for(int i=0; i<this.achievements.size(); i++) {
             progress += this.achievements.get(i).toString();
         }

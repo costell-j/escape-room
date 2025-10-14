@@ -11,10 +11,11 @@ public class User {
     private String username;
     private String password;
     private Settings settings;
-    private ArrayList<UUID> rooms;
+    private ArrayList<Room> rooms;
     private Room currentRoom;
     
-    public User(String username, String password, Settings settings,  ArrayList<UUID> rooms, Room currentRoom) {
+    
+    public User(String username, String password, Settings settings, ArrayList<Room> rooms, Room currentRoom) {
         this.username = username;
         this.password = password;
         this.settings = settings;
@@ -23,19 +24,27 @@ public class User {
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
+    }
+
+    public void setRooms(ArrayList<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
     }
 
     public Settings getSettings() {
-        return settings;
+        return this.settings;
     }
 
-    public ArrayList<UUID> getRooms() {
-        return rooms;
+    public ArrayList<Room> getRooms() {
+        return this.rooms;
     }
     public Room getCurrentRoom() {
         return currentRoom;
@@ -46,9 +55,9 @@ public class User {
         userdata += "Username: "+this.username+"\nPassword: "+this.password;
         userdata += this.settings.toString();
         for(int i=0; i<this.rooms.size(); i++) {
-            userdata += "ID: "+this.rooms.get(i)+"\n";
+            userdata += "ID: "+this.rooms.get(i).getId()+"\n";
         }
-        userdata += "Current ID: "+this.currentRoom+"\n";
+        userdata += "Current ID: "+this.currentRoom.getId()+"\n";
         return userdata;
     }
 }

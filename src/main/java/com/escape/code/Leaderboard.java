@@ -10,7 +10,10 @@ public class Leaderboard {
     private HashMap<Integer, User> players;
     private boolean open;
             
-    private Leaderboard(HashMap<Integer, User> players) {
+    public Leaderboard() {
+        this.players = new HashMap<>();
+    }
+    public Leaderboard(HashMap<Integer, User> players) {
         this.players = players;
     }
 

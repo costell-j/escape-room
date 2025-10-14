@@ -54,65 +54,14 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_PASSWORD, user.getPassword());
 
         //Settings JSON Object
-        JSONObject userSettings = new JSONObject();
-        userSettings.put(USER_SETTINGS_VOLUME, user.getSettings().getVolume());
-        userSettings.put(USER_SETTINGS_DIFFICULTY, user.getSettings().getDifficulty());
+        JSONObject userSettings = writeSettings(user);
         userDetails.put(USER_SETTINGS, userSettings);
 
-        //Progress JSON Object
-        JSONObject userProgress = new JSONObject();
-        JSONArray puzzleJSONArray = new JSONArray();
-        HashMap<String, Puzzle> puzzles = user.getProgress().getPuzzlesSolved();
-
-        //Iterate through hashmap of puzzles to add to userProgress
-        for(Puzzle puzzle : puzzles.values()) {
-            //Begin adding to puzzleMap
-            JSONObject puzzleMapJSON = new JSONObject();
-            puzzleMapJSON.put(USER_PUZZLE_HASH_KEY, puzzle.getDescription());
-
-            //Create Puzzle JSON Object for HashMap value
-            JSONObject puzzleJSON = new JSONObject();
-            puzzleJSON.put(USER_PUZZLE_DESC, puzzle.getDescription());
-            puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzle.getSolution());
-            puzzleJSON.put(USER_PUZZLE_SOLVED, puzzle.isSolved());
-
-            //Create JSON Array of hints to store in Puzzle Object
-            JSONArray hintsJSON = new JSONArray();
-            ArrayList<String> hints = puzzle.getHints();
-            for(int j=0; j<hints.size(); j++) {
-                hintsJSON.add(hints.get(j));
-            }
-
-            //Continue adding to Puzzle Object
-            puzzleJSON.put(USER_PUZZLE_HINTS, hintsJSON);
-            puzzleMapJSON.put(USER_PUZZLE_HASH_VAL, puzzleJSON);
-            puzzleJSONArray.add(puzzleMapJSON);
-        }
-
-        //Continuation of Progress Object
-        userProgress.put(USER_PUZZLES_SOLVED, puzzleJSONArray);
-        userProgress.put(USER_CLUES_USED, user.getProgress().getCluesUsed());
-
-        //Achievements JSON Array
-        JSONArray achievementsJSON = new JSONArray();
-        ArrayList<Achievement> achievements = user.getProgress().getAchievements();
-        for(int i=0; i<achievements.size(); i++) {
-            JSONObject achievementJSON = new JSONObject();
-            achievementJSON.put(USER_ACHIEVEMENT_TITLE, user.getProgress().getAchievements().get(i).getTitle());
-            achievementJSON.put(USER_ACHIEVEMENT_UNLOCKED, user.getProgress().getAchievements().get(i).isUnlocked());
-            achievementsJSON.add(achievementJSON);
-        }
-        userProgress.put(USER_ACHIEVEMENTS, achievementsJSON);
-        userDetails.put(USER_PROGRESS, userProgress);
-
         //Rooms JSON Array
-        JSONArray roomsJSON = new JSONArray();
-        ArrayList<UUID> rooms = user.getRooms();
-        for(int i=0; i<rooms.size(); i++) {
-            roomsJSON.add(""+rooms.get(i)+"");
-        }
+        JSONArray roomsJSON = writeRoomList(user);
         userDetails.put(USER_ROOMS, roomsJSON);
-        String currentRoom = ""+user.getCurrentRoom()+"";
+
+        String currentRoom = ""+user.getCurrentRoom().getId()+"";
         userDetails.put(USER_CURRENT_ROOM, currentRoom);
 
 
@@ -126,6 +75,7 @@ public class DataWriter extends DataConstants {
     @SuppressWarnings("unchecked")
     public static boolean saveRooms() {
         RoomList rooms = RoomList.getInstance();
+        DataLoader.loadLeaderboards();
         ArrayList<Room> roomList = rooms.getRooms();
 
         JSONArray jsonUsers = new JSONArray();
@@ -155,7 +105,27 @@ public class DataWriter extends DataConstants {
         roomDetails.put(ROOM_ID, id);
         roomDetails.put(ROOM_TIMER, room.getTimer());
         roomDetails.put(ROOM_DIFFICULTY, room.getDifficulty());
-        
+        JSONArray puzzlesJSON = writePuzzleList(room);
+        roomDetails.put(ROOM_PUZZLES, puzzlesJSON);
+        JSONObject mapJSON = writeMap(room);
+        roomDetails.put(ROOM_MAP, mapJSON);
+        JSONArray progressListJSON = writeProgressList(room);
+        roomDetails.put(ROOM_PROGRESS_LIST, progressListJSON);
+        JSONObject progressJSON = writeProgress(room);
+        roomDetails.put(USER_PROGRESS, progressJSON);
+        JSONObject leaderboardJSON = writeLeaderboard(room);
+        roomDetails.put(ROOM_LEADERBOARD, leaderboardJSON);
+
+        return roomDetails;
+    }
+
+    /**
+     * Extracts a HashMap of Puzzle Objects and adds them to a JSONArray
+     * @param room a Room Object to read data from for placement into a JSONArray
+     * @return a JSONArray containing a HashMap<String, Puzzle> in JSON format
+     */
+    @SuppressWarnings("unchecked")
+    private static JSONArray writePuzzleList(Room room) {
         //Puzzles JSON Array
         JSONArray puzzlesJSON = new JSONArray();
         ArrayList<Puzzle> puzzles = room.getPuzzles();
@@ -177,15 +147,32 @@ public class DataWriter extends DataConstants {
             puzzleJSON.put(USER_PUZZLE_HINTS, hintsJSON);
             puzzlesJSON.add(puzzleJSON);
         }
-        roomDetails.put(ROOM_PUZZLES, puzzlesJSON);
 
-        //Map JSON Object
+        return puzzlesJSON;
+    }
+
+    /**
+     * Extracts info from a Map Object from the passed Room and adds it to a JSONObject
+     * @param room a Room Object to read data from for placement into a JSONObject
+     * @return a JSONObject containing info from a Map Object
+     */
+    @SuppressWarnings("unchecked")
+    private static JSONObject writeMap(Room room) {
         JSONObject mapJSON = new JSONObject();
         mapJSON.put(ROOM_MAP_NAME, room.getMap().getMapName());
         mapJSON.put(ROOM_MAP_HEIGHT, room.getMap().getHeight());
         mapJSON.put(ROOM_MAP_LENGTH, room.getMap().getLength());
-        roomDetails.put(ROOM_MAP, mapJSON);
 
+        return mapJSON;
+    }
+
+    /**
+     * Extracts info from a Leaderboard Object from the passed Room and adds it to a JSONObject
+     * @param room a Room Object to read data from for placement into a JSONObject
+     * @return a JSONObject containing the info from a Leaderboard Object
+     */
+    @SuppressWarnings("unchecked")
+    private static JSONObject writeLeaderboard(Room room) {
         //Leaderboard JSON Object
         JSONObject leaderboardJSON = new JSONObject();
         JSONArray playersJSON = new JSONArray();
@@ -206,72 +193,133 @@ public class DataWriter extends DataConstants {
             playerJSON.put(USER_CURRENT_ROOM, currentRoom);
 
             //Settings JSON Object
-            JSONObject settingsJSON = new JSONObject();
-            settingsJSON.put(USER_SETTINGS_VOLUME, user.getSettings().getVolume());
-            settingsJSON.put(USER_SETTINGS_DIFFICULTY, user.getSettings().getVolume());
+            JSONObject settingsJSON = writeSettings(user);
             playerJSON.put(USER_SETTINGS, settingsJSON);
 
             //Rooms JSON Array
-            JSONArray roomsJSON = new JSONArray();
-            ArrayList<UUID> rooms = user.getRooms();
-            for(int i=0; i<rooms.size(); i++) {
-                String roomID = ""+rooms.get(i)+"";
-                roomsJSON.add(roomID);
-            }
+            JSONArray roomsJSON = writeRoomList(user);
             playerJSON.put(USER_ROOMS, roomsJSON);
 
-            //Progress JSON Object
-            JSONObject userProgress = new JSONObject();
-            JSONArray puzzleJSONArray = new JSONArray();
-            HashMap<String, Puzzle> userPuzzles = user.getProgress().getPuzzlesSolved();
-
-            //Iterate through hashmap of puzzles to add to userProgress
-            for(Puzzle puzzle : userPuzzles.values()) {
-                //Begin adding to puzzleMap
-                JSONObject puzzleMapJSON = new JSONObject();
-                puzzleMapJSON.put(USER_PUZZLE_HASH_KEY, puzzle.getDescription());
-
-                //Create Puzzle JSON Object for HashMap value
-                JSONObject puzzleJSON = new JSONObject();
-                puzzleJSON.put(USER_PUZZLE_DESC, puzzle.getDescription());
-                puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzle.getSolution());
-                puzzleJSON.put(USER_PUZZLE_SOLVED, puzzle.isSolved());
-
-                //Create JSON Array of hints to store in Puzzle Object
-                JSONArray hintsJSON = new JSONArray();
-                ArrayList<String> hints = puzzle.getHints();
-                for(int j=0; j<hints.size(); j++) {
-                    hintsJSON.add(hints.get(j));
-                }
-
-                //Continue adding to Puzzle Object
-                puzzleJSON.put(USER_PUZZLE_HINTS, hintsJSON);
-                puzzleMapJSON.put(USER_PUZZLE_HASH_VAL, puzzleJSON);
-                puzzleJSONArray.add(puzzleMapJSON);
-            }
-
-            //Continuation of Progress Object
-            userProgress.put(USER_PUZZLES_SOLVED, puzzleJSONArray);
-            userProgress.put(USER_CLUES_USED, user.getProgress().getCluesUsed());
-
-            //Achievements JSON Array
-            JSONArray achievementsJSON = new JSONArray();
-            ArrayList<Achievement> achievements = user.getProgress().getAchievements();
-            for(int i=0; i<achievements.size(); i++) {
-                JSONObject achievementJSON = new JSONObject();
-                achievementJSON.put(USER_ACHIEVEMENT_TITLE, user.getProgress().getAchievements().get(i).getTitle());
-                achievementJSON.put(USER_ACHIEVEMENT_UNLOCKED, user.getProgress().getAchievements().get(i).isUnlocked());
-                achievementsJSON.add(achievementJSON);
-            }
-            userProgress.put(USER_ACHIEVEMENTS, achievementsJSON);
-            playerJSON.put(USER_PROGRESS, userProgress);
             leaderHash.put(ROOM_LEADERBOARD_HASH_VAL, playerJSON);
             playersJSON.add(leaderHash);
             }
             leaderboardJSON.put(ROOM_LEADERBOARD_PLAYERS, playersJSON);
-            roomDetails.put(ROOM_LEADERBOARD, leaderboardJSON);
 
-        return roomDetails;
+        return leaderboardJSON;
+    }
+
+    /**
+     * Extracts info from a Progress Object from the passed Room and adds it to a JSONObject
+     * @param room a Room Object to read data from for placement into a JSONObject
+     * @return a JSONObject containing the info from a Progress Object
+     */
+    @SuppressWarnings("unchecked")
+    private static JSONObject writeProgress(Room room) {
+        //Progress JSON Object
+        JSONObject roomProgress = new JSONObject();
+        JSONArray puzzleJSONArray = new JSONArray();
+        HashMap<String, Puzzle> userPuzzles = room.getProgress().getPuzzlesSolved();
+
+        //Iterate through hashmap of puzzles to add to userProgress
+        for(Puzzle puzzle : userPuzzles.values()) {
+            //Begin adding to puzzleMap
+            JSONObject puzzleMapJSON = new JSONObject();
+            puzzleMapJSON.put(USER_PUZZLE_HASH_KEY, puzzle.getDescription());
+
+            //Create Puzzle JSON Object for HashMap value
+            JSONObject puzzleJSON = new JSONObject();
+            puzzleJSON.put(USER_PUZZLE_DESC, puzzle.getDescription());
+            puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzle.getSolution());
+            puzzleJSON.put(USER_PUZZLE_SOLVED, puzzle.isSolved());
+
+            //Create JSON Array of hints to store in Puzzle Object
+            JSONArray hintsJSON = new JSONArray();
+            ArrayList<String> hints = puzzle.getHints();
+            for(int j=0; j<hints.size(); j++) {
+                hintsJSON.add(hints.get(j));
+            }
+
+            //Continue adding to Puzzle Object
+            puzzleJSON.put(USER_PUZZLE_HINTS, hintsJSON);
+            puzzleMapJSON.put(USER_PUZZLE_HASH_VAL, puzzleJSON);
+            puzzleJSONArray.add(puzzleMapJSON);
+
+            //Achievements JSON Array
+            JSONArray achievementsJSON = new JSONArray();
+            ArrayList<Achievement> achievements = room.getProgress().getAchievements();
+            for(int i=0; i<achievements.size(); i++) {
+                JSONObject achievementJSON = new JSONObject();
+                achievementJSON.put(USER_ACHIEVEMENT_TITLE, room.getProgress().getAchievements().get(i).getTitle());
+                achievementJSON.put(USER_ACHIEVEMENT_UNLOCKED, room.getProgress().getAchievements().get(i).isUnlocked());
+                achievementsJSON.add(achievementJSON);
+            }
+            roomProgress.put(USER_ACHIEVEMENTS, achievementsJSON);
+        }
+
+        //Continuation of Progress Object
+        roomProgress.put(USER_PUZZLES_SOLVED, puzzleJSONArray);
+        roomProgress.put(USER_CLUES_USED, room.getProgress().getCluesUsed());
+        roomProgress.put(ROOM_PROGRESS_COMPLETION_TIME, room.getProgress().getCompletionTime());
+
+        return roomProgress;
+    }
+
+    /**
+     * Extracts a HashMap of Progress Objects from the passed Room and adds them to a JSONArray
+     * @param room a Room Object to read data from for placement into a JSONArray
+     * @return a JSONArray containing a HashMap of usernames and Progress Objects
+     */
+    @SuppressWarnings("unchecked")
+    private static JSONArray writeProgressList(Room room) {
+        JSONArray progressListJSON = new JSONArray();
+        HashMap<String, Progress> progressList = room.getProgressList();
+        for(Progress progress : progressList.values()) {
+            JSONObject progressJSON = writeProgress(room);
+            JSONObject progressHash = new JSONObject();
+            String key = "";
+            for(String string : progressList.keySet()) {
+                if(progressList.get(string) == progress) {
+                    key = string;
+                }
+            }
+            progressHash.put(USER_PROGRESS, progressJSON);
+            progressHash.put(USER_PUZZLE_HASH_KEY, key);
+            progressListJSON.add(progressHash);
+        }
+
+        return progressListJSON;
+    }
+
+    /**
+     * Extracts info from a Settings Object contained within the passed User and adds this info to a JSONObject
+     * @param user a User to read data from for placement into a JSONObject
+     * @return a JSONObject containing the data of a Settings Object
+     */
+    @SuppressWarnings("unchecked")
+    private static JSONObject writeSettings(User user) {
+        //Settings JSON Object
+        JSONObject userSettings = new JSONObject();
+        userSettings.put(USER_SETTINGS_VOLUME, user.getSettings().getVolume());
+        userSettings.put(USER_SETTINGS_DIFFICULTY, user.getSettings().getDifficulty());
+
+        return userSettings;
+    }
+
+    /**
+     * Extracts a list of room ids from a User Object and adds them to a JSONArray
+     * @param user a User to read data from for placement into a JSONArray
+     * @return a JSONArray containing a list of Room ids
+     */
+    @SuppressWarnings("unchecked")
+    private static JSONArray writeRoomList(User user) {
+        //Rooms JSON Array
+        JSONArray roomsJSON = new JSONArray();
+        ArrayList<Room> rooms = user.getRooms();
+        for(int i=0; i<rooms.size(); i++) {
+            roomsJSON.add(""+rooms.get(i).getId()+"");
+        }
+
+        return roomsJSON;
     }
 
     public static void main(String[] args){

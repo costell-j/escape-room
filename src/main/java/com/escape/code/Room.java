@@ -30,6 +30,14 @@ public class Room {
         this.currentPuzzle = 0;
     }
 
+    public HashMap<String, Progress> getProgressList() {
+        return this.progressList;
+    }
+
+    public Progress getProgress() {
+        return this.progress;
+    }
+
     public void setTime(int timer) {
         this.timer = timer;
     }
@@ -77,10 +85,14 @@ public class Room {
     @Override
     public String toString() {
         String desc = "ID: "+this.id+"\nMap: "+this.map.toString()+"\nLeaderboard: "+this.leaderboard.toString();
-        desc += "\nTimer: "+this.timer+"\nDifficulty: "+this.difficulty+"\nPuzzles:\n";
+        desc += "\nTimer: "+this.timer+"\nDifficulty: "+this.difficulty+"\nProgress:\n"+this.progress.toString()+"\nPuzzles:\n";
         for(Puzzle puzzle : this.puzzles) {
             desc += puzzle.toString()+"\n";
         }
         return desc;
+    }
+
+    public void setLeaderboard(Leaderboard leaderboard) {
+        this.leaderboard = leaderboard;
     }
 }

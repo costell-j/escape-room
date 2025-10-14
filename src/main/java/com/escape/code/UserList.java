@@ -31,8 +31,8 @@ public class UserList {
         return this.users;
     }
      
-    public void addUser(String name, String username, String password, Settings settings, HashMap<UUID, Room> rooms, Room currentRoom) {
-        User user = new User(username, password, null, null, null);
+    public void addUser(String username, String password, Settings settings, ArrayList<Room> rooms, Room currentRoom) {
+        User user = new User(username, password, settings, rooms, currentRoom);
         users.add(user);
     } 
 
