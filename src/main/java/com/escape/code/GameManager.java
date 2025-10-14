@@ -64,7 +64,7 @@ public class GameManager {
     }
 
 
-    //Puzzel related methods
+    //Puzzle related methods
     public ArrayList<String> getHints() {
         return puzzle.getHints();
     }
