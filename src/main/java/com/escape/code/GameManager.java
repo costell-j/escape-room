@@ -21,10 +21,13 @@ public class GameManager {
     }
 
     //User related methods
+    //Make User and Add to UserList, don't return User
+    //Provide empty ArrayList<Room> and default settings object instead of null
     public User createAccount(String username, String password) {
         return new User(username, password, null, null, null);
     }
 
+    //Just set User object, don't return a User
     public User login(String username, String password) {
         this.user = userList.getUser(username, password);
         return this.user;
@@ -39,7 +42,7 @@ public class GameManager {
         return roomList.getAllRooms();
     }
 
-    public Room chooseRoom(UUID id) {
+    public Room chooseRoom(UUID id) { //don't return room, just set GameManager Objects
         this.room = roomList.getRoom(id);
         this.puzzle = room.getPuzzles().get(room.getCurrentPuzzle());
         return this.room;
@@ -69,7 +72,7 @@ public class GameManager {
         return puzzle.getHints();
     }
 
-    //Settings related methosd
+    //Settings related methods
     public void setVolume(int volume) {
         user.getSettings().changeVolume(volume);
     }
