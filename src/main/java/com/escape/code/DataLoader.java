@@ -225,7 +225,8 @@ public class DataLoader extends DataConstants {
                     User user = new User(username, password, settings, roomList, currentRoom);
                     players.put(key, user);
                 }
-                Leaderboard leaderboard = new Leaderboard(players);
+                boolean open = (boolean)leaderboardJSON.get(ROOM_LEADERBOARD_OPEN);
+                Leaderboard leaderboard = new Leaderboard(players, open);
                 Room room = rooms.getRoom(id);
                 room.setLeaderboard(leaderboard);
                 rooms.deleteRoom(id);

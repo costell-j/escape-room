@@ -13,8 +13,9 @@ public class Leaderboard {
     public Leaderboard() {
         this.players = new HashMap<>();
     }
-    public Leaderboard(HashMap<Integer, User> players) {
+    public Leaderboard(HashMap<Integer, User> players, boolean open) {
         this.players = players;
+        this.open = open;
     }
 
     @Override

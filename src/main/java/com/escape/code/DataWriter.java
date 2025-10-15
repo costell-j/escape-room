@@ -205,6 +205,7 @@ public class DataWriter extends DataConstants {
             playersJSON.add(leaderHash);
             }
             leaderboardJSON.put(ROOM_LEADERBOARD_PLAYERS, playersJSON);
+            leaderboardJSON.put(ROOM_LEADERBOARD_OPEN, room.getLeaderboard().isOpen());
 
         return leaderboardJSON;
     }

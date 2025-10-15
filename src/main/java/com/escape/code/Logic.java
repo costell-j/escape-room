@@ -1,40 +1,42 @@
 package com.escape.code;
-
-import java.util.ArrayList;
 /*
- * Logic is a type of Puzzle that involves reasoning and problem-solving skills.
+ *logic
  * @author Barbarnas
  */
-public class Logic extends Puzzle {
+import java.util.ArrayList;
 
-    public Logic(String description, ArrayList<String> hints,
-                 String solution, boolean isSolved) {
-        super(description, hints, solution, isSolved);
-    }
-/*
- * Attempts to solve the Logic puzzle with the provided answer.
- */
- public boolean attempt(String answer) {
-        if (answer == null) return false;
+    
+    /** logic puzzle that uses normalized text comparison. */
+    public class Logic extends Puzzle {
 
-        String normalized = answer.trim().toLowerCase()
-                .replace("&&", "and")
-                .replace("||", "or")
-                .replace("t", "true")
-                .replace("f", "false");
-
-        String expected = getSolution().trim().toLowerCase()
-                .replace("&&", "and")
-                .replace("||", "or")
-                .replace("t", "true")
-                .replace("f", "false");
-
-        if (normalized.equals(expected)) {
-            this.isSolved = true;
-            return true;
+        public Logic(String description, ArrayList<String> hints,
+                     String solution, boolean isSolved) {
+            super(description, hints, solution, isSolved);
         }
-
-        return false;
+/*
+ * implements the core check then compares answer to stored solution using loose equals ingnore case and whitespace
+ */
+        public boolean attempt(String answer) {
+            if (equalsLoose(answer, getSolution())) {
+                isSolved = true;
+                return true;
+            }
+            return false;
+        }
+/*
+ * helper method. exposes a normalized string equality. 
+ * and normilizes both strings.
+ */
+        protected static boolean equalsLoose(String a, String b) {
+            return norm(a).equals(norm(b));
+        }
+/*
+ * helper to normilze string for comparison. 
+ * and trim, take away big spaces, and makes case insensitive.
+ */
+        private static String norm(String s) {
+            if (s == null) return "";
+            return s.trim().replaceAll("\\s+", " ").toLowerCase();
+        }
     }
-}
-
+    

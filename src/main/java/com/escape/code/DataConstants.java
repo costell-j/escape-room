@@ -45,6 +45,7 @@ public abstract class DataConstants {
     protected static final String ROOM_PUZZLES = "puzzles";
     protected static final String ROOM_DIFFICULTY = "difficulty";
     protected static final String ROOM_LEADERBOARD = "leaderboard";
+    protected static final String ROOM_LEADERBOARD_OPEN = "open";
     protected static final String ROOM_LEADERBOARD_PLAYERS = "players";
     protected static final String ROOM_LEADERBOARD_HASH_KEY = "Integer";
     protected static final String ROOM_LEADERBOARD_HASH_VAL = "User";
