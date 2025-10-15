@@ -14,6 +14,7 @@ public class Puzzle {
     protected ArrayList<String> hints;
     protected String solution;
     protected boolean isSolved;
+
 /*
  * Constructor for Puzzle class.
  */
@@ -23,6 +24,8 @@ public class Puzzle {
         this.solution = solution != null ? solution : "";
         this.isSolved = isSolved;
     }
+
+    
 /*
  * Marks the puzzle as solved.
  */
