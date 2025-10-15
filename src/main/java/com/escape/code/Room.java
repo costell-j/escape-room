@@ -51,7 +51,7 @@ public class Room {
         puzzles.get(currentPuzzle);
     }
     public void advancePuzzle() {
-        if(puzzles.get(currentPuzzle).isSolved) 
+        if(puzzles.get(currentPuzzle).isSolved()) 
             currentPuzzle++;
     }
     public Map getMap() {
