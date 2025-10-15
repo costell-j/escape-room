@@ -21,13 +21,12 @@ public class GameManager {
     }
 
     //User related methods
-    public User createAccount(String username, String password) {
-        return new User(username, password, null, null, null);
+    public void createAccount(String username, String password) {
+        userList.addUser(username, password, new Settings(0, 0), getRoomList(), room);
     }
 
-    public User login(String username, String password) {
+    public void login(String username, String password) {
         this.user = userList.getUser(username, password);
-        return this.user;
     }
 
     public ArrayList<User> getUserList() {
@@ -39,10 +38,9 @@ public class GameManager {
         return roomList.getAllRooms();
     }
 
-    public Room chooseRoom(UUID id) {
+    public void chooseRoom(UUID id) {
         this.room = roomList.getRoom(id);
         this.puzzle = room.getPuzzles().get(room.getCurrentPuzzle());
-        return this.room;
     }
 
     public void setDifficulty(int difficulty) {
