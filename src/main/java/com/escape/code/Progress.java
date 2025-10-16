@@ -9,12 +9,14 @@ public class Progress {
     private HashMap<String, Puzzle> puzzlesSolved;
     private int cluesUsed; 
     private int completionTime;
+    private int currentPuzzle;
     private ArrayList<Achievement> achievements;
 
-    public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, int completionTime, ArrayList<Achievement> achievements){
+    public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, int completionTime, int currentPuzzle, ArrayList<Achievement> achievements){
         this.puzzlesSolved = puzzles;
         this.cluesUsed = cluesUsed;
         this.completionTime = completionTime;
+        this.currentPuzzle = currentPuzzle;
         this.achievements = achievements;
     }
 
@@ -43,5 +45,13 @@ public class Progress {
             progress += "Key: "+line+" Value: "+this.puzzlesSolved.get(line);
         }
         return progress;
+    }
+
+    public int getCurrentPuzzle() {
+        return this.currentPuzzle;
+    }
+
+    public void setCurrentPuzzle(int currentPuzzle) {
+        this.currentPuzzle = currentPuzzle;
     }
 }

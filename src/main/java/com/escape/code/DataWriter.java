@@ -262,6 +262,7 @@ public class DataWriter extends DataConstants {
         roomProgress.put(USER_PUZZLES_SOLVED, puzzleJSONArray);
         roomProgress.put(USER_CLUES_USED, room.getProgress().getCluesUsed());
         roomProgress.put(ROOM_PROGRESS_COMPLETION_TIME, room.getProgress().getCompletionTime());
+        roomProgress.put(USER_CURRENT_ROOM, room.getProgress().getCurrentPuzzle());
 
         return roomProgress;
     }

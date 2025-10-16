@@ -16,7 +16,6 @@ public class Room {
     private int timer;
     private ArrayList<Puzzle> puzzles;
     private int difficulty;
-    private int currentPuzzle;
 
     public Room(UUID id, Map map, HashMap<String, Progress> progressList, Progress progress, Leaderboard leaderboard, ArrayList<Puzzle> puzzles, int timer, int difficulty) {
         this.id = id;
@@ -27,7 +26,6 @@ public class Room {
         this.puzzles = puzzles;
         this.timer = timer;
         this.difficulty = difficulty;
-        this.currentPuzzle = 0;
     }
 
     public HashMap<String, Progress> getProgressList() {
@@ -48,11 +46,11 @@ public class Room {
         this.timer -= timer;
     }
     public void playPuzzle() {
-        puzzles.get(currentPuzzle);
+        puzzles.get(this.progress.getCurrentPuzzle());
     }
     public void advancePuzzle() {
-        if(puzzles.get(currentPuzzle).isSolved()) 
-            currentPuzzle++;
+        if(puzzles.get(this.progress.getCurrentPuzzle()).isSolved()) 
+            this.progress.getCurrentPuzzle();
     }
     public Map getMap() {
         return this.map;
@@ -72,10 +70,6 @@ public class Room {
 
     public int getDifficulty() {
         return this.difficulty;
-    }
-
-    public int getCurrentPuzzle() {
-        return this.currentPuzzle;
     }
 
     public UUID getId() {
