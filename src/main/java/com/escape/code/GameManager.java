@@ -57,11 +57,19 @@ public class GameManager {
     public Map getMap() {
         return (this.room != null) ? this.room.getMap() : null;
     }
-    public boolean closeLeaderboard() {
-        return false;
+    public boolean openLeaderboard() {
+        return room.getLeaderboard().isOpen(true);
     }
+     public boolean closeLeaderboard() {
+        return room.getLeaderboard().isOpen(false);
+    }
+
+    public boolean openMap() {
+        return room.getMap().isOpen(false);
+    }
+
     public boolean closeMap() {
-        return false;
+        return room.getMap().isOpen(false);
     }
 
 
@@ -76,9 +84,13 @@ public class GameManager {
             this.user.getSettings().changeVolume(volume);
     }
     
-    public void saveGame() {
-       if(userList != null) userList.save();
-       if(roomList != null) roomList.save();
+    public boolean saveGame() {
+       if(userList != null || roomList != null) { 
+            userList.save(); 
+            roomList.save(); 
+            return true;
+    }
+       return false;
     }
 
     public boolean logout() {
