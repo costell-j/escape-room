@@ -30,7 +30,7 @@ public class Leaderboard {
     public HashMap<Integer, User> getPlayers() {
         return this.players;
     }
-    public boolean isOpen() {
-        return this.open;
+    public boolean isOpen(boolean open) {
+        return open;
     }
 }
