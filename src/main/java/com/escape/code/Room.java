@@ -12,7 +12,6 @@ public class Room {
     private String name;
     private Map map;
     private HashMap<String, Progress> progressList;
-
     private Progress progress;
     private Leaderboard leaderboard;
     private int timer;
@@ -31,6 +30,8 @@ public class Room {
         this.difficulty = difficulty;
     }
 
+    // Getters
+
     public String getName() {
         return this.name;
     }
@@ -43,22 +44,6 @@ public class Room {
         return this.progress;
     }
 
-    public void setTime(int timer) {
-        this.timer = timer;
-    }
-    public void setDifficulty(int difficulty) {
-        this.difficulty = difficulty;
-    }
-    public void modifyTime(int timer) {
-        this.timer -= timer;
-    }
-    public void playPuzzle() {
-        puzzles.get(this.progress.getCurrentPuzzle());
-    }
-    public void advancePuzzle() {
-        if(puzzles.get(this.progress.getCurrentPuzzle()).isSolved()) 
-            this.progress.getCurrentPuzzle();
-    }
     public Map getMap() {
         return this.map;
     }
@@ -85,6 +70,31 @@ public class Room {
         return this.id;
     }
 
+    // Setters
+
+    public void setTime(int timer) {
+        this.timer = timer;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public void setLeaderboard(Leaderboard leaderboard) {
+        this.leaderboard = leaderboard;
+    }
+    
+    // Functionality Methods
+
+    public void playPuzzle() {
+        puzzles.get(this.progress.getCurrentPuzzle());
+    }
+
+    public void advancePuzzle() {
+        if(puzzles.get(this.progress.getCurrentPuzzle()).isSolved()) 
+            this.progress.getCurrentPuzzle();
+    }
+    
     @Override
     public String toString() {
         String desc = "ID: "+this.id+"\nMap: "+this.map.toString()+"\nLeaderboard: "+this.leaderboard.toString();
@@ -95,7 +105,4 @@ public class Room {
         return desc;
     }
 
-    public void setLeaderboard(Leaderboard leaderboard) {
-        this.leaderboard = leaderboard;
-    }
 }

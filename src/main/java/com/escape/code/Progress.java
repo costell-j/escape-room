@@ -20,6 +20,8 @@ public class Progress {
         this.achievements = achievements;
     }
 
+    // Getters
+
     public HashMap<String, Puzzle> getPuzzlesSolved() {
         return this.puzzlesSolved;
     }
@@ -35,6 +37,18 @@ public class Progress {
         return this.completionTime;
     }
 
+    public int getCurrentPuzzle() {
+        return this.currentPuzzle;
+    }
+
+    // Setters
+
+    public void setCurrentPuzzle(int currentPuzzle) {
+        this.currentPuzzle = currentPuzzle;
+    }
+
+    // Other Methods
+
     @Override
     public String toString() {
         String progress = "Clues Used: "+this.cluesUsed+"\nAchievements:\n";
@@ -45,13 +59,5 @@ public class Progress {
             progress += "Key: "+line+" Value: "+this.puzzlesSolved.get(line);
         }
         return progress;
-    }
-
-    public int getCurrentPuzzle() {
-        return this.currentPuzzle;
-    }
-
-    public void setCurrentPuzzle(int currentPuzzle) {
-        this.currentPuzzle = currentPuzzle;
     }
 }

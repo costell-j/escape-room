@@ -23,20 +23,14 @@ public class User {
         this.currentRoom = currentRoom;
     }
 
+    // Getters
+
     public String getUsername() {
         return this.username;
     }
 
     public String getPassword() {
         return this.password;
-    }
-
-    public void setRooms(ArrayList<Room> rooms) {
-        this.rooms = rooms;
-    }
-
-    public void setCurrentRoom(Room currentRoom) {
-        this.currentRoom = currentRoom;
     }
 
     public Settings getSettings() {
@@ -49,6 +43,19 @@ public class User {
     public Room getCurrentRoom() {
         return currentRoom;
     }
+
+    // Setters
+
+    public void setRooms(ArrayList<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
+    }
+
+    // Other Methods
+
     @Override
     public String toString() {
         String userdata = "";

@@ -8,15 +8,35 @@ import java.util.HashMap;
 public class Leaderboard {
     
     private HashMap<Integer, User> players;
-    private boolean open;
-            
+    private boolean open;        
+
+    // Constructors
+
     public Leaderboard() {
         this.players = new HashMap<>();
     }
+
     public Leaderboard(HashMap<Integer, User> players, boolean open) {
         this.players = players;
         this.open = open;
     }
+
+    // Getters
+
+    public HashMap<Integer, User> getPlayers() {
+        return this.players;
+    }
+    public boolean isOpen() {
+        return open;
+    }
+
+    // Setters
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
+
+    // Other Methods
 
     @Override
     public String toString() {
@@ -25,16 +45,5 @@ public class Leaderboard {
             desc += "Player Info: \n"+user.toString();
         }
         return desc;
-    }
-    
-    public HashMap<Integer, User> getPlayers() {
-        return this.players;
-    }
-    public boolean isOpen() {
-        return open;
-    }
-
-    public void setOpen(boolean open) {
-        this.open = open;
     }
 }

@@ -17,6 +17,8 @@ public class Map {
         this.open = open;
     }
 
+    // Getters
+
     public String getMapName() {
         return this.mapName;
     }
@@ -32,6 +34,8 @@ public class Map {
     public boolean isOpen() {
         return this.open;
     }
+
+    // Setters
 
     public void setOpen(boolean open) {
         this.open = open;
