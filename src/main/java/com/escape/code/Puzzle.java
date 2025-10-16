@@ -19,44 +19,53 @@ public class Puzzle {
  * Constructor for Puzzle class.
  */
     public Puzzle(String description, ArrayList<String> hints, String solution, boolean isSolved) {
-        this.description = description != null ? description : "No description available.";
-        this.hints = hints != null ? hints : new ArrayList<>();
-        this.solution = solution != null ? solution : "";
-        this.isSolved = isSolved;
+       
+        setDescription(description);
+        setHints(hints);
+        setSolution(solution);
+        setSolved(isSolved);   
     }
-
-    
 /*
  * Marks the puzzle as solved.
  */
     public void solvePuzzle(){
-        this.isSolved = true;
+    this.isSolved = true;
     }
-/*
- * Gets the description of the puzzle.
- */
-    public String getDescription() {
-        return this.description;
-    }
-/*
- * Gets the list of hints for the puzzle.
- */
-    public ArrayList<String> getHints() {
-        return this.hints;
+    
+    public void setDescription(String description) {
+        this.description = description != null ? description : "No description available.";
     }
 
-/*
- * Gets the solution of the puzzle.
- */
-    public String getSolution() {
-        return this.solution;
+
+    public void setHints(ArrayList<String> hints) {
+        this.hints = hints != null ? hints : new ArrayList<>();
     }
-/*
- * Checks if the puzzle is solved.
- */
-    public boolean isSolved() {
-        return this.isSolved;
+
+
+    public void setSolution(String solution) {
+        this.solution = solution != null ? solution : "";
     }
+
+
+    public void setSolved(boolean isSolved) {
+        this.isSolved = isSolved;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+     public ArrayList<String> getHints() {
+         return hints;
+     }
+
+     public String getSolution() {
+         return solution;
+     }
+
+     public boolean isSolved() {
+         return isSolved;
+     }
 /*
  * Returns a string representation of the puzzle, including description, solution, solved status, and hints.
  */

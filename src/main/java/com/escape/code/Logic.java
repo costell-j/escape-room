@@ -22,7 +22,6 @@ import java.util.ArrayList;
                 return true;
             }
             return false;
-        }
 /*
  * helper method. exposes a normalized string equality. 
  * and normilizes both strings.
