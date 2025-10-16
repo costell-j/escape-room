@@ -33,4 +33,8 @@ public class Map {
         return this.open;
     }
 
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
+
 }
