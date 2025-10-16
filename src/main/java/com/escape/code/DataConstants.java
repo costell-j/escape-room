@@ -35,6 +35,7 @@ public abstract class DataConstants {
     protected static final String ROOM_FILE_NAME = "src/main/java/com/escape/json/rooms.json";
     protected static final String ROOM_TEMP_FILE_NAME = "src/main/java/com/escape/json/rooms_temp.json";
     protected static final String ROOM_ID = "id";
+    protected static final String ROOM_NAME = "name";
     protected static final String ROOM_MAP = "map";
     protected static final String ROOM_MAP_ISOPEN = "isOpen";
     protected static final String ROOM_MAP_NAME = "mapName";

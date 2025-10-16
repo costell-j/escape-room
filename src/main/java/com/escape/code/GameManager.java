@@ -41,7 +41,7 @@ public class GameManager {
 
     public boolean chooseRoom(UUID id) {
         this.room = roomList.getRoom(id);
-        this.puzzle = room.getPuzzles().get(room.getProgress().getCurrentPuzzle());
+        //this.puzzle = room.getPuzzles().get(room.getProgress().getCurrentPuzzle());
         return this.room != null;
     }
 

@@ -102,7 +102,9 @@ public class DataWriter extends DataConstants {
     public static JSONObject getRoomJSON(Room room) {
         JSONObject roomDetails = new JSONObject();
         String id = ""+room.getId()+"";
+        String name = room.getName();
         roomDetails.put(ROOM_ID, id);
+        roomDetails.put(ROOM_NAME, name);
         roomDetails.put(ROOM_TIMER, room.getTimer());
         roomDetails.put(ROOM_DIFFICULTY, room.getDifficulty());
         JSONArray puzzlesJSON = writePuzzleList(room);

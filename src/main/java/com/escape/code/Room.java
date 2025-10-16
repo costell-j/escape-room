@@ -9,16 +9,19 @@ import java.util.UUID;
  */
 public class Room {
     private UUID id;
+    private String name;
     private Map map;
     private HashMap<String, Progress> progressList;
+
     private Progress progress;
     private Leaderboard leaderboard;
     private int timer;
     private ArrayList<Puzzle> puzzles;
     private int difficulty;
 
-    public Room(UUID id, Map map, HashMap<String, Progress> progressList, Progress progress, Leaderboard leaderboard, ArrayList<Puzzle> puzzles, int timer, int difficulty) {
+    public Room(UUID id, String name, Map map, HashMap<String, Progress> progressList, Progress progress, Leaderboard leaderboard, ArrayList<Puzzle> puzzles, int timer, int difficulty) {
         this.id = id;
+        this.name = name;
         this.map = map;
         this.progressList = progressList;
         this.progress = progress;
@@ -26,6 +29,10 @@ public class Room {
         this.puzzles = puzzles;
         this.timer = timer;
         this.difficulty = difficulty;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public HashMap<String, Progress> getProgressList() {
