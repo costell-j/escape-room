@@ -12,7 +12,7 @@ public class UserList {
     private ArrayList<User> users;
 
     private UserList() {
-       users = DataLoader.getUsers();
+       this.users = DataLoader.getUsers();
     }
     public static UserList getInstance() {
         if(userList == null)
@@ -31,10 +31,20 @@ public class UserList {
         return this.users;
     }
      
-    public void addUser(String username, String password, Settings settings, ArrayList<Room> rooms, Room currentRoom) {
-        User user = new User(username, password, settings, rooms, currentRoom);
-        users.add(user);
+    public boolean addUser(String username, String password, Settings settings, ArrayList<Room> rooms, Room currentRoom) {
+        if(getUser(username, password) == null) {
+            if(settings == null)
+                settings = new Settings(0, 0);
+            User user = new User(username, password, settings, rooms, currentRoom);
+            users.add(user);
+            return true;
+        }
+        return false;
     } 
+
+    public void save() {
+        DataWriter.saveUsers();
+    }
 
     
 }

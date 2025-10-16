@@ -21,12 +21,13 @@ public class GameManager {
     }
 
     //User related methods
-    public void createAccount(String username, String password) {
-        userList.addUser(username, password, new Settings(0, 0), getRoomList(), room);
+    public boolean createAccount(String username, String password) {
+        return userList.addUser(username, password, null, getRoomList(), null);
     }
 
-    public void login(String username, String password) {
+    public boolean login(String username, String password) {
         this.user = userList.getUser(username, password);
+        return this.user != null;
     }
 
     public ArrayList<User> getUserList() {
@@ -38,21 +39,23 @@ public class GameManager {
         return roomList.getAllRooms();
     }
 
-    public void chooseRoom(UUID id) {
+    public boolean chooseRoom(UUID id) {
         this.room = roomList.getRoom(id);
         this.puzzle = room.getPuzzles().get(room.getCurrentPuzzle());
+        return this.room != null;
     }
 
     public void setDifficulty(int difficulty) {
-        room.setDifficulty(difficulty);
+        if(this.room != null)
+            this.room.setDifficulty(difficulty);
     }
 
     public Leaderboard getLeaderboard() {
-        return room.getLeaderboard();
+        return (this.room != null) ? this.room.getLeaderboard() : null;
     }
 
     public Map getMap() {
-        return room.getMap();
+        return (this.room != null) ? this.room.getMap() : null;
     }
     public boolean closeLeaderboard() {
         return false;
@@ -64,17 +67,18 @@ public class GameManager {
 
     //Puzzle related methods
     public ArrayList<String> getHints() {
-        return puzzle.getHints();
+        return (this.puzzle != null) ? this.getHints() : null;
     }
 
     //Settings related methosd
     public void setVolume(int volume) {
-        user.getSettings().changeVolume(volume);
+        if(this.user != null && this.user.getSettings() != null)
+            this.user.getSettings().changeVolume(volume);
     }
     
     public void saveGame() {
-        DataWriter.saveRooms();
-        DataWriter.saveUsers();
+       if(userList != null) userList.save();
+       if(roomList != null) roomList.save();
     }
 
     public boolean logout() {

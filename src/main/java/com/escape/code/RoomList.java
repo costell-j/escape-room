@@ -40,7 +40,12 @@ public class RoomList {
         this.rooms.add(room);
     }
     public ArrayList<Room> getAllRooms() {
+        if(this.rooms == null)
+            this.rooms = new ArrayList<Room>();
         return this.rooms;
+    }
+    public void save() {
+        DataWriter.saveRooms();
     }
 
 }
