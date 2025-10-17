@@ -102,7 +102,9 @@ public class DataWriter extends DataConstants {
     public static JSONObject getRoomJSON(Room room) {
         JSONObject roomDetails = new JSONObject();
         String id = ""+room.getId()+"";
+        String name = room.getName();
         roomDetails.put(ROOM_ID, id);
+        roomDetails.put(ROOM_NAME, name);
         roomDetails.put(ROOM_TIMER, room.getTimer());
         roomDetails.put(ROOM_DIFFICULTY, room.getDifficulty());
         JSONArray puzzlesJSON = writePuzzleList(room);
@@ -262,6 +264,7 @@ public class DataWriter extends DataConstants {
         roomProgress.put(USER_PUZZLES_SOLVED, puzzleJSONArray);
         roomProgress.put(USER_CLUES_USED, room.getProgress().getCluesUsed());
         roomProgress.put(ROOM_PROGRESS_COMPLETION_TIME, room.getProgress().getCompletionTime());
+        roomProgress.put(USER_CURRENT_ROOM, room.getProgress().getCurrentPuzzle());
 
         return roomProgress;
     }

@@ -9,15 +9,19 @@ public class Progress {
     private HashMap<String, Puzzle> puzzlesSolved;
     private int cluesUsed; 
     private int completionTime;
+    private int currentPuzzle;
     private ArrayList<Achievement> achievements;
     private int currentRoom;
 
-    public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, int completionTime, ArrayList<Achievement> achievements){
+    public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, int completionTime, int currentPuzzle, ArrayList<Achievement> achievements){
         this.puzzlesSolved = puzzles;
         this.cluesUsed = cluesUsed;
         this.completionTime = completionTime;
+        this.currentPuzzle = currentPuzzle;
         this.achievements = achievements;
     }
+
+    // Getters
 
     public HashMap<String, Puzzle> getPuzzlesSolved() {
         return this.puzzlesSolved;

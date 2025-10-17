@@ -69,6 +69,7 @@ public class DataLoader extends DataConstants {
                 //Get Room JSON Object
                 JSONObject roomJSON = (JSONObject)roomsJSON.get(i);
                 UUID id = UUID.fromString((String)roomJSON.get(ROOM_ID));
+                String name = (String)roomJSON.get(ROOM_NAME);
                 int timer = ((Long)roomJSON.get(ROOM_TIMER)).intValue();
                 int difficulty = ((Long)roomJSON.get(USER_SETTINGS_DIFFICULTY)).intValue();
                 Map map = loadMap(roomJSON);
@@ -78,7 +79,7 @@ public class DataLoader extends DataConstants {
                 //Leaderboard leaderboard = loadLeaderboard(roomJSON);
                 Leaderboard leaderboard = new Leaderboard();
 
-                Room room = new Room(id, map, progressList, progress, leaderboard, puzzles, timer, difficulty);
+                Room room = new Room(id, name, map, progressList, progress, leaderboard, puzzles, timer, difficulty);
                 rooms.add(room);
             }
             reader.close();
@@ -98,6 +99,7 @@ public class DataLoader extends DataConstants {
         JSONObject progressJSON = (JSONObject)parentJSON.get(USER_PROGRESS);
         int cluesUsed = ((Long)progressJSON.get(USER_CLUES_USED)).intValue();
         int completionTime = ((Long)progressJSON.get(ROOM_PROGRESS_COMPLETION_TIME)).intValue();
+        int currentRoom = ((Long)progressJSON.get(USER_CURRENT_ROOM)).intValue();
 
         //Puzzles Solved in Progress Object
         JSONArray puzzles = (JSONArray)progressJSON.get(USER_PUZZLES_SOLVED);
@@ -130,7 +132,7 @@ public class DataLoader extends DataConstants {
             achievements.add(achievement);
 
         }
-        Progress progress = new Progress(puzzleMap, cluesUsed, completionTime, achievements);
+        Progress progress = new Progress(puzzleMap, cluesUsed, completionTime, currentRoom, achievements);
 
         return progress;
     }

@@ -12,15 +12,18 @@ public class Riddle extends Puzzle {
         super( description, hints, solution, isSolved);
     }
 
+    
+
     public boolean attempt(String answer) {
         if (equalsLoose(answer, getSolution())) {
-            isSolved = true;
-            return true;
-        }
-        return false;
-    }
-
-    /** Local fallback if your Puzzle doesn't expose equalsLoose */
+                    isSolved = true;
+                    return true;
+                }
+                return false;
+            }
+        
+        
+            /** Local fallback if your Puzzle doesn't expose equalsLoose */
     protected static boolean equalsLoose(String a, String b) {
         return norm(a).equals(norm(b));
     }

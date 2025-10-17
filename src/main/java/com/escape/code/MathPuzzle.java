@@ -4,7 +4,6 @@ package com.escape.code;
  * @author Barbarnas
  */
 import java.util.ArrayList;
-
 /*
  * math puzzle that checks user answer as a double
  */
@@ -17,7 +16,8 @@ public class MathPuzzle extends Puzzle {
     public MathPuzzle (String description, ArrayList<String> hints, String solution, boolean isSolved) {
         super(description, hints, solution, isSolved);
     }
-
+  
+   
      public boolean attempt(String answer) {
         if (answer == null) return false;
 /*
@@ -31,10 +31,18 @@ public class MathPuzzle extends Puzzle {
                 isSolved = true;
                 return true;
             }
+            else{
+
+                double diffrence = correctValue - userValue;
+                    System.out.println("Your off by this much" +diffrence);
+
+            }
             /*
              * if the parsing fail as in a non number is entered it will automatically fail.
              */
-        } catch (NumberFormatException e) {
+        } 
+        
+        catch (NumberFormatException e) {
            
             return false;
         }

@@ -1,48 +1,31 @@
 package com.escape.code;
-
-import java.util.ArrayList;
 /*
- * Decipher is a type of Puzzle that involves decrypting encoded messages.
+ * Decipher
  * @author Barbarnas
  */
+import java.util.ArrayList;
+
+/** Decipher puzzle —  performs a simple normalized string comparison. */
 public class Decipher extends Puzzle {
 
-    public Decipher(String description, ArrayList<String> hints,
-                    String solution, boolean isSolved) {
+    public Decipher (String description, ArrayList<String> hints, String solution, boolean isSolved) {
         super(description, hints, solution, isSolved);
     }
-
-    /**
-     * Checks if player's answer correctly decrypts the puzzle text
-     * using a Caesar cipher (shift by 3).
-     */
+   
     public boolean attempt(String answer) {
-        if (answer == null || answer.isEmpty()) return false;
-
-        String decrypted = decrypt(getDescription(), 3);
-
-        if (answer.trim().equalsIgnoreCase(decrypted.trim()) ||
-            answer.trim().equalsIgnoreCase(getSolution().trim())) {
-            this.isSolved = true;
+        if (equalsLoose(answer, getSolution())) {
+            isSolved = true;
             return true;
         }
-
         return false;
     }
-/*
- * Decrypts text using a Caesar cipher with the specified shift.
- */
-    private String decrypt(String text, int shift) {
-        if(text == null) return "";
-        StringBuilder sb = new StringBuilder();
-        for (char c : text.toCharArray()) {
-            if (Character.isLetter(c)) {
-                char base = Character.isUpperCase(c) ? 'A' : 'a';
-                sb.append((char) ((c - base - shift + 26) % 26 + base));
-            } else {
-                sb.append(c);
-            }
-        }
-        return sb.toString();
+
+    protected static boolean equalsLoose(String a, String b) {
+        return norm(a).equals(norm(b));
+    }
+
+    private static String norm(String s) {
+        if (s == null) return "";
+        return s.trim().replaceAll("\\s+", " ").toLowerCase();
     }
 }

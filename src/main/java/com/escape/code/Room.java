@@ -9,6 +9,7 @@ import java.util.UUID;
  */
 public class Room {
     private UUID id;
+    private String name;
     private Map map;
     private HashMap<String, Progress> progressList;
     private Progress progress;
@@ -16,10 +17,10 @@ public class Room {
     private int timer;
     private ArrayList<Puzzle> puzzles;
     private int difficulty;
-    private int currentPuzzle;
 
-    public Room(UUID id, Map map, HashMap<String, Progress> progressList, Progress progress, Leaderboard leaderboard, ArrayList<Puzzle> puzzles, int timer, int difficulty) {
+    public Room(UUID id, String name, Map map, HashMap<String, Progress> progressList, Progress progress, Leaderboard leaderboard, ArrayList<Puzzle> puzzles, int timer, int difficulty) {
         this.id = id;
+        this.name = name;
         this.map = map;
         this.progressList = progressList;
         this.progress = progress;
@@ -27,7 +28,12 @@ public class Room {
         this.puzzles = puzzles;
         this.timer = timer;
         this.difficulty = difficulty;
-        this.currentPuzzle = 0;
+    }
+
+    // Getters
+
+    public String getName() {
+        return this.name;
     }
 
     public HashMap<String, Progress> getProgressList() {
@@ -38,22 +44,6 @@ public class Room {
         return this.progress;
     }
 
-    public void setTime(int timer) {
-        this.timer = timer;
-    }
-    public void setDifficulty(int difficulty) {
-        this.difficulty = difficulty;
-    }
-    public void modifyTime(int timer) {
-        this.timer -= timer;
-    }
-    public void playPuzzle() {
-        puzzles.get(currentPuzzle);
-    }
-    public void advancePuzzle() {
-        if(puzzles.get(currentPuzzle).isSolved()) 
-            currentPuzzle++;
-    }
     public Map getMap() {
         return this.map;
     }
@@ -76,14 +66,35 @@ public class Room {
         return this.difficulty;
     }
 
-    public int getCurrentPuzzle() {
-        return this.currentPuzzle;
-    }
-
     public UUID getId() {
         return this.id;
     }
 
+    // Setters
+
+    public void setTime(int timer) {
+        this.timer = timer;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public void setLeaderboard(Leaderboard leaderboard) {
+        this.leaderboard = leaderboard;
+    }
+    
+    // Functionality Methods
+
+    public void playPuzzle() {
+        puzzles.get(this.progress.getCurrentPuzzle());
+    }
+
+    public void advancePuzzle() {
+        if(puzzles.get(this.progress.getCurrentPuzzle()).isSolved()) 
+            this.progress.getCurrentPuzzle();
+    }
+    
     @Override
     public String toString() {
         String desc = "ID: "+this.id+"\nMap: "+this.map.toString()+"\nLeaderboard: "+this.leaderboard.toString();
@@ -94,7 +105,4 @@ public class Room {
         return desc;
     }
 
-    public void setLeaderboard(Leaderboard leaderboard) {
-        this.leaderboard = leaderboard;
-    }
 }

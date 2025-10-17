@@ -12,11 +12,7 @@ public class Achievement {
         this.unlocked = unlocked;
     }
 
-    public void unlock() {
-        if (unlocked) {
-            unlocked = true;
-        }
-    }
+    // Getters
 
     public String getTitle() {
         return this.title;
@@ -24,6 +20,14 @@ public class Achievement {
 
     public boolean isUnlocked() {
         return this.unlocked;
+    }
+
+    // Functionality Methods
+
+    public void unlock() {
+        if (unlocked) {
+            unlocked = true;
+        }
     }
 
     @Override

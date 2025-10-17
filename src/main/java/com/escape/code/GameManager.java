@@ -41,7 +41,7 @@ public class GameManager {
 
     public boolean chooseRoom(UUID id) {
         this.room = roomList.getRoom(id);
-        this.puzzle = room.getPuzzles().get(room.getCurrentPuzzle());
+        //this.puzzle = room.getPuzzles().get(room.getProgress().getCurrentPuzzle());
         return this.room != null;
     }
 
@@ -57,19 +57,19 @@ public class GameManager {
     public Map getMap() {
         return (this.room != null) ? this.room.getMap() : null;
     }
-    public boolean openLeaderboard() {
-        return room.getLeaderboard().isOpen(true);
+    public void openLeaderboard() {
+        room.getLeaderboard().setOpen(true);
     }
-     public boolean closeLeaderboard() {
-        return room.getLeaderboard().isOpen(false);
-    }
-
-    public boolean openMap() {
-        return room.getMap().isOpen(false);
+     public void closeLeaderboard() {
+        room.getLeaderboard().setOpen(false);
     }
 
-    public boolean closeMap() {
-        return room.getMap().isOpen(false);
+    public void openMap() {
+        room.getMap().setOpen(true);
+    }
+
+    public void closeMap() {
+        room.getMap().setOpen(false);
     }
 
 
