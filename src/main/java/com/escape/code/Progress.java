@@ -11,7 +11,16 @@ public class Progress {
     private int completionTime;
     private int currentPuzzle;
     private ArrayList<Achievement> achievements;
-    private int currentRoom;
+
+
+    public Progress() {
+        this.puzzlesSolved = new HashMap<>();
+        this.cluesUsed = 0;
+        this.completionTime = 0;
+        this.currentPuzzle = 0;
+        this.currentPuzzle = 0;
+        this.achievements = new ArrayList<>();
+    }
 
     public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, int completionTime, int currentPuzzle, ArrayList<Achievement> achievements){
         this.puzzlesSolved = puzzles;

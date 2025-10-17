@@ -96,12 +96,18 @@ public class Room {
         this.leaderboard = leaderboard;
     }
 
-    public void setProgress(String username) {
+    public boolean setProgress(String username) {
         for(String s : progressList.keySet()) {
             if(s.equals(username)) {
                 this.progress = this.progressList.get(s);
+                return true;
             }
         }
+        return false;
+    }
+
+    public void setProgress(Progress progress) {
+        this.progress = progress;
     }
     
     // Functionality Methods

@@ -140,6 +140,7 @@ public class DataWriter extends DataConstants {
             //Create Puzzle JSON Object
             JSONObject puzzleJSON = new JSONObject();
             puzzleJSON.put(USER_PUZZLE_DESC, puzzles.get(i).getDescription());
+            puzzleJSON.put(ROOM_NAME, puzzles.get(i).getName());
             puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzles.get(i).getSolution());
             puzzleJSON.put(USER_PUZZLE_SOLVED, puzzles.get(i).isSolved());
 

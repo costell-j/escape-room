@@ -11,23 +11,24 @@ import java.util.ArrayList;
 public class Puzzle {
 
     protected String description;
+    protected String name;
     protected ArrayList<String> hints;
     protected String solution;
     protected boolean isSolved;
 
-/*
- * Constructor for Puzzle class.
- */
-    public Puzzle(String description, ArrayList<String> hints, String solution, boolean isSolved) {
-       
+    /*
+    * Constructor for Puzzle class.
+    */
+    public Puzzle(String description, String name, ArrayList<String> hints, String solution, boolean isSolved) {
         setDescription(description);
+        this.name = name;
         setHints(hints);
         setSolution(solution);
         setSolved(isSolved);   
     }
-/*
- * Marks the puzzle as solved.
- */
+    /*
+    * Marks the puzzle as solved.
+    */
     public void solvePuzzle(){
     this.isSolved = true;
     }
@@ -52,19 +53,23 @@ public class Puzzle {
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
      public ArrayList<String> getHints() {
-         return hints;
+         return this.hints;
      }
 
      public String getSolution() {
-         return solution;
+         return this.solution;
      }
 
      public boolean isSolved() {
-         return isSolved;
+         return this.isSolved;
      }
 /*
  * Returns a string representation of the puzzle, including description, solution, solved status, and hints.

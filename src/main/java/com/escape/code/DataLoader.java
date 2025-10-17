@@ -109,6 +109,7 @@ public class DataLoader extends DataConstants {
             String ProgressKey = (String)puzzleJSON.get(USER_PUZZLE_HASH_KEY);
             JSONObject ProgressValue = (JSONObject)puzzleJSON.get(USER_PUZZLE_HASH_VAL);
             String description = (String)ProgressValue.get(USER_PUZZLE_DESC);
+            String name = (String)ProgressValue.get(ROOM_NAME);
             ArrayList<String> hints = new ArrayList<>();
             JSONArray hintsJSON = (JSONArray)ProgressValue.get(USER_PUZZLE_HINTS);
             for(int l=0; l<hintsJSON.size(); l++) {
@@ -117,7 +118,7 @@ public class DataLoader extends DataConstants {
             }
             String solution = (String)ProgressValue.get(USER_PUZZLE_SOLUTION);
             boolean isSolved = (boolean)ProgressValue.get(USER_PUZZLE_SOLVED);
-            Puzzle puzzle = new Puzzle(description, hints, solution, isSolved);
+            Puzzle puzzle = new Puzzle(description, name, hints, solution, isSolved);
             puzzleMap.put(ProgressKey, puzzle);
         }
 
@@ -274,6 +275,7 @@ public class DataLoader extends DataConstants {
         for(int j=0; j<puzzlesJSON.size(); j++) {
             JSONObject puzzleJSON = (JSONObject)puzzlesJSON.get(j);
             String description = (String)puzzleJSON.get(USER_PUZZLE_DESC);
+            String name = (String)puzzleJSON.get(ROOM_NAME);
             ArrayList<String> hints = new ArrayList<>();
             JSONArray hintsJSON = (JSONArray)puzzleJSON.get(USER_PUZZLE_HINTS);
             for(int k=0; k<hintsJSON.size(); k++) {
@@ -282,7 +284,7 @@ public class DataLoader extends DataConstants {
             }
             String solution = (String)puzzleJSON.get(USER_PUZZLE_SOLUTION);
             boolean isSolved = (boolean)puzzleJSON.get(USER_PUZZLE_SOLVED);
-            Puzzle puzzle = new Puzzle(description, hints, solution, isSolved);
+            Puzzle puzzle = new Puzzle(description, name, hints, solution, isSolved);
             puzzles.add(puzzle);
         }
 
