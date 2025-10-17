@@ -10,6 +10,7 @@ public class Progress {
     private int cluesUsed; 
     private int completionTime;
     private ArrayList<Achievement> achievements;
+    private int currentRoom;
 
     public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, int completionTime, ArrayList<Achievement> achievements){
         this.puzzlesSolved = puzzles;
@@ -31,6 +32,14 @@ public class Progress {
     }
     public int getCompletionTime() {
         return this.completionTime;
+    }
+
+    public int getCurrentRoom() {
+        return this.currentRoom;
+    }
+
+    public void setCurrentRoom(int room) {
+        this.currentRoom = room;
     }
 
     @Override

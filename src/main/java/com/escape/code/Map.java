@@ -29,8 +29,8 @@ public class Map {
         return this.length;
     }
 
-    public boolean isOpen() {
-        return this.open;
+    public boolean isOpen(boolean open) {
+        return open;
     }
 
 }
