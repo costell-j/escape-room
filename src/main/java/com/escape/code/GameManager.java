@@ -39,10 +39,9 @@ public class GameManager {
     public ArrayList<Room> getRoomList() {
         return roomList.getAllRooms();
     }
-
     public String formatTimer() {
         String formattedTimer;
-        int timer = this.room.getTimer(); // 20 min at 1, 15 min at 2, 10 min at 3
+        int timer = this.room.getTimer();
         int minutes = timer/60;
         int seconds = timer%60;
         String secondsFormatted;
