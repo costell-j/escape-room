@@ -1,7 +1,7 @@
 [
     {
        "id": "d8b9e9e2-e9a3-4b49-818a-976c61288ae4",
-       "name": "escape room",
+       "name": "Escape 13th Street",
        "map": {"mapName":"map", "height":500, "length":500, "isOpen":false},
        "progressList":[{"String":"MAK524","Progress":
        {
@@ -99,128 +99,15 @@
                 "username":"name",
                 "password":"password",
                 "settings":{"volume":10,"difficulty":3},
-                "rooms":["8b9e9e2-e9a3-4b49-818a-976c61288ae4", "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"],
-                "currentRoom":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
+                "rooms":["d8b9e9e2-e9a3-4b49-818a-976c61288ae4"],
+                "currentRoom":"d8b9e9e2-e9a3-4b49-818a-976c61288ae4"
             }},
         {"Integer":3,"User": {
                 "username":"nam",
                 "password":"pass",
                 "settings":{"volume":10,"difficulty":3},
-                "rooms":["8b9e9e2-e9a3-4b49-818a-976c61288ae4", "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"],
-                "currentRoom":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
-            }}],
-            "open":false
-        }
-    },
-    {
-       "id": "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb",
-       "name": "escape castle",
-       "map": {"mapName":"special map", "height":1200, "length":800, "isOpen":false},
-       "progressList":[{"String":"name","Progress":
-       {
-            "puzzlesSolved": [{"String":"puzzle1","Puzzle":{
-                "description":"puzzle1",
-                "hints":["hint1", "hint2", "hint3"],
-                "solution":"solution1",
-                "isSolved":true
-            }},
-            {"String":"puzzle2","Puzzle":{
-                "description":"puzzle2",
-                "hints":["hint1", "hint2", "hint3"],
-                "solution":"solution2",
-                "isSolved":false
-            }
-            }],
-            "cluesUsed":2,
-            "currentRoom":0,
-            "completionTime":1000,
-            "achievements":[{
-                "title":"lkhalhjg",
-                "unlocked":true
-            }, {
-                "title":"utyuiyoiuo",
-                "unlocked":false
-            }]
-        }}, {"String":"nam","Progress": 
-        {
-            "puzzlesSolved": [{"String":"puzzle3","Puzzle":{
-                "description":"puzzle3",
-                "hints":["hint1", "hint2", "hint3"],
-                "solution":"solution3",
-                "isSolved":true
-            }},
-            {"String":"puzzle2","Puzzle":{
-                "description":"puzzle2",
-                "hints":["hint1", "hint2", "hint3"],
-                "solution":"solution2",
-                "isSolved":false
-            }
-            }],
-            "cluesUsed":2,
-            "currentRoom":0,
-            "completionTime":1000,
-            "achievements":[{
-                "title":"lkhalhjg",
-                "unlocked":true
-            }, {
-                "title":"utyuiyoiuo",
-                "unlocked":false
-            }]
-        }}],
-       "Progress":{
-            "puzzlesSolved": [{"String":"puzzle1","Puzzle":{
-                "description":"puzzle1",
-                "hints":["hint1", "hint2", "hint3"],
-                "solution":"solution1",
-                "isSolved":true
-            }},
-            {"String":"puzzle2","Puzzle":{
-                "description":"puzzle2",
-                "hints":["hint1", "hint2", "hint3"],
-                "solution":"solution2",
-                "isSolved":false
-            }
-            }],
-            "cluesUsed":2,
-            "currentRoom":0,
-            "completionTime":1000,
-            "achievements":[{
-                "title":"lkhalhjg",
-                "unlocked":true
-            }, {
-                "title":"utyuiyoiuo",
-                "unlocked":false
-            }]
-        },
-        "timer": 1200,
-       "puzzles": [
-        {
-            "description":"logic puzzle",
-            "hints":["hint 1", "hint 2", "hint 3"],
-            "solution":"solution",
-            "isSolved":true 
-        },
-        {
-            "description":"math puzzle",
-            "hints":["hint 1", "hint 2", "hint 3"],
-            "solution":"solution",
-            "isSolved":false 
-        }],
-         "difficulty": 3,
-         "leaderboard":{
-            "players":[{"Integer":1,"User": {
-                "username":"name",
-                "password":"password",
-                "settings":{"volume":10,"difficulty":3},
-                "rooms":["8b9e9e2-e9a3-4b49-818a-976c61288ae4", "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"],
-                "currentRoom":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
-            }},
-        {"Integer":3,"User": {
-                "username":"nam",
-                "password":"pass",
-                "settings":{"volume":10,"difficulty":3},
-                "rooms":["8b9e9e2-e9a3-4b49-818a-976c61288ae4", "e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"],
-                "currentRoom":"e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"
+                "rooms":["d8b9e9e2-e9a3-4b49-818a-976c61288ae4"],
+                "currentRoom":"d8b9e9e2-e9a3-4b49-818a-976c61288ae4"
             }}],
             "open":false
         }

@@ -39,8 +39,6 @@ public class GameManager {
     public ArrayList<Room> getRoomList() {
         return roomList.getAllRooms();
     }
-<<<<<<< HEAD
-=======
 
     public void difficultyTweak(int difficulty) {
         int time = switch(difficulty) {
@@ -52,7 +50,6 @@ public class GameManager {
         this.room.setTime(time);
     }
 
->>>>>>> 27ec90abf304d43449194d1bdca8de46ea31cd0c
     public String formatTimer() {
         String formattedTimer;
         int timer = this.room.getTimer();
