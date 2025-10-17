@@ -5,11 +5,11 @@
        "map": {"mapName":"map", "height":500, "length":500, "isOpen":false},
        "progressList":[{"String":"MAK524","Progress":
        {
-            "puzzlesSolved": [{"String":"puzzle1","Puzzle":{
-                "description":"puzzle1",
-                "hints":["hint1", "hint2", "hint3"],
-                "solution":"solution1",
-                "isSolved":true
+            "puzzlesSolved": [{"String":"Warning to those who enter: one should escape before too long, the seemingly kind spirits change at midnight","Puzzle":{
+                "description":"Warning to those who enter: one should escape before too long, the seemingly kind spirits change at midnight",
+                "hints":["You're looking for a 6 digit code", "Sound out the words", "Midnight"],
+                "solution":"214212",
+                "isSolved":false
             }},
             {"String":"puzzle2","Puzzle":{
                 "description":"puzzle2",
@@ -55,8 +55,8 @@
             }]
         }}],
        "Progress":{
-            "puzzlesSolved": [{"String":"puzzle1","Puzzle":{
-                "description":"puzzle1",
+            "puzzlesSolved": [{"String":"Warning to those who enter: one should escape before too long, lest the benign spirits turn for the worse.","Puzzle":{
+                "description":"Warning to those who enter: one should escape before too long, lest the benign spirits turn for the worse.",
                 "hints":["hint1", "hint2", "hint3"],
                 "solution":"solution1",
                 "isSolved":true
@@ -82,10 +82,10 @@
        "timer": 1200,
        "puzzles": [
         {
-            "description":"logic puzzle",
-            "hints":["hint 1", "hint 2", "hint 3"],
-            "solution":"solution",
-            "isSolved":true 
+            "description":"Warning to those who enter: one should escape before too long, the seemingly kind spirits change at midnight",
+            "hints":["You're looking for a 6 digit code", "Sound out the words", "Midnight"],
+            "solution":"214212",
+            "isSolved":false
         },
         {
             "description":"math puzzle",
