@@ -88,7 +88,7 @@ public class GameManager {
 
     //Puzzle related methods
     public ArrayList<String> getHints() {
-        return (this.puzzle != null) ? this.getHints() : null;
+        return this.puzzle.hints;
     }
 
     //Settings related methosd
@@ -103,7 +103,7 @@ public class GameManager {
             roomList.save(); 
             return true;
         }
-        return false;
+    return false;
     }
 
     public boolean logout() {
