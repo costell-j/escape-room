@@ -11,6 +11,7 @@ public class Progress {
     private int completionTime;
     private int currentPuzzle;
     private ArrayList<Achievement> achievements;
+    private int currentRoom;
 
     public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, int completionTime, int currentPuzzle, ArrayList<Achievement> achievements){
         this.puzzlesSolved = puzzles;
@@ -37,18 +38,21 @@ public class Progress {
         return this.completionTime;
     }
 
-    public int getCurrentPuzzle() {
+    public int getCurrentRoom() {
+        return this.currentRoom;
+    }
+
+    public void setCurrentRoom(int room) {
+        this.currentRoom = room;
+    }
+
+    public int getCurrentPuzzle(){
         return this.currentPuzzle;
     }
 
-    // Setters
-
-    public void setCurrentPuzzle(int currentPuzzle) {
-        this.currentPuzzle = currentPuzzle;
+    public void setCurrentPuzzle(int puzzle){
+        this.currentPuzzle = puzzle;
     }
-
-    // Other Methods
-
     @Override
     public String toString() {
         String progress = "Clues Used: "+this.cluesUsed+"\nAchievements:\n";

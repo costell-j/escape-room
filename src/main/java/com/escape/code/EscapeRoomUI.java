@@ -1,6 +1,6 @@
 package com.escape.code;
-import java.util.Scanner;
 import java.util.UUID;
+//import java.util.ArrayList;
 
 public class EscapeRoomUI {
     private GameManager gameManager;
@@ -10,47 +10,53 @@ public class EscapeRoomUI {
     }
 
     public void run(){
-        saveAndLogout();
-        completeRoom();
-        guestUser();
+        new EscapeRoomUI();
+        //duplicateAccount();
+        //validUser();
+        //newUser();
+        duplicateAccountnewAccount();
     }
 
-    public void saveAndLogout(){
+    public void duplicateAccount(){
         System.out.println();
 
-        gameManager.createAccount("MAK524", "password");
-        gameManager.login("MAK524","password");
-        if (gameManager.login("MAK524", "password") != null){
-            System.out.println("Successfully logged in");
+        //gameManager.createAccount("MAK524", "password");
+        if (gameManager.createAccount("MAK524", "password")){
+            System.out.println("Successfully Created account");
         } else {
-            System.out.println("Couldn't log you in");
+            System.out.println("Account already created");
         }
 
+        gameManager.login("MAK524","password");
+        if (gameManager.login("MAK524", "password")){
+            System.out.println("Successfully logged in");
+        } else {
+            System.out.println("Couldn't log in");
+        }
         
-        gameManager.chooseRoom("8b9e9e2-e9a3-4b49-818a-976c61288ae4");
+        gameManager.chooseRoom(UUID.fromString("e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"));
         gameManager.setDifficulty(3);
         gameManager.getLeaderboard();
-        gameManager.getHints();
+        //ArrayList<String> newHints = gameManager.getHints();
+        //System.out.println(newHints);
 
         gameManager.getMap();
         gameManager.saveGame();
         gameManager.logout();
     }
 
-    public void completeRoom(){
+    public void validUser(){
         System.out.println();
 
-        gameManager.createAccount("randomname","it%j3o!'kfU");
         gameManager.login("randomname","it%j3o!'kfU");
-        if (gameManager.login("randomname", "it%j3o!'kfU") != null) {
+        if (gameManager.login("randomname", "it%j3o!'kfU")) {
             System.out.println("Successfully logged in");
         } else {
             System.out.println("Couldn't log in");
         }
 
         gameManager.getRoomList();
-        System.out.println("The rooms are '...', '....', '...', and '...'");
-        gameManager.chooseRoom("d8b9e9e2-e9a3-4b49-818a-976c61288ae4");
+        gameManager.chooseRoom(UUID.fromString("d8b9e9e2-e9a3-4b49-818a-976c61288ae4"));
         gameManager.setDifficulty(1);
         gameManager.setVolume(80);
 
@@ -60,35 +66,85 @@ public class EscapeRoomUI {
         gameManager.getLeaderboard();
         gameManager.closeLeaderboard();
 
-        gameManager.getHints();
-        gameManager.getHints();
-        gameManager.getHints();
-        gameManager.getHints();
+        //ArrayList<String> newHints = gameManager.getHints();
+        //System.out.println(newHints);
+        gameManager.logout();
     }
 
-    public void guestUser(){
+    public void newUser(){
         System.out.println();
 
+        //gameManager.createAccount("Guest", "guestpassword");
+        if (gameManager.createAccount("Guest", "guestpassword")){
+            System.out.println("Account created!");
+        } else {
+            System.out.println("Account couldn't be created");
+        }
+
         gameManager.login("Guest", "guestpassword");
-        if (gameManager.login("Guest", "guestpassword") != null) {
+        if (gameManager.login("Guest", "guestpassword")) {
             System.out.println("Successfully logged in");
         } else {
             System.out.println("Couldn't log in");
         }
 
         gameManager.getRoomList();
-        gameManager.chooseRoom("d8b9e9e2-e9a3-4b49-818a-976c61288ae4");
+        gameManager.chooseRoom(UUID.fromString("e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"));
         gameManager.setDifficulty(3);
         gameManager.setVolume(20);
 
         gameManager.getLeaderboard();
         gameManager.closeLeaderboard();
-        gameManager.getHints();
+        //ArrayList<String> newHints = gameManager.getHints();
+        //System.out.println(newHints);
 
         gameManager.getMap();
         gameManager.closeMap();
-        gameManager.getHints();
 
         gameManager.exit();
     }
+
+    public void duplicateAccountnewAccount(){
+        System.out.println();
+
+        //gameManager.createAccount("MAK524", "password");
+        if (gameManager.createAccount("MAK524", "password")){
+            System.out.println("Successfully Created account");
+        } else {
+            System.out.println("Account already created");
+        }
+
+        //gameManager.createAccount("newUser", "new");
+        if (gameManager.createAccount("newUser", "new")){
+            System.out.println("Successfully Created account");
+        } else {
+            System.out.println("Account already created");
+        }
+        gameManager.login("newUser", "new");
+        if (gameManager.login("newUser", "new")) {
+            System.out.println("Successfully logged in");
+        } else {
+            System.out.println("Couldn't log in");
+        }
+
+        gameManager.getRoomList();
+        gameManager.chooseRoom(UUID.fromString("e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"));
+
+        //default difficulty
+        //default volume
+
+        //ArrayList<String> newHints = gameManager.getHints();
+        //System.out.println(newHints);
+
+        gameManager.getLeaderboard();
+        gameManager.closeLeaderboard();
+        gameManager.saveGame();
+
+    }
+
+
+    public static void main(String[] args) {
+		EscapeRoomUI escapeInterface = new EscapeRoomUI();
+		escapeInterface.run();
+	}
 }

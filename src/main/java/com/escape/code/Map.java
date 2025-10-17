@@ -32,7 +32,7 @@ public class Map {
     }
 
     public boolean isOpen() {
-        return this.open;
+        return open;
     }
 
     // Setters
