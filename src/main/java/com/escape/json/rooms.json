@@ -3,7 +3,7 @@
        "id": "d8b9e9e2-e9a3-4b49-818a-976c61288ae4",
        "name": "escape room",
        "map": {"mapName":"map", "height":500, "length":500, "isOpen":false},
-       "progressList":[{"String":"name","Progress":
+       "progressList":[{"String":"MAK524","Progress":
        {
             "puzzlesSolved": [{"String":"puzzle1","Puzzle":{
                 "description":"puzzle1",
@@ -44,7 +44,7 @@
             }
             }],
             "cluesUsed":2,
-            "currentRoom":1,
+            "currentRoom":0,
             "completionTime":1000,
             "achievements":[{
                 "title":"lkhalhjg",
@@ -69,7 +69,7 @@
             }
             }],
             "cluesUsed":2,
-            "currentRoom":3,
+            "currentRoom":0,
             "completionTime":1000,
             "achievements":[{
                 "title":"lkhalhjg",
@@ -157,7 +157,7 @@
             }
             }],
             "cluesUsed":2,
-            "currentRoom":4,
+            "currentRoom":0,
             "completionTime":1000,
             "achievements":[{
                 "title":"lkhalhjg",
@@ -182,7 +182,7 @@
             }
             }],
             "cluesUsed":2,
-            "currentRoom":2,
+            "currentRoom":0,
             "completionTime":1000,
             "achievements":[{
                 "title":"lkhalhjg",

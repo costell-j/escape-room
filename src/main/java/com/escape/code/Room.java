@@ -83,6 +83,14 @@ public class Room {
     public void setLeaderboard(Leaderboard leaderboard) {
         this.leaderboard = leaderboard;
     }
+
+    public void setProgress(String username) {
+        for(String s : progressList.keySet()) {
+            if(s.equals(username)) {
+                this.progress = this.progressList.get(s);
+            }
+        }
+    }
     
     // Functionality Methods
 
@@ -91,8 +99,7 @@ public class Room {
     }
 
     public void advancePuzzle() {
-        if(puzzles.get(this.progress.getCurrentPuzzle()).isSolved()) 
-            this.progress.getCurrentPuzzle();
+        this.progress.setCurrentPuzzle(this.progress.getCurrentPuzzle()+1);
     }
     
     @Override
