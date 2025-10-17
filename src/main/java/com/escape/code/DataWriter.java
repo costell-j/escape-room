@@ -192,7 +192,7 @@ public class DataWriter extends DataConstants {
             leaderHash.put(ROOM_LEADERBOARD_HASH_KEY, key);
             playerJSON.put(USER_USER_NAME, user.getUsername());
             playerJSON.put(USER_PASSWORD, user.getPassword());
-            String currentRoom = ""+user.getCurrentRoom()+"";
+            String currentRoom = ""+user.getCurrentRoom().getId()+"";
             playerJSON.put(USER_CURRENT_ROOM, currentRoom);
 
             //Settings JSON Object

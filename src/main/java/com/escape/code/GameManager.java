@@ -41,7 +41,8 @@ public class GameManager {
 
     public boolean chooseRoom(UUID id) {
         this.room = roomList.getRoom(id);
-        //this.puzzle = room.getPuzzles().get(room.getProgress().getCurrentPuzzle());
+        this.room.setProgress(this.user.getUsername());
+        this.puzzle = room.getPuzzles().get(room.getProgress().getCurrentPuzzle());
         return this.room != null;
     }
 
@@ -60,8 +61,20 @@ public class GameManager {
     public void openLeaderboard() {
         room.getLeaderboard().setOpen(true);
     }
-     public void closeLeaderboard() {
+    public void closeLeaderboard() {
         room.getLeaderboard().setOpen(false);
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public Room getRoom() {
+        return this.room;
+    }
+
+    public Puzzle getPuzzle() {
+        return this.puzzle;
     }
 
     public void openMap() {
@@ -85,12 +98,12 @@ public class GameManager {
     }
     
     public boolean saveGame() {
-       if(userList != null || roomList != null) { 
+        if(userList != null || roomList != null) { 
             userList.save(); 
             roomList.save(); 
             return true;
-    }
-       return false;
+        }
+        return false;
     }
 
     public boolean logout() {
