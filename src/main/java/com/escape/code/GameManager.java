@@ -18,6 +18,7 @@ public class GameManager {
     public GameManager() {
         this.userList = UserList.getInstance();
         this.roomList = RoomList.getInstance();
+        DataLoader.loadLeaderboards();
     }
 
     //User related methods
