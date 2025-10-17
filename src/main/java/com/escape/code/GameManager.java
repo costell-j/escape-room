@@ -40,6 +40,16 @@ public class GameManager {
         return roomList.getAllRooms();
     }
 
+    public void difficultyTweak(int difficulty) {
+        int time = switch(difficulty) {
+            case 1 -> 1200;
+            case 2 -> 900;
+            case 3 -> 600;
+            default -> 1200;
+        };
+        this.room.setTime(time);
+    }
+
     public String formatTimer() {
         String formattedTimer;
         int timer = this.room.getTimer(); // 20 min at 1, 15 min at 2, 10 min at 3
@@ -69,6 +79,7 @@ public class GameManager {
         if(this.room != null)
             this.room.setDifficulty(difficulty);
     }
+
 
     public Leaderboard getLeaderboard() {
         return (this.room != null) ? this.room.getLeaderboard() : null;

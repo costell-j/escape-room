@@ -18,6 +18,18 @@ public class Room {
     private ArrayList<Puzzle> puzzles;
     private int difficulty;
 
+    /**
+     * Constructor for the Room object
+     * @param id Room's UUID
+     * @param name Name of the room
+     * @param map Room's map
+     * @param progressList Room's pr
+     * @param progress
+     * @param leaderboard
+     * @param puzzles
+     * @param timer
+     * @param difficulty
+     */
     public Room(UUID id, String name, Map map, HashMap<String, Progress> progressList, Progress progress, Leaderboard leaderboard, ArrayList<Puzzle> puzzles, int timer, int difficulty) {
         this.id = id;
         this.name = name;
