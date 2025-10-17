@@ -46,6 +46,13 @@ public class Progress {
         this.currentRoom = room;
     }
 
+    public int getCurrentPuzzle(){
+        return this.currentPuzzle;
+    }
+
+    public void setCurrentPuzzle(int puzzle){
+        this.currentPuzzle = puzzle;
+    }
     @Override
     public String toString() {
         String progress = "Clues Used: "+this.cluesUsed+"\nAchievements:\n";

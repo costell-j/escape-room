@@ -61,7 +61,12 @@ public class DataWriter extends DataConstants {
         JSONArray roomsJSON = writeRoomList(user);
         userDetails.put(USER_ROOMS, roomsJSON);
 
-        String currentRoom = ""+user.getCurrentRoom().getId()+"";
+        String currentRoom = "";
+
+        if(user.getCurrentRoom() != null){
+            currentRoom = ""+user.getCurrentRoom().getId()+"";
+        } 
+        
         userDetails.put(USER_CURRENT_ROOM, currentRoom);
 
 

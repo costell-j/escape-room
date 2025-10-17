@@ -11,10 +11,10 @@ public class EscapeRoomUI {
 
     public void run(){
         new EscapeRoomUI();
-        duplicateAccount();
-        validUser();
-        newUser();
-        //duplicateAccountnewAccount();
+        //duplicateAccount();
+        //validUser();
+        //newUser();
+        duplicateAccountnewAccount();
     }
 
     public void duplicateAccount(){
@@ -22,7 +22,6 @@ public class EscapeRoomUI {
 
         //gameManager.createAccount("MAK524", "password");
         if (gameManager.createAccount("MAK524", "password")){
-            gameManager.createAccount("MAK524", "password");
             System.out.println("Successfully Created account");
         } else {
             System.out.println("Account already created");
@@ -77,7 +76,6 @@ public class EscapeRoomUI {
 
         //gameManager.createAccount("Guest", "guestpassword");
         if (gameManager.createAccount("Guest", "guestpassword")){
-            gameManager.createAccount("Guest", "guestpassword");
             System.out.println("Account created!");
         } else {
             System.out.println("Account couldn't be created");
@@ -111,7 +109,6 @@ public class EscapeRoomUI {
 
         //gameManager.createAccount("MAK524", "password");
         if (gameManager.createAccount("MAK524", "password")){
-            gameManager.createAccount("MAK524", "password");
             System.out.println("Successfully Created account");
         } else {
             System.out.println("Account already created");
@@ -119,7 +116,6 @@ public class EscapeRoomUI {
 
         //gameManager.createAccount("newUser", "new");
         if (gameManager.createAccount("newUser", "new")){
-            gameManager.createAccount("newUser", "new");
             System.out.println("Successfully Created account");
         } else {
             System.out.println("Account already created");

@@ -31,7 +31,7 @@ public class Map {
         return this.length;
     }
 
-    public boolean isOpen(boolean open) {
+    public boolean isOpen() {
         return open;
     }
 
