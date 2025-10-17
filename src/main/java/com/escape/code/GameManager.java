@@ -40,6 +40,24 @@ public class GameManager {
         return roomList.getAllRooms();
     }
 
+    public String formatTimer() {
+        String formattedTimer;
+        int timer = this.room.getTimer(); // 20 min at 1, 15 min at 2, 10 min at 3
+        int minutes = timer/60;
+        int seconds = timer%60;
+        String secondsFormatted;
+        if(seconds < 10) {
+            secondsFormatted = "0"+seconds;
+        }
+        else {
+            secondsFormatted = ""+seconds+"";
+        }
+
+        formattedTimer = minutes+":"+secondsFormatted;
+
+        return formattedTimer;
+    }
+
     public boolean chooseRoom(UUID id) {
         this.room = roomList.getRoom(id);
         this.room.setProgress(this.user.getUsername());

@@ -79,7 +79,7 @@
                 "unlocked":false
             }]
         },
-       "timer": 3000,
+       "timer": 1200,
        "puzzles": [
         {
             "description":"logic puzzle",
@@ -192,7 +192,7 @@
                 "unlocked":false
             }]
         },
-       "timer": 2000,
+        "timer": 1200,
        "puzzles": [
         {
             "description":"logic puzzle",
