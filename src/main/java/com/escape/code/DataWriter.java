@@ -81,7 +81,7 @@ public class DataWriter extends DataConstants {
     public static boolean saveRooms() {
         RoomList rooms = RoomList.getInstance();
         DataLoader.loadLeaderboards();
-        ArrayList<Room> roomList = rooms.getRooms();
+        ArrayList<Room> roomList = rooms.getAllRooms();
 
         JSONArray jsonUsers = new JSONArray();
         for(int i=0; i<roomList.size(); i++) {
