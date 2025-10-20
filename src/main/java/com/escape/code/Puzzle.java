@@ -28,7 +28,7 @@ public class Puzzle {
         setSolution(solution);
         setSolved(isSolved);   
     }
-    public boolean attempt(String answwer){
+    public boolean attempt(String answer){
 
         return false;
     }
@@ -41,16 +41,20 @@ public class Puzzle {
             return "none left";
         }
     }
-    
+
     public void resetHints(){
 
         hintsUsed = 0;
-   }
+    }
     /*
     * Marks the puzzle as solved.
     */
     public void solvePuzzle(){
     this.isSolved = true;
+    }
+
+    public void setPuzzle(String puzzle){
+        this.puzzle = puzzle != null ? puzzle : "No puzzle found";
     }
     
     public void setDescription(String description) {
