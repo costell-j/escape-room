@@ -19,7 +19,14 @@ public class Decipher extends Puzzle<String> {
         this.alphabet = new HashMap<>();
         Character[] chars = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
         for(int i=0; i<chars.length; i++) {
-            this.alphabet.put(chars[i], chars[i+shift]);
+            if(i+shift > chars.length-1) {
+                int shifted = i+shift-chars.length;
+                this.alphabet.put(chars[i], chars[shifted]);
+            }
+            else if(i+shift < 0) {
+                int shifted = i+shift+chars.length;
+                this.alphabet.put(chars[i], chars[shifted]);
+            }
         }
     }
 
