@@ -13,7 +13,7 @@ public class Riddle extends Puzzle {
     }
 
     
-
+    @Override
     public boolean attempt(String answer) {
         if (equalsLoose(answer, getSolution())) {
                     isSolved = true;

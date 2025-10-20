@@ -16,6 +16,7 @@ public class Puzzle {
     protected String solution;
     protected boolean isSolved;
     protected String puzzle;
+    protected int hintsUsed = 0;
 
     /*
     * Constructor for Puzzle class.
@@ -27,6 +28,24 @@ public class Puzzle {
         setSolution(solution);
         setSolved(isSolved);   
     }
+    public boolean attempt(String answwer){
+
+        return false;
+    }
+    
+    public String getextHint(){
+        if(hintsUsed < hints.size()){
+            return hints.get(hintsUsed++);
+        }
+        else{
+            return "none left";
+        }
+    }
+    
+    public void resetHints(){
+
+        hintsUsed = 0;
+   }
     /*
     * Marks the puzzle as solved.
     */
@@ -53,9 +72,10 @@ public class Puzzle {
         this.isSolved = isSolved;
     }
      
-    public String getPuzzle(){
+    public String getPuzzles(){
         return this.puzzle;
     }
+
     public String getDescription() {
         return this.description;
     }
