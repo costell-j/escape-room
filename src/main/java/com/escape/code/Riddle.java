@@ -8,8 +8,8 @@ import java.util.ArrayList;
 /** iddle puzzle that checks answer vs. solution (case/space-insensitive). */
 public class Riddle extends Puzzle {
 
-    public Riddle( String description, ArrayList<String> hints, String solution, boolean isSolved) {
-        super( description, hints, solution, isSolved);
+    public Riddle( String description,String name, ArrayList<String> hints, String solution, boolean isSolved) {
+        super( description, name, hints, solution, isSolved);
     }
 
     
@@ -30,6 +30,6 @@ public class Riddle extends Puzzle {
 
     private static String norm(String s) {
         if (s == null) return "";
-        return s.trim().replaceAll("\\s+", " ").toLowerCase();
+        return s.trim().replaceAll("\\h", " ").toLowerCase();
     }
 }

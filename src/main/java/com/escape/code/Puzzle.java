@@ -15,6 +15,7 @@ public class Puzzle {
     protected ArrayList<String> hints;
     protected String solution;
     protected boolean isSolved;
+    protected String puzzle;
 
     /*
     * Constructor for Puzzle class.
@@ -51,7 +52,10 @@ public class Puzzle {
     public void setSolved(boolean isSolved) {
         this.isSolved = isSolved;
     }
-
+     
+    public String getPuzzle(){
+        return this.puzzle;
+    }
     public String getDescription() {
         return this.description;
     }

@@ -1,6 +1,6 @@
 package com.escape.code;
 /*
- *logic
+ * logic
  * @author Barbarnas
  */
 import java.util.ArrayList;
@@ -9,9 +9,9 @@ import java.util.ArrayList;
     /** logic puzzle that uses normalized text comparison. */
     public class Logic extends Puzzle {
 
-        public Logic(String description, ArrayList<String> hints,
+        public Logic(String description, String name, ArrayList<String> hints,
                      String solution, boolean isSolved) {
-            super(description, hints, solution, isSolved);
+            super(description, name, hints, solution, isSolved);
         }
 /*
  * implements the core check then compares answer to stored solution using loose equals ingnore case and whitespace
@@ -22,7 +22,8 @@ import java.util.ArrayList;
                 return true;
             }
             return false;
-/*
+        }
+/*  
  * helper method. exposes a normalized string equality. 
  * and normilizes both strings.
  */
@@ -35,7 +36,7 @@ import java.util.ArrayList;
  */
         private static String norm(String s) {
             if (s == null) return "";
-            return s.trim().replaceAll("\\s+", " ").toLowerCase();
+            return s.trim().replaceAll("\\h", " ").toLowerCase();
         }
     }
     

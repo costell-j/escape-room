@@ -8,8 +8,8 @@ import java.util.ArrayList;
 /** Decipher puzzle —  performs a simple normalized string comparison. */
 public class Decipher extends Puzzle {
 
-    public Decipher (String description, ArrayList<String> hints, String solution, boolean isSolved) {
-        super(description, hints, solution, isSolved);
+    public Decipher (String description, String name, ArrayList<String> hints, String solution, boolean isSolved) {
+        super(description, name, hints, solution, isSolved);
     }
    
     public boolean attempt(String answer) {
@@ -26,6 +26,6 @@ public class Decipher extends Puzzle {
 
     private static String norm(String s) {
         if (s == null) return "";
-        return s.trim().replaceAll("\\s+", " ").toLowerCase();
+        return s.trim().replaceAll("\\h", " ").toLowerCase();
     }
 }

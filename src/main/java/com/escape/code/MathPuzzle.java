@@ -13,8 +13,8 @@ public class MathPuzzle extends Puzzle {
  */
     private static final double EPS = 1e-6; 
 
-    public MathPuzzle (String description, ArrayList<String> hints, String solution, boolean isSolved) {
-        super(description, hints, solution, isSolved);
+    public MathPuzzle (String description,String name, ArrayList<String> hints, String solution, boolean isSolved) {
+        super(description, name, hints, solution, isSolved);
     }
   
    
