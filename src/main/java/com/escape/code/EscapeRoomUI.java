@@ -1,6 +1,6 @@
 package com.escape.code;
 import java.util.UUID;
-//import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class EscapeRoomUI {
     private GameManager gameManager;
@@ -11,16 +11,15 @@ public class EscapeRoomUI {
 
     public void run(){
         new EscapeRoomUI();
-        //duplicateAccount();
-        //validUser();
-        //newUser();
+        duplicateAccount();
+        validUser();
+        newUser();
         duplicateAccountnewAccount();
     }
 
     public void duplicateAccount(){
         System.out.println();
 
-        //gameManager.createAccount("MAK524", "password");
         if (gameManager.createAccount("MAK524", "password")){
             System.out.println("Successfully Created account");
         } else {
@@ -37,8 +36,8 @@ public class EscapeRoomUI {
         gameManager.chooseRoom(UUID.fromString("e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"));
         gameManager.setDifficulty(3);
         gameManager.getLeaderboard();
-        //ArrayList<String> newHints = gameManager.getHints();
-        //System.out.println(newHints);
+        ArrayList<String> newHints = gameManager.getHints();
+        System.out.println(newHints);
 
         gameManager.getMap();
         gameManager.saveGame();
@@ -66,15 +65,14 @@ public class EscapeRoomUI {
         gameManager.getLeaderboard();
         gameManager.closeLeaderboard();
 
-        //ArrayList<String> newHints = gameManager.getHints();
-        //System.out.println(newHints);
+        ArrayList<String> newHints = gameManager.getHints();
+        System.out.println(newHints);
         gameManager.logout();
     }
 
     public void newUser(){
         System.out.println();
 
-        //gameManager.createAccount("Guest", "guestpassword");
         if (gameManager.createAccount("Guest", "guestpassword")){
             System.out.println("Account created!");
         } else {
@@ -95,8 +93,8 @@ public class EscapeRoomUI {
 
         gameManager.getLeaderboard();
         gameManager.closeLeaderboard();
-        //ArrayList<String> newHints = gameManager.getHints();
-        //System.out.println(newHints);
+        ArrayList<String> newHints = gameManager.getHints();
+        System.out.println(newHints);
 
         gameManager.getMap();
         gameManager.closeMap();
@@ -107,14 +105,12 @@ public class EscapeRoomUI {
     public void duplicateAccountnewAccount(){
         System.out.println();
 
-        //gameManager.createAccount("MAK524", "password");
         if (gameManager.createAccount("MAK524", "password")){
             System.out.println("Successfully Created account");
         } else {
             System.out.println("Account already created");
         }
 
-        //gameManager.createAccount("newUser", "new");
         if (gameManager.createAccount("newUser", "new")){
             System.out.println("Successfully Created account");
         } else {
@@ -133,8 +129,8 @@ public class EscapeRoomUI {
         //default difficulty
         //default volume
 
-        //ArrayList<String> newHints = gameManager.getHints();
-        //System.out.println(newHints);
+        ArrayList<String> newHints = gameManager.getHints();
+        System.out.println(newHints);
 
         gameManager.getLeaderboard();
         gameManager.closeLeaderboard();
