@@ -8,14 +8,15 @@
             "puzzlesSolved": [{"String":"Haunting Warning","Puzzle":{
                 "description":"Warning to those who enter: one should escape before too long, the seemingly kind spirits change at midnight",
                 "name":"Haunting Warning",
+                "type":"Riddle",
                 "hints":["You're looking for a 6 digit code", "Sound out the words", "Midnight"],
-                "solution":"214212",
                 "isSolved":false
             }},
             {"String":"puzzle2","Puzzle":{
                 "description":"puzzle2",
+                "name":"puzzle",
+                "type":"Logic",
                 "hints":["hint1", "hint2", "hint3"],
-                "solution":"solution2",
                 "isSolved":false
             }
             }],
@@ -34,15 +35,17 @@
             "puzzlesSolved": [{"String":"Escape 13th Street","Puzzle":{
                 "description":"puzzle3",
                 "name":"Escape 13th Street",
+                "type":"Math",
+                "solution":123.4,
                 "hints":["hint1", "hint2", "hint3"],
-                "solution":"solution3",
                 "isSolved":true
             }},
             {"String":"Math","Puzzle":{
                 "description":"puzzle2",
                 "name":"Math",
+                "type":"Math",
+                "solution":123.0,
                 "hints":["hint1", "hint2", "hint3"],
-                "solution":"solution2",
                 "isSolved":false
             }
             }],
@@ -61,15 +64,17 @@
             "puzzlesSolved": [{"String":"Haunting Warning","Puzzle":{
                 "description":"Warning to those who enter: one should escape before too long, lest the benign spirits turn for the worse.",
                 "name": "Haunting Warning",
+                "type":"Riddle",
+                "solution":"214212",
                 "hints":["hint1", "hint2", "hint3"],
-                "solution":"solution1",
                 "isSolved":true
             }},
             {"String":"puzzle2","Puzzle":{
                 "description":"puzzle2",
                 "name":"Math",
+                "type":"Math",
+                "solution":23.4,
                 "hints":["hint1", "hint2", "hint3"],
-                "solution":"solution2",
                 "isSolved":false
             }
             }],
@@ -89,15 +94,17 @@
         {
             "description":"Warning to those who enter: one should escape before too long, the seemingly kind spirits change at midnight",
             "name": "Haunting Warning",
-            "hints":["You're looking for a 6 digit code", "Sound out the words", "Midnight"],
+            "type":"Riddle",
             "solution":"214212",
+            "hints":["You're looking for a 6 digit code", "Sound out the words", "Midnight"],
             "isSolved":false
         },
         {
             "description":"math puzzle",
             "name": "Math",
+            "type":"Math",
+            "solution":123.0,
             "hints":["hint 1", "hint 2", "hint 3"],
-            "solution":"solution",
             "isSolved":false 
         }],
         "difficulty": 2,

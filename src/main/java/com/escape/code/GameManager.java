@@ -32,7 +32,11 @@ public class GameManager {
     }
 
     public boolean login(String username, String password) {
-        this.user = userList.getUser(username, password);
+        boolean validUsername = (!"".equals(username) && !username.matches("\\h") && !username.matches("[\\\'\"]") && username != null && !userList.checkUsernames(username));
+        boolean validPassword = (!"".equals(password) && !password.matches("\\h") && !password.matches("[\\\'\"]") && password != null);
+
+        if(validUsername && validPassword) { this.user = userList.getUser(username, password); }
+
         return this.user != null;
     }
 
@@ -44,10 +48,11 @@ public class GameManager {
     public ArrayList<Room> getRoomList() {
         return roomList.getAllRooms();
     }
+
     public ArrayList<Puzzle> getPuzzles() {
         return this.puzzles;
     }
-    
+
     public void setPuzzles() {
         ArrayList<Puzzle> puzzles = this.room.getPuzzles();
         this.puzzles = puzzles;
@@ -57,32 +62,12 @@ public class GameManager {
         this.puzzle = p;
     }
 
-    public void difficultyTweak(int difficulty) {
-        int time = switch(difficulty) {
-            case 1 -> 1200;
-            case 2 -> 900;
-            case 3 -> 600;
-            default -> 1200;
-        };
-        this.room.setTime(time);
-    }
+    public void changeDifficulty(int difficulty) {
+        this.room.difficultyTweak(difficulty);
+    } 
 
-    public String formatTimer() {
-        String formattedTimer;
-        int timer = this.room.getTimer();
-        int minutes = timer/60;
-        int seconds = timer%60;
-        String secondsFormatted;
-        if(seconds < 10) {
-            secondsFormatted = "0"+seconds;
-        }
-        else {
-            secondsFormatted = ""+seconds+"";
-        }
-
-        formattedTimer = minutes+":"+secondsFormatted;
-
-        return formattedTimer;
+    public String getFormattedTime() {
+        return this.room.formatTimer();
     }
 
     public boolean chooseRoom(UUID id) {

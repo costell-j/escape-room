@@ -8,31 +8,45 @@ import java.util.ArrayList;
  * @author Barbarnas
  */
 
-public class Puzzle {
+public abstract class Puzzle<T> {
 
     protected String description;
     protected String name;
     protected ArrayList<String> hints;
-    protected String solution;
     protected boolean isSolved;
-    protected String puzzle;
+    protected T solution;
+    protected String type;
+    protected int shift;
 
     /*
     * Constructor for Puzzle class.
     */
-    public Puzzle(String description, String name, ArrayList<String> hints, String solution, boolean isSolved) {
+    public Puzzle(String description, String name, T solution, ArrayList<String> hints, boolean isSolved) {
         setDescription(description);
         this.name = name;
+        this.solution = solution;
         setHints(hints);
-        setSolution(solution);
         setSolved(isSolved);   
     }
     /*
     * Marks the puzzle as solved.
     */
     public void solvePuzzle(){
-    this.isSolved = true;
+        this.isSolved = true;
     }
+
+    public T getSolution() {
+        return this.solution;
+    }
+    public String getType() {
+        return this.type;
+    }
+
+    public int getShift() {
+        return this.shift;
+    }
+
+    public abstract void attempt(T param);
     
     public void setDescription(String description) {
         this.description = description != null ? description : "No description available.";
@@ -44,18 +58,10 @@ public class Puzzle {
     }
 
 
-    public void setSolution(String solution) {
-        this.solution = solution != null ? solution : "";
-    }
-
-
     public void setSolved(boolean isSolved) {
         this.isSolved = isSolved;
     }
-     
-    public String getPuzzle(){
-        return this.puzzle;
-    }
+
     public String getDescription() {
         return this.description;
     }
@@ -64,23 +70,20 @@ public class Puzzle {
         return this.name;
     }
 
-     public ArrayList<String> getHints() {
-         return this.hints;
-     }
+    public ArrayList<String> getHints() {
+        return this.hints;
+    }
 
-     public String getSolution() {
-         return this.solution;
-     }
+    public boolean isSolved() {
+        return this.isSolved;
+    }
 
-     public boolean isSolved() {
-         return this.isSolved;
-     }
-/*
- * Returns a string representation of the puzzle, including description, solution, solved status, and hints.
- */
+    /*
+    *  Returns a string representation of the puzzle, including description, solution, solved status, and hints.
+    */
     @Override
     public String toString() {
-        String puzzle = "Description: "+this.description+"\nSolution: "+this.solution+"\nSolved: "+this.isSolved+"\nHints:\n";
+        String puzzle = "Description: "+this.description+"\nSolved: "+this.isSolved+"\nHints:\n";
         for(int i=0; i<this.hints.size(); i++) {
             puzzle += this.hints.get(i)+"\n";
         }

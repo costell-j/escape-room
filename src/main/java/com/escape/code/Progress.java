@@ -60,9 +60,7 @@ public class Progress {
     public int getCompletionTime() {
         return this.completionTime;
     }
-    /*
-     * Returns the number of the current puzzle
-     */
+
     public int getCurrentPuzzle(){
         return this.currentPuzzle;
     }

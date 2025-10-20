@@ -69,8 +69,6 @@ public class Room {
     }
 
     public ArrayList<Puzzle> getPuzzles() {
-        if(puzzles.isEmpty())
-            puzzles.add(new Puzzle(null, null, null,null, false));
         return this.puzzles;
     }
 
@@ -111,6 +109,34 @@ public class Room {
     }
     
     // Functionality Methods
+
+    public String formatTimer() {
+        String formattedTimer;
+        int time = this.getTimer();
+        int minutes = timer/60;
+        int seconds = timer%60;
+        String secondsFormatted;
+        if(seconds < 10) {
+            secondsFormatted = "0"+seconds;
+        }
+        else {
+            secondsFormatted = ""+seconds+"";
+        }
+
+        formattedTimer = minutes+":"+secondsFormatted;
+
+        return formattedTimer;
+    }
+
+    public void difficultyTweak(int difficulty) {
+        int time = switch(difficulty) {
+            case 1 -> 1200;
+            case 2 -> 900;
+            case 3 -> 600;
+            default -> 1200;
+        };
+        this.setTime(time);
+    }
 
     public void playPuzzle() {
         puzzles.get(this.progress.getCurrentPuzzle());

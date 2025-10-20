@@ -12,14 +12,15 @@ public class User {
     private Settings settings;
     private ArrayList<Room> rooms;
     private Room currentRoom;
-    /*
-     * Creates a new User
-     * @param Username is the user's username
-     * @param password is the user's password
-     * @param settings is the user's settings choices
-     * @param rooms is the rooms the user chooses
-     * @param currentRoom is the user's current room
-     */
+    
+    public User() {
+        this.username = "guest";
+        this.password = "password";
+        this.settings = new Settings(0, 1);
+        this.rooms = RoomList.getInstance().getAllRooms();
+        this.currentRoom = null;
+    }
+    
     public User(String username, String password, Settings settings, ArrayList<Room> rooms, Room currentRoom) {
         this.username = username;
         this.password = password;
