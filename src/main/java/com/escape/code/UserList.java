@@ -55,6 +55,23 @@ public class UserList {
         return this.users;
     }
 
+    public boolean checkUsernames(String username) {
+        for(User user : users) {
+            if(username.equals(user.getUsername())) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean checkPasswords(String password) {
+        for(User user : users) {
+            if(password.equals(user.getPassword())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     // Functionality Methods
 
     /**
@@ -67,7 +84,9 @@ public class UserList {
      * @return a boolean, true if user is created, false if not
      */
     public boolean addUser(String username, String password, Settings settings, ArrayList<Room> rooms, Room currentRoom) {
-        if(getUser(username, password) == null) {
+        boolean validUsername = (!"".equals(username) && !username.matches("\\S+") && !checkUsernames(username));
+        boolean validPassword = (!"".equals(password) && !password.matches("\\S+") && !checkPasswords(password));
+        if(getUser(username, password) == null && validUsername && validPassword) {
             if(settings == null)
                 settings = new Settings(0, 0);
             User user = new User(username, password, settings, rooms, currentRoom);

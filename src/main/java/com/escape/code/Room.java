@@ -70,7 +70,7 @@ public class Room {
 
     public ArrayList<Puzzle> getPuzzles() {
         if(puzzles.isEmpty())
-            puzzles.add(new Puzzle(null, null, null, false));
+            puzzles.add(new Puzzle(null, null, null,null, false));
         return this.puzzles;
     }
 

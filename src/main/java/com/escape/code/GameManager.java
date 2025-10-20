@@ -14,6 +14,7 @@ public class GameManager {
     private UserList userList;    
     private RoomList roomList;  
     private Puzzle puzzle;  
+    private ArrayList<Puzzle> puzzles;
 
     public GameManager() {
         this.userList = UserList.getInstance();
@@ -22,6 +23,10 @@ public class GameManager {
     }
 
     //User related methods
+    public boolean createGuest() {
+        this.user = new User();
+        return true;
+    }
     public boolean createAccount(String username, String password) {
         return userList.addUser(username, password, null, getRoomList(), null);
     }
@@ -38,6 +43,18 @@ public class GameManager {
     //Room related methods
     public ArrayList<Room> getRoomList() {
         return roomList.getAllRooms();
+    }
+    public ArrayList<Puzzle> getPuzzles() {
+        return this.puzzles;
+    }
+    
+    public void setPuzzles() {
+        ArrayList<Puzzle> puzzles = this.room.getPuzzles();
+        this.puzzles = puzzles;
+    }
+
+    public void setPuzzle(Puzzle p) {
+        this.puzzle = p;
     }
 
     public void difficultyTweak(int difficulty) {
@@ -70,7 +87,11 @@ public class GameManager {
 
     public boolean chooseRoom(UUID id) {
         this.room = roomList.getRoom(id);
-        this.room.setProgress(this.user.getUsername());
+        boolean success = this.room.setProgress(this.user.getUsername());
+        if(!success) {
+            Progress progress = new Progress();
+            this.room.setProgress(progress);
+        }
         this.puzzle = room.getPuzzles().get(room.getProgress().getCurrentPuzzle());
         return this.room != null;
     }
