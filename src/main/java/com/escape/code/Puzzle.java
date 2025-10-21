@@ -8,30 +8,59 @@ import java.util.ArrayList;
  * @author Barbarnas
  */
 
-public class Puzzle {
+public abstract class Puzzle<T> {
 
     protected String description;
     protected String name;
     protected ArrayList<String> hints;
-    protected String solution;
+    protected  T solution;
     protected boolean isSolved;
-    protected String puzzle;
+    protected String type;
+    protected int shift;
     protected int hintsUsed = 0;
+    protected String puzzle;
 
     /*
     * Constructor for Puzzle class.
     */
-    public Puzzle(String description, String name, ArrayList<String> hints, String solution, boolean isSolved) {
+    public Puzzle(String description, String name, ArrayList<String> hints, T solution, boolean isSolved) {
         setDescription(description);
         this.name = name;
         setHints(hints);
-        setSolution(solution);
+        this.solution = solution;
         setSolved(isSolved);   
     }
-    public boolean attempt(String answer){
 
-        return false;
+    public T getSolution(){
+        return this.solution;
     }
+     
+    public String getType(){
+        return this.type;
+    }
+
+    public int getShift(){
+        return this.shift;
+    }
+
+    public String getPuzzles(){
+        return this.puzzle;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+     public ArrayList<String> getHints() {
+         return this.hints;
+     }
+     
+     public abstract void attempt(T param);
+
     
     public String getextHint(){
         if(hintsUsed < hints.size()){
@@ -46,6 +75,7 @@ public class Puzzle {
 
         hintsUsed = 0;
     }
+
     /*
     * Marks the puzzle as solved.
     */
@@ -67,34 +97,10 @@ public class Puzzle {
     }
 
 
-    public void setSolution(String solution) {
-        this.solution = solution != null ? solution : "";
-    }
-
-
     public void setSolved(boolean isSolved) {
         this.isSolved = isSolved;
     }
-     
-    public String getPuzzles(){
-        return this.puzzle;
-    }
 
-    public String getDescription() {
-        return this.description;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-     public ArrayList<String> getHints() {
-         return this.hints;
-     }
-
-     public String getSolution() {
-         return this.solution;
-     }
 
      public boolean isSolved() {
          return this.isSolved;

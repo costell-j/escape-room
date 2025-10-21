@@ -6,21 +6,24 @@ package com.escape.code;
 import java.util.ArrayList;
 
 /** iddle puzzle that checks answer vs. solution (case/space-insensitive). */
-public class Riddle extends Puzzle {
+public class Riddle extends Puzzle<String> {
 
     public Riddle( String description,String name, ArrayList<String> hints, String solution, boolean isSolved) {
         super( description, name, hints, solution, isSolved);
+        super.type = "Riddle";
     }
 
     
     @Override
-    public boolean attempt(String answer) {
-        if (equalsLoose(answer, getSolution())) {
-                    isSolved = true;
-                    return true;
-                }
-                return false;
+    public void attempt(String answer) {
+        String formattedAnswer = answer.trim().toLowerCase();
+        String formattedSolution = this.solution.trim().toLowerCase();
+
+            if(formattedAnswer.equals(formattedSolution)){
+                super.solvePuzzle();
             }
+
+    }
         
         
             /** Local fallback if your Puzzle doesn't expose equalsLoose */

@@ -7,23 +7,24 @@ import java.util.ArrayList;
 
     
     /** logic puzzle that uses normalized text comparison. */
-    public class Logic extends Puzzle {
+    public class Logic extends Puzzle<String> {
 
-        public Logic(String description, String name, ArrayList<String> hints,
-                     String solution, boolean isSolved) {
+        public Logic(String description, String name, ArrayList<String> hints, String solution, boolean isSolved) {
             super(description, name, hints, solution, isSolved);
+            super.type = "Logic";
+            this.solution = solution;
         }
 /*
  * implements the core check then compares answer to stored solution using loose equals ingnore case and whitespace
  */
 
         @Override
-        public boolean attempt(String answer) {
-            if (equalsLoose(answer, getSolution())) {
-                isSolved = true;
-                return true;
-            }
-            return false;
+        public void attempt(String answer) {
+            String formattedAnswer = answer.trim(). toLowerCase();
+            String formattedSolution = this.solution.trim().toLowerCase();
+                if(formattedAnswer.equals(formattedSolution)){
+                    super.solvePuzzle();
+                }
         }
 /*  
  * helper method. exposes a normalized string equality. 

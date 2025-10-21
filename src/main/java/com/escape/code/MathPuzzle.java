@@ -4,50 +4,29 @@ package com.escape.code;
  * @author Barbarnas
  */
 import java.util.ArrayList;
+import java.util.Objects;
 /*
  * math puzzle that checks user answer as a double
  */
-public class MathPuzzle extends Puzzle {
+public class MathPuzzle extends Puzzle<Double> {
 /*
  * tolerance for a floating point comparison and EPS(Epsilon) allows for small diffence in answers
  */
     private static final double EPS = 1e-6; 
 
-    public MathPuzzle (String description,String name, ArrayList<String> hints, String solution, boolean isSolved) {
+    public MathPuzzle (String description,String name, ArrayList<String> hints, double solution, boolean isSolved) {
         super(description, name, hints, solution, isSolved);
+        super.type= "Math";
     }
   
     @Override
-     public boolean attempt(String answer) {
-        if (answer == null) return false;
+     public void attempt(Double answer){
+        if (Objects.equals(answer, this.solution)){
+            super.solvePuzzle();
+        }
+     }
 /*
  * used to convert from strings to real numbers and trim them to takr spaces away
  */
-        try {
-            double correctValue = Double.parseDouble(getSolution().trim());
-            double userValue = Double.parseDouble(answer.trim());
-
-            if (Math.abs(correctValue - userValue) <= EPS) {
-                isSolved = true;
-                return true;
-            }
-            else{
-
-                double diffrence = correctValue - userValue;
-                    System.out.println("Your off by this much" +diffrence);
-
-            }S
-            /*
-             * if the parsing fail as in a non number is entered it will automatically fail.
-             */
-        } 
-        
-        catch (NumberFormatException e) {
-           
-            return false;
-        }
-
-        return false;
-    }
 }
 
