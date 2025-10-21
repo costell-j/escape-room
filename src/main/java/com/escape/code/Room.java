@@ -89,6 +89,7 @@ public class Room {
     }
 
     public void setDifficulty(int difficulty) {
+        if(difficulty > 0 && difficulty < 4)
         this.difficulty = difficulty;
     }
 
@@ -96,14 +97,17 @@ public class Room {
         this.leaderboard = leaderboard;
     }
 
-    public boolean setProgress(String username) {
+    public void setProgress(String username) {
         for(String s : progressList.keySet()) {
             if(s.equals(username)) {
                 this.progress = this.progressList.get(s);
-                return true;
+            }
+            else {
+                Progress progress = new Progress();
+                setProgress(progress);
             }
         }
-        return false;
+        
     }
 
     public void setProgress(Progress progress) {
@@ -128,6 +132,32 @@ public class Room {
             desc += puzzle.toString()+"\n";
         }
         return desc;
+    }
+    public void timeChange(int difficulty) {
+        int time = switch(difficulty) {
+            case 1 -> 1200;
+            case 2 -> 900;
+            case 3 -> 600;
+            default -> 1200;
+        };
+        setTime(time);
+    }
+    public String formatTimer() {
+        String formattedTimer;
+        int timer = getTimer();
+        int minutes = timer/60;
+        int seconds = timer%60;
+        String secondsFormatted;
+        if(seconds < 10) {
+            secondsFormatted = "0"+seconds;
+        }
+        else {
+            secondsFormatted = ""+seconds+"";
+        }
+
+        formattedTimer = minutes+":"+secondsFormatted;
+
+        return formattedTimer;
     }
 
 }

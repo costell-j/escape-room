@@ -58,40 +58,16 @@ public class GameManager {
     }
 
     public void difficultyTweak(int difficulty) {
-        int time = switch(difficulty) {
-            case 1 -> 1200;
-            case 2 -> 900;
-            case 3 -> 600;
-            default -> 1200;
-        };
-        this.room.setTime(time);
+        room.timeChange(difficulty);
     }
 
     public String formatTimer() {
-        String formattedTimer;
-        int timer = this.room.getTimer();
-        int minutes = timer/60;
-        int seconds = timer%60;
-        String secondsFormatted;
-        if(seconds < 10) {
-            secondsFormatted = "0"+seconds;
-        }
-        else {
-            secondsFormatted = ""+seconds+"";
-        }
-
-        formattedTimer = minutes+":"+secondsFormatted;
-
-        return formattedTimer;
+        return room.formatTimer();
     }
 
     public boolean chooseRoom(UUID id) {
         this.room = roomList.getRoom(id);
-        boolean success = this.room.setProgress(this.user.getUsername());
-        if(!success) {
-            Progress progress = new Progress();
-            this.room.setProgress(progress);
-        }
+        this.puzzles = this.room.getPuzzles();
         this.puzzle = room.getPuzzles().get(room.getProgress().getCurrentPuzzle());
         return this.room != null;
     }
