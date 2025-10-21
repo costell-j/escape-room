@@ -1,5 +1,4 @@
 package com.escape.code;
-
 import java.util.ArrayList;
 /*
  * Class used to create a new user
@@ -12,6 +11,16 @@ public class User {
     private Settings settings;
     private ArrayList<Room> rooms;
     private Room currentRoom;
+    /*
+     * Creates a default User as a guest
+     */
+    public User() {
+        this.username = "guest";
+        this.password = "password";
+        this.settings = new Settings(0, 1);
+        this.rooms = RoomList.getInstance().getAllRooms();
+        this.currentRoom = null;
+    }
     /*
      * Creates a new User
      * @param Username is the user's username

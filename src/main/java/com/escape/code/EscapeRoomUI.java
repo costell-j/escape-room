@@ -1,20 +1,23 @@
 package com.escape.code;
-import java.util.UUID;
 import java.util.ArrayList;
 
 public class EscapeRoomUI {
-    private GameManager gameManager;
+    private static GameManager gameManager;
+    private static ArrayList<Room> rooms;
 
-    EscapeRoomUI(){
+    private static void init() {
         gameManager = new GameManager();
+        rooms = gameManager.getRoomList();
     }
 
     public void run(){
-        new EscapeRoomUI();
+        init();
         duplicateAccount();
         validUser();
         newUser();
         duplicateAccountnewAccount();
+        choosingRoom();
+        playingPuzzles();
     }
 
     public void duplicateAccount(){
@@ -32,16 +35,6 @@ public class EscapeRoomUI {
         } else {
             System.out.println("Couldn't log in");
         }
-        
-        gameManager.chooseRoom(UUID.fromString("e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"));
-        gameManager.setDifficulty(3);
-        gameManager.getLeaderboard();
-        ArrayList<String> newHints = gameManager.getHints();
-        System.out.println(newHints);
-
-        gameManager.getMap();
-        gameManager.saveGame();
-        gameManager.logout();
     }
 
     public void validUser(){
@@ -53,21 +46,6 @@ public class EscapeRoomUI {
         } else {
             System.out.println("Couldn't log in");
         }
-
-        gameManager.getRoomList();
-        gameManager.chooseRoom(UUID.fromString("d8b9e9e2-e9a3-4b49-818a-976c61288ae4"));
-        gameManager.setDifficulty(1);
-        gameManager.setVolume(80);
-
-        gameManager.getMap();
-        gameManager.closeMap();
-
-        gameManager.getLeaderboard();
-        gameManager.closeLeaderboard();
-
-        ArrayList<String> newHints = gameManager.getHints();
-        System.out.println(newHints);
-        gameManager.logout();
     }
 
     public void newUser(){
@@ -79,27 +57,11 @@ public class EscapeRoomUI {
             System.out.println("Account couldn't be created");
         }
 
-        gameManager.login("Guest", "guestpassword");
         if (gameManager.login("Guest", "guestpassword")) {
             System.out.println("Successfully logged in");
         } else {
             System.out.println("Couldn't log in");
         }
-
-        gameManager.getRoomList();
-        gameManager.chooseRoom(UUID.fromString("e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"));
-        gameManager.setDifficulty(3);
-        gameManager.setVolume(20);
-
-        gameManager.getLeaderboard();
-        gameManager.closeLeaderboard();
-        ArrayList<String> newHints = gameManager.getHints();
-        System.out.println(newHints);
-
-        gameManager.getMap();
-        gameManager.closeMap();
-
-        gameManager.exit();
     }
 
     public void duplicateAccountnewAccount(){
@@ -122,23 +84,40 @@ public class EscapeRoomUI {
         } else {
             System.out.println("Couldn't log in");
         }
-
-        gameManager.getRoomList();
-        gameManager.chooseRoom(UUID.fromString("e0d413f5-1bcf-4cdc-b90f-f051b35ba5bb"));
-
-        //default difficulty
-        //default volume
-
-        ArrayList<String> newHints = gameManager.getHints();
-        System.out.println(newHints);
-
-        gameManager.getLeaderboard();
-        gameManager.closeLeaderboard();
-        gameManager.saveGame();
-
     }
 
+    public void choosingRoom(){
+        System.out.println();
+        System.out.println("Escape Rooms: ");
 
+        for (int i = 0; i < rooms.size(); i++){
+            Room room = rooms.get(i);
+            System.out.println(i + ". " + room.getName());
+        }
+        gameManager.chooseRoom(rooms.get(0).getId());
+        System.out.println("Choose your difficulty:\n 1. Lowest difficulty: 20 minute timer\n 2. Med difficulty: 15 minute timer\n 3. Hardest difficulty: 10 minute timer");
+        gameManager.setDifficulty(1);
+    }
+
+    public void playingPuzzles(){
+        System.out.println();
+        System.out.println("Puzzles: ");
+        ArrayList<Puzzle> puzzles = gameManager.getPuzzles();
+        for (int i = 0; i < puzzles.size(); i++){
+            Puzzle puzzle = puzzles.get(i);
+            System.out.println(i + ". " + puzzle.getName());
+        }
+        gameManager.setPuzzle(gameManager.getPuzzles().get(0));
+        System.out.println(gameManager.getPuzzle().getDescription());
+
+        String answer = "50";
+        if (gameManager.getPuzzle().getSolution() == answer){
+            System.out.println("Correct!");
+        } else {
+            System.out.println("Incorrect Answer");
+        }
+
+    }
     public static void main(String[] args) {
 		EscapeRoomUI escapeInterface = new EscapeRoomUI();
 		escapeInterface.run();
