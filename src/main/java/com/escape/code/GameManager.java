@@ -48,11 +48,6 @@ public class GameManager {
         return this.puzzles;
     }
     
-    public void setPuzzles() {
-        ArrayList<Puzzle> puzzles = this.room.getPuzzles();
-        this.puzzles = puzzles;
-    }
-
     public void setPuzzle(Puzzle p) {
         this.puzzle = p;
     }

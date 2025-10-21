@@ -69,6 +69,8 @@ public class Room {
     }
 
     public ArrayList<Puzzle> getPuzzles() {
+        if(puzzles == null)
+            this.puzzles = new ArrayList<Puzzle>();
         if(puzzles.isEmpty())
             puzzles.add(new Puzzle(null, null, null,null, false));
         return this.puzzles;
@@ -107,7 +109,6 @@ public class Room {
                 setProgress(progress);
             }
         }
-        
     }
 
     public void setProgress(Progress progress) {
