@@ -10,6 +10,7 @@ public class Decipher extends Puzzle<String> {
 
     public Decipher(String description, String name, String solution, ArrayList<String> hints, boolean isSolved, int shift) {
         super(description, name, solution, hints, isSolved);
+        this.description = shiftSolution(description);
         super.type = "Decipher";
         this.shift = shift;
         this.fillAlphabet();
@@ -30,8 +31,8 @@ public class Decipher extends Puzzle<String> {
         }
     }
 
-    private String shiftSolution() {
-        String originalSolution = this.solution.toLowerCase();
+    private String shiftSolution(String desc) {
+        String originalSolution = desc.toLowerCase();
         String shiftedSolution = "";
         for(int i=0; i<originalSolution.length(); i++) {
             Character c = this.alphabet.get(originalSolution.charAt(i));
@@ -44,7 +45,7 @@ public class Decipher extends Puzzle<String> {
     @Override
     public void attempt(String answer) {
         String formattedAnswer = answer.trim().toLowerCase();
-        String formattedSolution = this.shiftSolution().trim().toLowerCase();
+        String formattedSolution = this.solution.trim().toLowerCase();
 
         if(formattedAnswer.equals(formattedSolution)) {
             super.solvePuzzle();

@@ -127,6 +127,10 @@ public class GameManager {
         return this.puzzle.hints;
     }
 
+    public String checkType() {
+        return this.puzzle.getType();
+    }
+
     //Settings related methosd
     public void setVolume(int volume) {
         if(this.user != null && this.user.getSettings() != null)

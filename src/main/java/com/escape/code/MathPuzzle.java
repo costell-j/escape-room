@@ -9,6 +9,7 @@ public class MathPuzzle extends Puzzle<Double> {
     public MathPuzzle(String description, String name, double solution, ArrayList<String> hints, boolean isSolved) {
         super(description, name, solution, hints, isSolved);
         super.type = "Math";
+        this.solution = solution;
     }
 
     @Override

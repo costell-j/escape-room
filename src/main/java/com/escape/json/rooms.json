@@ -9,6 +9,7 @@
                 "description":"Warning to those who enter: one should escape before too long, the seemingly kind spirits change at midnight",
                 "name":"Haunting Warning",
                 "type":"Riddle",
+                "solution":"214212",
                 "hints":["You're looking for a 6 digit code", "Sound out the words", "Midnight"],
                 "isSolved":false
             }},
@@ -16,6 +17,7 @@
                 "description":"puzzle2",
                 "name":"puzzle",
                 "type":"Logic",
+                "solution":"solution",
                 "hints":["hint1", "hint2", "hint3"],
                 "isSolved":false
             }
