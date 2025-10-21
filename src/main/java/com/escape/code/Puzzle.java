@@ -56,7 +56,7 @@ public class Puzzle {
     public void setPuzzle(String puzzle){
         this.puzzle = puzzle != null ? puzzle : "No puzzle found";
     }
-    
+
     public void setDescription(String description) {
         this.description = description != null ? description : "No description available.";
     }
@@ -104,7 +104,7 @@ public class Puzzle {
  */
     @Override
     public String toString() {
-        String puzzle = "Description: "+this.description+"\nSolution: "+this.solution+"\nSolved: "+this.isSolved+"\nHints:\n";
+        String puzzle = "Puzzle: "+this.name+"\nDescription: "+this.description+"\nSolution: "+this.solution+"\nSolved: "+this.isSolved+"\nHints:\n";
         for(int i=0; i<this.hints.size(); i++) {
             puzzle += this.hints.get(i)+"\n";
         }

@@ -17,7 +17,7 @@ public class MathPuzzle extends Puzzle {
         super(description, name, hints, solution, isSolved);
     }
   
-   
+    @Override
      public boolean attempt(String answer) {
         if (answer == null) return false;
 /*
@@ -36,7 +36,7 @@ public class MathPuzzle extends Puzzle {
                 double diffrence = correctValue - userValue;
                     System.out.println("Your off by this much" +diffrence);
 
-            }
+            }S
             /*
              * if the parsing fail as in a non number is entered it will automatically fail.
              */

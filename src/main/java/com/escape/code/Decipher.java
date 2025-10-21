@@ -11,7 +11,8 @@ public class Decipher extends Puzzle {
     public Decipher (String description, String name, ArrayList<String> hints, String solution, boolean isSolved) {
         super(description, name, hints, solution, isSolved);
     }
-   
+    
+    @Override
     public boolean attempt(String answer) {
         if (equalsLoose(answer, getSolution())) {
             isSolved = true;

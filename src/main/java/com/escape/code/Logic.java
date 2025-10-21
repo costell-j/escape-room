@@ -16,6 +16,8 @@ import java.util.ArrayList;
 /*
  * implements the core check then compares answer to stored solution using loose equals ingnore case and whitespace
  */
+
+        @Override
         public boolean attempt(String answer) {
             if (equalsLoose(answer, getSolution())) {
                 isSolved = true;
