@@ -4,7 +4,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -127,6 +126,52 @@ public class DataWriter extends DataConstants {
     }
 
     /**
+     * Creates a JSONObject from a given Puzzle
+     * @param puzzle Puzzle to be serialized
+     * @return a JSONObject representation of a Puzzle
+     */
+    @SuppressWarnings("unchecked")
+    private static JSONObject writePuzzle(Puzzle puzzle) {
+        //Create Puzzle JSON Object
+        JSONObject puzzleJSON = new JSONObject();
+        puzzleJSON.put(USER_PUZZLE_DESC, puzzle.getDescription());
+        puzzleJSON.put(ROOM_NAME, puzzle.getName());
+        puzzleJSON.put(PUZZLE_TYPE, puzzle.getType());
+        puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzle.getSolution());
+        puzzleJSON.put(USER_PUZZLE_SOLVED, puzzle.isSolved());
+
+        //Type Switch
+        switch(puzzle.getType()) {
+            case "Riddle" -> {
+                puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzle.getSolution());
+            }
+            case "Math" -> {
+                puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzle.getSolution());
+            }
+            case "Logic" -> {
+                puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzle.getSolution());
+            }
+            case "Decipher" -> {
+                puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzle.getSolution());
+                puzzleJSON.put(DECIPHER_SHIFT, puzzle.getShift());
+            }
+            default -> { break; }
+        }
+
+        //Create JSON Array of hints to store in Puzzle Object
+        JSONArray hintsJSON = new JSONArray();
+        ArrayList<String> hints = puzzle.getHints();
+        for(int j=0; j<hints.size(); j++) {
+            hintsJSON.add(hints.get(j));
+        }
+
+        //Continue adding to Puzzle Object
+        puzzleJSON.put(USER_PUZZLE_HINTS, hintsJSON);
+
+        return puzzleJSON;
+    }
+
+    /**
      * Extracts a HashMap of Puzzle Objects and adds them to a JSONArray
      * @param room a Room Object to read data from for placement into a JSONArray
      * @return a JSONArray containing a HashMap<String, Puzzle> in JSON format
@@ -137,22 +182,7 @@ public class DataWriter extends DataConstants {
         JSONArray puzzlesJSON = new JSONArray();
         ArrayList<Puzzle> puzzles = room.getPuzzles();
         for(int i=0; i<puzzles.size(); i++) {
-            //Create Puzzle JSON Object
-            JSONObject puzzleJSON = new JSONObject();
-            puzzleJSON.put(USER_PUZZLE_DESC, puzzles.get(i).getDescription());
-            puzzleJSON.put(ROOM_NAME, puzzles.get(i).getName());
-            puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzles.get(i).getSolution());
-            puzzleJSON.put(USER_PUZZLE_SOLVED, puzzles.get(i).isSolved());
-
-            //Create JSON Array of hints to store in Puzzle Object
-            JSONArray hintsJSON = new JSONArray();
-            ArrayList<String> hints = puzzles.get(i).getHints();
-            for(int j=0; j<hints.size(); j++) {
-                hintsJSON.add(hints.get(j));
-            }
-
-            //Continue adding to Puzzle Object
-            puzzleJSON.put(USER_PUZZLE_HINTS, hintsJSON);
+            JSONObject puzzleJSON = writePuzzle(puzzles.get(i));
             puzzlesJSON.add(puzzleJSON);
         }
 
@@ -237,20 +267,7 @@ public class DataWriter extends DataConstants {
             puzzleMapJSON.put(USER_PUZZLE_HASH_KEY, puzzle.getDescription());
 
             //Create Puzzle JSON Object for HashMap value
-            JSONObject puzzleJSON = new JSONObject();
-            puzzleJSON.put(USER_PUZZLE_DESC, puzzle.getDescription());
-            puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzle.getSolution());
-            puzzleJSON.put(USER_PUZZLE_SOLVED, puzzle.isSolved());
-
-            //Create JSON Array of hints to store in Puzzle Object
-            JSONArray hintsJSON = new JSONArray();
-            ArrayList<String> hints = puzzle.getHints();
-            for(int j=0; j<hints.size(); j++) {
-                hintsJSON.add(hints.get(j));
-            }
-
-            //Continue adding to Puzzle Object
-            puzzleJSON.put(USER_PUZZLE_HINTS, hintsJSON);
+            JSONObject puzzleJSON = writePuzzle(puzzle);
             puzzleMapJSON.put(USER_PUZZLE_HASH_VAL, puzzleJSON);
             puzzleJSONArray.add(puzzleMapJSON);
 

@@ -108,17 +108,7 @@ public class DataLoader extends DataConstants {
             JSONObject puzzleJSON = (JSONObject)puzzles.get(k);
             String ProgressKey = (String)puzzleJSON.get(USER_PUZZLE_HASH_KEY);
             JSONObject ProgressValue = (JSONObject)puzzleJSON.get(USER_PUZZLE_HASH_VAL);
-            String description = (String)ProgressValue.get(USER_PUZZLE_DESC);
-            String name = (String)ProgressValue.get(ROOM_NAME);
-            ArrayList<String> hints = new ArrayList<>();
-            JSONArray hintsJSON = (JSONArray)ProgressValue.get(USER_PUZZLE_HINTS);
-            for(int l=0; l<hintsJSON.size(); l++) {
-                String hint = (String)hintsJSON.get(l);
-                hints.add(hint);
-            }
-            String solution = (String)ProgressValue.get(USER_PUZZLE_SOLUTION);
-            boolean isSolved = (boolean)ProgressValue.get(USER_PUZZLE_SOLVED);
-            Puzzle puzzle = new Puzzle(description, name, hints, solution, isSolved);
+            Puzzle puzzle = loadPuzzle(ProgressValue);
             puzzleMap.put(ProgressKey, puzzle);
         }
 
@@ -264,6 +254,48 @@ public class DataLoader extends DataConstants {
     }
 
     /**
+     * Reads in a Puzzle Object from a JSONObject
+     * @param parentJSON JSONObject to read data from
+     * @return a Puzzle
+     */
+    private static Puzzle loadPuzzle(JSONObject parentJSON) {
+        String description = (String)parentJSON.get(USER_PUZZLE_DESC);
+        String name = (String)parentJSON.get(ROOM_NAME);
+        boolean isSolved = (boolean)parentJSON.get(USER_PUZZLE_SOLVED);
+        ArrayList<String> hints = new ArrayList<>();
+        JSONArray hintsJSON = (JSONArray)parentJSON.get(USER_PUZZLE_HINTS);
+        for(int k=0; k<hintsJSON.size(); k++) {
+            String hint = (String)hintsJSON.get(k);
+            hints.add(hint);
+        }
+        
+        String type = (String)parentJSON.get(PUZZLE_TYPE);
+        Puzzle puzzle = new Riddle(description, name, hints, type, isSolved);
+        switch(type) {
+            case "Riddle" -> {
+                String solution = (String)parentJSON.get(USER_PUZZLE_SOLUTION);
+                puzzle = new Riddle(description, name, hints, solution, isSolved);
+            }
+            case "Math" -> {
+                double solution = ((Double)parentJSON.get(USER_PUZZLE_SOLUTION));
+                puzzle = new MathPuzzle(description, name, hints, solution, isSolved);
+            }
+            case "Logic" -> {
+                String solution = (String)parentJSON.get(USER_PUZZLE_SOLUTION);
+                puzzle = new Logic(description, name, hints, solution, isSolved);
+            }
+            case "Decipher" -> {
+                String solution = (String)parentJSON.get(USER_PUZZLE_SOLUTION);
+                int shift = ((Long)parentJSON.get(DECIPHER_SHIFT)).intValue();
+                puzzle = new Decipher(description, name, hints, solution, isSolved);
+            }
+                default -> {break;}
+            }
+
+            return puzzle;
+    }
+    
+    /**
      * Extracts a JSONArray and constructs an ArrayList from the contained data, providing a list of puzzles
      * @param parentJSON a JSONObject to extract a JSONArray from
      * @return an ArrayList<Puzzle>
@@ -274,17 +306,7 @@ public class DataLoader extends DataConstants {
         ArrayList<Puzzle> puzzles = new ArrayList<>();
         for(int j=0; j<puzzlesJSON.size(); j++) {
             JSONObject puzzleJSON = (JSONObject)puzzlesJSON.get(j);
-            String description = (String)puzzleJSON.get(USER_PUZZLE_DESC);
-            String name = (String)puzzleJSON.get(ROOM_NAME);
-            ArrayList<String> hints = new ArrayList<>();
-            JSONArray hintsJSON = (JSONArray)puzzleJSON.get(USER_PUZZLE_HINTS);
-            for(int k=0; k<hintsJSON.size(); k++) {
-                String hint = (String)hintsJSON.get(k);
-                hints.add(hint);
-            }
-            String solution = (String)puzzleJSON.get(USER_PUZZLE_SOLUTION);
-            boolean isSolved = (boolean)puzzleJSON.get(USER_PUZZLE_SOLVED);
-            Puzzle puzzle = new Puzzle(description, name, hints, solution, isSolved);
+            Puzzle puzzle = loadPuzzle(puzzleJSON);
             puzzles.add(puzzle);
         }
 
