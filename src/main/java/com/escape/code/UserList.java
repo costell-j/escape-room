@@ -70,17 +70,17 @@ public class UserList {
      * Creates a new User and adds them to the UserList, while checking for duplicates
      * @param username user's desired username
      * @param password user's desired password
-     * @param settings user's settings
+     * @param settings user's settingsc
      * @param rooms user's list of rooms
      * @param currentRoom user's current room
      * @return a boolean, true if user is created, false if not
      */
     public boolean addUser(String username, String password, Settings settings, ArrayList<Room> rooms, Room currentRoom) {
-        boolean validUsername = (!"".equals(username) && !username.matches("\\h") && !username.matches("[\\\'\"]") && username != null && !userList.checkUsernames(username));
-        boolean validPassword = (!"".equals(password) && !password.matches("\\h") && !password.matches("[\\\'\"]") && password != null);
+        boolean validUsername = (!"".equals(username) && !username.matches("\\S+") && !checkUsernames(username));
+        boolean validPassword = (!"".equals(password) && !password.matches("\\S+"));
         if(getUser(username, password) == null && validUsername && validPassword) {
             if(settings == null)
-                settings = new Settings(0, 1);
+                settings = new Settings(0, 0);
             User user = new User(username, password, settings, rooms, currentRoom);
             users.add(user);
             return true;
