@@ -97,24 +97,29 @@ public class EscapeRoomUI {
         gameManager.chooseRoom(rooms.get(0).getId());
         System.out.println("Choose your difficulty:\n 1. Lowest difficulty: 20 minute timer\n 2. Med difficulty: 15 minute timer\n 3. Hardest difficulty: 10 minute timer");
         gameManager.setDifficulty(1);
+        gameManager.openLeaderboard();
+        gameManager.getLeaderboard().toString();
+        gameManager.closeLeaderboard();
     }
 
     public void playingPuzzles(){
         System.out.println();
         System.out.println("Puzzles: ");
-        ArrayList<Puzzle> puzzles = gameManager.getPuzzles();
-        for (int i = 0; i < puzzles.size(); i++){
-            Puzzle puzzle = puzzles.get(i);
-            System.out.println(i + ". " + puzzle.getName());
+        for (int i = 0; i < gameManager.getPuzzles().size(); i++){
+            System.out.println(i + ". " + gameManager.getPuzzle().getName());
         }
         gameManager.setPuzzle(gameManager.getPuzzles().get(0));
         System.out.println(gameManager.getPuzzle().getDescription());
 
         String answer = "50";
-        if (gameManager.getPuzzle().getSolution() == answer){
+        if (answer.equals(gameManager.getPuzzle().getSolution())){
             System.out.println("Correct!");
+            gameManager.getPuzzles().remove(gameManager.getPuzzle());
         } else {
             System.out.println("Incorrect Answer");
+        }
+        if(gameManager.getPuzzles().isEmpty()){
+            System.out.println("Congrats you've finished the puzzle");
         }
 
     }
