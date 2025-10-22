@@ -64,6 +64,14 @@ public class GameManager {
     public ArrayList<User> getUserList() {
         return userList.getUsers();
     }
+    
+    /**
+     * Gets the current user
+     * @return user
+     */
+    public User getUser() {
+        return this.user;
+    }
 
     //Room related methods
 
@@ -134,14 +142,6 @@ public class GameManager {
      */
     public void closeLeaderboard() {
         room.getLeaderboard().setOpen(false);
-    }
-
-    /**
-     * Gets the current user
-     * @return user
-     */
-    public User getUser() {
-        return this.user;
     }
 
     /**
