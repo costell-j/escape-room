@@ -26,6 +26,7 @@ public abstract class DataConstants {
     protected static final String USER_ACHIEVEMENT_UNLOCKED = "unlocked";
     protected static final String USER_PUZZLE_SOLUTION = "solution";
     protected static final String USER_PUZZLE_SOLVED = "isSolved";
+    protected static final String PUZZLE_TYPE = "type";
     protected static final String USER_ROOMS = "rooms";
     protected static final String USER_ROOM_HASH_KEY = "UUID";
     protected static final String USER_ROOM_HASH_VAL = "Room";
@@ -36,6 +37,7 @@ public abstract class DataConstants {
     protected static final String ROOM_TEMP_FILE_NAME = "src/main/java/com/escape/json/rooms_temp.json";
     protected static final String ROOM_ID = "id";
     protected static final String ROOM_NAME = "name";
+    protected static final String DECIPHER_SHIFT = "shift";
     protected static final String ROOM_MAP = "map";
     protected static final String ROOM_MAP_ISOPEN = "isOpen";
     protected static final String ROOM_MAP_NAME = "mapName";
