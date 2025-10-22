@@ -85,7 +85,7 @@ public class UserList {
      */
     public boolean addUser(String username, String password, Settings settings, ArrayList<Room> rooms, Room currentRoom) {
         boolean validUsername = (!"".equals(username) && !username.matches("\\S+") && !checkUsernames(username));
-        boolean validPassword = (!"".equals(password) && !password.matches("\\S+") && !checkPasswords(password));
+        boolean validPassword = (!"".equals(password) && !password.matches("\\S+"));
         if(getUser(username, password) == null && validUsername && validPassword) {
             if(settings == null)
                 settings = new Settings(0, 0);
