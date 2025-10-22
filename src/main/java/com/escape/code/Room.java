@@ -94,13 +94,14 @@ public class Room {
 
     /**
      * Getter for room's puzzles
+     * Throws an exception when empty
      * @return puzzles
      */
     public ArrayList<Puzzle> getPuzzles() {
         if(puzzles == null)
             this.puzzles = new ArrayList<Puzzle>();
         if(puzzles.isEmpty())
-            puzzles.add(new Puzzle(null, null, null,null, false));
+            throw new IllegalArgumentException("Empty ArrayList");
         return this.puzzles;
     }
 
