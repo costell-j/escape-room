@@ -97,6 +97,9 @@ public class EscapeRoomUI {
         gameManager.chooseRoom(rooms.get(0).getId());
         System.out.println("Choose your difficulty:\n 1. Lowest difficulty: 20 minute timer\n 2. Med difficulty: 15 minute timer\n 3. Hardest difficulty: 10 minute timer");
         gameManager.setDifficulty(1);
+        gameManager.openLeaderboard();
+        gameManager.getLeaderboard().toString();
+        gameManager.closeLeaderboard();
     }
 
     public void playingPuzzles(){
