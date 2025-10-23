@@ -16,6 +16,7 @@ public class Room {
     private Leaderboard leaderboard;
     private int timer;
     private ArrayList<Puzzle> puzzles;
+    private ArrayList<Slide> story;
     private int difficulty;
 
     /**
@@ -27,10 +28,11 @@ public class Room {
      * @param progress Room's progress object
      * @param leaderboard Room's leaderboard
      * @param puzzles Room's array of puzzles
+     * @param story Room's' array of stories
      * @param timer Room's timer
      * @param difficulty Room's diffficulty
      */
-    public Room(UUID id, String name, Map map, HashMap<String, Progress> progressList, Progress progress, Leaderboard leaderboard, ArrayList<Puzzle> puzzles, int timer, int difficulty) {
+    public Room(UUID id, String name, Map map, HashMap<String, Progress> progressList, Progress progress, Leaderboard leaderboard, ArrayList<Puzzle> puzzles, ArrayList<Slide> story, int timer, int difficulty) {
         this.id = id;
         this.name = name;
         this.map = map;
@@ -38,6 +40,7 @@ public class Room {
         this.progress = progress;
         this.leaderboard = leaderboard;
         this.puzzles = puzzles;
+        this.story = story;
         this.timer = timer;
         this.difficulty = difficulty;
     }

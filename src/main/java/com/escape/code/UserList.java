@@ -63,14 +63,6 @@ public class UserList {
         }
         return true;
     }
-    public boolean checkPasswords(String password) {
-        for(User user : users) {
-            if(password.equals(user.getPassword())) {
-                return false;
-            }
-        }
-        return true;
-    }
 
     // Functionality Methods
 

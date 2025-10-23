@@ -287,7 +287,7 @@ public class DataLoader extends DataConstants {
             case "Decipher" -> {
                 String solution = (String)parentJSON.get(USER_PUZZLE_SOLUTION);
                 int shift = ((Long)parentJSON.get(DECIPHER_SHIFT)).intValue();
-                puzzle = new Decipher(description, name, solution, hintsJSON, isSolved, shift);
+                puzzle = new Decipher(description, name, solution, hints, isSolved, shift);
             }
                 default -> {break;}
             }
