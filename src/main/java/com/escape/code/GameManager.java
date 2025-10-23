@@ -96,8 +96,8 @@ public class GameManager {
      * @param id uuid of desired room
      * @return true if the room exists
      */
-    public boolean chooseRoom(UUID id) {
-        this.room = roomList.getRoom(id);
+    public boolean chooseRoom(Room r) {
+        this.room = roomList.getRoom(r.getId());
         this.puzzles = this.room.getPuzzles();
         this.puzzle = room.getPuzzles().get(room.getProgress().getCurrentPuzzle());
         return this.room != null;
