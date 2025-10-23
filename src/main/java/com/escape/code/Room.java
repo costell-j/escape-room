@@ -18,6 +18,7 @@ public class Room {
     private ArrayList<Puzzle> puzzles;
     private ArrayList<Slide> story;
     private int difficulty;
+    private double score;
 
     /**
      * Constructor for the Room object
@@ -43,6 +44,7 @@ public class Room {
         this.story = story;
         this.timer = timer;
         this.difficulty = difficulty;
+        this.score = 1000;
     }
 
     // Getters
@@ -55,6 +57,10 @@ public class Room {
         return this.name;
     }
 
+    public ArrayList<Slide> getStory() {
+        return this.story;
+    }
+    
     /**
      * Getter for the room's progress list
      * @return progress list
@@ -124,6 +130,26 @@ public class Room {
         return this.id;
     }
 
+    /**
+     * Gets the final score based off the number of clues used and time spent
+     */
+    public double getFinalScore() {
+        switch(difficulty) {
+            case 1: 
+                this.score -= ((progress.getCluesUsed()*3) + (this.timer - progress.getCompletionTime()));
+                break;
+            case 2: 
+                this.score -= ((progress.getCluesUsed()*2) + (this.timer - progress.getCompletionTime()));
+                break;
+            case 3:
+                this.score -= ((progress.getCluesUsed()) + (this.timer - progress.getCompletionTime()));
+                break;
+            default:
+                this.score = 0;
+        }
+        if(this.score < 0) {this.score = 0;}
+        return this.score;
+    }
     // Setters
 
     /**

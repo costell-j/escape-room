@@ -121,6 +121,8 @@ public class DataWriter extends DataConstants {
         roomDetails.put(USER_PROGRESS, progressJSON);
         JSONObject leaderboardJSON = writeLeaderboard(room);
         roomDetails.put(ROOM_LEADERBOARD, leaderboardJSON);
+        JSONArray storyJSON = writeStory(room);
+        roomDetails.put(ROOM_STORY, storyJSON);
 
         return roomDetails;
     }
@@ -348,6 +350,20 @@ public class DataWriter extends DataConstants {
         }
 
         return roomsJSON;
+    }
+
+    @SuppressWarnings("unchecked")
+    private static JSONArray writeStory(Room room) {
+        JSONArray storyJSON = new JSONArray();
+        ArrayList<Slide> slides = room.getStory();
+        for(int i=0; i<slides.size(); i++) {
+            JSONObject slideJSON = new JSONObject();
+            slideJSON.put(USER_PUZZLE_DESC, slides.get(i).getDescription());
+            slideJSON.put(IMAGE_PATH, slides.get(i).getImagePath());
+            storyJSON.add(slideJSON);
+        }
+
+        return storyJSON;
     }
 
     public static void main(String[] args){

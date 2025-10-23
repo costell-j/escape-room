@@ -76,10 +76,10 @@ public class DataLoader extends DataConstants {
                 HashMap<String, Progress> progressList = loadProgressList(roomJSON);
                 Progress progress = loadProgress(roomJSON);
                 ArrayList<Puzzle> puzzles = loadPuzzles(roomJSON);
-                //Leaderboard leaderboard = loadLeaderboard(roomJSON);
                 Leaderboard leaderboard = new Leaderboard();
+                ArrayList<Slide> slides = loadStory(roomJSON);
 
-                Room room = new Room(id, name, map, progressList, progress, leaderboard, puzzles, timer, difficulty);
+                Room room = new Room(id, name, map, progressList, progress, leaderboard, puzzles, slides, timer, difficulty);
                 rooms.add(room);
             }
             reader.close();
@@ -311,6 +311,20 @@ public class DataLoader extends DataConstants {
         }
 
         return puzzles;
+    }
+
+    private static ArrayList<Slide> loadStory(JSONObject parentJSON) {
+        JSONArray storyJSON = (JSONArray)parentJSON.get(ROOM_STORY);
+        ArrayList<Slide> slides = new ArrayList<>();
+        for(int i=0; i<storyJSON.size(); i++) {
+            JSONObject slideJSON = (JSONObject)storyJSON.get(i);
+            String description = (String)slideJSON.get(USER_PUZZLE_DESC);
+            String imagePath = (String)slideJSON.get(IMAGE_PATH);
+            Slide slide = new Slide(description, imagePath);
+            slides.add(slide);
+        }
+
+        return slides;
     }
 
     public static void main(String[] args) {

@@ -3,6 +3,7 @@
        "id": "d8b9e9e2-e9a3-4b49-818a-976c61288ae4",
        "name": "Escape 13th Street",
        "map": {"mapName":"map", "height":500, "length":500, "isOpen":false},
+       "story": [{"description":"start", "imagePath":"src/main/com/escape/code"}, {"description":"middle", "imagePath":"src/main/com/escape/code"}, {"description":"end", "imagePath":"src/main/com/escape/code"}],
        "progressList":[{"String":"MAK524","Progress":
        {
             "puzzlesSolved": [{"String":"Haunting Warning","Puzzle":{
