@@ -55,6 +55,10 @@ public class Room {
         return this.name;
     }
 
+    public ArrayList<Slide> getStory() {
+        return this.story;
+    }
+
     /**
      * Getter for the room's progress list
      * @return progress list
