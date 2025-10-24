@@ -85,6 +85,10 @@ public abstract class Puzzle<T> {
         return this.hints;
     }
 
+    public boolean isLocked() {
+        return this.locked;
+    }
+
     /*
     * looks to the puzzle class to define the attempt and type
     */

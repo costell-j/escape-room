@@ -40,6 +40,7 @@
             "cluesUsed":2,
             "currentRoom":0,
             "completionTime":1000,
+            "hintsUsed": [{"hint":"C is first","name":"Order of Completion"}],
             "achievements":[{
                 "title":"Speedrun: Complete the room in 5 minutes or less",
                 "unlocked":false
@@ -89,6 +90,7 @@
             "cluesUsed":2,
             "currentRoom":0,
             "completionTime":1000,
+            "hintsUsed": [{"hint":"C is first","name":"Order of Completion"}],
             "achievements":[{
                 "title":"Speedrun: Complete the room in 5 minutes or less",
                 "unlocked":false
@@ -138,6 +140,7 @@
             "cluesUsed":2,
             "currentRoom":0,
             "completionTime":1000,
+            "hintsUsed": [{"hint":"C is first","name":"Order of Completion"}],
             "achievements":[{
                 "title":"Speedrun: Complete the room in 5 minutes or less",
                 "unlocked":false

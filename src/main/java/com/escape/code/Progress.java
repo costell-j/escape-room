@@ -12,6 +12,7 @@ public class Progress {
     private int currentPuzzle;
     private ArrayList<Achievement> achievements;
     private ArrayList<Item> items;
+    private HashMap<String, String> hintsUsed;
 
 
     public Progress() {
@@ -21,6 +22,7 @@ public class Progress {
         this.currentPuzzle = 0;
         this.achievements = new ArrayList<>();
         this.items = new ArrayList<>();
+        this.hintsUsed = new HashMap<>();
     }
     /*
      * Creates a new instance of the progress
@@ -29,13 +31,14 @@ public class Progress {
      * @param completionTime is the amount of time the puzzles took to complete
      * @param achievements is the achievements the user has recieved
      */
-    public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, int completionTime, int currentPuzzle, ArrayList<Achievement> achievements, ArrayList<Item> items){
+    public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, int completionTime, int currentPuzzle, ArrayList<Achievement> achievements, ArrayList<Item> items, HashMap<String, String> hintsUsed){
         this.puzzlesSolved = puzzles;
         this.cluesUsed = cluesUsed;
         this.completionTime = completionTime;
         this.currentPuzzle = currentPuzzle;
         this.achievements = achievements;
         this.items = items;
+        this.hintsUsed = hintsUsed;
     }
 
     // Getters
@@ -44,6 +47,10 @@ public class Progress {
      */
     public HashMap<String, Puzzle> getPuzzlesSolved() {
         return this.puzzlesSolved;
+    }
+
+    public HashMap<String, String> getHintsUsed() {
+        return this.hintsUsed;
     }
 
     public ArrayList<Item> getItems() {

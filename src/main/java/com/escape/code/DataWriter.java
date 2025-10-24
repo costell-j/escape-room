@@ -153,6 +153,7 @@ public class DataWriter extends DataConstants {
         puzzleJSON.put(USER_PUZZLE_SOLVED, puzzle.isSolved());
         puzzleJSON.put(ITEM, writeItem(puzzle));
         puzzleJSON.put(GIVEN_ITEM, writeItem(puzzle));
+        puzzleJSON.put(PUZZLE_LOCKED, puzzle.isLocked());
 
         //Type Switch
         switch(puzzle.getType()) {
@@ -304,6 +305,16 @@ public class DataWriter extends DataConstants {
             itemsJSON.add(writeItem(puzzle));
         }
         roomProgress.put(ITEMS, itemsJSON);
+
+        JSONArray hintsUsedJSON = new JSONArray();
+        HashMap<String, String> hintsUsed = room.getProgress().getHintsUsed();
+        for(String s : hintsUsed.keySet()) {
+            JSONObject hintHashJSON = new JSONObject();
+            hintHashJSON.put(HINT, s);
+            hintHashJSON.put(ROOM_NAME, hintsUsed.get(s));
+            hintsUsedJSON.add(hintHashJSON);
+        }
+        roomProgress.put(HINTS_USED, hintsUsedJSON);
 
         //Continuation of Progress Object
         roomProgress.put(USER_PUZZLES_SOLVED, puzzleJSONArray);
