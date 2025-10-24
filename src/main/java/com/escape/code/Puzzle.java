@@ -12,7 +12,9 @@ public abstract class Puzzle<T> {
 
     protected String description;
     protected String name;
+    protected boolean locked;
     protected ArrayList<String> hints;
+    protected ArrayList<String> usedhints;
     protected  T solution;
     protected boolean isSolved;
     protected String type;
@@ -23,12 +25,21 @@ public abstract class Puzzle<T> {
     /*
     * Constructor for Puzzle class.
     */
-    public Puzzle(String description, String name, ArrayList<String> hints, T solution, boolean isSolved) {
+    public Puzzle(String description, String name, ArrayList<String> hints, ArrayList<String> usedhints, T solution, boolean locked, boolean isSolved) {
         setDescription(description);
         this.name = name;
         setHints(hints);
+        this.usedhints = usedhints;
         this.solution = solution;
         setSolved(isSolved);   
+        setLocked(locked);
+    }
+    public void setLocked(boolean locked){
+        this.locked = locked;
+    }
+
+    public boolean isLocked(){
+        return this.locked;
     }
 /*
  * T allows for us to use diffent types for solution
@@ -72,6 +83,11 @@ public abstract class Puzzle<T> {
      public ArrayList<String> getHints() {
          return this.hints;
      }
+
+     public ArrayList<String> getusedHints() {
+        return this.usedhints;
+
+     }
 /*
  * looks to the puzzle class to define the attempt and type
  */
@@ -81,7 +97,7 @@ public abstract class Puzzle<T> {
  * looks at the how many hints can be used and hits used, then usses them unitl max hint amount reached.
  * And returns no more hints left.
  */
-    public String getextHint(){
+    public String getnextHint(){
         if(hintsUsed < hints.size()){
             return hints.get(hintsUsed++);
         }

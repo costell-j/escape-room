@@ -166,6 +166,22 @@ public class GameManager {
         room.getMap().setOpen(false);
     }
 
+    /**
+     * Gets the percentage of puzzles completed
+     * @return percent as a double
+     */
+    public double percentDone() {
+        return room.percentComplete();
+    }
+
+    /**
+     * Gets the player's final score for a room
+     * @return final score as a double
+     */
+    public double getFinalScore() {
+        return room.getFinalScore();
+    }
+
 
     //Puzzle related methods
 
