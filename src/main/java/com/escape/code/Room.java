@@ -265,6 +265,14 @@ public class Room {
     }
 
     /**
+     * Checks if the user got a perfect score
+     * @return true if yes, false if no
+     */
+    public boolean perfectScore() {
+        return (getFinalScore() == 1000);
+    }
+
+    /**
      * Method that formats the timer into a min:secs
      * @return the formatted timer
      */
