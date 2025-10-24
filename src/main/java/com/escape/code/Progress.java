@@ -11,6 +11,7 @@ public class Progress {
     private int completionTime;
     private int currentPuzzle;
     private ArrayList<Achievement> achievements;
+    private ArrayList<Item> items;
 
 
     public Progress() {
@@ -19,6 +20,7 @@ public class Progress {
         this.completionTime = 0;
         this.currentPuzzle = 0;
         this.achievements = new ArrayList<>();
+        this.items = new ArrayList<>();
     }
     /*
      * Creates a new instance of the progress
@@ -27,12 +29,13 @@ public class Progress {
      * @param completionTime is the amount of time the puzzles took to complete
      * @param achievements is the achievements the user has recieved
      */
-    public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, int completionTime, int currentPuzzle, ArrayList<Achievement> achievements){
+    public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, int completionTime, int currentPuzzle, ArrayList<Achievement> achievements, ArrayList<Item> items){
         this.puzzlesSolved = puzzles;
         this.cluesUsed = cluesUsed;
         this.completionTime = completionTime;
         this.currentPuzzle = currentPuzzle;
         this.achievements = achievements;
+        this.items = items;
     }
 
     // Getters
@@ -41,6 +44,10 @@ public class Progress {
      */
     public HashMap<String, Puzzle> getPuzzlesSolved() {
         return this.puzzlesSolved;
+    }
+
+    public ArrayList<Item> getItems() {
+        return this.items;
     }
     /*
      * Returns the clues used
@@ -76,6 +83,13 @@ public class Progress {
     /*
      * Returns the progress in a String
      */
+
+    public void addItem(Item i) {
+        if(i != null) {
+            this.items.add(i);
+        }
+    }
+    
     @Override
     public String toString() {
         String progress = "Clues Used: "+this.cluesUsed+"\nAchievements:\n";
