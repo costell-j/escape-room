@@ -121,11 +121,30 @@ public class DataLoader extends DataConstants {
             boolean unlocked = (boolean)achievementJSON.get(USER_ACHIEVEMENT_UNLOCKED);
             Achievement achievement = new Achievement(title, unlocked);
             achievements.add(achievement);
-
         }
-        Progress progress = new Progress(puzzleMap, cluesUsed, completionTime, currentRoom, achievements);
+
+        //Load Items
+        JSONArray itemsJSON = (JSONArray)progressJSON.get(ITEMS);
+        ArrayList<Item> items = new ArrayList<>();
+        for(int i=0; i<itemsJSON.size(); i++) {
+            JSONObject itemJSON = (JSONObject)itemsJSON.get(i);
+
+            Item item = loadItem(itemJSON);
+            items.add(item);
+        }
+        Progress progress = new Progress(puzzleMap, cluesUsed, completionTime, currentRoom, achievements, items);
 
         return progress;
+    }
+
+    private static Item loadItem(JSONObject parentJSON) {
+        String name = (String)parentJSON.get(ROOM_NAME);
+        String description = (String)parentJSON.get(USER_PUZZLE_DESC);
+        boolean used = (boolean)parentJSON.get(ITEM_USED);
+
+        Item item = new Item(name, description, used);
+
+        return item;
     }
 
     /**
@@ -262,6 +281,12 @@ public class DataLoader extends DataConstants {
         String description = (String)parentJSON.get(USER_PUZZLE_DESC);
         String name = (String)parentJSON.get(ROOM_NAME);
         boolean isSolved = (boolean)parentJSON.get(USER_PUZZLE_SOLVED);
+        boolean locked = (boolean)parentJSON.get(PUZZLE_LOCKED);
+        JSONObject itemJSON = (JSONObject)parentJSON.get(ITEM);
+        JSONObject givenItemJSON = (JSONObject)parentJSON.get(GIVEN_ITEM);
+        Item item = loadItem(itemJSON);
+        Item givenItem = loadItem(givenItemJSON);
+        
         ArrayList<String> hints = new ArrayList<>();
         JSONArray hintsJSON = (JSONArray)parentJSON.get(USER_PUZZLE_HINTS);
         for(int k=0; k<hintsJSON.size(); k++) {
@@ -270,24 +295,24 @@ public class DataLoader extends DataConstants {
         }
         
         String type = (String)parentJSON.get(PUZZLE_TYPE);
-        Puzzle puzzle = new Riddle(description, name, hints, type, isSolved);
+        Puzzle puzzle = new Riddle(description, name, hints, type, isSolved, locked, item, givenItem);
         switch(type) {
             case "Riddle" -> {
                 String solution = (String)parentJSON.get(USER_PUZZLE_SOLUTION);
-                puzzle = new Riddle(description, name, hints, solution, isSolved);
+                puzzle = new Riddle(description, name, hintsJSON, solution, isSolved, locked, item, givenItem);
             }
             case "Math" -> {
                 double solution = ((Double)parentJSON.get(USER_PUZZLE_SOLUTION));
-                puzzle = new MathPuzzle(description, name, hints, solution, isSolved);
+                puzzle = new MathPuzzle(description, name, hintsJSON, solution, isSolved, locked, item, givenItem);
             }
             case "Logic" -> {
                 String solution = (String)parentJSON.get(USER_PUZZLE_SOLUTION);
-                puzzle = new Logic(description, name, hints, solution, isSolved);
+                puzzle = new Logic(description, name, hintsJSON, solution, isSolved, locked, item, givenItem);
             }
             case "Decipher" -> {
                 String solution = (String)parentJSON.get(USER_PUZZLE_SOLUTION);
                 int shift = ((Long)parentJSON.get(DECIPHER_SHIFT)).intValue();
-                puzzle = new Decipher(description, name, solution, hints, isSolved, shift);
+                puzzle = new Decipher(description, name, hints, solution, isSolved, locked, item, givenItem, shift);
             }
                 default -> {break;}
             }

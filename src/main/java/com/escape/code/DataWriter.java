@@ -127,6 +127,16 @@ public class DataWriter extends DataConstants {
         return roomDetails;
     }
 
+    @SuppressWarnings("unchecked")
+    private static JSONObject writeItem(Puzzle puzzle) {
+        JSONObject itemJSON = new JSONObject();
+        itemJSON.put(ROOM_NAME, puzzle.getItem().getName());
+        itemJSON.put(USER_PUZZLE_DESC, puzzle.getItem().getDescription());
+        itemJSON.put(ITEM_USED, puzzle.getItem().isUsed());
+
+        return itemJSON;
+    }
+
     /**
      * Creates a JSONObject from a given Puzzle
      * @param puzzle Puzzle to be serialized
@@ -141,6 +151,8 @@ public class DataWriter extends DataConstants {
         puzzleJSON.put(PUZZLE_TYPE, puzzle.getType());
         puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzle.getSolution());
         puzzleJSON.put(USER_PUZZLE_SOLVED, puzzle.isSolved());
+        puzzleJSON.put(ITEM, writeItem(puzzle));
+        puzzleJSON.put(GIVEN_ITEM, writeItem(puzzle));
 
         //Type Switch
         switch(puzzle.getType()) {
@@ -284,6 +296,14 @@ public class DataWriter extends DataConstants {
             }
             roomProgress.put(USER_ACHIEVEMENTS, achievementsJSON);
         }
+
+        JSONArray itemsJSON = new JSONArray();
+        ArrayList<Item> items = room.getProgress().getItems();
+        for(int i=0; i<items.size(); i++) {
+            Puzzle puzzle = room.getPuzzles().get(room.getProgress().getCurrentPuzzle());
+            itemsJSON.add(writeItem(puzzle));
+        }
+        roomProgress.put(ITEMS, itemsJSON);
 
         //Continuation of Progress Object
         roomProgress.put(USER_PUZZLES_SOLVED, puzzleJSONArray);

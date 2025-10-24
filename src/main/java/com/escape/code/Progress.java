@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Progress {
     private HashMap<String, Puzzle> puzzlesSolved;
-    private int cluesUsed; 
+    private int cluesUsed;
     private int completionTime;
     private int currentPuzzle;
     private ArrayList<Achievement> achievements;
@@ -89,7 +89,7 @@ public class Progress {
             this.items.add(i);
         }
     }
-    
+
     @Override
     public String toString() {
         String progress = "Clues Used: "+this.cluesUsed+"\nAchievements:\n";

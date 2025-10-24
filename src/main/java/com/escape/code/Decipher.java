@@ -10,40 +10,12 @@ import java.util.HashMap;
 
 public class Decipher extends Puzzle<String> {
 
-    private HashMap<Character, Character> alphabet;
 
-    public Decipher(String description, String name, String solution, ArrayList<String> hints, ArrayList<String> usedhints, boolean locked, boolean isSolved, int shift) {
-        super(description, name, hints, usedhints, solution, locked; isSolved);
-        this.description = shiftSolution(description);
+    public Decipher(String description, String name, ArrayList<String> hints, String solution, boolean isSolved, boolean locked, Item item, Item givenItem, int shift) {
+        super(description, name, hints, solution, isSolved, locked, item, givenItem);
+        this.description = description;
         super.type = "Decipher";
         this.shift = shift;
-        this.fillAlphabet();
-    }
-
-    private void fillAlphabet() {
-        this.alphabet = new HashMap<>();
-        Character[] chars = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-        for(int i=0; i<chars.length; i++) {
-            if(i+shift > chars.length-1) {
-                int shifted = i+shift-chars.length;
-                this.alphabet.put(chars[i], chars[shifted]);
-            }
-            else if(i+shift < 0) {
-                int shifted = i+shift+chars.length;
-                this.alphabet.put(chars[i], chars[shifted]);
-            }
-        }
-    }
-
-    private String shiftSolution(String desc) {
-        String originalSolution = desc.toLowerCase();
-        String shiftedSolution = "";
-        for(int i=0; i<originalSolution.length(); i++) {
-            Character c = this.alphabet.get(originalSolution.charAt(i));
-            shiftedSolution += c;
-        }
-
-        return shiftedSolution;
     }
 
     @Override

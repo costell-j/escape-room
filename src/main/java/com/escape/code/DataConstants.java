@@ -38,6 +38,12 @@ public abstract class DataConstants {
     protected static final String ROOM_ID = "id";
     protected static final String ROOM_STORY = "story";
     protected static final String IMAGE_PATH = "imagePath";
+    protected static final String ITEM_USED = "used";
+    protected static final String PUZZLE_LOCKED = "locked";
+    protected static final String ITEMS = "items";
+    protected static final String ITEM = "item";
+    protected static final String GIVEN_ITEM = "givenItem";
+    protected static final String HINTS_USED = "usedHints";
     protected static final String ROOM_NAME = "name";
     protected static final String DECIPHER_SHIFT = "shift";
     protected static final String ROOM_MAP = "map";

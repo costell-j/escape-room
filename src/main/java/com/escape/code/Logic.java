@@ -9,8 +9,8 @@ import java.util.ArrayList;
     /** logic puzzle that uses normalized text comparison. */
     public class Logic extends Puzzle<String> {
 
-        public Logic(String description, String name, ArrayList<String> hints, ArrayList<String> usedhints, String solution, boolean locked, boolean isSolved) {
-            super(description, name, hints, usedhints, solution, locked, isSolved);
+        public Logic(String description, String name, ArrayList<String> hints, String solution, boolean isSolved, boolean locked, Item item, Item givenItem) {
+            super(description, name, hints, solution, isSolved, locked, item, givenItem);
             super.type = "Logic";
             this.solution = solution;
         }

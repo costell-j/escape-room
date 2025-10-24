@@ -9,8 +9,8 @@ import java.util.ArrayList;
 /** iddle puzzle that checks answer vs. solution (case/space-insensitive). */
 public class Riddle extends Puzzle<String> {
 
-    public Riddle( String description,String name, ArrayList<String> hints, ArrayList<String> usedhints, String solution, boolean locked, boolean isSolved) {
-        super( description, name, hints, usedhints, solution, locked, isSolved);
+    public Riddle( String description, String name, ArrayList<String> hints, String solution, boolean isSolved, boolean locked, Item item, Item givenItem) {
+        super(description, name, hints, solution, isSolved, locked, item, givenItem);
         super.type = "Riddle";
     }
 
