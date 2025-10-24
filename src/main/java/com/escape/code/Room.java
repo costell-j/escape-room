@@ -60,7 +60,7 @@ public class Room {
     public ArrayList<Slide> getStory() {
         return this.story;
     }
-    
+
     /**
      * Getter for the room's progress list
      * @return progress list
@@ -136,13 +136,19 @@ public class Room {
     public double getFinalScore() {
         switch(difficulty) {
             case 1: 
-                this.score -= ((progress.getCluesUsed()*3) + (this.timer - progress.getCompletionTime()));
+                this.score -= (progress.getCluesUsed()*50);
+                if(this.timer/2 > progress.getCompletionTime())
+                    this.score -= 200;
                 break;
             case 2: 
-                this.score -= ((progress.getCluesUsed()*2) + (this.timer - progress.getCompletionTime()));
+                this.score -= (progress.getCluesUsed()*30);
+                if(this.timer/2 > progress.getCompletionTime())
+                    this.score -= 300;
                 break;
             case 3:
-                this.score -= ((progress.getCluesUsed()) + (this.timer - progress.getCompletionTime()));
+            this.score -= (progress.getCluesUsed()*20);
+            if(this.timer/2 > progress.getCompletionTime())
+                this.score -= 400;
                 break;
             default:
                 this.score = 0;
@@ -221,6 +227,16 @@ public class Room {
         this.progress.setCurrentPuzzle(this.progress.getCurrentPuzzle()+1);
     }
     
+    public double percentComplete() {
+        int totalDone = 0;
+        for( int i = 0; i < puzzles.size(); i++ ) {
+            if(puzzles.get(i).isSolved())
+            totalDone++;
+        }
+        double percent = (totalDone/puzzles.size())*100;
+        return percent;
+    }
+
     /**
      * toString for the Room
      */
