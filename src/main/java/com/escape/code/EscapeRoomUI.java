@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class EscapeRoomUI {
     private static GameManager gameManager;
     private static ArrayList<Room> rooms;
+    private static ArrayList<Puzzle> hintsUsed;
 
     private static void init() {
         gameManager = new GameManager();
@@ -12,15 +13,21 @@ public class EscapeRoomUI {
 
     public void run(){
         init();
-        duplicateAccount();
-        validUser();
-        newUser();
-        duplicateAccountnewAccount();
-        choosingRoom();
-        playingPuzzles();
+        //duplicateAccountandLogin();
+        //validUser();
+        //newUser();
+        //duplicateAccountnewAccount();
+        //choosingRoom();
+        //playingPuzzles();
+        duplicateUser();
+        successfullyCreatedAccount();
+        chooseAndHearStory();
+        completePuzzles();
+        logoutAndShowData();
+        finishGame();
     }
 
-    public void duplicateAccount(){
+    public void duplicateAccountandLogin(){
         System.out.println();
 
         if (gameManager.createAccount("MAK524", "password")){
@@ -94,7 +101,7 @@ public class EscapeRoomUI {
             Room room = rooms.get(i);
             System.out.println(i + ". " + room.getName());
         }
-        gameManager.chooseRoom(rooms.get(0).getId());
+        gameManager.chooseRoom(rooms.get(0));
         System.out.println("Choose your difficulty:\n 1. Lowest difficulty: 20 minute timer\n 2. Med difficulty: 15 minute timer\n 3. Hardest difficulty: 10 minute timer");
         gameManager.setDifficulty(1);
         gameManager.openLeaderboard();
@@ -121,7 +128,63 @@ public class EscapeRoomUI {
         if(gameManager.getPuzzles().isEmpty()){
             System.out.println("Congrats you've finished the puzzle");
         }
+    }
 
+    public void duplicateUser(){
+        //Should be unable to because lrogers is already in for Logan Rogers
+        if(gameManager.createAccount("lrogers","password")){
+            System.out.println("Successfully created class");
+        } else {
+            System.out.println("Unable to create account");
+        }
+    }
+
+    public void successfullyCreatedAccount(){
+        if(gameManager.createAccount("leniRogers5","password5")){
+            gameManager.login("leniRogers5","password5");
+            System.out.println("Successfully created account and logged in");
+        } else {
+            System.out.println("Unable to create account");
+        }
+    }
+
+    public void chooseAndHearStory(){
+        System.out.println();
+        System.out.println("Escape Rooms: ");
+
+        for (int i = 0; i < rooms.size(); i++){
+            Room room = rooms.get(i);
+            System.out.println(i + ". " + room.getName());
+        }
+        gameManager.chooseRoom(rooms.get(0));
+        //Text to speech the story
+        
+    }
+
+    public void completePuzzles(){
+        System.out.println();
+        System.out.println("Puzzles: ");
+        for (int i = 0; i < gameManager.getPuzzles().size(); i++){
+            System.out.println(i + ". " + gameManager.getPuzzle().getName());
+        }
+        gameManager.setPuzzle(gameManager.getPuzzles().get(0));
+        System.out.println(gameManager.getPuzzle().getDescription());
+    }
+
+    public void logoutAndShowData(){
+        System.out.println();
+        gameManager.logout();
+        gameManager.login("leniRogers5","password5");
+        System.out.println("Current progress\n");
+        System.out.println(gameManager.getRoom().getFinalScore());
+        
+    }
+
+    public void finishGame(){
+        //I thought she was already logged in from logout and show data?
+        gameManager.openLeaderboard();
+        System.out.println(gameManager.getLeaderboard());
+        gameManager.closeLeaderboard();
     }
     public static void main(String[] args) {
 		EscapeRoomUI escapeInterface = new EscapeRoomUI();
