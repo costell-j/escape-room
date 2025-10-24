@@ -1,4 +1,5 @@
 package com.escape.code;
+import java.lang.reflect.Array;
 /*
  * Riddle 
  * @author Barbarnas
@@ -8,12 +9,14 @@ import java.util.ArrayList;
 /** iddle puzzle that checks answer vs. solution (case/space-insensitive). */
 public class Riddle extends Puzzle<String> {
 
-    public Riddle( String description,String name, ArrayList<String> hints, String solution, boolean isSolved) {
-        super( description, name, hints, solution, isSolved);
+    public Riddle( String description,String name, ArrayList<String> hints, ArrayList<String> usedhints, String solution, boolean locked, boolean isSolved) {
+        super( description, name, hints, usedhints, solution, locked, isSolved);
         super.type = "Riddle";
     }
 
-    
+/*
+ *  overrides the puzzle class then checks the answer and compare i
+ */
     @Override
     public void attempt(String answer) {
         String formattedAnswer = answer.trim().toLowerCase();

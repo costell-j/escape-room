@@ -12,8 +12,8 @@ public class Decipher extends Puzzle<String> {
 
     private HashMap<Character, Character> alphabet;
 
-    public Decipher(String description, String name, String solution, ArrayList<String> hints, boolean isSolved, int shift) {
-        super(description, name, hints, solution, isSolved);
+    public Decipher(String description, String name, String solution, ArrayList<String> hints, ArrayList<String> usedhints, boolean locked, boolean isSolved, int shift) {
+        super(description, name, hints, usedhints, solution, locked; isSolved);
         this.description = shiftSolution(description);
         super.type = "Decipher";
         this.shift = shift;

@@ -13,8 +13,8 @@ public class MathPuzzle extends Puzzle<Double> {
  * Public mathpuzzle mataches the class name and passes in the parameters 
  * then using super to call the parent class Puzzle, then setting the type to math. 
  */
-    public MathPuzzle (String description,String name, ArrayList<String> hints, double solution, boolean isSolved) {
-        super(description, name, hints, solution, isSolved);
+    public MathPuzzle (String description,String name, ArrayList<String> hints, ArrayList<String> usedhints, double solution, boolean locked, boolean isSolved) {
+        super(description, name, hints, usedhints, solution, locked, isSolved);
         super.type= "Math";
     }
 /*
