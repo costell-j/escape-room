@@ -1,6 +1,7 @@
 package com.escape.code;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
 /**
@@ -101,6 +102,19 @@ public class GameManager {
         this.puzzles = this.room.getPuzzles();
         this.puzzle = room.getPuzzles().get(room.getProgress().getCurrentPuzzle());
         return this.room != null;
+    }
+    /**
+     * Starts the timer
+     */
+    public void startTimer() {
+        room.startTimer();
+    }
+
+    /**
+     * Stops the timer
+     */
+    public void stopTimer() {
+        room.stopTimer();
     }
 
     /**
@@ -217,8 +231,19 @@ public class GameManager {
         return this.puzzle;
     }
 
+    /**
+     * Attempts the puzzle, returning true if it's solved
+     * @param <T> allows for different answer types
+     * @param index the puzzle index
+     * @param answer the desired answer
+     * @return true if solved, false if not
+     */
     public <T> boolean attemptPuzzle(int index, T answer) {
         return room.attemptPuzzle(index, answer);
+    }
+
+    public HashMap<String, Puzzle> viewCompletedPuzzles() {
+        return room.getProgress().getPuzzlesSolved();
     }
 
     //Settings related methosd
