@@ -21,9 +21,20 @@ public abstract class Puzzle<T> {
     protected String type;
     protected int shift;
 
-    /*
-    * Constructor for Puzzle class.
-    */
+    /**
+     * Constructs a new {@code Puzzle}.
+     *
+     * @param description human-readable description; if {@code null}, defaults to
+     *                    {@code "No description available."}
+     * @param name        puzzle name/title
+     * @param hints       list of hint strings; if {@code null}, an empty list is used
+     * @param solution    solution value of type {@code T}
+     * @param isSolved    initial solved state
+     * @param locked      whether the puzzle starts locked
+     * @param item        item awarded upon solving (nullable)
+     * @param givenItem   item required to interact/unlock (nullable)
+     */
+
     public Puzzle(String description, String name, ArrayList<String> hints, T solution, boolean isSolved, boolean locked, Item item, Item givenItem) {
         setDescription(description);
         this.name = name;
@@ -35,56 +46,83 @@ public abstract class Puzzle<T> {
         setSolved(isSolved);
     }
 
-    /*
-    * T allows for us to use diffent types for solution
-    */
+     /**
+     * Returns the canonical solution value.
+     *
+     * @return the solution of type {@code T}
+     */
+
     public T getSolution(){
         return this.solution;
     }
-
+     /**
+     * Returns the item awarded upon solving, if any.
+     *
+     * @return the reward {@link Item}, or {@code null} if none
+     */
     public Item getItem() {
         return this.item;
     }
 
+     /**
+     * Returns the item required to interact/unlock, if any.
+     *
+     * @return the required {@link Item}, or {@code null} if none
+     */
     public Item getGivenItem() {
         return this.givenItem;
     }
 
-    /*
-     *  getter that return the type in constructer in subclass of the puzzle.
+   /**
+     * Returns the subclass-defined type label.
+     *
+     * @return the puzzle type (e.g., "Math", "Logic", "Decipher")
      */
     public String getType(){
         return this.type;
     }
-
-    /*
-    * getter used in the desipher class that returns and int for the shift.
-    */
+     /**
+     * Returns the shift value (useful for cipher-based puzzles).
+     *
+     * @return the integer shift (default {@code 0} if unused)
+     */
     public int getShift(){
         return this.shift;
     }
 
-    /*
-    * gets the description than reurns it.
-    */
+      /**
+     * Returns the human-readable description.
+     *
+     * @return the description string (never {@code null})
+     */
     public String getDescription() {
         return this.description;
     }
 
-    /* 
-    * gets the name that returns the name
-    */
+  
+    /**
+     * Returns the puzzle's name/title.
+     *
+     * @return the name string
+     */
     public String getName() {
         return this.name;
     }
 
-    /*
-    * gets and array list that a stirng of hints and returns the hints
-    */
+    /**
+     * Returns the list of hint strings.
+     *
+     * @return a mutable {@link ArrayList} of hints (never {@code null})
+     */
     public ArrayList<String> getHints() {
         return this.hints;
     }
 
+    /**
+     * Indicates whether the puzzle is currently locked.
+     *
+     * @return {@code true} if locked; {@code false} otherwise
+     */
     public boolean isLocked() {
         return this.locked;
     }
@@ -94,36 +132,48 @@ public abstract class Puzzle<T> {
     */
     public abstract void attempt(T param);
 
-    /*
-    * Marks the puzzle as solved.
-    */
-
+    /**
+     * Marks the puzzle as solved.
+     * <p>
+     * Subclasses should invoke this when an attempt matches the solution.
+     */
     public void solvePuzzle(){
     this.isSolved = true;
     }
 
-    /*
-    * setter that save the string into the field descirpiton, with a null safe default.
-    * if null return no description available 
-    * if not null return the desription
-    */
+    /**
+     * Sets the description, applying a null-safe default.
+     *
+     * @param description new description; if {@code null}, uses
+     *                    {@code "No description available."}
+     */
     public void setDescription(String description) {
         this.description = description != null ? description : "No description available.";
     }
 
+    /**
+     * Sets the reward item.
+     *
+     * @param i the item to award upon solving (nullable)
+     */
     public void setItem(Item i) {
         this.item = i;
     }
 
+    /**
+     * Sets the required item.
+     *
+     * @param i the item required to interact/unlock (nullable)
+     */
     public void setGivenItem(Item i) {
         this.givenItem = i;
     }
 
-    /*
-    * setter that saves the array list of hints into the field hints with null safe default 
-    * if null return a new Array list of hins 
-    * if not null return the hints 
-    */
+   /**
+     * Sets the hints list, applying a null-safe default.
+     *
+     * @param hints list of hint strings; if {@code null}, an empty list is used
+     */
     public void setHints(ArrayList<String> hints) {
         this.hints = hints != null ? hints : new ArrayList<>();
     }
@@ -138,14 +188,21 @@ public abstract class Puzzle<T> {
         this.isSolved = isSolved;
     }
 
-
+     /**
+     * Returns whether this puzzle has been solved.
+     *
+     * @return {@code true} if solved; {@code false} otherwise
+     */
     public boolean isSolved() {
         return this.isSolved;
     }
 
-    /*
-    * Returns a string representation of the puzzle, including description, solution, solved status, and hints.
-    */
+     /**
+     * Returns a multi-line string with key puzzle details, including
+     * name, description, solution, solved status, and hints.
+     *
+     * @return human-readable representation of this puzzle
+     */
     @Override
     public String toString() {
         String puzzle = "Puzzle: "+this.name+"\nDescription: "+this.description+"\nSolution: "+this.solution+"\nSolved: "+this.isSolved+"\nHints:\n";
