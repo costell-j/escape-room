@@ -19,5 +19,15 @@
         },
         "rooms":["d8b9e9e2-e9a3-4b49-818a-976c61288ae4"],
         "currentRoom": "d8b9e9e2-e9a3-4b49-818a-976c61288ae4"
+    },
+    {
+        "username": "lrogers",
+        "password": "password",
+        "settings": {
+            "volume": 2,
+            "difficulty": 1
+        },
+        "rooms":["d8b9e9e2-e9a3-4b49-818a-976c61288ae4"],
+        "currentRoom": "d8b9e9e2-e9a3-4b49-818a-976c61288ae4"
     }
 ]

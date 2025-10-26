@@ -141,15 +141,15 @@ public class EscapeRoomUI {
     public void duplicateUser(){
         //Should be unable to because lrogers is already in for Logan Rogers
         if(gameManager.createAccount("lrogers","password")){
-            System.out.println("Successfully created class");
+            System.out.println("Successfully created account");
         } else {
             System.out.println("Unable to create account");
         }
     }
 
     public void successfullyCreatedAccount(){
-        if(gameManager.createAccount("leniRogers101","password101")){
-            gameManager.login("leniRogers101","password101");
+        if(gameManager.createAccount("leniRogers04","password04")){
+            gameManager.login("leniRogers04","password04");
             System.out.println("Successfully created account and logged in");
         } else {
             System.out.println("Unable to create account");
@@ -224,7 +224,7 @@ public class EscapeRoomUI {
     public void logoutAndShowData(){
         System.out.println();
         gameManager.logout();
-        gameManager.login("leniRogers101","password101");
+        gameManager.login("leniRogers04","password04");
         Room room = gameManager.getRoom();
         Progress progress = room.getProgress();
         System.out.println("Current progress\n");
@@ -248,7 +248,7 @@ public class EscapeRoomUI {
     }
 
     public void finishGame(){
-        gameManager.login("leniRogers101","password101");
+        gameManager.login("leniRogers04","password04");
         Room room = gameManager.getRoom();
         User user = gameManager.getUser();
         Progress progress = room.getProgress();
@@ -286,7 +286,7 @@ public class EscapeRoomUI {
             return;
         }
         gameManager.openLeaderboard();
-        System.out.println(gameManager.getLeaderboard());
+        System.out.println("\n" + gameManager.getLeaderboard());
         gameManager.closeLeaderboard();
     }
     public static void main(String[] args) {
