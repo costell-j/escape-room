@@ -51,6 +51,20 @@ public class Room {
         this.score = 1000;
     }
 
+    public Room() {
+        this.id = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        this.name = "none";
+        this.map = null;
+        this.progressList = null;
+        this.progress = null;
+        this.leaderboard = null;
+        this.puzzles = null;
+        this.story = null;
+        this.timer = 0;
+        this.difficulty = 1;
+        this.score = 1000;
+    }
+
     // Getters
 
     /**
