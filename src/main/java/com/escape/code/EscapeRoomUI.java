@@ -179,7 +179,7 @@ public class EscapeRoomUI {
         System.out.println();
         ArrayList<Item> items = new ArrayList<>();
         ArrayList<Puzzle> puzzles = new ArrayList<>(gameManager.getPuzzles());
-        Object [] answers = {"C", "Spooky and scary", "Water", 144.0};
+        Object [] answers = {"C", "Water", "Time is running out", 144.0};
         for (int i = 0; i < 4 && i < puzzles.size(); i++) {
             Puzzle temp = puzzles.get(i);
 
