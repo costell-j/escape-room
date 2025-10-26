@@ -36,8 +36,13 @@ public class DataLoader extends DataConstants {
                 Settings settings = loadSettings(personJSON);
                 RoomList roomSet = RoomList.getInstance();
                 ArrayList<Room> rooms = loadRooms(personJSON);
-                UUID currentRoomID = UUID.fromString((String)personJSON.get(USER_CURRENT_ROOM));
-                Room currentRoom = roomSet.getRoom(currentRoomID);
+                String id = (String)personJSON.get(USER_CURRENT_ROOM);
+                Room currentRoom = new Room();
+                if(!"".equals(id)) {
+                    UUID currentRoomID = UUID.fromString((String)personJSON.get(USER_CURRENT_ROOM));
+                    currentRoom = roomSet.getRoom(currentRoomID);
+                }
+                
 
                 //Create User Object & add to list
                 User user = new User(userName, password, settings, rooms, currentRoom);

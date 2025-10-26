@@ -26,7 +26,7 @@ public class EscapeRoomUI {
         //newUser();
         //duplicateAccountnewAccount();
         //choosingRoom();
-        //playingPuzzles();
+        playingPuzzles();
         duplicateUser();
         successfullyCreatedAccount();
         chooseAndHearStory();
