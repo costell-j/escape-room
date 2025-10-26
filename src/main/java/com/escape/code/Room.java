@@ -224,9 +224,19 @@ public class Room {
         puzzles.get(this.progress.getCurrentPuzzle());
     }
 
+    /**
+     * Checks if the player's answer is correct
+     * If so, puzzle is added to puzzlesSolved and removed from ArrayList
+     * @param <T> allows for different types of answers
+     * @param index puzzle's index
+     * @param answer player's answer
+     * @return true if correct, false if not
+     */
     public <T> boolean attemptPuzzle(int index, T answer) {
+        progress.setCurrentPuzzle(index);
         puzzles.get(index).attempt(answer);
         if(puzzles.get(index).isSolved()) {
+            progress.getPuzzlesSolved().put(puzzles.get(index).getName(), puzzles.get(index));
             puzzles.remove(index);
             return true;
         }
