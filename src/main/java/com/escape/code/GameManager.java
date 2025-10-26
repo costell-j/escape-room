@@ -217,6 +217,10 @@ public class GameManager {
         return this.puzzle;
     }
 
+    public <T> boolean attemptPuzzle(int index, T answer) {
+        return room.attemptPuzzle(index, answer);
+    }
+
     //Settings related methosd
 
     /**

@@ -3,6 +3,8 @@ package com.escape.code;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.Timer;
+import java.util.TimerTask;
 /**
  * This class handles the Room and its methods
  * @author Costell Johnson
@@ -19,6 +21,8 @@ public class Room {
     private ArrayList<Slide> story;
     private int difficulty;
     private double score;
+    private Timer countdown;
+    private boolean isRunning;
 
     /**
      * Constructor for the Room object
@@ -29,7 +33,7 @@ public class Room {
      * @param progress Room's progress object
      * @param leaderboard Room's leaderboard
      * @param puzzles Room's array of puzzles
-     * @param story Room's' array of stories
+     * @param story Room's' array of slides
      * @param timer Room's timer
      * @param difficulty Room's diffficulty
      */
@@ -220,6 +224,15 @@ public class Room {
         puzzles.get(this.progress.getCurrentPuzzle());
     }
 
+    public <T> boolean attemptPuzzle(int index, T answer) {
+        puzzles.get(index).attempt(answer);
+        if(puzzles.get(index).isSolved()) {
+            puzzles.remove(index);
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Advances the user onto the next puzzle
      */
@@ -292,6 +305,51 @@ public class Room {
         formattedTimer = minutes+":"+secondsFormatted;
 
         return formattedTimer;
+    }
+
+    /**
+     * Starts the timer
+     * checks to see if one is already running
+     */
+    public void startTimer() {
+        if (isRunning) return;
+        isRunning = true;
+        
+        countdown = new Timer(true);
+        countdown.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                if(timer > 0)
+                    timer--;
+                else
+                    stopTimer();
+            }
+        }, 1000, 1000);
+    }
+
+    /**
+     * Stops the timer and sets isRunning to false
+     */
+    public void stopTimer() {
+        if(countdown != null) {
+            countdown.cancel();
+            countdown = null;
+        }
+        isRunning = false;
+    }
+
+    /**
+     * Resets timer to default time
+     */
+    public void resetTimer() {
+        timeChange(this.difficulty);
+    }
+
+    /**
+     * Checks if the timer is running
+     * @return
+     */
+    public boolean isRunning() {
+        return isRunning;
     }
 
 }
