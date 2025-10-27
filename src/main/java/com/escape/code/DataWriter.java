@@ -127,12 +127,32 @@ public class DataWriter extends DataConstants {
         return roomDetails;
     }
 
+    /**
+     * Creates a JSONObject out of a Item Object
+     * @param puzzle a Puzzle to extract an Item from
+     * @return an Item in JSON format
+     */
     @SuppressWarnings("unchecked")
     private static JSONObject writeItem(Puzzle puzzle) {
         JSONObject itemJSON = new JSONObject();
         itemJSON.put(ROOM_NAME, puzzle.getItem().getName());
         itemJSON.put(USER_PUZZLE_DESC, puzzle.getItem().getDescription());
         itemJSON.put(ITEM_USED, puzzle.getItem().isUsed());
+
+        return itemJSON;
+    }
+
+    /**
+     * Creates a JSONObject out of a Item Object
+     * @param puzzle a Puzzle to extract an Item from
+     * @return an Item in JSON format
+     */
+    @SuppressWarnings("unchecked")
+    private static JSONObject writeGivenItem(Puzzle puzzle) {
+        JSONObject itemJSON = new JSONObject();
+        itemJSON.put(ROOM_NAME, puzzle.getGivenItem().getName());
+        itemJSON.put(USER_PUZZLE_DESC, puzzle.getGivenItem().getDescription());
+        itemJSON.put(ITEM_USED, puzzle.getGivenItem().isUsed());
 
         return itemJSON;
     }
@@ -152,7 +172,7 @@ public class DataWriter extends DataConstants {
         puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzle.getSolution());
         puzzleJSON.put(USER_PUZZLE_SOLVED, puzzle.isSolved());
         puzzleJSON.put(ITEM, writeItem(puzzle));
-        puzzleJSON.put(GIVEN_ITEM, writeItem(puzzle));
+        puzzleJSON.put(GIVEN_ITEM, writeGivenItem(puzzle));
         puzzleJSON.put(PUZZLE_LOCKED, puzzle.isLocked());
 
         //Type Switch
@@ -301,8 +321,11 @@ public class DataWriter extends DataConstants {
         JSONArray itemsJSON = new JSONArray();
         ArrayList<Item> items = room.getProgress().getItems();
         for(int i=0; i<items.size(); i++) {
-            Puzzle puzzle = room.getPuzzles().get(room.getProgress().getCurrentPuzzle());
-            itemsJSON.add(writeItem(puzzle));
+            Item item = items.get(i);
+            JSONObject itemJSON = new JSONObject();
+            itemJSON.put(ROOM_NAME, item.getName());
+            itemJSON.put(USER_PUZZLE_DESC, item.getDescription());
+            itemJSON.put(ITEM_USED, item.isUsed());
         }
         roomProgress.put(ITEMS, itemsJSON);
 

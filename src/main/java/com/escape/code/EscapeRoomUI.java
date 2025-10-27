@@ -21,11 +21,11 @@ public class EscapeRoomUI {
 
     public void run(){
         init();
-        //duplicateAccountandLogin();
-        //validUser();
-        //newUser();
-        //duplicateAccountnewAccount();
-        //choosingRoom();
+        duplicateAccountandLogin();
+        validUser();
+        newUser();
+        duplicateAccountnewAccount();
+        choosingRoom();
         playingPuzzles();
         duplicateUser();
         successfullyCreatedAccount();
