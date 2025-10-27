@@ -11,7 +11,7 @@ public class Progress {
     private int completionTime;
     private int currentPuzzle;
     private ArrayList<Achievement> achievements;
-    private ArrayList<Item> items;
+    private ArrayList<Item> items = new ArrayList<>();;
     private HashMap<String, String> hintsUsed;
 
 
@@ -54,7 +54,10 @@ public class Progress {
     }
 
     public ArrayList<Item> getItems() {
-        return this.items;
+        if (items == null) {
+            items = new ArrayList<>();
+        }
+        return items;
     }
     /*
      * Returns the clues used
