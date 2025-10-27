@@ -21,11 +21,11 @@ public class EscapeRoomUI {
 
     public void run(){
         init();
-        duplicateAccountandLogin();
-        validUser();
-        newUser();
-        duplicateAccountnewAccount();
-        choosingRoom();
+        //duplicateAccountandLogin();
+        //validUser();
+        //newUser();
+        //duplicateAccountnewAccount();
+        //choosingRoom();
         playingPuzzles();
         duplicateUser();
         successfullyCreatedAccount();
@@ -180,7 +180,7 @@ public class EscapeRoomUI {
         ArrayList<Item> items = new ArrayList<>();
         ArrayList<Puzzle> puzzles = new ArrayList<>(gameManager.getPuzzles());
         Object [] answers = {"C", "Water", "Time is running out", 144.0};
-        for (int i = 0; i < 4 && i < puzzles.size(); i++) {
+        for (int i = 0; i < puzzles.size(); i++) {
             Puzzle temp = puzzles.get(i);
 
             int index = -1;
@@ -195,7 +195,7 @@ public class EscapeRoomUI {
             System.out.println((i + 1) + ". " + puzzle.getName());
             System.out.println(puzzle.getDescription());
 
-            boolean solved = gameManager.attemptPuzzle(index, answers[i]);
+            boolean solved = gameManager.attemptPuzzle(puzzle, answers[i]);
             if (solved) {
                 System.out.println("Correct!\n");
                 if (puzzle.getName().contains("")) {
@@ -223,6 +223,7 @@ public class EscapeRoomUI {
 
     public void logoutAndShowData(){
         System.out.println();
+        System.out.println(gameManager.getPuzzles());
         gameManager.logout();
         gameManager.login("leniRogers04","password04");
         Room room = gameManager.getRoom();
@@ -244,7 +245,6 @@ public class EscapeRoomUI {
             System.out.println("Hint: " + hint);
             System.out.println("Used on puzzle: " + puzzle);
         }
-
     }
 
     public void finishGame(){

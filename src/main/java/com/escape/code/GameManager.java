@@ -99,10 +99,21 @@ public class GameManager {
      */
     public boolean chooseRoom(Room r) {
         this.room = roomList.getRoom(r.getId());
+        if (this.room == null) 
+            return false;
         this.puzzles = this.room.getPuzzles();
-        this.puzzle = room.getPuzzles().get(room.getProgress().getCurrentPuzzle());
-        return this.room != null;
-    }
+        if (this.puzzles == null) 
+            this.puzzles = new ArrayList<>();
+        int cur = (this.room.getProgress() != null) ? this.room.getProgress().getCurrentPuzzle() : -1;
+        if (cur >= 0 && cur < this.puzzles.size()) {
+            this.puzzle = this.puzzles.get(cur);
+        } else {
+            this.puzzle = this.puzzles.isEmpty() ? null : this.puzzles.get(0);
+            if (this.room.getProgress() != null && !this.puzzles.isEmpty()) 
+                this.room.getProgress().setCurrentPuzzle(0);
+        }
+    return true;
+}
     /**
      * Starts the timer
      */
@@ -238,8 +249,8 @@ public class GameManager {
      * @param answer the desired answer
      * @return true if solved, false if not
      */
-    public <T> boolean attemptPuzzle(int index, T answer) {
-        return room.attemptPuzzle(index, answer);
+    public <T> boolean attemptPuzzle(Puzzle puzzle, T answer) {
+        return room.attemptPuzzle(puzzle, answer);
     }
 
     public HashMap<String, Puzzle> viewCompletedPuzzles() {

@@ -246,7 +246,8 @@ public class Room {
      * @param answer player's answer
      * @return true if correct, false if not
      */
-    public <T> boolean attemptPuzzle(int index, T answer) {
+    public <T> boolean attemptPuzzle(Puzzle puzzle, T answer) {
+        int index = puzzles.indexOf(puzzle);
         progress.setCurrentPuzzle(index);
         puzzles.get(index).attempt(answer);
         if(puzzles.get(index).isSolved()) {
