@@ -50,7 +50,10 @@ public class Room {
         this.difficulty = difficulty;
         this.score = 1000;
     }
-
+    
+    /**
+     * Room's default constructor
+     */
     public Room() {
         this.id = UUID.fromString("00000000-0000-0000-0000-000000000000");
         this.name = "none";
@@ -126,7 +129,7 @@ public class Room {
      */
     public ArrayList<Puzzle> getPuzzles() {
         if(puzzles == null)
-            this.puzzles = new ArrayList<Puzzle>();
+            this.puzzles = new ArrayList<>();
         if(puzzles.isEmpty())
             throw new IllegalArgumentException("Empty ArrayList");
         return this.puzzles;
