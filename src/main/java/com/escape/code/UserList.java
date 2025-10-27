@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 /**
- * This class handles the Usergit List and its methods
+ * This class handles the Userlist List and its methods
  * @author Costell Johnson
  */
 public class UserList {
