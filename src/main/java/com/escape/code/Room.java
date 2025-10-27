@@ -50,7 +50,10 @@ public class Room {
         this.difficulty = difficulty;
         this.score = 1000;
     }
-
+    
+    /**
+     * Room's default constructor
+     */
     public Room() {
         this.id = UUID.fromString("00000000-0000-0000-0000-000000000000");
         this.name = "none";
