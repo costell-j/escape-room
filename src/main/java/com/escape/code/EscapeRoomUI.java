@@ -26,7 +26,7 @@ public class EscapeRoomUI {
         //newUser();
         //duplicateAccountnewAccount();
         //choosingRoom();
-        playingPuzzles();
+        //playingPuzzles();
         duplicateUser();
         successfullyCreatedAccount();
         chooseAndHearStory();
@@ -148,8 +148,8 @@ public class EscapeRoomUI {
     }
 
     public void successfullyCreatedAccount(){
-        if(gameManager.createAccount("leniRogers04","password04")){
-            gameManager.login("leniRogers04","password04");
+        if(gameManager.createAccount("leniRogers1","password1")){
+            gameManager.login("leniRogers1","password1");
             System.out.println("Successfully created account and logged in");
         } else {
             System.out.println("Unable to create account");
@@ -179,7 +179,7 @@ public class EscapeRoomUI {
         System.out.println();
         ArrayList<Item> items = new ArrayList<>();
         ArrayList<Puzzle> puzzles = new ArrayList<>(gameManager.getPuzzles());
-        Object [] answers = {"C", "Water", "Time is running out", 144.0};
+        Object [] answers = {"C", "A keyboard", "Time is running out", "A river", 144.0, "Time is running out"};
         for (int i = 0; i < puzzles.size(); i++) {
             Puzzle temp = puzzles.get(i);
 
@@ -198,15 +198,16 @@ public class EscapeRoomUI {
             boolean solved = gameManager.attemptPuzzle(puzzle, answers[i]);
             if (solved) {
                 System.out.println("Correct!\n");
-                if (puzzle.getName().contains("")) {
+                if (puzzle.getName().contains("Half")) {
                     items.add(new Item("Silver Star", "Unused", false));
                     System.out.println("You have been given a silver star for answering " + puzzle.getName() + " correctly");
                 }
-                if (puzzle.getName().contains("Multiplying")) {
+                if (puzzle.getName().contains("Running")) {
                     items.add(new Item("Gold key", "Used to escape", false));
                 } 
             } else {
                 System.out.println("Incorrect. Hints: " + puzzle.getHints() + "\n");
+                gameManager.getRoom().getProgress().getHintsUsed().put(puzzle.getName(), String.join(", ",puzzle.getHints()));
             }
         }
         boolean hasGoldKey = false;
@@ -223,13 +224,13 @@ public class EscapeRoomUI {
 
     public void logoutAndShowData(){
         System.out.println();
-        System.out.println(gameManager.getPuzzles());
         gameManager.logout();
-        gameManager.login("leniRogers04","password04");
+        gameManager.login("leniRogers1","password1");
         Room room = gameManager.getRoom();
         Progress progress = room.getProgress();
         System.out.println("Current progress\n");
-        System.out.println(gameManager.getRoom().percentComplete());
+        double finalScore = room.getFinalScore();
+        System.out.println(finalScore/1000);
 
         HashMap<String, Puzzle> solved = progress.getPuzzlesSolved();
         System.out.println("Puzzles answered: ");
@@ -239,7 +240,7 @@ public class EscapeRoomUI {
             System.out.println(" - " + p.getName());
         }
 
-        HashMap<String, String> hintsUsed = progress.getHintsUsed();
+        HashMap<String, String> hintsUsed = gameManager.getRoom().getProgress().getHintsUsed();
         for (String hint : hintsUsed.keySet()) {
             String puzzle = hintsUsed.get(hint);
             System.out.println("Hint: " + hint);
@@ -248,7 +249,7 @@ public class EscapeRoomUI {
     }
 
     public void finishGame(){
-        gameManager.login("leniRogers04","password04");
+        gameManager.login("leniRogers1","password1");
         Room room = gameManager.getRoom();
         User user = gameManager.getUser();
         Progress progress = room.getProgress();
@@ -286,6 +287,7 @@ public class EscapeRoomUI {
             return;
         }
         gameManager.openLeaderboard();
+        System.out.println("\nLeaderboard: ");
         System.out.println("\n" + gameManager.getLeaderboard());
         gameManager.closeLeaderboard();
     }

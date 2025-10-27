@@ -13,30 +13,7 @@
        {"description":"Suddenly a door to the left scraped open and the voice said, ‘If you want to leave you must solve the puzzles in the rooms to unlock the keys’","imagePath":"src/main/com/escape/code"}],
        "progressList":[{"String":"MAK524","Progress":
        {
-        "puzzlesSolved": [{"String":"Ceasar's Message","Puzzle":{
-            "description":"Use a ceasar cypher +5 to decrypt “ynrj nx wzssnsl tzy” ",
-            "name": "Caesar's Message",
-            "type":"Decipher",
-            "solution":"Time is running out",
-            "locked":true,
-            "shift":5,
-            "hints":["Move each letter forward by 5 in the alphabet"],
-            "item": {"name":"Room key 4", "description":"The final key, proceed with caution","used":false},
-            "givenItem": {"name":"none","description":"none","used":true},
-            "isSolved":false
-        }},
-        {"String":"Order of Completion","Puzzle":{
-            "description":"Five people were eating apples, A finished before B, but behind C. D finished before E, but behind B. What was the finishing order? ",
-            "name": "Order of Completion",
-            "type":"Logic",
-            "solution":"CABDE",
-            "locked":false,
-            "hints":["C is first"],
-            "item": {"name":"none","description":"none","used":true},
-            "givenItem": {"name":"Room key 1","description":"A key, should allow entry into a locked place","used":false},
-            "isSolved":false
-        }
-        }],
+        "puzzlesSolved": [],
             "cluesUsed":2,
             "currentRoom":0,
             "completionTime":1000,
@@ -63,30 +40,7 @@
             "items": [{"name":"Room key 4", "description":"The final key, proceed with caution","used":false}]
         }}, {"String":"nam","Progress": 
         {
-            "puzzlesSolved": [{"String":"Ceasar's Message","Puzzle":{
-                "description":"Use a ceasar cypher +5 to decrypt “ynrj nx wzssnsl tzy” ",
-                "name": "Caesar's Message",
-                "type":"Decipher",
-                "solution":"Time is running out",
-                "locked":true,
-                "shift":5,
-                "hints":["Move each letter forward by 5 in the alphabet"],
-                "item": {"name":"Room key 4", "description":"The final key, proceed with caution","used":false},
-                "givenItem": {"name":"none","description":"none","used":true},
-                "isSolved":false
-            }},
-            {"String":"Order of Completion","Puzzle":{
-                "description":"Five people were eating apples, A finished before B, but behind C. D finished before E, but behind B. What was the finishing order? ",
-                "name": "Order of Completion",
-                "type":"Logic",
-                "solution":"CABDE",
-                "locked":false,
-                "hints":["C is first"],
-                "item": {"name":"none","description":"none","used":true},
-                "givenItem": {"name":"Room key 1","description":"A key, should allow entry into a locked place","used":false},
-                "isSolved":false
-            }
-            }],
+            "puzzlesSolved": [],
             "cluesUsed":2,
             "currentRoom":0,
             "completionTime":1000,
@@ -113,30 +67,7 @@
             "items": [{"name":"Room key 4", "description":"The final key, proceed with caution","used":false}]
         }}],
        "Progress":{
-            "puzzlesSolved": [{"String":"Ceasar's Message","Puzzle":{
-                "description":"Use a ceasar cypher +5 to decrypt “ynrj nx wzssnsl tzy” ",
-                "name": "Caesar's Message",
-                "type":"Decipher",
-                "solution":"Time is running out",
-                "locked":false,
-                "shift":5,
-                "hints":["Move each letter forward by 5 in the alphabet"],
-                "item": {"name":"Room key 4", "description":"The final key, proceed with caution","used":false},
-                "givenItem": {"name":"none","description":"none","used":true},
-                "isSolved":false
-            }},
-            {"String":"Order of Completion","Puzzle":{
-                "description":"Five people were eating apples, A finished before B, but behind C. D finished before E, but behind B. What was the finishing order? ",
-                "name": "Order of Completion",
-                "type":"Logic",
-                "solution":"CABDE",
-                "locked":false,
-                "hints":["C is first"],
-                "item": {"name":"none","description":"none","used":true},
-                "givenItem": {"name":"Room key 1","description":"A key, should allow entry into a locked place","used":false},
-                "isSolved":false
-            }
-            }],
+            "puzzlesSolved": [],
             "cluesUsed":2,
             "currentRoom":0,
             "completionTime":1000,
