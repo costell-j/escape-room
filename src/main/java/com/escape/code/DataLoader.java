@@ -314,15 +314,15 @@ public class DataLoader extends DataConstants {
         switch(type) {
             case "Riddle" -> {
                 String solution = (String)parentJSON.get(USER_PUZZLE_SOLUTION);
-                puzzle = new Riddle(description, name, hintsJSON, solution, isSolved, locked, item, givenItem);
+                puzzle = new Riddle(description, name, hints, solution, isSolved, locked, item, givenItem);
             }
             case "Math" -> {
                 double solution = ((Double)parentJSON.get(USER_PUZZLE_SOLUTION));
-                puzzle = new MathPuzzle(description, name, hintsJSON, solution, isSolved, locked, item, givenItem);
+                puzzle = new MathPuzzle(description, name, hints, solution, isSolved, locked, item, givenItem);
             }
             case "Logic" -> {
                 String solution = (String)parentJSON.get(USER_PUZZLE_SOLUTION);
-                puzzle = new Logic(description, name, hintsJSON, solution, isSolved, locked, item, givenItem);
+                puzzle = new Logic(description, name, hints, solution, isSolved, locked, item, givenItem);
             }
             case "Decipher" -> {
                 String solution = (String)parentJSON.get(USER_PUZZLE_SOLUTION);
