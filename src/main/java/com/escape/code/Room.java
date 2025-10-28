@@ -130,8 +130,6 @@ public class Room {
     public ArrayList<Puzzle> getPuzzles() {
         if(puzzles == null)
             this.puzzles = new ArrayList<>();
-        if(puzzles.isEmpty())
-            throw new IllegalArgumentException("Empty ArrayList");
         return this.puzzles;
     }
 
