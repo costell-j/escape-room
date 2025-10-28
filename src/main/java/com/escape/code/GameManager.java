@@ -44,7 +44,7 @@ public class GameManager {
      * @return true if account is created
      */
     public boolean createAccount(String username, String password) {
-        return userList.addUser(username, password, null, getRoomList(), null);
+        return this.userList.addUser(username, password, null, getRoomList(), null);
     }
 
     /**
@@ -54,7 +54,7 @@ public class GameManager {
      * @return true if logged in
      */
     public boolean login(String username, String password) {
-        this.user = userList.getUser(username, password);
+        this.user = this.userList.getUser(username, password);
         return this.user != null;
     }
 
@@ -63,7 +63,7 @@ public class GameManager {
      * @return userList
      */
     public ArrayList<User> getUserList() {
-        return userList.getUsers();
+        return this.userList.getUsers();
     }
     
     /**
@@ -81,7 +81,7 @@ public class GameManager {
      * @return roomList
      */
     public ArrayList<Room> getRoomList() {
-        return roomList.getAllRooms();
+        return this.roomList.getAllRooms();
     }
 
     /**
@@ -89,7 +89,7 @@ public class GameManager {
      * @return formatted time
      */
     public String formatTimer() {
-        return room.formatTimer();
+        return this.room.formatTimer();
     }
     /**
      * Chooses a room based off the Room
@@ -98,32 +98,25 @@ public class GameManager {
      * @return true if the room exists
      */
     public boolean chooseRoom(Room r) {
-        this.room = roomList.getRoom(r.getId());
+        this.room = this.roomList.getRoom(r.getId());
         if (this.room == null) 
             return false;
         this.puzzles = this.room.getPuzzles();
-        int cur = (this.room.getProgress() != null) ? this.room.getProgress().getCurrentPuzzle() : -1;
-        if (cur >= 0 && cur < this.puzzles.size()) {
-            this.puzzle = this.puzzles.get(cur);
-        } else {
-            this.puzzle = this.puzzles.isEmpty() ? null : this.puzzles.get(0);
-            if (this.room.getProgress() != null && !this.puzzles.isEmpty()) 
-                this.room.getProgress().setCurrentPuzzle(0);
-        }
-    return true;
-}
+        return true;
+    }
+
     /**
      * Starts the timer
      */
     public void startTimer() {
-        room.startTimer();
+        this.room.startTimer();
     }
 
     /**
      * Stops the timer
      */
     public void stopTimer() {
-        room.stopTimer();
+        this.room.stopTimer();
     }
 
     /**
@@ -133,7 +126,7 @@ public class GameManager {
     public void setDifficulty(int difficulty) {
         if(this.room != null) {
             this.room.setDifficulty(difficulty);
-            room.timeChange(difficulty);
+            this.room.timeChange(difficulty);
         }
     }
 
@@ -157,14 +150,14 @@ public class GameManager {
      * Sets the leaderboard to the open state
      */
     public void openLeaderboard() {
-        room.getLeaderboard().setOpen(true);
+        this.room.getLeaderboard().setOpen(true);
     }
 
     /**
      * Sets the leaderboard to the closed state
      */
     public void closeLeaderboard() {
-        room.getLeaderboard().setOpen(false);
+        this.room.getLeaderboard().setOpen(false);
     }
 
     /**
@@ -179,14 +172,14 @@ public class GameManager {
      * Sets the map to the open state
      */
     public void openMap() {
-        room.getMap().setOpen(true);
+        this.room.getMap().setOpen(true);
     }
 
     /**
      * Sets the map to the closed state
      */
     public void closeMap() {
-        room.getMap().setOpen(false);
+        this.room.getMap().setOpen(false);
     }
 
     /**
@@ -194,7 +187,7 @@ public class GameManager {
      * @return percent as a double
      */
     public double percentDone() {
-        return room.percentComplete();
+        return this.room.percentComplete();
     }
 
     /**
@@ -202,7 +195,7 @@ public class GameManager {
      * @return final score as a double
      */
     public double getFinalScore() {
-        return room.getFinalScore();
+        return this.room.getFinalScore();
     }
 
 
@@ -229,7 +222,10 @@ public class GameManager {
      * @param p desired puzzle
      */
     public void setPuzzle(Puzzle p) {
-        this.puzzle = p;
+        if(p != null) {
+            this.puzzle = p;
+            this.room.getProgress().setCurrentPuzzle(this.puzzles.indexOf(p));
+        }
     }
 
     /**
@@ -237,6 +233,8 @@ public class GameManager {
      * @return puzzle
      */
     public Puzzle getPuzzle() {
+        if(this.puzzle == null)
+            throw new IllegalArgumentException("Player must choose puzzle");
         return this.puzzle;
     }
 
@@ -248,11 +246,11 @@ public class GameManager {
      * @return true if solved, false if not
      */
     public <T> boolean attemptPuzzle(Puzzle puzzle, T answer) {
-        return room.attemptPuzzle(puzzle, answer);
+        return this.room.attemptPuzzle(puzzle, answer);
     }
 
     public HashMap<String, Puzzle> viewCompletedPuzzles() {
-        return room.getProgress().getPuzzlesSolved();
+        return this.room.getProgress().getPuzzlesSolved();
     }
 
     //Settings related methosd
@@ -272,8 +270,8 @@ public class GameManager {
      */
     public boolean saveGame() {
         if(userList != null || roomList != null) { 
-            userList.save(); 
-            roomList.save(); 
+            this.userList.save(); 
+            this.roomList.save(); 
             return true;
         }
     return false;
