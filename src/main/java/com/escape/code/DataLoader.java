@@ -67,7 +67,7 @@ public class DataLoader extends DataConstants {
         ArrayList<Room> rooms = new ArrayList<>();
 
         try {
-            FileReader reader = new FileReader(ROOM_TEMP_FILE_NAME);
+            FileReader reader = new FileReader(ROOM_FILE_NAME);
             JSONArray roomsJSON = (JSONArray)new JSONParser().parse(reader);
 
             for(int i=0; i<roomsJSON.size(); i++) {

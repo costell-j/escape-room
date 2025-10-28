@@ -2,13 +2,13 @@
 Escape Room Certificate
 ------------------
 
-Player: leniRogers04
+Player: leniRogers1
 Game: Escape 13th Street
 
 Easy peasy lemon squeezy!
 
 Difficulty: 1
-Hints Used: 1
-Final Score: 900.0/1000
+Hints Used: 3
+Final Score: 800.0/1000
 
 Thank you for playing! Play again soon

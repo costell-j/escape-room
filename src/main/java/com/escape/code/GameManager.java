@@ -92,9 +92,9 @@ public class GameManager {
         return room.formatTimer();
     }
     /**
-     * Chooses a room based off the UUID
+     * Chooses a room based off the Room
      * It sets the room, the puzzles, and current puzzle
-     * @param id uuid of desired room
+     * @param r room of desired room
      * @return true if the room exists
      */
     public boolean chooseRoom(Room r) {
@@ -102,8 +102,6 @@ public class GameManager {
         if (this.room == null) 
             return false;
         this.puzzles = this.room.getPuzzles();
-        if (this.puzzles == null) 
-            this.puzzles = new ArrayList<>();
         int cur = (this.room.getProgress() != null) ? this.room.getProgress().getCurrentPuzzle() : -1;
         if (cur >= 0 && cur < this.puzzles.size()) {
             this.puzzle = this.puzzles.get(cur);
