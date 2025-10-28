@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -400,7 +401,11 @@ public class DataWriter extends DataConstants {
         JSONArray roomsJSON = new JSONArray();
         ArrayList<Room> rooms = user.getRooms();
         for(int i=0; i<rooms.size(); i++) {
-            roomsJSON.add(""+rooms.get(i).getId()+"");
+            if(rooms.get(i) == null) {
+                roomsJSON.add(""+UUID.fromString("00000000-0000-0000-0000-000000000000")+"");
+            } else {
+                roomsJSON.add(""+rooms.get(i).getId()+"");
+            }
         }
 
         return roomsJSON;
@@ -421,6 +426,6 @@ public class DataWriter extends DataConstants {
     }
 
     public static void main(String[] args){
-		DataWriter.saveRooms();
+		DataWriter.saveUsers();
 	}
 }
