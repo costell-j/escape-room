@@ -130,8 +130,6 @@ public class Room {
     public ArrayList<Puzzle> getPuzzles() {
         if(puzzles == null)
             this.puzzles = new ArrayList<>();
-        if(puzzles.isEmpty())
-            throw new IllegalArgumentException("Empty ArrayList");
         return this.puzzles;
     }
 
@@ -255,17 +253,9 @@ public class Room {
         puzzles.get(index).attempt(answer);
         if(puzzles.get(index).isSolved()) {
             progress.getPuzzlesSolved().put(puzzles.get(index).getName(), puzzles.get(index));
-            puzzles.remove(index);
             return true;
         }
         return false;
-    }
-
-    /**
-     * Advances the user onto the next puzzle
-     */
-    public void advancePuzzle() {
-        this.progress.setCurrentPuzzle(this.progress.getCurrentPuzzle()+1);
     }
     
     public double percentComplete() {
