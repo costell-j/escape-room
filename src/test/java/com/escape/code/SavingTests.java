@@ -1,9 +1,11 @@
 package com.escape.code;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 //import static org.junit.Assert.assertEquals;
 //import static org.junit.Assert.assertFalse;
+
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -24,6 +26,25 @@ public class SavingTests {
 
         for(User user : users) {
             if(user.getUsername().equals("matty")) { found = true; }
+        }
+
+        assertTrue(found);
+    }
+
+    @Test
+    public void testSaveRooms() {
+        RoomList rommList = RoomList.getInstance();
+        UserList userList = UserList.getInstance();
+        DataLoader.loadLeaderboards();
+
+        Room room = new Room();
+        rommList.addRoom(room);
+        DataWriter.saveRooms();
+        ArrayList<Room> rooms = DataLoader.getRooms();
+        boolean found = false;
+
+        for(Room r : rooms) {
+            if(r.getName().equals("none")) { found = true; }
         }
 
         assertTrue(found);
