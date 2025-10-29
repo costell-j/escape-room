@@ -185,6 +185,10 @@ public class Room {
         this.timer = timer;
     }
 
+    public void setPuzzles(ArrayList<Puzzle> puzzles) {
+        this.puzzles = puzzles;
+    }
+
     /**
      * Setter for the room's difficulty
      * Restricts the difficulty to 1-3, defaulted at 1
