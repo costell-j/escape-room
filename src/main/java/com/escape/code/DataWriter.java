@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -135,6 +136,9 @@ public class DataWriter extends DataConstants {
     @SuppressWarnings("unchecked")
     private static JSONObject writeItem(Puzzle puzzle) {
         JSONObject itemJSON = new JSONObject();
+        if(puzzle == null || puzzle.getItem() == null) {
+            return itemJSON;
+        }
         itemJSON.put(ROOM_NAME, puzzle.getItem().getName());
         itemJSON.put(USER_PUZZLE_DESC, puzzle.getItem().getDescription());
         itemJSON.put(ITEM_USED, puzzle.getItem().isUsed());
@@ -150,6 +154,9 @@ public class DataWriter extends DataConstants {
     @SuppressWarnings("unchecked")
     private static JSONObject writeGivenItem(Puzzle puzzle) {
         JSONObject itemJSON = new JSONObject();
+        if(puzzle == null || puzzle.getGivenItem() == null) {
+            return itemJSON;
+        }
         itemJSON.put(ROOM_NAME, puzzle.getGivenItem().getName());
         itemJSON.put(USER_PUZZLE_DESC, puzzle.getGivenItem().getDescription());
         itemJSON.put(ITEM_USED, puzzle.getGivenItem().isUsed());
@@ -166,13 +173,50 @@ public class DataWriter extends DataConstants {
     private static JSONObject writePuzzle(Puzzle puzzle) {
         //Create Puzzle JSON Object
         JSONObject puzzleJSON = new JSONObject();
-        puzzleJSON.put(USER_PUZZLE_DESC, puzzle.getDescription());
-        puzzleJSON.put(ROOM_NAME, puzzle.getName());
-        puzzleJSON.put(PUZZLE_TYPE, puzzle.getType());
-        puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzle.getSolution());
+        if(puzzle == null) {
+            return puzzleJSON;
+        }
+        if(puzzle.getDescription() == null) {
+            puzzleJSON.put(USER_PUZZLE_DESC, "none");
+        } else {
+            puzzleJSON.put(USER_PUZZLE_DESC, puzzle.getDescription());
+        }
+        if(puzzle.getName() == null) {
+            puzzleJSON.put(ROOM_NAME, "none");
+        } else {
+            puzzleJSON.put(ROOM_NAME, puzzle.getName());
+        }
+        if(puzzle.getType() == null) {
+            puzzleJSON.put(PUZZLE_TYPE, "none");
+        } else {
+            puzzleJSON.put(PUZZLE_TYPE, puzzle.getType());
+        }
+        if(puzzle.getSolution() == null) {
+            puzzleJSON.put(USER_PUZZLE_SOLUTION, "none");
+        } else {
+            puzzleJSON.put(USER_PUZZLE_SOLUTION, puzzle.getSolution());
+        }
         puzzleJSON.put(USER_PUZZLE_SOLVED, puzzle.isSolved());
-        puzzleJSON.put(ITEM, writeItem(puzzle));
-        puzzleJSON.put(GIVEN_ITEM, writeGivenItem(puzzle));
+        if(puzzle.getItem() == null) {
+            JSONObject itemJSON = new JSONObject();
+            Item item = new Item(HINT, USER_ROOMS, false);
+            itemJSON.put(ROOM_NAME, item.getName());
+            itemJSON.put(USER_PUZZLE_DESC, item.getDescription());
+            itemJSON.put(ITEM_USED, item.isUsed());
+            puzzleJSON.put(ITEM, itemJSON);
+        } else {
+            puzzleJSON.put(ITEM, writeItem(puzzle));
+        }
+        if(puzzle.getGivenItem() == null) {
+            JSONObject itemJSON = new JSONObject();
+            Item item = new Item(HINT, USER_ROOMS, false);
+            itemJSON.put(ROOM_NAME, item.getName());
+            itemJSON.put(USER_PUZZLE_DESC, item.getDescription());
+            itemJSON.put(ITEM_USED, item.isUsed());
+            puzzleJSON.put(GIVEN_ITEM, itemJSON);
+        } else {
+            puzzleJSON.put(GIVEN_ITEM, writeGivenItem(puzzle));
+        }
         puzzleJSON.put(PUZZLE_LOCKED, puzzle.isLocked());
 
         //Type Switch
@@ -194,14 +238,18 @@ public class DataWriter extends DataConstants {
         }
 
         //Create JSON Array of hints to store in Puzzle Object
-        JSONArray hintsJSON = new JSONArray();
-        ArrayList<String> hints = puzzle.getHints();
-        for(int j=0; j<hints.size(); j++) {
-            hintsJSON.add(hints.get(j));
-        }
+        if(puzzle.getHints() == null) {
+            puzzleJSON.put(USER_PUZZLE_HINTS, new JSONArray());
+        } else {
+            JSONArray hintsJSON = new JSONArray();
+            ArrayList<String> hints = puzzle.getHints();
+            for(int j=0; j<hints.size(); j++) {
+                hintsJSON.add(hints.get(j));
+            }
 
-        //Continue adding to Puzzle Object
-        puzzleJSON.put(USER_PUZZLE_HINTS, hintsJSON);
+            //Continue adding to Puzzle Object
+            puzzleJSON.put(USER_PUZZLE_HINTS, hintsJSON);
+        }
 
         return puzzleJSON;
     }
@@ -215,7 +263,12 @@ public class DataWriter extends DataConstants {
     private static JSONArray writePuzzleList(Room room) {
         //Puzzles JSON Array
         JSONArray puzzlesJSON = new JSONArray();
-        ArrayList<Puzzle> puzzles = room.getPuzzles();
+        ArrayList<Puzzle> puzzles = new ArrayList<>();
+        if(room.getPuzzles().isEmpty() || room.getPuzzles() == null) {
+            return puzzlesJSON;
+        } else {
+            puzzles = room.getPuzzles();
+        }
         for(int i=0; i<puzzles.size(); i++) {
             JSONObject puzzleJSON = writePuzzle(puzzles.get(i));
             puzzlesJSON.add(puzzleJSON);
@@ -232,6 +285,9 @@ public class DataWriter extends DataConstants {
     @SuppressWarnings("unchecked")
     private static JSONObject writeMap(Room room) {
         JSONObject mapJSON = new JSONObject();
+        if(room.getMap() == null) {
+            return mapJSON;
+        }
         mapJSON.put(ROOM_MAP_NAME, room.getMap().getMapName());
         mapJSON.put(ROOM_MAP_HEIGHT, room.getMap().getHeight());
         mapJSON.put(ROOM_MAP_LENGTH, room.getMap().getLength());
@@ -249,6 +305,9 @@ public class DataWriter extends DataConstants {
     private static JSONObject writeLeaderboard(Room room) {
         //Leaderboard JSON Object
         JSONObject leaderboardJSON = new JSONObject();
+        if(room.getLeaderboard() == null) {
+            return leaderboardJSON;
+        }
         JSONArray playersJSON = new JSONArray();
         HashMap<Integer, User> players = room.getLeaderboard().getPlayers();
         for(User user : players.values()) {
@@ -292,6 +351,9 @@ public class DataWriter extends DataConstants {
     private static JSONObject writeProgress(Room room) {
         //Progress JSON Object
         JSONObject roomProgress = new JSONObject();
+        if(room.getProgress() == null) {
+            return roomProgress;
+        }
         JSONArray puzzleJSONArray = new JSONArray();
         HashMap<String, Puzzle> userPuzzles = room.getProgress().getPuzzlesSolved();
 
@@ -356,7 +418,13 @@ public class DataWriter extends DataConstants {
     @SuppressWarnings("unchecked")
     private static JSONArray writeProgressList(Room room) {
         JSONArray progressListJSON = new JSONArray();
-        HashMap<String, Progress> progressList = room.getProgressList();
+        HashMap<String, Progress> progressList = new HashMap<>();
+
+        if(room.getProgressList() == null || room.getProgressList().isEmpty()) {
+            return progressListJSON;
+        } else {
+            progressList = room.getProgressList();
+        }
         for(Progress progress : progressList.values()) {
             JSONObject progressJSON = writeProgress(room);
             JSONObject progressHash = new JSONObject();
@@ -383,6 +451,9 @@ public class DataWriter extends DataConstants {
     private static JSONObject writeSettings(User user) {
         //Settings JSON Object
         JSONObject userSettings = new JSONObject();
+        if(user.getSettings() == null) {
+            return userSettings;
+        }
         userSettings.put(USER_SETTINGS_VOLUME, user.getSettings().getVolume());
         userSettings.put(USER_SETTINGS_DIFFICULTY, user.getSettings().getDifficulty());
 
@@ -398,9 +469,18 @@ public class DataWriter extends DataConstants {
     private static JSONArray writeRoomList(User user) {
         //Rooms JSON Array
         JSONArray roomsJSON = new JSONArray();
-        ArrayList<Room> rooms = user.getRooms();
+        ArrayList<Room> rooms = new ArrayList<>();
+        if(user.getRooms().isEmpty() || user.getRooms() == null) {
+            return roomsJSON;
+        } else {
+            rooms = user.getRooms();
+        }
         for(int i=0; i<rooms.size(); i++) {
-            roomsJSON.add(""+rooms.get(i).getId()+"");
+            if(rooms.get(i) == null) {
+                roomsJSON.add(""+UUID.fromString("00000000-0000-0000-0000-000000000000")+"");
+            } else {
+                roomsJSON.add(""+rooms.get(i).getId()+"");
+            }
         }
 
         return roomsJSON;
@@ -409,7 +489,12 @@ public class DataWriter extends DataConstants {
     @SuppressWarnings("unchecked")
     private static JSONArray writeStory(Room room) {
         JSONArray storyJSON = new JSONArray();
-        ArrayList<Slide> slides = room.getStory();
+        ArrayList<Slide> slides = new ArrayList<>();
+        if(room.getStory() == null || room.getStory().isEmpty()) {
+            return storyJSON;
+        } else {
+            slides = room.getStory();
+        }
         for(int i=0; i<slides.size(); i++) {
             JSONObject slideJSON = new JSONObject();
             slideJSON.put(USER_PUZZLE_DESC, slides.get(i).getDescription());

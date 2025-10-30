@@ -67,7 +67,7 @@ public class DataLoader extends DataConstants {
         ArrayList<Room> rooms = new ArrayList<>();
 
         try {
-            FileReader reader = new FileReader(ROOM_FILE_NAME);
+            FileReader reader = new FileReader(ROOM_TEMP_FILE_NAME);
             JSONArray roomsJSON = (JSONArray)new JSONParser().parse(reader);
 
             for(int i=0; i<roomsJSON.size(); i++) {
@@ -102,6 +102,9 @@ public class DataLoader extends DataConstants {
      */
     private static Progress loadProgress(JSONObject parentJSON) {
         JSONObject progressJSON = (JSONObject)parentJSON.get(USER_PROGRESS);
+        if(progressJSON.isEmpty()) {
+            return new Progress();
+        }
         int cluesUsed = ((Long)progressJSON.get(USER_CLUES_USED)).intValue();
         int completionTime = ((Long)progressJSON.get(ROOM_PROGRESS_COMPLETION_TIME)).intValue();
         int currentRoom = ((Long)progressJSON.get(USER_CURRENT_ROOM)).intValue();
@@ -109,43 +112,51 @@ public class DataLoader extends DataConstants {
         //Puzzles Solved in Progress Object
         JSONArray puzzles = (JSONArray)progressJSON.get(USER_PUZZLES_SOLVED);
         HashMap<String, Puzzle> puzzleMap = new HashMap<>();
-        for(int k=0; k<puzzles.size(); k++) {
-            JSONObject puzzleJSON = (JSONObject)puzzles.get(k);
-            String ProgressKey = (String)puzzleJSON.get(USER_PUZZLE_HASH_KEY);
-            JSONObject ProgressValue = (JSONObject)puzzleJSON.get(USER_PUZZLE_HASH_VAL);
-            Puzzle puzzle = loadPuzzle(ProgressValue);
-            puzzleMap.put(ProgressKey, puzzle);
+        if(!(puzzles == null) && !puzzles.isEmpty()) {
+            for(int k=0; k<puzzles.size(); k++) {
+                JSONObject puzzleJSON = (JSONObject)puzzles.get(k);
+                String ProgressKey = (String)puzzleJSON.get(USER_PUZZLE_HASH_KEY);
+                JSONObject ProgressValue = (JSONObject)puzzleJSON.get(USER_PUZZLE_HASH_VAL);
+                Puzzle puzzle = loadPuzzle(ProgressValue);
+                puzzleMap.put(ProgressKey, puzzle);
+            }
         }
 
         //Progress Achievements JSON Array
         JSONArray achievementsJSON = (JSONArray)progressJSON.get(USER_ACHIEVEMENTS);
         ArrayList<Achievement> achievements = new ArrayList<>();
-        for(int k=0; k<achievementsJSON.size(); k++) {
-            JSONObject achievementJSON = (JSONObject)achievementsJSON.get(k);
-            String title = (String)achievementJSON.get(USER_ACHIEVEMENT_TITLE);
-            boolean unlocked = (boolean)achievementJSON.get(USER_ACHIEVEMENT_UNLOCKED);
-            Achievement achievement = new Achievement(title, unlocked);
-            achievements.add(achievement);
+        if(!(achievementsJSON == null) && !achievementsJSON.isEmpty()) {
+            for(int k=0; k<achievementsJSON.size(); k++) {
+                JSONObject achievementJSON = (JSONObject)achievementsJSON.get(k);
+                String title = (String)achievementJSON.get(USER_ACHIEVEMENT_TITLE);
+                boolean unlocked = (boolean)achievementJSON.get(USER_ACHIEVEMENT_UNLOCKED);
+                Achievement achievement = new Achievement(title, unlocked);
+                achievements.add(achievement);
+            }
         }
 
         //Load Items
         JSONArray itemsJSON = (JSONArray)progressJSON.get(ITEMS);
         ArrayList<Item> items = new ArrayList<>();
-        for(int i=0; i<itemsJSON.size(); i++) {
-            JSONObject itemJSON = (JSONObject)itemsJSON.get(i);
-
-            Item item = loadItem(itemJSON);
-            items.add(item);
+        if(!(itemsJSON == null) && !itemsJSON.isEmpty()) {
+            for(int i=0; i<itemsJSON.size(); i++) {
+                JSONObject itemJSON = (JSONObject)itemsJSON.get(i);
+    
+                Item item = loadItem(itemJSON);
+                items.add(item);
+            }
         }
 
         //Load Hints Used
         JSONArray hintsUsedJSON = (JSONArray)progressJSON.get(HINTS_USED);
         HashMap<String, String> hintsUsed = new HashMap<>();
-        for(int i=0; i<hintsUsedJSON.size(); i++) {
-            JSONObject hintHashJSON = (JSONObject)hintsUsedJSON.get(i);
-            String hintKey = (String)hintHashJSON.get(HINT);
-            String hintVal = (String)hintHashJSON.get(ROOM_NAME);
-            hintsUsed.put(hintKey, hintVal);
+        if(!(hintsUsedJSON == null) && !hintsUsedJSON.isEmpty()) {
+            for(int i=0; i<hintsUsedJSON.size(); i++) {
+                JSONObject hintHashJSON = (JSONObject)hintsUsedJSON.get(i);
+                String hintKey = (String)hintHashJSON.get(HINT);
+                String hintVal = (String)hintHashJSON.get(ROOM_NAME);
+                hintsUsed.put(hintKey, hintVal);
+            }
         }
         Progress progress = new Progress(puzzleMap, cluesUsed, completionTime, currentRoom, achievements, items, hintsUsed);
 
@@ -169,6 +180,9 @@ public class DataLoader extends DataConstants {
      */
     private static HashMap<String, Progress> loadProgressList(JSONObject parentJSON) {
         JSONArray progressListJSON = (JSONArray)parentJSON.get(ROOM_PROGRESS_LIST);
+        if(progressListJSON.isEmpty()) {
+            return new HashMap<>();
+        }
         HashMap<String, Progress> progressList = new HashMap<>();
         for(int i=0; i<progressListJSON.size(); i++) {
             JSONObject progressJSON = (JSONObject)progressListJSON.get(i);
@@ -208,6 +222,9 @@ public class DataLoader extends DataConstants {
     private static Settings loadSettings(JSONObject parentJSON) {
         //User Settings JSON Object
         JSONObject settingsJSON = (JSONObject)parentJSON.get(USER_SETTINGS);
+        if(settingsJSON.isEmpty()) {
+            return new Settings(0, 0);
+        }
         int volume = ((Long)settingsJSON.get(USER_SETTINGS_VOLUME)).intValue();
         int userDifficulty = ((Long)settingsJSON.get(USER_SETTINGS_DIFFICULTY)).intValue();
         Settings settings = new Settings(volume, userDifficulty);
@@ -230,41 +247,50 @@ public class DataLoader extends DataConstants {
                 UUID id = UUID.fromString((String)roomJSON.get(ROOM_ID));
                 //Get Room Leaderboard Object
                 JSONObject leaderboardJSON = (JSONObject)roomJSON.get(ROOM_LEADERBOARD);
-                JSONArray leaderHash = (JSONArray)leaderboardJSON.get(ROOM_LEADERBOARD_PLAYERS);
-                HashMap<Integer, User> players = new HashMap<>();
-                for(int j=0; j<leaderHash.size(); j++) {
-                    //User JSON Object
-                    JSONObject playerJSON = (JSONObject)leaderHash.get(j);
-                    Integer key = ((Long)playerJSON.get(ROOM_LEADERBOARD_HASH_KEY)).intValue();
-                    JSONObject value = (JSONObject)playerJSON.get(ROOM_LEADERBOARD_HASH_VAL);
-                    String username = (String)value.get(USER_USER_NAME);
-                    String password = (String)value.get(USER_PASSWORD);
+                if(leaderboardJSON.isEmpty()) {
+                    Leaderboard leaderboard = new Leaderboard();
+                    Room room = rooms.getRoom(id);
+                    room.setLeaderboard(leaderboard);
+                    rooms.deleteRoom(id);
+                    rooms.addRoom(room);
+                } else {
+                    JSONArray leaderHash = (JSONArray)leaderboardJSON.get(ROOM_LEADERBOARD_PLAYERS);
+                    HashMap<Integer, User> players = new HashMap<>();
+                    for(int j=0; j<leaderHash.size(); j++) {
+                        //User JSON Object
+                        JSONObject playerJSON = (JSONObject)leaderHash.get(j);
+                        Integer key = ((Long)playerJSON.get(ROOM_LEADERBOARD_HASH_KEY)).intValue();
+                        JSONObject value = (JSONObject)playerJSON.get(ROOM_LEADERBOARD_HASH_VAL);
+                        String username = (String)value.get(USER_USER_NAME);
+                        String password = (String)value.get(USER_PASSWORD);
 
-                    //User Settings JSON Object
-                    Settings settings = loadSettings(value);
+                        //User Settings JSON Object
+                        Settings settings = loadSettings(value);
 
-                    //List of Rooms for a User
-                    ArrayList<Room> roomList = loadRooms(value);
+                        //List of Rooms for a User
+                        ArrayList<Room> roomList = loadRooms(value);
 
-                    UUID currentRoomID = UUID.fromString((String)roomJSON.get(ROOM_ID));
-                    Room currentRoom = rooms.getRoom(currentRoomID);
+                        UUID currentRoomID = UUID.fromString((String)roomJSON.get(ROOM_ID));
+                        Room currentRoom = rooms.getRoom(currentRoomID);
 
-                    User user = new User(username, password, settings, roomList, currentRoom);
-                    players.put(key, user);
-                }
-                boolean open = (boolean)leaderboardJSON.get(ROOM_LEADERBOARD_OPEN);
-                Leaderboard leaderboard = new Leaderboard(players, open);
-                Room room = rooms.getRoom(id);
-                room.setLeaderboard(leaderboard);
-                rooms.deleteRoom(id);
-                rooms.addRoom(room);
-                ArrayList<Room> newRooms = rooms.getAllRooms();
+                        User user = new User(username, password, settings, roomList, currentRoom);
+                        players.put(key, user);
+                    }
+                    boolean open = (boolean)leaderboardJSON.get(ROOM_LEADERBOARD_OPEN);
+                    Leaderboard leaderboard = new Leaderboard(players, open);
+                    Room room = rooms.getRoom(id);
+                    room.setLeaderboard(leaderboard);
+                    rooms.deleteRoom(id);
+                    rooms.addRoom(room);
+                    ArrayList<Room> newRooms = rooms.getAllRooms();
 
-                for(User user : players.values()) {
-                    user.setCurrentRoom(room);
-                    user.setRooms(newRooms);
-                }
+                    for(User user : players.values()) {
+                        user.setCurrentRoom(room);
+                        user.setRooms(newRooms);
+                    }
             }
+                }
+                
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -278,6 +304,9 @@ public class DataLoader extends DataConstants {
     private static Map loadMap(JSONObject parentJSON) {
         //Get Room Map JSON Object
         JSONObject mapJSON = (JSONObject)parentJSON.get(ROOM_MAP);
+        if(mapJSON.isEmpty()) {
+            return new Map("none", 100, 100, false);
+        }
         String mapName = (String)mapJSON.get(ROOM_MAP_NAME);
         int height = ((Long)mapJSON.get(ROOM_MAP_HEIGHT)).intValue();
         int length = ((Long)mapJSON.get(ROOM_MAP_LENGTH)).intValue();
@@ -356,6 +385,9 @@ public class DataLoader extends DataConstants {
     private static ArrayList<Slide> loadStory(JSONObject parentJSON) {
         JSONArray storyJSON = (JSONArray)parentJSON.get(ROOM_STORY);
         ArrayList<Slide> slides = new ArrayList<>();
+        if(storyJSON.isEmpty()) {
+            return slides;
+        }
         for(int i=0; i<storyJSON.size(); i++) {
             JSONObject slideJSON = (JSONObject)storyJSON.get(i);
             String description = (String)slideJSON.get(USER_PUZZLE_DESC);
@@ -369,12 +401,13 @@ public class DataLoader extends DataConstants {
 
     public static void main(String[] args) {
         RoomList roomList = RoomList.getInstance();
+        UserList userList = UserList.getInstance();
         loadLeaderboards();
         ArrayList<Room> rooms = roomList.getAllRooms();
 
-        for(Room room : rooms) {
-            System.out.println(room);
-        }
+        //for(Room room : rooms) {
+            //System.out.println(room);
+        //}
     }
 
 }
