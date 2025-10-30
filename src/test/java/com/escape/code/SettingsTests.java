@@ -3,12 +3,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 public class SettingsTests {
-    Settings settings = new Settings(0, 0);
+    Settings settings = new Settings(0, 1);
 
     @Test
     public void testPositiveVolume() {
@@ -41,10 +39,23 @@ public class SettingsTests {
     }
 
     @Test
+    public void testPositiveVolumeInConstructor() {
+        Settings s = new Settings(6,1);
+        assertEquals(6, s.getVolume());
+    }
+
+    @Test
     public void testNegativeVolumeInConstructor() {
         Settings s = new Settings(-3,1);
         assertEquals(0, s.getVolume());
     }
+
+    @Test
+    public void testPositiveDifficultyInConstructor() {
+        Settings s = new Settings(0, 2);
+        assertEquals(2, s.getDifficulty());
+    }
+
     @Test
     public void testNegativeDifficultyInConstructor() {
         Settings s = new Settings(0, -4);
