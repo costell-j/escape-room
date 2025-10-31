@@ -79,7 +79,7 @@ public class UserList {
         boolean validPassword = password != null && !password.isEmpty() && !password.contains("\n");
         if(newUser(username) && validUsername && validPassword) {
             if(settings == null)
-                settings = new Settings(0, 0);
+                settings = new Settings(0, 1);
             User user = new User(username, password, settings, rooms, currentRoom);
             users.add(user);
             return true;
