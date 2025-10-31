@@ -2,6 +2,7 @@ package com.escape.code;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
@@ -30,7 +31,9 @@ public class DataWriter extends DataConstants {
             jsonUsers.add(getUserJSON(userList.get(i)));
         }
 
-        try (FileWriter file = new FileWriter(USER_TEMP_FILE_NAME)) {
+        try  {
+            String path = getFileWritingPath(USER_TEMP_FILE_NAME, USER_TEMP_FILE_NAME_JSON);
+			FileWriter file = new FileWriter(path);
             
             file.write(jsonUsers.toJSONString());
             file.flush();
@@ -88,7 +91,9 @@ public class DataWriter extends DataConstants {
             jsonUsers.add(getRoomJSON(roomList.get(i)));
         }
 
-        try (FileWriter file = new FileWriter(ROOM_TEMP_FILE_NAME)) {
+        try  {
+            String path = getFileWritingPath(ROOM_TEMP_FILE_NAME, ROOM_TEMP_FILE_NAME_JSON);
+			FileWriter file = new FileWriter(path);
             
             file.write(jsonUsers.toJSONString());
             file.flush();
@@ -470,7 +475,7 @@ public class DataWriter extends DataConstants {
         //Rooms JSON Array
         JSONArray roomsJSON = new JSONArray();
         ArrayList<Room> rooms = new ArrayList<>();
-        if(user.getRooms().isEmpty() || user.getRooms() == null) {
+        if(user.getRooms() == null || user.getRooms().isEmpty()) {
             return roomsJSON;
         } else {
             rooms = user.getRooms();
@@ -505,7 +510,22 @@ public class DataWriter extends DataConstants {
         return storyJSON;
     }
 
+    private static String getFileWritingPath(String PATH_NAME, String JUNIT_PATH_NAME) {
+		try {
+			if(isJUnitTest()){
+				URI url = DataWriter.class.getResource(JUNIT_PATH_NAME).toURI();
+				return url.getPath();
+			} else {
+				return PATH_NAME;
+			}
+		} catch(Exception e){
+			System.out.println("Difficulty getting resource path");
+			return "";
+		}
+	}
+
     public static void main(String[] args){
 		DataWriter.saveRooms();
+        DataWriter.saveUsers();
 	}
 }
