@@ -18,6 +18,16 @@ public class SlideTest {
         assertEquals("Welcome to the Escape Room!", slide.getDescription());
         assertEquals("intro.png", slide.getImagePath());
     }
+    @Test
+    public void testUpdateDescription() {
+        slide.setDescription("New Slide Text");
+        assertEquals("New Slide Text", slide.getDescription());
+    }
+    @Test
+    public void testUpdateImagePath() {
+        slide.setImagePath("updated.png");
+        assertEquals("updated.png", slide.getImagePath());
+    }
 
     @Test
     public void testSettersUpdateValues() {
@@ -38,5 +48,14 @@ public class SlideTest {
     public void testEmptyImagePathHandling() {
         Slide blankSlide = new Slide("Blank", "");
         assertEquals("", blankSlide.getImagePath());
+    }
+    @Test
+    public void testNullDescriptionDoesNotThrow() {
+        try {
+            slide.setDescription(null);
+            assertNull(slide.getDescription());
+        } catch (Exception e) {
+            fail("null description should not throw");
+        }
     }
 }

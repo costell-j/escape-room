@@ -45,6 +45,12 @@ public class RoomListTest {
         assertNotNull(fetched);
         assertEquals(room, fetched);
     }
+    
+    @Test
+    public void testGetRoomWithUnknownUUIDReturnsNull() {
+        UUID randomId = UUID.randomUUID();
+        assertNull(roomList.getRoom(randomId));
+    }
 
     @Test
     public void testDeleteRoomRemovesFromList() {
@@ -67,7 +73,7 @@ public class RoomListTest {
         try {
             roomList.save();
         } catch (Exception e) {
-            fail("RoomList.save() should not throw: " + e.getMessage());
+            fail("save should not throw: " + e.getMessage());
         }
     }
 }

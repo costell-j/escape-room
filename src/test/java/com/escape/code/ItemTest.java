@@ -38,7 +38,7 @@ public class ItemTest {
         assertEquals("Opens a locked chest", item.getDescription());
         assertFalse(item.isUsed());
     }
-    
+
     @Test
     public void testSetUsedMarksItemAsUsed() {
         item.setUsed(true);
@@ -57,4 +57,15 @@ public class ItemTest {
         String desc = item.toString().toLowerCase();
         assertTrue(desc.contains("key") || desc.contains("silver"));
     }
+
+    @Test
+    public void testSetNullDescriptionDoesNotCrash() {
+        try {
+            item.setDescription(null);
+            assertNull(item.getDescription());
+        } catch (Exception e) {
+            fail("null description should not throw an exception");
+        }
+    }
+   
 }

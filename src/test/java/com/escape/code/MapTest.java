@@ -23,6 +23,13 @@ public class MapTest {
     }
 
     @Test
+    public void testZeroDimensionMapAllowed() {
+        Map flat = new Map("Flat", 0, 0, false);
+        assertEquals(0, flat.getHeight());
+        assertEquals(0, flat.getLength());
+    }
+
+    @Test
     public void testSetOpenTrueThenFalse() {
         map.setOpen(true);
         assertTrue(map.isOpen());
@@ -42,5 +49,15 @@ public class MapTest {
         assertEquals(5, smallMap.getHeight());
         assertEquals(5, smallMap.getLength());
     }
+    @Test
+    public void testNullNameDoesNotThrow() {
+        try {
+            Map m = new Map(null, 2, 2, false);
+            assertNull(m.getMapName());
+        } catch (Exception e) {
+            fail("Constructor with null name should not throw");
+        }
+    }
+
 }
 
