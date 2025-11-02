@@ -8,7 +8,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.Test;
-
+/*
+ * Testing for gameManager
+ * @Author Erin Check
+ */
 public class gameManagerTest {
     private GameManager gameManager = new GameManager();
     private UserList users = UserList.getInstance();
@@ -59,6 +62,18 @@ public class gameManagerTest {
 		assertFalse(isCreated);
     }
 
+    @Test
+    public void testNewLineUsername(){
+        boolean isCreated = gameManager.createAccount("mrt\nmb", "5678");
+        assertFalse(isCreated);
+    }
+
+    @Test
+    public void testNewLinePassword(){
+        boolean isCreated = gameManager.createAccount("username", "abc\nd");
+        assertFalse(isCreated);
+    }
+    
     @Test
     public void testCreateGuest(){
         boolean created = gameManager.createGuest();
