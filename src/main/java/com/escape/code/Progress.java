@@ -111,4 +111,12 @@ public class Progress {
         }
         return progress;
     }
+
+    public void setCluesUsed(int cluesUsed) {
+        this.cluesUsed = cluesUsed;
+    }
+
+    public void setCompletionTime(int completionTime) {
+        this.completionTime = completionTime;
+    }
 }
