@@ -67,4 +67,13 @@ public class SettingsTests {
         Settings s = new Settings(0, 6);
         assertEquals(1, s.getDifficulty());
     }
+
+    @Test
+    public void testToString() {
+        Settings s = new Settings(3, 2);
+        String out = s.toString();
+        assertTrue(out.contains("Volume: 3"));
+        assertTrue(out.contains("Difficulty: 2"));
+    }
 }
+

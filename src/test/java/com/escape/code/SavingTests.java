@@ -9,6 +9,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.AfterClass;
 import org.junit.Test;
 
+/**
+ * Testing class for Dataloader.java & DataWriter.java
+ * @author Matthew Kight
+ */
+
 public class SavingTests {
     private UserList userList = UserList.getInstance();
     private RoomList roomList = RoomList.getInstance();
