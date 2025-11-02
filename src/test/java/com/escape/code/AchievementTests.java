@@ -8,7 +8,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.Test;
-
+/*
+ * Testing for Achievement class
+ * @Author Erin Check
+ */
 public class AchievementTests {
 
     private Achievement lockedAchievement;
@@ -31,13 +34,11 @@ public class AchievementTests {
 
     @Test
     public void unlockDoesNotChangeLockedStateWithCurrentLogic() {
-        // Current implementation: if(unlocked) unlocked = true;  -> no effect when false
         lockedAchievement.unlock();
-        assertFalse("unlock() should not change state when initially locked", lockedAchievement.isUnlocked());
+        assertFalse(lockedAchievement.isUnlocked());
 
-        // Already unlocked remains unlocked
         unlockedAchievement.unlock();
-        assertTrue("unlock() should keep already-unlocked achievement true", unlockedAchievement.isUnlocked());
+        assertTrue(unlockedAchievement.isUnlocked());
     }
 
     @Test
