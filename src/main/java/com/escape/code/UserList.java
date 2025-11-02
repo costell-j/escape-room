@@ -47,6 +47,14 @@ public class UserList {
         return null;
     }
 
+    public boolean newUser(String username) {
+        for( int i = 0; i < users.size(); i++) {
+            if(users.get(i).getUsername().equals(username))
+                return false;
+        }
+        return true;
+    }
+
     /**
      * Returns the ArrayList of Users
      * @return arraylist of users
@@ -69,9 +77,9 @@ public class UserList {
     public boolean addUser(String username, String password, Settings settings, ArrayList<Room> rooms, Room currentRoom) {
         boolean validUsername = username != null && !username.trim().isEmpty() && !username.contains("\n");
         boolean validPassword = password != null && !password.isEmpty() && !password.contains("\n");
-        if(getUser(username, password) == null && validUsername && validPassword) {
+        if(newUser(username) && validUsername && validPassword) {
             if(settings == null)
-                settings = new Settings(0, 0);
+                settings = new Settings(0, 1);
             User user = new User(username, password, settings, rooms, currentRoom);
             users.add(user);
             return true;

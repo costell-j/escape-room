@@ -8,7 +8,9 @@ package com.escape.code;
 public abstract class DataConstants {
     //User Constants
     protected static final String USER_FILE_NAME = "src/main/java/com/escape/json/users.json";
-    protected static final String USER_TEMP_FILE_NAME = "src/main/java/com/escape/json/users_temp.json";
+    protected static final String USER_FILE_NAME_JSON = "/com/escape/json/users.json";
+    protected static final String USER_TEMP_FILE_NAME_JSON = "/com/escape/json/users_temp.json";
+    protected static final String USER_TEMP_FILE_NAME = "/com/escape/json/users_temp.json";
     protected static final String USER_USER_NAME = "username";
     protected static final String USER_PASSWORD = "password";
     protected static final String USER_SETTINGS = "settings";
@@ -34,7 +36,9 @@ public abstract class DataConstants {
 
     //Room Constants
     protected static final String ROOM_FILE_NAME = "src/main/java/com/escape/json/rooms.json";
+    protected static final String ROOM_FILE_NAME_JSON = "/com/escape/json/rooms.json";
     protected static final String ROOM_TEMP_FILE_NAME = "src/main/java/com/escape/json/rooms_temp.json";
+    protected static final String ROOM_TEMP_FILE_NAME_JSON = "/com/escape/json/rooms_temp.json";
     protected static final String ROOM_ID = "id";
     protected static final String ROOM_STORY = "story";
     protected static final String IMAGE_PATH = "imagePath";
@@ -64,6 +68,14 @@ public abstract class DataConstants {
     protected static final String ROOM_LEADERBOARD_HASH_VAL = "User";
     protected static final String ROOM_PROGRESS_COMPLETION_TIME = "completionTime";
     
+    public static boolean isJUnitTest() {  
+	    for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+		    if (element.getClassName().startsWith("org.junit.")) {
+		        return true;
+		    }           
+	    }
+	    return false;
+	}
 
 }
 

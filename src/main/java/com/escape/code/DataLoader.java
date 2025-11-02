@@ -1,6 +1,9 @@
 package com.escape.code;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
@@ -23,9 +26,9 @@ public class DataLoader extends DataConstants {
      */
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<>();
+        BufferedReader reader = getReaderFromFile(USER_TEMP_FILE_NAME, USER_TEMP_FILE_NAME_JSON);
 
         try {
-            FileReader reader = new FileReader(USER_TEMP_FILE_NAME);
             JSONArray peopleJSON = (JSONArray)new JSONParser().parse(reader);
 
             for(int i=0; i<peopleJSON.size(); i++) {
@@ -65,9 +68,9 @@ public class DataLoader extends DataConstants {
     @SuppressWarnings("ConvertToTryWithResources")
     public static ArrayList<Room> getRooms() {
         ArrayList<Room> rooms = new ArrayList<>();
+        BufferedReader reader = getReaderFromFile(ROOM_TEMP_FILE_NAME, ROOM_TEMP_FILE_NAME_JSON);
 
         try {
-            FileReader reader = new FileReader(ROOM_TEMP_FILE_NAME);
             JSONArray roomsJSON = (JSONArray)new JSONParser().parse(reader);
 
             for(int i=0; i<roomsJSON.size(); i++) {
@@ -112,43 +115,51 @@ public class DataLoader extends DataConstants {
         //Puzzles Solved in Progress Object
         JSONArray puzzles = (JSONArray)progressJSON.get(USER_PUZZLES_SOLVED);
         HashMap<String, Puzzle> puzzleMap = new HashMap<>();
-        for(int k=0; k<puzzles.size(); k++) {
-            JSONObject puzzleJSON = (JSONObject)puzzles.get(k);
-            String ProgressKey = (String)puzzleJSON.get(USER_PUZZLE_HASH_KEY);
-            JSONObject ProgressValue = (JSONObject)puzzleJSON.get(USER_PUZZLE_HASH_VAL);
-            Puzzle puzzle = loadPuzzle(ProgressValue);
-            puzzleMap.put(ProgressKey, puzzle);
+        if(!(puzzles == null) && !puzzles.isEmpty()) {
+            for(int k=0; k<puzzles.size(); k++) {
+                JSONObject puzzleJSON = (JSONObject)puzzles.get(k);
+                String ProgressKey = (String)puzzleJSON.get(USER_PUZZLE_HASH_KEY);
+                JSONObject ProgressValue = (JSONObject)puzzleJSON.get(USER_PUZZLE_HASH_VAL);
+                Puzzle puzzle = loadPuzzle(ProgressValue);
+                puzzleMap.put(ProgressKey, puzzle);
+            }
         }
 
         //Progress Achievements JSON Array
         JSONArray achievementsJSON = (JSONArray)progressJSON.get(USER_ACHIEVEMENTS);
         ArrayList<Achievement> achievements = new ArrayList<>();
-        for(int k=0; k<achievementsJSON.size(); k++) {
-            JSONObject achievementJSON = (JSONObject)achievementsJSON.get(k);
-            String title = (String)achievementJSON.get(USER_ACHIEVEMENT_TITLE);
-            boolean unlocked = (boolean)achievementJSON.get(USER_ACHIEVEMENT_UNLOCKED);
-            Achievement achievement = new Achievement(title, unlocked);
-            achievements.add(achievement);
+        if(!(achievementsJSON == null) && !achievementsJSON.isEmpty()) {
+            for(int k=0; k<achievementsJSON.size(); k++) {
+                JSONObject achievementJSON = (JSONObject)achievementsJSON.get(k);
+                String title = (String)achievementJSON.get(USER_ACHIEVEMENT_TITLE);
+                boolean unlocked = (boolean)achievementJSON.get(USER_ACHIEVEMENT_UNLOCKED);
+                Achievement achievement = new Achievement(title, unlocked);
+                achievements.add(achievement);
+            }
         }
 
         //Load Items
         JSONArray itemsJSON = (JSONArray)progressJSON.get(ITEMS);
         ArrayList<Item> items = new ArrayList<>();
-        for(int i=0; i<itemsJSON.size(); i++) {
-            JSONObject itemJSON = (JSONObject)itemsJSON.get(i);
-
-            Item item = loadItem(itemJSON);
-            items.add(item);
+        if(!(itemsJSON == null) && !itemsJSON.isEmpty()) {
+            for(int i=0; i<itemsJSON.size(); i++) {
+                JSONObject itemJSON = (JSONObject)itemsJSON.get(i);
+    
+                Item item = loadItem(itemJSON);
+                items.add(item);
+            }
         }
 
         //Load Hints Used
         JSONArray hintsUsedJSON = (JSONArray)progressJSON.get(HINTS_USED);
         HashMap<String, String> hintsUsed = new HashMap<>();
-        for(int i=0; i<hintsUsedJSON.size(); i++) {
-            JSONObject hintHashJSON = (JSONObject)hintsUsedJSON.get(i);
-            String hintKey = (String)hintHashJSON.get(HINT);
-            String hintVal = (String)hintHashJSON.get(ROOM_NAME);
-            hintsUsed.put(hintKey, hintVal);
+        if(!(hintsUsedJSON == null) && !hintsUsedJSON.isEmpty()) {
+            for(int i=0; i<hintsUsedJSON.size(); i++) {
+                JSONObject hintHashJSON = (JSONObject)hintsUsedJSON.get(i);
+                String hintKey = (String)hintHashJSON.get(HINT);
+                String hintVal = (String)hintHashJSON.get(ROOM_NAME);
+                hintsUsed.put(hintKey, hintVal);
+            }
         }
         Progress progress = new Progress(puzzleMap, cluesUsed, completionTime, currentRoom, achievements, items, hintsUsed);
 
@@ -230,7 +241,7 @@ public class DataLoader extends DataConstants {
     public static void loadLeaderboards() {
 
         try {
-            FileReader reader = new FileReader(ROOM_TEMP_FILE_NAME);
+            BufferedReader reader = getReaderFromFile(ROOM_TEMP_FILE_NAME, ROOM_TEMP_FILE_NAME_JSON);
             JSONArray roomsJSON = (JSONArray)new JSONParser().parse(reader);
             RoomList rooms = RoomList.getInstance();
 
@@ -391,15 +402,32 @@ public class DataLoader extends DataConstants {
         return slides;
     }
 
+    private static BufferedReader getReaderFromFile(String fileName, String jsonFileName){
+		try {
+			if(isJUnitTest()){
+				InputStream inputStream = DataLoader.class.getResourceAsStream(jsonFileName);
+				InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+				return new BufferedReader(inputStreamReader);
+			} else {
+				FileReader reader = new FileReader(fileName);
+				return new BufferedReader(reader);
+			}
+		} catch(Exception e){
+			System.out.println("Can't load");
+			return null;
+		}
+			
+	}
+
     public static void main(String[] args) {
         RoomList roomList = RoomList.getInstance();
         UserList userList = UserList.getInstance();
         loadLeaderboards();
         ArrayList<Room> rooms = roomList.getAllRooms();
 
-        //for(Room room : rooms) {
-            //System.out.println(room);
-        //}
+        for(Room room : rooms) {
+            System.out.println(room);
+        }
     }
 
 }
