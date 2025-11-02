@@ -1,33 +1,47 @@
 package com.escape.code;
-/**
- * Tests the Item class.
- * Author: Barbarnas Sumpter Jr.
- */
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
+import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.Test;
+
 
 public class ItemTest {
 
+    private Item item;
+
+    @Before
+    public void setup() {
+        item = new Item("Silver Key", "Opens final door", false);
+    }
+
     @Test
-    public void testItemCreationAndAccessors() {
-        Item item = new Item("Silver Key", "Opens the final door", false);
+    public void testConstructorSetsAllFields() {
         assertEquals("Silver Key", item.getName());
-        assertEquals("Opens the final door", item.getDescription());
+        assertEquals("Opens final door", item.getDescription());
         assertFalse(item.isUsed());
     }
 
     @Test
-    public void testItemSetters() {
-        Item item = new Item("Coin", "Shiny", false);
-        item.setName("Gold Coin");
-        item.setDescription("Ancient currency");
+    public void testSettersChangeValues() {
+        item.setName("Golden Key");
+        item.setDescription("Unlocks treasure chest");
         item.setUsed(true);
 
-        assertEquals("Gold Coin", item.getName());
-        assertEquals("Ancient currency", item.getDescription());
+        assertEquals("Golden Key", item.getName());
+        assertEquals("Unlocks treasure chest", item.getDescription());
         assertTrue(item.isUsed());
+    }
+
+    @Test
+    public void testItemCanBeReusedAfterReset() {
+        item.setUsed(true);
+        item.setUsed(false);
+        assertFalse(item.isUsed());
+    }
+
+    @Test
+    public void testItemToStringContainsKeyInfo() {
+        String desc = item.toString().toLowerCase();
+        assertTrue(desc.contains("key") || desc.contains("silver"));
     }
 }
