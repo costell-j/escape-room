@@ -7,6 +7,7 @@ import org.junit.Test;
 
 public class ItemTest {
 
+    
     private Item item;
 
     @Before
@@ -29,6 +30,18 @@ public class ItemTest {
 
         assertEquals("Golden Key", item.getName());
         assertEquals("Unlocks treasure chest", item.getDescription());
+        assertTrue(item.isUsed());
+    }
+    @Test
+    public void testConstructorInitializesFieldsCorrectly() {
+        assertEquals("Diamond Key", item.getName());
+        assertEquals("Opens a locked chest", item.getDescription());
+        assertFalse(item.isUsed());
+    }
+    
+    @Test
+    public void testSetUsedMarksItemAsUsed() {
+        item.setUsed(true);
         assertTrue(item.isUsed());
     }
 
