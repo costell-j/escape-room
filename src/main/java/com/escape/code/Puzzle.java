@@ -15,7 +15,7 @@ public abstract class Puzzle<T> {
     protected ArrayList<String> hints;
     protected boolean locked;
     protected Item item;
-    protected Item givenItem;
+    protected Item givenItem; 
     protected  T solution;
     protected boolean isSolved;
     protected String type;
