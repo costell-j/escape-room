@@ -12,6 +12,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Tests methods in User
+ * @author Costell Johnson
+ */
 public class UserTests {
     @Test
     public void testGuestConstructor() {

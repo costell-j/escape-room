@@ -5,7 +5,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-
+/**
+ * Tests methods in Puzzle and its subclasses
+ * @author Costell Johnson
+ */
 public class PuzzleTests {
     MathPuzzle math = new MathPuzzle("What is 2+2?", "Math 1", null, 4, false, false, null, null);
     Logic logic = new Logic("Question", "Logic1", null, "Yes", false, false, null, null);

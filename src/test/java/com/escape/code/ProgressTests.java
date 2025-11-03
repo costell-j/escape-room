@@ -6,6 +6,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+/**
+ * Tests methods in Progress class
+ * @author Costell Johnson
+ */
 public class ProgressTests {
     @Test
     public void testDefaultConsrtuctor() {

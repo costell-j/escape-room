@@ -5,6 +5,11 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+
+/**
+ * Tests methods in Settings
+ * @author Costell Johnson
+ */
 public class SettingsTests {
     Settings settings = new Settings(0, 1);
 
