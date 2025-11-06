@@ -1,5 +1,8 @@
 package com.escape.code;
-
+/**
+ * Testing class for the slide 
+ * @author Barbarnas Sumpter Jr.
+ */
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
