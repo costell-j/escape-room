@@ -16,5 +16,5 @@
    </padding>
    <stylesheets>
       <URL value="@styles.css">
-   <?stylesheets>
+   </stylesheets>
 </VBox>
