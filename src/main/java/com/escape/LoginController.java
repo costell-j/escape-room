@@ -32,11 +32,19 @@ public class LoginController {
             lbl_error.setText("Invalid username or paassword");
             return;
         }
-        App.setRoot("user_home");
+        App.setRoot("chooseRoom");
     }
 
     @FXML
-    private void back(MouseEvent event) throws IOException {
-        App.setRoot("landing");
+    private void btnCreateAccountClicked(MouseEvent event) throws IOException {
+        App.setRoot("createAccount");
     }
+
+    @FXML
+    private void btnPlayAsGuest(MouseEvent event) throws IOException {
+        App.setRoot("chooseRoom");
+    }
+
+
+
 }
