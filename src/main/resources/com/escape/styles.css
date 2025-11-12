@@ -1,0 +1,16 @@
+.root {
+    -fx-font-size: 16pt;
+    -fx-font-family: "Verdana";
+    -fx-text-fill: #fff;
+    -fx-background-image: url("../images/loginScreen.png");
+}
+
+.label {
+    -fx-text-fill: black;
+}
+
+.button {
+    -fx-background-color: black;
+    -fx-text-fill: #fff;
+}
+
