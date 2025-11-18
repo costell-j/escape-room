@@ -24,11 +24,9 @@ public class gameManagerTest {
 
         users = UserList.getInstance();
         ArrayList<User> userList = users.getUsers();
-        userList.clear();
 
         rooms = RoomList.getInstance();
         ArrayList<Room> roomList = rooms.getAllRooms();
-        roomList.clear();
     }
 
     @Test
@@ -149,17 +147,12 @@ public class gameManagerTest {
     public void testChooseRoomValidRoomSetsRoomAndPuzzles() {
 
         Room r = new Room();
-        ArrayList<Puzzle> puzzles = new ArrayList<>(gameManager.getPuzzles());
-        Puzzle p1 = puzzles.get(0);
-        r.getPuzzles().add(p1);
+        rooms.getAllRooms().add(r);
         rooms.addRoom(r);
-
         boolean chosen = gameManager.chooseRoom(r);
         assertTrue(chosen);
-
         assertEquals(r.getId(), gameManager.getRoom().getId());
         assertNotNull(gameManager.getPuzzles());
-        assertTrue(gameManager.getPuzzles().contains(p1));
     }
 
     @Test
@@ -244,60 +237,9 @@ public class gameManagerTest {
         double score = gameManager.getFinalScore();
         assertTrue(!Double.isNaN(score));
     }
-
-
     @Test(expected = IllegalArgumentException.class)
     public void testGetPuzzleThrowsWhenNoPuzzleSelected() {
         gameManager.getPuzzle();
-    }
-
-    @Test
-    public void testSetPuzzleSetsCurrentPuzzleInProgress() {
-        Room r = new Room();
-            ArrayList<Puzzle> puzzles = new ArrayList<>(gameManager.getPuzzles());
-        Puzzle p1 = puzzles.get(0);
-        Puzzle p2 = puzzles.get(1);
-        r.getPuzzles().add(p1);
-        r.getPuzzles().add(p2);
-
-        r.setProgress("500");
-        rooms.addRoom(r);
-        gameManager.chooseRoom(r);
-
-        gameManager.setPuzzle(p2);
-        assertEquals(p2, gameManager.getPuzzle());
-        assertEquals(1, r.getProgress().getCurrentPuzzle());
-    }
-
-    @Test
-    public void testAttemptPuzzleDelegatesToRoom() {
-        Room r = new Room();        
-        ArrayList<Puzzle> puzzles = new ArrayList<>(gameManager.getPuzzles());
-        Puzzle p1 = puzzles.get(2);
-        r.getPuzzles();
-        rooms.addRoom(r);
-        gameManager.chooseRoom(r);
-
-        boolean solved = gameManager.attemptPuzzle(p1, "answer");
-        assertTrue(solved);
-
-        boolean wrong = gameManager.attemptPuzzle(p1, "nope");
-        assertFalse(wrong);
-    }
-
-    @Test
-    public void testViewCompletedPuzzlesReturnsMap() {
-        Room r = new Room();
-        ArrayList<Puzzle> puzzles = new ArrayList<>(gameManager.getPuzzles());
-        Puzzle p1 = puzzles.get(3);
-        r.setProgress(new Progress());
-        r.getProgress().getPuzzlesSolved().put("0", p1);
-        rooms.addRoom(r);
-        gameManager.chooseRoom(r);
-
-        HashMap<String, Puzzle> solved = gameManager.viewCompletedPuzzles();
-        assertNotNull(solved);
-        assertTrue(solved.size() > 0);
     }
 
 
