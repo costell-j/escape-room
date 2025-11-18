@@ -14,7 +14,7 @@ import javafx.scene.input.MouseEvent;
  * @author Costell Johnson
  */
 public class LoginController {
-    @FXML
+   /*  @FXML
     private TextField txt_username;
     @FXML
     private TextField txt_password;
@@ -44,7 +44,7 @@ public class LoginController {
     private void btnPlayAsGuest(MouseEvent event) throws IOException {
         App.setRoot("chooseRoom");
     }
-
+*/
 
 
 }
