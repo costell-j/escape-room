@@ -2,7 +2,20 @@
     -fx-font-size: 16pt;
     -fx-font-family: "Verdana";
     -fx-text-fill: #fff;
+}
+
+.background-image-common {
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: 100% 100%;
+}
+
+.landing {
     -fx-background-image: url("../../images/loadingScreen.png");
+}
+
+.login {
+    -fx-background-image: url("../../images/loginScreen.png");
 }
 
 .label {
@@ -13,4 +26,45 @@
     -fx-background-color: DarkOrchid;
     -fx-text-fill: #fff;
 }
+
+.login_button {
+    -fx-font-size: 13pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
+}
+
+.createaccount_button {
+    -fx-font-size: 13pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: Orchid;
+    -fx-text-fill: white;
+}
+
+.guest_button {
+    -fx-font-size: 13pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: Orchid;
+    -fx-text-fill: white;
+}
+
+.login_label {
+    -fx-font-size: 20pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+}
+
+.username_label {
+    -fx-font-size: 13pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+}
+
+.password_label {
+    -fx-font-size: 13pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+}
+
+
 
