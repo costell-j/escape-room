@@ -27,40 +27,40 @@
     -fx-text-fill: #fff;
 }
 
-.login_button {
+#login_button {
     -fx-font-size: 13pt;
     -fx-font-family: Verdana;
     -fx-background-color: DarkOrchid;
     -fx-text-fill: white;
 }
 
-.createaccount_button {
+#createaccount_button {
     -fx-font-size: 13pt;
     -fx-font-family: Verdana;
     -fx-background-color: Orchid;
     -fx-text-fill: white;
 }
 
-.guest_button {
+#guest_button {
     -fx-font-size: 13pt;
     -fx-font-family: Verdana;
     -fx-background-color: Orchid;
     -fx-text-fill: white;
 }
 
-.login_label {
+#login_label {
     -fx-font-size: 20pt;
     -fx-font-family: Verdana;
     -fx-background-color: DarkOrchid;
 }
 
-.username_label {
+#username_label {
     -fx-font-size: 13pt;
     -fx-font-family: Verdana;
     -fx-background-color: DarkOrchid;
 }
 
-.password_label {
+#password_label {
     -fx-font-size: 13pt;
     -fx-font-family: Verdana;
     -fx-background-color: DarkOrchid;
