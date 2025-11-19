@@ -1,50 +1,60 @@
 package com.escape;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import com.escape.code.*;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 
 /**
  * @author Costell Johnson
  */
-public class LoginController {
-   /*  @FXML
-    private TextField txt_username;
+public class LoginController implements Initializable {
     @FXML
-    private TextField txt_password;
+    private TextField username_textfield;
     @FXML
-    private Label lbl_error;
+    private PasswordField password_textfield;
+    //@FXML
+    //private Label lbl_error;
+    private GameManager gm;
 
     @FXML
-    private void btnLoginClicked(MouseEvent event) throws IOException {
-        String username = txt_username.getText();
-        String password = txt_password.getText();
+    private void btnLoginClicked() throws IOException {
+        String username = username_textfield.getText();
+        String password = password_textfield.getText();
 
-        GameManager gameManager = new GameManager();
-
-        if(!gameManager.login(username, password)) {
-            lbl_error.setText("Invalid username or paassword");
-            return;
+        
+        if(gm.login(username, password)) {
+            App.setRoot("roomlist");
         }
-        App.setRoot("chooseRoom");
     }
 
     @FXML
-    private void btnCreateAccountClicked(MouseEvent event) throws IOException {
-        App.setRoot("createAccount");
+    private void btnCreateAccountClicked() throws IOException {
+        String username = username_textfield.getText();
+        String password = password_textfield.getText();
+        
+        if(gm.createAccount(username, password)) {
+            App.setRoot("roomlist");
+        }
     }
 
     @FXML
-    private void btnPlayAsGuest(MouseEvent event) throws IOException {
-        App.setRoot("chooseRoom");
+    private void btnGuestClicked() throws IOException {
+        gm.createGuest();
+        App.setRoot("roomlist");
     }
-*/
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        gm = new GameManager();
+    }
 
 }

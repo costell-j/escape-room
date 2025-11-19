@@ -26,9 +26,8 @@ public class DataLoader extends DataConstants {
      */
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<>();
-        BufferedReader reader = getReaderFromFile(USER_TEMP_FILE_NAME, USER_TEMP_FILE_NAME_JSON);
 
-        try {
+        try (FileReader reader = new FileReader(USER_TEMP_FILE_NAME);) {
             JSONArray peopleJSON = (JSONArray)new JSONParser().parse(reader);
 
             for(int i=0; i<peopleJSON.size(); i++) {
@@ -68,9 +67,8 @@ public class DataLoader extends DataConstants {
     @SuppressWarnings("ConvertToTryWithResources")
     public static ArrayList<Room> getRooms() {
         ArrayList<Room> rooms = new ArrayList<>();
-        BufferedReader reader = getReaderFromFile(ROOM_TEMP_FILE_NAME, ROOM_TEMP_FILE_NAME_JSON);
 
-        try {
+        try (FileReader reader = new FileReader(ROOM_TEMP_FILE_NAME)) {
             JSONArray roomsJSON = (JSONArray)new JSONParser().parse(reader);
 
             for(int i=0; i<roomsJSON.size(); i++) {

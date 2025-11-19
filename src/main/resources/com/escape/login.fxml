@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane id="login_screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="login_screen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.escape.LoginController">
    <children>
       <Pane id="login_pane" layoutX="91.0" layoutY="79.0" prefHeight="262.0" prefWidth="405.0">
          <children>
@@ -22,24 +22,24 @@
                   <Font size="8.0" />
                </font>
             </Label>
-            <TextField id="username_textfield" layoutX="30.0" layoutY="101.0" prefHeight="26.0" prefWidth="346.0" />
+            <TextField fx:id="username_textfield" layoutX="30.0" layoutY="101.0" prefHeight="26.0" prefWidth="346.0" />
             <Label id="password_label" layoutX="42.0" layoutY="148.0" text="Password">
                <font>
                   <Font size="8.0" />
                </font>
             </Label>
-            <PasswordField id="password_textfield" layoutX="30.0" layoutY="160.0" prefHeight="26.0" prefWidth="345.0" />
-            <Button id="createaccount_button" layoutX="52.0" layoutY="211.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="72.0" text="Create Account">
+            <PasswordField fx:id="password_textfield" layoutX="30.0" layoutY="160.0" prefHeight="26.0" prefWidth="345.0" />
+            <Button id="createaccount_button" layoutX="52.0" layoutY="211.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="72.0" onAction="#btnCreateAccountClicked" text="Create Account">
                <font>
                   <Font size="8.0" />
                </font>
             </Button>
-            <Button id="login_button" layoutX="165.0" layoutY="211.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="72.0" text="Login">
+            <Button id="login_button" layoutX="165.0" layoutY="211.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="72.0" onAction="#btnLoginClicked" text="Login">
                <font>
                   <Font size="8.0" />
                </font>
             </Button>
-            <Button id="guest_button" layoutX="278.0" layoutY="210.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="72.0" text="Play As Guest">
+            <Button id="guest_button" layoutX="278.0" layoutY="210.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="72.0" onAction="#btnGuestClicked" text="Play As Guest">
                <font>
                   <Font size="8.0" />
                </font>
