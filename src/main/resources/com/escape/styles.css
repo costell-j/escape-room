@@ -4,66 +4,82 @@
     -fx-text-fill: #fff;
 }
 
-.background-image-common {
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center center;
-    -fx-background-size: 100% 100%;
-}
-
 .landing {
     -fx-background-image: url("../../images/loadingScreen.png");
+    -fx-background-position: center; 
+    -fx-background-size: 750px 580px;
+    
 }
 
 .login {
     -fx-background-image: url("../../images/loginScreen.png");
 }
 
-.label {
+.createAccount {
+    -fx-background-image: url("../../images/loginScreen.png");
+}
+
+.roomList {
+    -fx-background-image: url("../../images/loginScreen.png");
+}
+
+#landing_label {
+    -fx-font-size: 25pt;
+    -fx-font-family: Verdana;
     -fx-text-fill: DarkOrchid;
 }
 
-.button {
+#landing_button {
+    -fx-font-size: 15pt;
+    -fx-font-family: Verdana;
     -fx-background-color: DarkOrchid;
-    -fx-text-fill: #fff;
+    -fx-text-fill: white;
 }
 
 #login_button {
-    -fx-font-size: 13pt;
+    -fx-font-size: 8pt;
     -fx-font-family: Verdana;
     -fx-background-color: DarkOrchid;
     -fx-text-fill: white;
 }
 
 #createaccount_button {
-    -fx-font-size: 13pt;
+    -fx-font-size: 6pt;
     -fx-font-family: Verdana;
-    -fx-background-color: Orchid;
+    -fx-background-color: rgb(255, 109, 250);
     -fx-text-fill: white;
 }
 
 #guest_button {
-    -fx-font-size: 13pt;
+    -fx-font-size: 6pt;
     -fx-font-family: Verdana;
-    -fx-background-color: Orchid;
+    -fx-background-color: rgb(255, 109, 250);
     -fx-text-fill: white;
 }
 
 #login_label {
-    -fx-font-size: 20pt;
+    -fx-font-size: 25pt;
     -fx-font-family: Verdana;
-    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
 }
 
 #username_label {
-    -fx-font-size: 13pt;
+    -fx-font-size: 8pt;
     -fx-font-family: Verdana;
-    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
 }
 
 #password_label {
-    -fx-font-size: 13pt;
+    -fx-font-size: 8pt;
     -fx-font-family: Verdana;
-    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
+}
+
+#chooseroom_label {
+    -fx-font-size: 23pt;
+    -fx-font-weight: bold;
+    -fx-font-family: Verdana;
+    -fx-text-fill: DarkOrchid;
 }
 
 
