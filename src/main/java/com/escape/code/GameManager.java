@@ -16,6 +16,7 @@ public class GameManager {
     private RoomList roomList;  
     private Puzzle puzzle;  
     private ArrayList<Puzzle> puzzles;
+    private static GameManager gm;
 
     /**
      * Constructor for GameManager, pulls from DataLoader to get the lists and leaderboard

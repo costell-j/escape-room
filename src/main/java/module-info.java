@@ -4,6 +4,7 @@ module com.escape {
     requires json.simple;
     requires freetts;
     requires junit;
+    requires javafx.graphics;
 
     opens com.escape to javafx.fxml;
     exports com.escape;
