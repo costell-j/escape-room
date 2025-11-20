@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="roomlist_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane styleClass="roomList" id="roomlist_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane id="roomlist_grid" layoutX="30.0" layoutY="84.0" prefHeight="253.0" prefWidth="527.0" stylesheets="@styles.css">
         <columnConstraints>
@@ -21,10 +22,13 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Label id="chooserooom_label" layoutX="169.0" layoutY="21.0" prefHeight="53.0" prefWidth="266.0" text="Choose a Room">
+      <Label id="chooseroom_label" layoutX="169.0" layoutY="21.0" prefHeight="53.0" prefWidth="266.0" text="Choose a Room">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
    </children>
+   <stylesheets>
+      <URL value="@styles.css" />
+   </stylesheets>
 </Pane>
