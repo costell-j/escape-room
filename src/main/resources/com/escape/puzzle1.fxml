@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -19,13 +20,19 @@
             <TextField id="answer_textfield1" layoutX="82.0" layoutY="100.0" prefHeight="77.0" prefWidth="270.0" />
             <Button id="hint_button" layoutX="82.0" layoutY="195.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Hint" />
             <Button id="submit_button" layoutX="265.0" layoutY="195.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" text="Submit" />
-            <Pane id="hint_pane1" disable="true" layoutX="59.0" layoutY="-26.0" prefHeight="330.0" prefWidth="316.0">
-               <children>
-                  <Label id="hint_label1" alignment="CENTER" layoutX="42.0" layoutY="71.0" prefHeight="189.0" prefWidth="233.0" text="Label" />
-                  <Button id="close_button1" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="78.0" text="Button" />
-                  <Button id="nexthint_button1" layoutX="224.0" layoutY="274.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="78.0" text="Button" />
-               </children>
-            </Pane>
+         </children>
+      </Pane>
+      <Pane id="hint_pane1" disable="true" layoutX="142.0" layoutY="35.0" prefHeight="330.0" prefWidth="316.0">
+         <children>
+            <Label id="hint_label1" alignment="CENTER" layoutX="42.0" layoutY="71.0" prefHeight="189.0" prefWidth="233.0" text="Label" />
+            <Button id="close_button1" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="78.0" text="Button" />
+            <Button id="nexthint_button1" layoutX="224.0" layoutY="274.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="78.0" text="Button" />
+         </children>
+      </Pane>
+      <Pane id="earnedItem_pane1" layoutX="79.0" layoutY="64.0" prefHeight="277.0" prefWidth="442.0">
+         <children>
+            <Label id="earnedItem_label1" layoutX="104.0" layoutY="14.0" text="You've earned a ITEM" />
+            <Icon id="item_icon1" content="HELP_OUTLINE" layoutX="136.0" layoutY="67.0" prefHeight="143.0" prefWidth="153.0" />
          </children>
       </Pane>
    </children>
