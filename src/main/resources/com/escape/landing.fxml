@@ -6,10 +6,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.escape.LandingController">
+<VBox styleClass="landing" alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.escape.LandingController">
    <children>
-      <Label text="Welcome to the Haunted House" />
-      <Button fx:id="landingButton" onAction="#switchToLogin" text="Start" />
+      <Label fx:id="landing_label" text="Welcome to the Haunted House" />
+      <Button fx:id="landing_button" onAction="#switchToLogin" text="Start" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
