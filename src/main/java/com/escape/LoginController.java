@@ -21,8 +21,8 @@ public class LoginController implements Initializable {
     private TextField username_textfield;
     @FXML
     private PasswordField password_textfield;
-    //@FXML
-    //private Label lbl_error;
+    @FXML
+    private Label lbl_error;
     private GameManager gm;
 
     @FXML
@@ -30,20 +30,17 @@ public class LoginController implements Initializable {
         String username = username_textfield.getText();
         String password = password_textfield.getText();
 
-        
-        if(gm.login(username, password)) {
-            App.setRoot("roomlist");
+        if (!gm.login(username, password)) {
+            lbl_error.setText("Invalid username or password.");
+            return;
         }
+    
+        App.setRoot("roomlist");
     }
 
     @FXML
     private void btnCreateAccountClicked() throws IOException {
-        String username = username_textfield.getText();
-        String password = password_textfield.getText();
-        
-        if(gm.createAccount(username, password)) {
-            App.setRoot("roomlist");
-        }
+        App.setRoot("CreateAccount");
     }
 
     @FXML
