@@ -238,8 +238,7 @@ public class DataLoader extends DataConstants {
      */
     public static void loadLeaderboards() {
 
-        try {
-            BufferedReader reader = getReaderFromFile(ROOM_TEMP_FILE_NAME, ROOM_TEMP_FILE_NAME_JSON);
+        try (FileReader reader = new FileReader(ROOM_TEMP_FILE_NAME)) {
             JSONArray roomsJSON = (JSONArray)new JSONParser().parse(reader);
             RoomList rooms = RoomList.getInstance();
 

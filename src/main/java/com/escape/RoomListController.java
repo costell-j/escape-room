@@ -1,5 +1,6 @@
 package com.escape;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -15,6 +16,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
 public class RoomListController implements Initializable {
@@ -23,20 +26,28 @@ public class RoomListController implements Initializable {
     private GameManager gm;
     private User user;
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        gm = new GameManager();
+        user = gm.getUser();
+        displayRooms();
+    }
+
     private void displayRooms() {
         ArrayList<Room> rooms = gm.getRoomList();
-        for(int i=0; i< rooms.size(); i++) {
+        for(int i=0; i<rooms.size(); i++) {
             Room room = rooms.get(i);
             VBox vbox = new VBox();
             Label roomName = new Label(room.getName());
             roomName.setFont(new Font(14));
+            roomName.setStyle("-fx-text-fill: DarkOrchid");
             vbox.getChildren().add(roomName);
             Image image = new Image(getClass().getResourceAsStream("/images/loadingScreen.png"));
             ImageView image_room = new ImageView(image);
-            image_room.setFitWidth(150);
+            image_room.setFitWidth(200);
             image_room.setPreserveRatio(true);
             vbox.getChildren().add(image_room);
-            //vbox.getStyleClass();
+            //vbox.getStyleClass().add("book-grid-item");
 
             roomlist_grid.add(vbox, i, 0);
 
@@ -44,15 +55,14 @@ public class RoomListController implements Initializable {
                 
                 @Override
                 public void handle(MouseEvent event) {
-                    
+                    try {
+                        App.setRoot("Dialog");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         }
     }
 
-    public void initialize(URL url, ResourceBundle rb) {
-        gm = new GameManager();
-        user = gm.getUser();
-        displayRooms();
-    }
 }
