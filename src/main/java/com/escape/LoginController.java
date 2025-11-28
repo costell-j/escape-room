@@ -40,7 +40,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private void btnCreateAccountClicked() throws IOException {
-        App.setRoot("CreateAccount");
+        App.setRoot("CreateAcoount");
     }
 
     @FXML
