@@ -40,7 +40,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private void btnCreateAccountClicked() throws IOException {
-        App.setRoot("CreateAccount");
+        App.setRoot("CreateAcoount");
     }
 
     @FXML
@@ -51,7 +51,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        gm = new GameManager();
+        gm = GameManager.getInstance();
     }
 
 }

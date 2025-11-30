@@ -28,7 +28,7 @@ public class RoomListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        gm = new GameManager();
+        gm = GameManager.getInstance();
         user = gm.getUser();
         displayRooms();
     }
@@ -56,6 +56,9 @@ public class RoomListController implements Initializable {
                 @Override
                 public void handle(MouseEvent event) {
                     try {
+                        gm.chooseRoom(room);
+                        gm.getRoom().setProgress(user.getUsername());
+                        gm.getUser().setCurrentRoom(room);
                         App.setRoot("Dialog");
                     } catch (IOException e) {
                         e.printStackTrace();
