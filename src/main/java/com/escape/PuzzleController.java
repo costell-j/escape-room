@@ -32,6 +32,14 @@ public class PuzzleController implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            if(gm.formatTimer().equals("00:00")) {
+                try {
+                    gm.stopTimer();
+                    App.setRoot("roomlist");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
             final String time = gm.formatTimer();
             Platform.runLater(() -> {
                 timer_label.setText(time);
@@ -56,6 +64,8 @@ public class PuzzleController implements Initializable {
                 earnedItem_label.setText("CORRECT!!");
             } else {
                 earnedItem_label.setText("CORRECT!! You Got: "+puzzle.getGivenItem().getName());
+                Item item = puzzle.getGivenItem();
+                gm.getRoom().getProgress().addItem(item);
             }
         }
     }

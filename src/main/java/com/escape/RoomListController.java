@@ -57,6 +57,8 @@ public class RoomListController implements Initializable {
                 public void handle(MouseEvent event) {
                     try {
                         gm.chooseRoom(room);
+                        gm.getRoom().setProgress(user.getUsername());
+                        gm.getUser().setCurrentRoom(room);
                         App.setRoot("Dialog");
                     } catch (IOException e) {
                         e.printStackTrace();
