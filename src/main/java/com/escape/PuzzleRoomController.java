@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import com.escape.code.*;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,12 +23,30 @@ public class PuzzleRoomController implements Initializable {
     private GameManager gm;
     private ArrayList<Puzzle> puzzles;
     private ArrayList<Pane> panes;
-    private int count;
     @FXML private Pane room1_pane;
     @FXML private Pane room2_pane;
     @FXML private Pane room3_pane;
     @FXML private Pane room4_pane;
-
+    @FXML private ImageView map_image;
+    @FXML private ImageView leaderboard_image;
+    @FXML private ImageView inventory_image;
+    @FXML private ImageView settings_image;
+    @FXML private ImageView profile_image;
+    @FXML private Label timer_label;
+    Thread timerThread = new Thread(() -> {
+        while(true) {
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            final String time = gm.formatTimer();
+            Platform.runLater(() -> {
+                timer_label.setText(time);
+            });
+        }
+    });
+    
     @FXML
     private void displayDoors() throws IOException {
         for(int i=0; i<panes.size(); i++) {
@@ -55,7 +74,6 @@ public class PuzzleRoomController implements Initializable {
                     try {
                         gm.setPuzzle(puzzle);
                         App.setRoot("puzzle");
-                        count++;
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -64,11 +82,87 @@ public class PuzzleRoomController implements Initializable {
         }
     }
 
+    @FXML
+    public void setupImages() throws IOException {
+        Image map = new Image(getClass().getResourceAsStream("/images/mapIcon.PNG"));
+        Image pause = new Image(getClass().getResourceAsStream("/images/pauseIcon.PNG"));
+        Image profile = new Image(getClass().getResourceAsStream("/images/profileIcon.PNG"));
+        Image leaderboard = new Image(getClass().getResourceAsStream("/images/leaderboardIcon.PNG"));
+        Image inventory = new Image(getClass().getResourceAsStream("/images/chestIcon.PNG"));
+        
+        map_image.setImage(map);
+        inventory_image.setImage(inventory);
+        settings_image.setImage(pause);
+        profile_image.setImage(profile);
+        leaderboard_image.setImage(leaderboard);
+
+        map_image.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    gm.stopTimer();
+                    App.setRoot("Map");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        leaderboard_image.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    gm.stopTimer();
+                    App.setRoot("leaderboard");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        settings_image.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    gm.stopTimer();
+                    App.setRoot("Settings");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        inventory_image.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    gm.stopTimer();
+                    App.setRoot("inventory");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        profile_image.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    gm.stopTimer();
+                    App.setRoot("Profile");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         gm = GameManager.getInstance();
-        count = 1;
+        timerThread.start();
         puzzles = gm.getRoom().getPuzzles();
         panes = new ArrayList<>();
         panes.add(room1_pane);
@@ -77,6 +171,7 @@ public class PuzzleRoomController implements Initializable {
         panes.add(room4_pane);
         try {
             displayDoors();
+            setupImages();
         } catch (IOException e) {
             e.printStackTrace();
         }
