@@ -18,9 +18,9 @@
                </font>
             </Label>
             <TextField fx:id="answer_textfield" layoutX="82.0" layoutY="100.0" prefHeight="77.0" prefWidth="270.0" />
-            <Button id="hint_button" layoutX="82.0" layoutY="195.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" onAction="#btnHintClicked" text="Hint" />
-            <Button id="submit_button" layoutX="265.0" layoutY="195.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" onAction="#btnSubmitClicked" text="Submit" />
-            <Button id="close_button" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="78.0" onAction="#btnExitClicked" text="Exit" />
+            <Button id="hint_button" layoutX="82.0" layoutY="195.0" mnemonicParsing="false" onAction="#btnHintClicked" prefHeight="42.0" prefWidth="87.0" text="Hint" />
+            <Button id="submit_button" layoutX="265.0" layoutY="195.0" mnemonicParsing="false" onAction="#btnSubmitClicked" prefHeight="42.0" prefWidth="87.0" text="Submit" />
+            <Button id="close_button" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#btnExitClicked" prefHeight="42.0" prefWidth="78.0" text="Exit" />
          </children>
       </Pane>
       <Pane fx:id="earnedItem_pane" disable="true" layoutX="79.0" layoutY="64.0" prefHeight="277.0" prefWidth="442.0">
@@ -29,6 +29,7 @@
             <ImageView fx:id="item_image" fitHeight="150.0" fitWidth="200.0" layoutX="121.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
+      <ImageView id="pause_image" fitHeight="32.0" fitWidth="35.0" layoutX="544.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
    </children>
    <stylesheets>
       <URL value="@styles.css" />
