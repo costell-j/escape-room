@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import com.escape.code.*;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -23,6 +24,20 @@ public class PuzzleController implements Initializable {
     @FXML private Label hint_label;
     @FXML private Label earnedItem_label;
     @FXML private ImageView item_image;
+    @FXML private Label timer_label;
+    Thread timerThread = new Thread(() -> {
+        while(true) {
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            final String time = gm.formatTimer();
+            Platform.runLater(() -> {
+                timer_label.setText(time);
+            });
+        }
+    });
 
     @FXML
     public void setup() throws IOException {
@@ -64,6 +79,7 @@ public class PuzzleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         gm = GameManager.getInstance();
+        timerThread.start();
         puzzle = gm.getPuzzle();
         hints = puzzle.getHints();
         hintNum = 0;

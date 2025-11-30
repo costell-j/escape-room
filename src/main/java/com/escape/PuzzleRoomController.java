@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import com.escape.code.*;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,7 +23,6 @@ public class PuzzleRoomController implements Initializable {
     private GameManager gm;
     private ArrayList<Puzzle> puzzles;
     private ArrayList<Pane> panes;
-    private int count;
     @FXML private Pane room1_pane;
     @FXML private Pane room2_pane;
     @FXML private Pane room3_pane;
@@ -30,9 +30,23 @@ public class PuzzleRoomController implements Initializable {
     @FXML private ImageView map_image;
     @FXML private ImageView leaderboard_image;
     @FXML private ImageView inventory_image;
-    @FXML private ImageView pause_image;
+    @FXML private ImageView settings_image;
     @FXML private ImageView profile_image;
-
+    @FXML private Label timer_label;
+    Thread timerThread = new Thread(() -> {
+        while(true) {
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            final String time = gm.formatTimer();
+            Platform.runLater(() -> {
+                timer_label.setText(time);
+            });
+        }
+    });
+    
     @FXML
     private void displayDoors() throws IOException {
         for(int i=0; i<panes.size(); i++) {
@@ -60,7 +74,6 @@ public class PuzzleRoomController implements Initializable {
                     try {
                         gm.setPuzzle(puzzle);
                         App.setRoot("puzzle");
-                        count++;
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -79,7 +92,7 @@ public class PuzzleRoomController implements Initializable {
         
         map_image.setImage(map);
         inventory_image.setImage(inventory);
-        pause_image.setImage(pause);
+        settings_image.setImage(pause);
         profile_image.setImage(profile);
         leaderboard_image.setImage(leaderboard);
 
@@ -90,7 +103,7 @@ public class PuzzleRoomController implements Initializable {
                 try {
                     gm.stopTimer();
                     App.setRoot("Map");
-                } catch (Exception e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -102,19 +115,19 @@ public class PuzzleRoomController implements Initializable {
                 try {
                     gm.stopTimer();
                     App.setRoot("leaderboard");
-                } catch (Exception e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         });
-        pause_image.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        settings_image.setOnMouseClicked(new EventHandler<MouseEvent>() {
             
             @Override
             public void handle(MouseEvent event) {
                 try {
                     gm.stopTimer();
                     App.setRoot("Settings");
-                } catch (Exception e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -125,8 +138,8 @@ public class PuzzleRoomController implements Initializable {
             public void handle(MouseEvent event) {
                 try {
                     gm.stopTimer();
-                    App.setRoot("Inventory");
-                } catch (Exception e) {
+                    App.setRoot("inventory");
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -138,7 +151,7 @@ public class PuzzleRoomController implements Initializable {
                 try {
                     gm.stopTimer();
                     App.setRoot("Profile");
-                } catch (Exception e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -149,7 +162,7 @@ public class PuzzleRoomController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         gm = GameManager.getInstance();
-        count = 1;
+        timerThread.start();
         puzzles = gm.getRoom().getPuzzles();
         panes = new ArrayList<>();
         panes.add(room1_pane);

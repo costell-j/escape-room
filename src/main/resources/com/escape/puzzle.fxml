@@ -29,8 +29,8 @@
             <ImageView fx:id="item_image" fitHeight="150.0" fitWidth="200.0" layoutX="121.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
-      <ImageView id="pause_image" fitHeight="32.0" fitWidth="35.0" layoutX="544.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
-      <Label id="timer_label" layoutX="14.0" layoutY="22.0" text="00:00" />
+      <ImageView fx:id="pause_image" fitHeight="32.0" fitWidth="35.0" layoutX="544.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="timer_label" layoutX="14.0" layoutY="22.0" text="" />
    </children>
    <stylesheets>
       <URL value="@styles.css" />

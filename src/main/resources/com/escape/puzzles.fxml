@@ -13,16 +13,16 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ImageView fx:id="profile_image" fx:id="profile_image" fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" x="392.0" y="20.0" />
-      <ImageView fx:id="leaderboard_image" fx:id="leaderboard_image" fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" x="430.0" y="20.0" />
-      <ImageView fx:id="inventory_image" fx:id="inventory_image" fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" x="506.0" y="20.0" />
-      <ImageView fx:id="pause_image" fx:id="settings_image" fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" x="544.0" y="20.0" />
-      <ImageView fx:id="map_image" fx:id="map_image" fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" x="468.0" y="20.0" />
+      <ImageView fx:id="profile_image" fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" x="392.0" y="20.0" />
+      <ImageView fx:id="leaderboard_image" fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" x="430.0" y="20.0" />
+      <ImageView fx:id="inventory_image" fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" x="506.0" y="20.0" />
+      <ImageView fx:id="settings_image" fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" x="544.0" y="20.0" />
+      <ImageView fx:id="map_image" fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" x="468.0" y="20.0" />
       <Pane fx:id="room1_pane" layoutX="14.0" layoutY="192.0" prefHeight="152.0" prefWidth="47.0" />
       <Pane fx:id="room2_pane" layoutX="126.0" layoutY="183.0" prefHeight="105.0" prefWidth="56.0" />
       <Pane fx:id="room3_pane" layoutX="406.0" layoutY="184.0" prefHeight="105.0" prefWidth="77.0" />
       <Pane fx:id="room4_pane" layoutX="537.0" layoutY="189.0" prefHeight="152.0" prefWidth="47.0" />
-      <Label id="timer_label" layoutX="14.0" layoutY="22.0" text="00:00" />
+      <Label fx:id="timer_label" layoutX="14.0" layoutY="22.0" text="" />
    </children>
    <stylesheets>
       <URL value="@styles.css" />

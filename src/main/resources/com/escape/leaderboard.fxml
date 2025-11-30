@@ -65,7 +65,7 @@
                   </HBox>
                </children>
             </Pane>
-            <Button id="close_button" layoutX="316.0" layoutY="283.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="79.0" text="Close" />
+            <Button id="close_button" layoutX="316.0" layoutY="283.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="79.0" onAction="#btnCloseClicked" text="Close" />
          </children>
       </Pane>
    </children>
