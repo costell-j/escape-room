@@ -31,7 +31,13 @@ public class SettingsController implements Initializable {
 
     @FXML
     private void btnLogoutClicked() throws IOException {
-        App.setRoot("login");
+        gm.logout();
+        System.exit(0);
+    }
+
+    @FXML
+    private void btnBackClicked() throws IOException {
+        
     }
 
     @FXML

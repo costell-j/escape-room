@@ -27,6 +27,11 @@ public class PuzzleRoomController implements Initializable {
     @FXML private Pane room2_pane;
     @FXML private Pane room3_pane;
     @FXML private Pane room4_pane;
+    @FXML private ImageView map_image;
+    @FXML private ImageView leaderboard_image;
+    @FXML private ImageView inventory_image;
+    @FXML private ImageView pause_image;
+    @FXML private ImageView profile_image;
 
     @FXML
     private void displayDoors() throws IOException {
@@ -64,6 +69,82 @@ public class PuzzleRoomController implements Initializable {
         }
     }
 
+    @FXML
+    public void setupImages() throws IOException {
+        Image map = new Image(getClass().getResourceAsStream("/images/mapIcon.PNG"));
+        Image pause = new Image(getClass().getResourceAsStream("/images/pauseIcon.PNG"));
+        Image profile = new Image(getClass().getResourceAsStream("/images/profileIcon.PNG"));
+        Image leaderboard = new Image(getClass().getResourceAsStream("/images/leaderboardIcon.PNG"));
+        Image inventory = new Image(getClass().getResourceAsStream("/images/chestIcon.PNG"));
+        
+        map_image.setImage(map);
+        inventory_image.setImage(inventory);
+        pause_image.setImage(pause);
+        profile_image.setImage(profile);
+        leaderboard_image.setImage(leaderboard);
+
+        map_image.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    gm.stopTimer();
+                    App.setRoot("Map");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        leaderboard_image.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    gm.stopTimer();
+                    App.setRoot("leaderboard");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        pause_image.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    gm.stopTimer();
+                    App.setRoot("Settings");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        inventory_image.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    gm.stopTimer();
+                    App.setRoot("Inventory");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        profile_image.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    gm.stopTimer();
+                    App.setRoot("Profile");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -77,6 +158,7 @@ public class PuzzleRoomController implements Initializable {
         panes.add(room4_pane);
         try {
             displayDoors();
+            setupImages();
         } catch (IOException e) {
             e.printStackTrace();
         }

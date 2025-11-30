@@ -22,6 +22,7 @@ public class StoryController implements Initializable {
             current_slide++;
         } else {
             App.setRoot("puzzles");
+            gm.startTimer();
         }
     }
 
