@@ -37,7 +37,8 @@ public class SettingsController implements Initializable {
 
     @FXML
     private void btnBackClicked() throws IOException {
-        
+        App.setRoot("puzzles");
+        gm.startTimer();
     }
 
     @FXML

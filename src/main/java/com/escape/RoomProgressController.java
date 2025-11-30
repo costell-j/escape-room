@@ -19,7 +19,7 @@ public class RoomProgressController implements Initializable {
     
     @FXML
     private void btnCloseClicked() throws IOException {
-        App.setRoot("puzzles");
+        App.setRoot("Profile");
     }
 
     @FXML
