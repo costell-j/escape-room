@@ -55,6 +55,7 @@ public class DataWriter extends DataConstants {
         JSONObject userDetails = new JSONObject();
         userDetails.put(USER_USER_NAME, user.getUsername());
         userDetails.put(USER_PASSWORD, user.getPassword());
+        userDetails.put("score", user.getScore());
 
         //Settings JSON Object
         JSONObject userSettings = writeSettings(user);
@@ -327,6 +328,7 @@ public class DataWriter extends DataConstants {
             leaderHash.put(ROOM_LEADERBOARD_HASH_KEY, key);
             playerJSON.put(USER_USER_NAME, user.getUsername());
             playerJSON.put(USER_PASSWORD, user.getPassword());
+            playerJSON.put("score", user.getScore());
             String currentRoom = ""+user.getCurrentRoom().getId()+"";
             playerJSON.put(USER_CURRENT_ROOM, currentRoom);
 

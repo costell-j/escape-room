@@ -54,7 +54,7 @@ public class GameManager {
      * @return true if account is created
      */
     public boolean createAccount(String username, String password) {
-        return this.userList.addUser(username, password, null, getRoomList(), null);
+        return this.userList.addUser(username, password, null, getRoomList(), null, 0);
     }
 
     /**

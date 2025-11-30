@@ -26,6 +26,14 @@ public class EscapedController implements Initializable {
         difficulty_label.setText("Difficulty: "+Integer.toString(gm.getRoom().getDifficulty()));
     }
 
+    @FXML
+    private void btnExitClicked() throws IOException {
+        if(!gm.getUser().getUsername().equals("guest")) {
+            gm.logout();
+        }
+        gm.exit();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         gm = GameManager.getInstance();

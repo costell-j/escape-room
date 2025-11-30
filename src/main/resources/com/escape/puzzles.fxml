@@ -22,9 +22,9 @@
       <Pane fx:id="room2_pane" layoutX="126.0" layoutY="183.0" prefHeight="105.0" prefWidth="56.0" />
       <Pane fx:id="room3_pane" layoutX="406.0" layoutY="184.0" prefHeight="105.0" prefWidth="77.0" />
       <Pane fx:id="room4_pane" layoutX="537.0" layoutY="189.0" prefHeight="152.0" prefWidth="47.0" />
-      <Label id="timer_label" layoutX="14.0" layoutY="22.0" text="00:00" />
-      <Pane layoutX="254.0" layoutY="172.0" prefHeight="96.0" prefWidth="87.0" />
-      <Pane layoutX="506.0" layoutY="-1.0" prefHeight="96.0" prefWidth="87.0" />
+      <Label fx:id="timer_label" layoutX="14.0" layoutY="22.0" text="00:00" />
+      <Pane fx:id="room5_pane" layoutX="254.0" layoutY="172.0" prefHeight="96.0" prefWidth="87.0" />
+      <Pane fx:id="room6_pane" layoutX="506.0" layoutY="-1.0" prefHeight="96.0" prefWidth="87.0" />
    </children>
    <stylesheets>
       <URL value="@styles.css" />

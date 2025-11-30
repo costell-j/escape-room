@@ -11,7 +11,6 @@ import javafx.fxml.Initializable;
 
 public class MapController implements Initializable {
     private GameManager gm;
-    private Map map;
     
 
     @FXML
@@ -23,6 +22,5 @@ public class MapController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         gm = GameManager.getInstance();
-        map = gm.getMap();
     }
 }

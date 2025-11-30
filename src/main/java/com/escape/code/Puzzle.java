@@ -141,6 +141,10 @@ public abstract class Puzzle<T> {
     this.isSolved = true;
     }
 
+    public void unlock() {
+        this.locked = false;
+    }
+
     /**
      * Sets the description, applying a null-safe default.
      *

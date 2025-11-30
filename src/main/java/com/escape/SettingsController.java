@@ -31,8 +31,10 @@ public class SettingsController implements Initializable {
 
     @FXML
     private void btnLogoutClicked() throws IOException {
-        gm.logout();
-        System.exit(0);
+        if(!gm.getUser().getUsername().equals("guest")) {
+            gm.logout();
+        }
+        gm.exit();
     }
 
     @FXML

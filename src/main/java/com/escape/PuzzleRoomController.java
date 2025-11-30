@@ -27,6 +27,8 @@ public class PuzzleRoomController implements Initializable {
     @FXML private Pane room2_pane;
     @FXML private Pane room3_pane;
     @FXML private Pane room4_pane;
+    @FXML private Pane room5_pane;
+    @FXML private Pane room6_pane;
     @FXML private ImageView map_image;
     @FXML private ImageView leaderboard_image;
     @FXML private ImageView inventory_image;
@@ -72,8 +74,20 @@ public class PuzzleRoomController implements Initializable {
                 @Override
                 public void handle(MouseEvent event) {
                     try {
-                        gm.setPuzzle(puzzle);
-                        App.setRoot("puzzle");
+                        if(!puzzle.isLocked()) {
+                            gm.setPuzzle(puzzle);
+                            App.setRoot("puzzle");
+                        } else {
+                            ArrayList<Item> items = gm.getRoom().getProgress().getItems();
+                            for(int i=0; i<items.size(); i++) {
+                                if(puzzle.getItem().getName().equals(items.get(i).getName())) {
+                                    gm.setPuzzle(puzzle);
+                                    gm.getPuzzle().unlock();
+                                    gm.getRoom().getProgress().getItems().remove(items.get(i));
+                                    App.setRoot("puzzle");
+                                }
+                            }
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -169,6 +183,8 @@ public class PuzzleRoomController implements Initializable {
         panes.add(room2_pane);
         panes.add(room3_pane);
         panes.add(room4_pane);
+        panes.add(room5_pane);
+        panes.add(room6_pane);
         try {
             displayDoors();
             setupImages();
