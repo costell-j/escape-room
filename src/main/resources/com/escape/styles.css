@@ -306,5 +306,57 @@
     -fx-text-fill: white;
 }
 
+#Setting_label {
+    -fx-font-size: 23pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: DarkOrchid; 
+    -fx-alignment: center;
+}
 
+#Volume_label {
+    -fx-font-size: 12pt;
+    -fx-font-family: Verdana;
+    -fx-text-fill: DarkOrchid;
+}
+
+#Difficulty_label {
+    -fx-font-size: 12pt;
+    -fx-font-family: Verdana;
+    -fx-text-fill: DarkOrchid;
+}
+
+#Easy_button {
+    -fx-font-size: 10pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
+}
+
+#Medium_button {
+    -fx-font-size: 10pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
+}
+
+#Hard_button {
+    -fx-font-size: 10pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
+}
+
+#Logout_button {
+    -fx-font-size: 10pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
+}
+
+#Back_button {
+    -fx-font-size: 10pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
+}
 
