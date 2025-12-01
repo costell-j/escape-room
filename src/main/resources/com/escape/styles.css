@@ -23,6 +23,52 @@
     -fx-background-image: url("../../images/loginScreen.png");
 }
 
+.puzzleOptions {
+    -fx-background-image: url("../../images/puzzlesScreen.png");
+    -fx-background-position: center; 
+    -fx-background-size: 600px 400px;
+}
+
+.puzzle {
+    -fx-background-image: url("../../images/loginScreen.png");
+}
+
+.profile {
+    -fx-background-image: url("../../images/loginScreen.png");
+}
+
+.escaped {
+    -fx-background-image: url("../../images/escapedScreen.png");
+    -fx-background-position: center; 
+    -fx-background-size: 750px 580px;
+}
+
+.inventory {
+    -fx-background-image: url("../../images/puzzlesScreen.png");
+    -fx-background-position: center; 
+    -fx-background-size: 600px 400px;
+}
+
+.leaderboard {
+    -fx-background-image: url("../../images/puzzlesScreen.png");
+    -fx-background-position: center; 
+    -fx-background-size: 600px 400px;
+}
+
+.map {
+    -fx-background-image: url("../../images/appMap.png");
+    -fx-background-position: center; 
+    -fx-background-size: 600px 400px;
+}
+
+.roomProgress {
+    -fx-background-image: url("../../images/loginScreen.png");
+}
+
+.settings {
+    -fx-background-image: url("../../images/loginScreen.png");
+}
+
 #landing_label {
     -fx-font-size: 25pt;
     -fx-font-family: Verdana;
@@ -86,6 +132,178 @@
     -fx-font-weight: bold;
     -fx-font-family: Verdana;
     -fx-text-fill: DarkOrchid;
+}
+
+#CreateAccount_label {
+    -fx-font-size: 25pt;
+    -fx-font-family: Verdana;
+    -fx-text-fill: white;
+}
+
+#CreateAccount_button {
+    -fx-font-size: 12pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
+}
+
+#profile_image {
+    -fx-background-image: url("../../images/profileIcon.PNG");
+}
+
+#leaderboard_image {
+    -fx-background-image: url("../../images/leaderboardIcon.PNG");
+}
+
+#inventory_image {
+    -fx-background-image: url("../../images/chestIcon.PNG");
+}
+
+#settings_image {
+    -fx-background-image: url("../../images/profileIcon.PNG");
+}
+
+#map_image {
+    -fx-background-image: url("../../images/mapIcon.PNG");
+}
+
+#timer_label {
+    -fx-font-size: 16pt;
+    -fx-font-family: Verdana;
+    -fx-text-fill: white;
+}
+
+#hint_button {
+    -fx-font-size: 12pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
+}
+
+#submit_button {
+    -fx-font-size: 12pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
+}
+
+#close_button {
+    -fx-font-size: 12pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
+}
+
+#question_label {
+    -fx-font-size: 23pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: DarkOrchid;
+}
+
+#earnedItem_label {
+    -fx-font-size: 15pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+#profile_label {
+    -fx-font-size: 20pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: DarkOrchid;
+}
+
+#username_label {
+    -fx-font-size: 10pt;
+    -fx-text-fill: white;
+}
+
+#difficulty_label {
+    -fx-font-size: 10pt;
+    -fx-text-fill: white;
+}
+
+#currentroom_label {
+    -fx-font-size: 10pt;
+    -fx-text-fill: white;
+}
+
+#back_button {
+    -fx-font-size: 12pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
+}
+
+#escaped_label {
+    -fx-font-size: 23pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: DarkOrchid;
+}
+
+#finalScore_label {
+    -fx-font-size: 16pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: DarkOrchid;
+}
+
+#finishTime_label {
+    -fx-font-size: 16pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: DarkOrchid;
+}
+
+#hintsUsed_label {
+    -fx-font-size: 16pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: DarkOrchid;
+}
+
+#difficulty_label {
+    -fx-font-size: 16pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: DarkOrchid;
+}
+
+#exit_button {
+    -fx-font-size: 12pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
+}
+
+#inventory_label {
+    -fx-font-size: 16pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: DarkOrchid;    
+}
+
+#close_button {
+    -fx-font-size: 12pt;
+    -fx-font-family: Verdana;
+    -fx-background-color: DarkOrchid;
+    -fx-text-fill: white;
+}
+
+#Progress {
+    -fx-font-size: 23pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: DarkOrchid; 
+    -fx-alignment: center;
+}
+
+#timeLeft_label {
+    -fx-font-size: 10pt;
+    -fx-text-fill: white;
+}
+
+#hintsUsed_label {
+    -fx-font-size: 10pt;
+    -fx-text-fill: white;
+}
+
+#puzzlesSolved_label {
+    -fx-font-size: 10pt;
+    -fx-text-fill: white;
 }
 
 
