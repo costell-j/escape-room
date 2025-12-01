@@ -24,4 +24,7 @@
          </children>
       </Pane>
    </children>
+    <stylesheets>
+      <URL value="@styles.css" />
+   </stylesheets>
 </Pane>
