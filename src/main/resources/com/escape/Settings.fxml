@@ -28,13 +28,13 @@
                </font>
             </Label>
             <Slider fx:id="volume_slider" layoutX="95.0" layoutY="116.0" prefHeight="15.0" prefWidth="253.0" />
-            <Button layoutX="115.0" layoutY="210.0" mnemonicParsing="false" text="Easy" />
-            <Button layoutX="190.0" layoutY="210.0" mnemonicParsing="false" text="Medium" />
-            <Button layoutX="276.0" layoutY="210.0" mnemonicParsing="false" text="Hard" />
+            <Button layoutX="115.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnEasyClicked" text="Easy" />
+            <Button layoutX="190.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnMediumClicked" text="Medium" />
+            <Button layoutX="276.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnHardClicked" text="Hard" />
          </children>
       </Pane>
-      <Button layoutX="463.0" layoutY="315.0" mnemonicParsing="false" text="Logout" />
-      <Button layoutX="83.0" layoutY="315.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="463.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnLogoutClicked" text="Logout" />
+      <Button layoutX="83.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnBackClicked" text="Back" />
    </children>
    <stylesheets>
       <URL value="@styles.css" />

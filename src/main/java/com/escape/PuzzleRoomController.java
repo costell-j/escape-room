@@ -35,7 +35,7 @@ public class PuzzleRoomController implements Initializable {
     @FXML private ImageView settings_image;
     @FXML private ImageView profile_image;
     @FXML private Label timer_label;
-    Thread timerThread = new Thread(() -> {
+    final Thread timerThread = new Thread(() -> {
         while(true) {
             try {
                 Thread.sleep(1000);
