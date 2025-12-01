@@ -25,7 +25,7 @@ public class PuzzleController implements Initializable {
     @FXML private Label earnedItem_label;
     @FXML private ImageView item_image;
     @FXML private Label timer_label;
-    Thread timerThread = new Thread(() -> {
+    final Thread timerThread = new Thread(() -> {
         while(true) {
             try {
                 Thread.sleep(1000);
