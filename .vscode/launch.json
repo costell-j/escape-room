@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DataWriter",
+            "request": "launch",
+            "mainClass": "com.escape/com.escape.code.DataWriter",
+            "projectName": "hellofx"
+        },
+        {
+            "type": "java",
+            "name": "DataLoader",
+            "request": "launch",
+            "mainClass": "com.escape/com.escape.code.DataLoader",
+            "projectName": "hellofx"
+        },
+        {
+            "type": "java",
             "name": "App",
             "request": "launch",
             "mainClass": "com.escape/com.escape.App",

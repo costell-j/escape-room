@@ -56,42 +56,41 @@ public class PuzzleController implements Initializable {
     @FXML
     public void btnSubmitClicked() throws IOException {
         if(puzzle.getType().equals("Math")) {
+            
             double answer = Double.parseDouble(answer_textfield.getText());
             if(!gm.attemptPuzzle(puzzle, answer)) {
-            earnedItem_label.setText("Wrong Answer");
-            return;
-        } else {
-            if(puzzle.getGivenItem().getName().equals("none")) {
-                earnedItem_label.setText("CORRECT!!");
+                earnedItem_label.setText("Wrong Answer");
+                return;
             } else {
-                earnedItem_label.setText("CORRECT!! You Got: "+puzzle.getGivenItem().getName());
-                Item item = puzzle.getGivenItem();
-                gm.getRoom().getProgress().addItem(item);
+                if(puzzle.getGivenItem().getName().equals("none")) {
+                    earnedItem_label.setText("CORRECT!!");
+                } else {
+                    earnedItem_label.setText("CORRECT!! You Got: "+puzzle.getGivenItem().getName());
+                    Item item = puzzle.getGivenItem();
+                    gm.getRoom().getProgress().addItem(item);
+                }
             }
-        }
-        if(gm.viewCompletedPuzzles().size() == gm.getRoom().getPuzzles().size()) {
-            gm.getUser().setScore(gm.getFinalScore());
-            App.setRoot("escaped");
-        }
         } else {
             String answer = answer_textfield.getText();
             if(!gm.attemptPuzzle(puzzle, answer)) {
-            earnedItem_label.setText("Wrong Answer");
-            return;
-        } else {
-            if(puzzle.getGivenItem().getName().equals("none")) {
-                earnedItem_label.setText("CORRECT!!");
+                earnedItem_label.setText("Wrong Answer");
+                return;
             } else {
-                earnedItem_label.setText("CORRECT!! You Got: "+puzzle.getGivenItem().getName());
-                Item item = puzzle.getGivenItem();
-                gm.getRoom().getProgress().addItem(item);
+                if(puzzle.getGivenItem().getName().equals("none")) {
+                    earnedItem_label.setText("CORRECT!!");
+                } else {
+                    earnedItem_label.setText("CORRECT!! You Got: "+puzzle.getGivenItem().getName());
+                    Item item = puzzle.getGivenItem();
+                    gm.getRoom().getProgress().addItem(item);
+                }
             }
         }
-        if(gm.viewCompletedPuzzles().size() == gm.getRoom().getPuzzles().size()) {
-            gm.getUser().setScore(gm.getFinalScore());
-            App.setRoot("escaped");
+        ArrayList<Puzzle> puzzles = gm.getRoom().getProgress().getPuzzlesSolved();
+        for(int i=0; i<puzzles.size(); i++) {
+            if(!puzzles.get(i).isSolved()) { return; }  
         }
-        }
+        App.setRoot("escaped");
+        gm.getUser().setScore(gm.getFinalScore()); 
     }
 
     @FXML

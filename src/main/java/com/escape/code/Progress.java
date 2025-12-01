@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @Author Erin Check
  */
 public class Progress {
-    private HashMap<String, Puzzle> puzzlesSolved;
+    private ArrayList<Puzzle> puzzlesSolved;
     private int cluesUsed;
     private int completionTime;
     private int currentPuzzle;
@@ -15,8 +15,8 @@ public class Progress {
     private HashMap<String, String> hintsUsed;
 
 
-    public Progress() {
-        this.puzzlesSolved = new HashMap<>();
+    public Progress(ArrayList<Puzzle> puzzles) {
+        this.puzzlesSolved = puzzles;
         this.cluesUsed = 0;
         this.completionTime = 0;
         this.currentPuzzle = 0;
@@ -31,7 +31,7 @@ public class Progress {
      * @param completionTime is the amount of time the puzzles took to complete
      * @param achievements is the achievements the user has recieved
      */
-    public Progress(HashMap<String, Puzzle> puzzles, int cluesUsed, int completionTime, int currentPuzzle, ArrayList<Achievement> achievements, ArrayList<Item> items, HashMap<String, String> hintsUsed){
+    public Progress(ArrayList<Puzzle> puzzles, int cluesUsed, int completionTime, int currentPuzzle, ArrayList<Achievement> achievements, ArrayList<Item> items, HashMap<String, String> hintsUsed){
         this.puzzlesSolved = puzzles;
         this.cluesUsed = cluesUsed;
         this.completionTime = completionTime;
@@ -45,7 +45,7 @@ public class Progress {
     /*
      * Returns the puzzles that have been solved
      */
-    public HashMap<String, Puzzle> getPuzzlesSolved() {
+    public ArrayList<Puzzle> getPuzzlesSolved() {
         return this.puzzlesSolved;
     }
 
@@ -100,20 +100,12 @@ public class Progress {
         }
     }
 
-    @Override
-    public String toString() {
-        String progress = "Clues Used: "+this.cluesUsed+"\nAchievements:\n";
-        for(int i=0; i<this.achievements.size(); i++) {
-            progress += this.achievements.get(i).toString();
-        }
-        for(String line : this.puzzlesSolved.keySet()) {
-            progress += "Key: "+line+" Value: "+this.puzzlesSolved.get(line);
-        }
-        return progress;
-    }
-
     public void setCluesUsed(int cluesUsed) {
         this.cluesUsed = cluesUsed;
+    }
+
+    public void setPuzzlesSolved(ArrayList<Puzzle> puzzles) {
+        this.puzzlesSolved = puzzles;
     }
 
     public void setCompletionTime(int completionTime) {

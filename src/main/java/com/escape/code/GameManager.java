@@ -259,7 +259,7 @@ public class GameManager {
         return this.room.attemptPuzzle(puzzle, answer);
     }
 
-    public HashMap<String, Puzzle> viewCompletedPuzzles() {
+    public ArrayList<Puzzle> viewCompletedPuzzles() {
         return this.room.getProgress().getPuzzlesSolved();
     }
 

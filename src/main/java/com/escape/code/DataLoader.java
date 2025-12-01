@@ -83,6 +83,7 @@ public class DataLoader extends DataConstants {
                 HashMap<String, Progress> progressList = loadProgressList(roomJSON);
                 Progress progress = loadProgress(roomJSON);
                 ArrayList<Puzzle> puzzles = loadPuzzles(roomJSON);
+                progress.setPuzzlesSolved(puzzles);
                 Leaderboard leaderboard = new Leaderboard();
                 ArrayList<Slide> slides = loadStory(roomJSON);
 
@@ -105,24 +106,14 @@ public class DataLoader extends DataConstants {
     private static Progress loadProgress(JSONObject parentJSON) {
         JSONObject progressJSON = (JSONObject)parentJSON.get(USER_PROGRESS);
         if(progressJSON.isEmpty()) {
-            return new Progress();
+            return new Progress(new ArrayList<Puzzle>());
         }
         int cluesUsed = ((Long)progressJSON.get(USER_CLUES_USED)).intValue();
         int completionTime = ((Long)progressJSON.get(ROOM_PROGRESS_COMPLETION_TIME)).intValue();
         int currentRoom = ((Long)progressJSON.get(USER_CURRENT_ROOM)).intValue();
 
         //Puzzles Solved in Progress Object
-        JSONArray puzzles = (JSONArray)progressJSON.get(USER_PUZZLES_SOLVED);
-        HashMap<String, Puzzle> puzzleMap = new HashMap<>();
-        if(!(puzzles == null) && !puzzles.isEmpty()) {
-            for(int k=0; k<puzzles.size(); k++) {
-                JSONObject puzzleJSON = (JSONObject)puzzles.get(k);
-                String ProgressKey = (String)puzzleJSON.get(USER_PUZZLE_HASH_KEY);
-                JSONObject ProgressValue = (JSONObject)puzzleJSON.get(USER_PUZZLE_HASH_VAL);
-                Puzzle puzzle = loadPuzzle(ProgressValue);
-                puzzleMap.put(ProgressKey, puzzle);
-            }
-        }
+        ArrayList<Puzzle> puzzleMap = loadPuzzlesProgress(progressJSON);
 
         //Progress Achievements JSON Array
         JSONArray achievementsJSON = (JSONArray)progressJSON.get(USER_ACHIEVEMENTS);
@@ -375,10 +366,27 @@ public class DataLoader extends DataConstants {
         //Get Room Puzzles JSON Array
         JSONArray puzzlesJSON = (JSONArray)parentJSON.get(ROOM_PUZZLES);
         ArrayList<Puzzle> puzzles = new ArrayList<>();
-        for(int j=0; j<puzzlesJSON.size(); j++) {
+        if(puzzlesJSON != null && !puzzlesJSON.isEmpty()) {
+            for(int j=0; j<puzzlesJSON.size(); j++) {
             JSONObject puzzleJSON = (JSONObject)puzzlesJSON.get(j);
             Puzzle puzzle = loadPuzzle(puzzleJSON);
             puzzles.add(puzzle);
+            }
+        }
+
+        return puzzles;
+    }
+
+    private static ArrayList<Puzzle> loadPuzzlesProgress(JSONObject parentJSON) {
+        //Get Room Puzzles JSON Array
+        JSONArray puzzlesJSON = (JSONArray)parentJSON.get("puzzlesSolved");
+        ArrayList<Puzzle> puzzles = new ArrayList<>();
+        if(puzzlesJSON != null && !puzzlesJSON.isEmpty()) {
+            for(int j=0; j<puzzlesJSON.size(); j++) {
+            JSONObject puzzleJSON = (JSONObject)puzzlesJSON.get(j);
+            Puzzle puzzle = loadPuzzle(puzzleJSON);
+            puzzles.add(puzzle);
+            }
         }
 
         return puzzles;
@@ -401,23 +409,6 @@ public class DataLoader extends DataConstants {
         return slides;
     }
 
-    private static BufferedReader getReaderFromFile(String fileName, String jsonFileName){
-		try {
-			if(isJUnitTest()){
-				InputStream inputStream = DataLoader.class.getResourceAsStream(jsonFileName);
-				InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-				return new BufferedReader(inputStreamReader);
-			} else {
-				FileReader reader = new FileReader(fileName);
-				return new BufferedReader(reader);
-			}
-		} catch(Exception e){
-			System.out.println("Can't load");
-			return null;
-		}
-			
-	}
-
     public static void main(String[] args) {
         RoomList roomList = RoomList.getInstance();
         UserList userList = UserList.getInstance();
@@ -425,7 +416,13 @@ public class DataLoader extends DataConstants {
         ArrayList<Room> rooms = roomList.getAllRooms();
 
         for(Room room : rooms) {
-            System.out.println(room);
+            room.setProgress("MAK524");
+            Progress p = room.getProgress();
+            System.out.println(p.getCluesUsed());
+            ArrayList<Puzzle> ps = p.getPuzzlesSolved();
+            for(Puzzle pu : ps) {
+                System.out.println(pu.isSolved);
+            }
         }
     }
 

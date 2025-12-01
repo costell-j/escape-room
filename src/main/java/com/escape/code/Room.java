@@ -220,7 +220,7 @@ public class Room {
                 this.progress = this.progressList.get(s);
             }
             else {
-                Progress progress = new Progress();
+                Progress progress = new Progress(this.puzzles);
                 setProgress(progress);
             }
         }
@@ -252,11 +252,10 @@ public class Room {
      * @return true if correct, false if not
      */
     public <T> boolean attemptPuzzle(Puzzle puzzle, T answer) {
-        int index = puzzles.indexOf(puzzle);
+        int index = progress.getPuzzlesSolved().indexOf(puzzle);
         progress.setCurrentPuzzle(index);
-        puzzles.get(index).attempt(answer);
-        if(puzzles.get(index).isSolved()) {
-            progress.getPuzzlesSolved().put(puzzles.get(index).getName(), puzzles.get(index));
+        progress.getPuzzlesSolved().get(index).attempt(answer);
+        if(progress.getPuzzlesSolved().get(index).isSolved()) {
             return true;
         }
         return false;

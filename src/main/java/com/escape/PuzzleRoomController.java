@@ -177,7 +177,7 @@ public class PuzzleRoomController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         gm = GameManager.getInstance();
         timerThread.start();
-        puzzles = gm.getRoom().getPuzzles();
+        puzzles = gm.getRoom().getProgress().getPuzzlesSolved();
         panes = new ArrayList<>();
         panes.add(room1_pane);
         panes.add(room2_pane);

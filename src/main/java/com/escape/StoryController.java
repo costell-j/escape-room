@@ -7,13 +7,14 @@ import com.escape.code.*;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 public class StoryController implements Initializable {
     private GameManager gm;
     private Room room;
     private int current_slide = 0;
-    @FXML private TextArea story_lines;
+    @FXML private Label story_lines;
 
     @FXML
     private void advanceStory() throws IOException {
