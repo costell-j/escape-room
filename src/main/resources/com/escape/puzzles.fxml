@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane styleClass="puzzleOptions" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.escape.PuzzleRoomController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="puzzleOptions" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.escape.PuzzleRoomController">
    <children>
       <Label alignment="CENTER" layoutX="220.0" layoutY="14.0" prefHeight="44.0" prefWidth="161.0" text="Choose a Door" textAlignment="CENTER">
          <font>
@@ -24,9 +24,9 @@
       <Pane fx:id="room4_pane" layoutX="537.0" layoutY="189.0" prefHeight="152.0" prefWidth="47.0" />
       <Label fx:id="timer_label" layoutX="14.0" layoutY="22.0" text="00:00" />
       <Pane fx:id="room5_pane" layoutX="254.0" layoutY="172.0" prefHeight="96.0" prefWidth="87.0" />
-      <Pane fx:id="room6_pane" layoutX="506.0" layoutY="-1.0" prefHeight="96.0" prefWidth="87.0" />
+      <Pane fx:id="room6_pane" layoutX="257.0" layoutY="76.0" prefHeight="96.0" prefWidth="87.0" />
    </children>
    <stylesheets>
       <URL value="@styles.css" />
    </stylesheets>
-</Pane> 
+</Pane>
