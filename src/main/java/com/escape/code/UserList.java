@@ -74,13 +74,13 @@ public class UserList {
      * @param currentRoom user's current room
      * @return a boolean, true if user is created, false if not
      */
-    public boolean addUser(String username, String password, Settings settings, ArrayList<Room> rooms, Room currentRoom) {
+    public boolean addUser(String username, String password, Settings settings, ArrayList<Room> rooms, Room currentRoom, double score) {
         boolean validUsername = username != null && !username.trim().isEmpty() && !username.contains("\\h");
         boolean validPassword = password != null && !password.isEmpty() && !password.contains("\\h");
         if(newUser(username) && validUsername && validPassword) {
             if(settings == null)
                 settings = new Settings(0, 1);
-            User user = new User(username, password, settings, rooms, currentRoom);
+            User user = new User(username, password, settings, rooms, currentRoom, score);
             users.add(user);
             return true;
         }

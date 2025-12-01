@@ -39,6 +39,7 @@ public class DataLoader extends DataConstants {
                 RoomList roomSet = RoomList.getInstance();
                 ArrayList<Room> rooms = loadRooms(personJSON);
                 String id = (String)personJSON.get(USER_CURRENT_ROOM);
+                double score = ((Double)personJSON.get("score"));
                 Room currentRoom = new Room();
                 if(!"".equals(id)) {
                     UUID currentRoomID = UUID.fromString((String)personJSON.get(USER_CURRENT_ROOM));
@@ -47,7 +48,7 @@ public class DataLoader extends DataConstants {
                 
 
                 //Create User Object & add to list
-                User user = new User(userName, password, settings, rooms, currentRoom);
+                User user = new User(userName, password, settings, rooms, currentRoom, score);
                 users.add(user);
             }
             reader.close();
@@ -263,6 +264,7 @@ public class DataLoader extends DataConstants {
                         JSONObject value = (JSONObject)playerJSON.get(ROOM_LEADERBOARD_HASH_VAL);
                         String username = (String)value.get(USER_USER_NAME);
                         String password = (String)value.get(USER_PASSWORD);
+                        double score = ((Double)value.get("score"));
 
                         //User Settings JSON Object
                         Settings settings = loadSettings(value);
@@ -273,7 +275,7 @@ public class DataLoader extends DataConstants {
                         UUID currentRoomID = UUID.fromString((String)roomJSON.get(ROOM_ID));
                         Room currentRoom = rooms.getRoom(currentRoomID);
 
-                        User user = new User(username, password, settings, roomList, currentRoom);
+                        User user = new User(username, password, settings, roomList, currentRoom, score);
                         players.put(key, user);
                     }
                     boolean open = (boolean)leaderboardJSON.get(ROOM_LEADERBOARD_OPEN);

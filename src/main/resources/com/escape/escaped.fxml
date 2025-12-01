@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane styleClass="escaped" id="escapedback_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.escape.EscapedController">
+   <children>
+      <Label fx:id="escaped_label" layoutX="196.0" layoutY="14.0" text="You Escaped!">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="finalScore_label" layoutX="38.0" layoutY="90.0" text="">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="finishTime_label" layoutX="35.0" layoutY="139.0" text="Completion Time: 3:49">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="hintsUsed_label" layoutX="38.0" layoutY="188.0" text="Hints Used: 2">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="difficulty_label" layoutX="38.0" layoutY="237.0" text="Difficulty: 1">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button id="exit_button" layoutX="517.0" layoutY="336.0" mnemonicParsing="false" onAction="#btnExitClicked" text="Exit" />
+   </children>
+   <stylesheets>
+      <URL value="@styles.css" />
+   </stylesheets>
+</Pane>

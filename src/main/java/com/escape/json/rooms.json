@@ -173,7 +173,8 @@
                 "difficulty": 2
                 },
                 "rooms":["d8b9e9e2-e9a3-4b49-818a-976c61288ae4"],
-                "currentRoom": "d8b9e9e2-e9a3-4b49-818a-976c61288ae4"
+                "currentRoom": "d8b9e9e2-e9a3-4b49-818a-976c61288ae4",
+                "score":500.0
             }},
         {"Integer":2,"User": {
             "username": "randomname",
@@ -183,7 +184,8 @@
                 "difficulty": 3
             },
             "rooms":["d8b9e9e2-e9a3-4b49-818a-976c61288ae4"],
-            "currentRoom": "d8b9e9e2-e9a3-4b49-818a-976c61288ae4"
+            "currentRoom": "d8b9e9e2-e9a3-4b49-818a-976c61288ae4",
+            "score":100.0
             }},
         {"Integer":3,"User": {
             "username":"nam",
@@ -193,7 +195,8 @@
                 "difficulty":2
             },
             "rooms":["d8b9e9e2-e9a3-4b49-818a-976c61288ae4"],
-            "currentRoom":"d8b9e9e2-e9a3-4b49-818a-976c61288ae4"
+            "currentRoom":"d8b9e9e2-e9a3-4b49-818a-976c61288ae4",
+            "score":50.0
         }}],
             "open":false
         }

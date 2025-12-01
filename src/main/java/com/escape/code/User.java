@@ -11,6 +11,7 @@ public class User {
     private Settings settings;
     private ArrayList<Room> rooms;
     private Room currentRoom;
+    private double score;
     /*
      * Creates a default User as a guest
      */
@@ -20,6 +21,7 @@ public class User {
         this.settings = new Settings(0, 1);
         this.rooms = RoomList.getInstance().getAllRooms();
         this.currentRoom = null;
+        this.score = 0;
     }
     /*
      * Creates a new User
@@ -29,12 +31,13 @@ public class User {
      * @param rooms is the rooms the user chooses
      * @param currentRoom is the user's current room
      */
-    public User(String username, String password, Settings settings, ArrayList<Room> rooms, Room currentRoom) {
+    public User(String username, String password, Settings settings, ArrayList<Room> rooms, Room currentRoom, double score) {
         this.username = username;
         this.password = password;
         this.settings = settings;
         this.rooms = rooms;
         this.currentRoom = currentRoom;
+        this.score = score;
     }
     // Getters
     /*
@@ -66,6 +69,14 @@ public class User {
      */
     public Room getCurrentRoom() {
         return currentRoom;
+    }
+
+    public double getScore() {
+        return this.score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
     }
 
     // Setters

@@ -119,4 +119,22 @@ public class Progress {
     public void setCompletionTime(int completionTime) {
         this.completionTime = completionTime;
     }
+
+    public String getFormattedCompletionTime() {
+        String formattedTimer;
+        int timer = this.completionTime;
+        int minutes = timer/60;
+        int seconds = timer%60;
+        String secondsFormatted;
+        if(seconds < 10) {
+            secondsFormatted = "0"+seconds;
+        }
+        else {
+            secondsFormatted = ""+seconds+"";
+        }
+
+        formattedTimer = minutes+":"+secondsFormatted;
+
+        return formattedTimer;
+    }
 }

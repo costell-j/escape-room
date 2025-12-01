@@ -21,10 +21,19 @@ public class GameManager {
     /**
      * Constructor for GameManager, pulls from DataLoader to get the lists and leaderboard
      */
-    public GameManager() {
+    private GameManager() {
         this.userList = UserList.getInstance();
         this.roomList = RoomList.getInstance();
         DataLoader.loadLeaderboards();
+    }
+
+    public static GameManager getInstance() {
+        if(gm != null) {
+            return gm;
+        } else {
+            gm = new GameManager();
+            return gm;
+        }
     }
 
     //User related methods
@@ -45,7 +54,7 @@ public class GameManager {
      * @return true if account is created
      */
     public boolean createAccount(String username, String password) {
-        return this.userList.addUser(username, password, null, getRoomList(), null);
+        return this.userList.addUser(username, password, null, getRoomList(), null, 0);
     }
 
     /**

@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane id="dialog_pane" layoutX="6.0" layoutY="359.0" prefHeight="26.0" prefWidth="438.0" />
-      <Label id="dialog_label" layoutX="14.0" layoutY="360.0" text="“It was October 31st and you were trick or treating&quot;">
+      <TextArea layoutX="-4.0" layoutY="332.0" prefHeight="30.0" prefWidth="609.0" text="      “It was October 31st and you were trick or treating&quot;">
          <font>
             <Font size="20.0" />
          </font>
-      </Label>
-      <Button layoutX="381.0" layoutY="14.0" mnemonicParsing="false" text="Next" />
+      </TextArea>
+      <Button layoutX="543.0" layoutY="14.0" mnemonicParsing="false" text="Next" />
    </children>
-    <stylesheets>
-      <URL value="@styles.css" />
-   </stylesheets>
 </Pane>
