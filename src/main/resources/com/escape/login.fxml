@@ -17,7 +17,7 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Label id="username_label" layoutX="41.0" layoutY="89.0" text="Username">
+            <Label id="username_label" layoutX="41.0" layoutY="84.0" text="Username">
                <font>
                   <Font size="8.0" />
                </font>
@@ -28,18 +28,18 @@
                   <Font size="8.0" />
                </font>
             </Label>
-            <PasswordField fx:id="password_textfield" layoutX="30.0" layoutY="160.0" prefHeight="26.0" prefWidth="345.0" />
-            <Button id="createaccount_button" layoutX="52.0" layoutY="211.0" mnemonicParsing="false" onAction="#btnCreateAccountClicked" prefHeight="26.0" prefWidth="72.0" text="Create Account">
+            <PasswordField fx:id="password_textfield" layoutX="30.0" layoutY="162.0" prefHeight="26.0" prefWidth="345.0" />
+            <Button id="createaccount_button" layoutX="52.0" layoutY="213.0" mnemonicParsing="false" onAction="#btnCreateAccountClicked" prefHeight="26.0" prefWidth="72.0" text="Create Account">
                <font>
                   <Font size="8.0" />
                </font>
             </Button>
-            <Button id="login_button" layoutX="165.0" layoutY="211.0" mnemonicParsing="false" onAction="#btnLoginClicked" prefHeight="23.0" prefWidth="72.0" text="Login">
+            <Button id="login_button" layoutX="165.0" layoutY="213.0" mnemonicParsing="false" onAction="#btnLoginClicked" prefHeight="23.0" prefWidth="72.0" text="Login">
                <font>
                   <Font size="8.0" />
                </font>
             </Button>
-            <Button id="guest_button" layoutX="278.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnGuestClicked" prefHeight="23.0" prefWidth="72.0" text="Play As Guest">
+            <Button id="guest_button" layoutX="278.0" layoutY="212.0" mnemonicParsing="false" onAction="#btnGuestClicked" prefHeight="23.0" prefWidth="72.0" text="Play As Guest">
                <font>
                   <Font size="8.0" />
                </font>
