@@ -7,6 +7,7 @@ import com.escape.code.*;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Dialog;
@@ -51,6 +52,8 @@ public class ChooseDifficulty extends Dialog {
                     default -> gm.setDifficulty(1);
                 }
                 try {
+                    getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
+                    close();
                     App.setRoot("Dialog");
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -13,6 +13,7 @@
        {"description":"Suddenly a door to the left scraped open and the voice said, ‘If you want to leave you must solve the puzzles in the rooms to unlock the keys’","imagePath":"src/main/com/escape/code"}],
        "progressList":[{"String":"MAK524","Progress":
        {
+        "isPlaying":false,
         "puzzlesSolved": [],
             "cluesUsed":2,
             "currentRoom":0,
@@ -40,6 +41,7 @@
             "items": [{"name":"Room key 4", "description":"The final key, proceed with caution","used":false}]
         }}, {"String":"nam","Progress": 
         {
+            "isPlaying":false,
             "puzzlesSolved": [],
             "cluesUsed":2,
             "currentRoom":0,
@@ -66,7 +68,8 @@
             }],
             "items": [{"name":"Room key 4", "description":"The final key, proceed with caution","used":false}]
         }}],
-       "Progress":{
+        "Progress":{
+            "isPlaying":false,
             "puzzlesSolved": [],
             "cluesUsed":2,
             "currentRoom":0,

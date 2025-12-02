@@ -59,7 +59,13 @@ public class RoomListController implements Initializable {
                         gm.chooseRoom(room);
                         gm.getRoom().setProgress(user.getUsername());
                         gm.getUser().setCurrentRoom(room);
-                        App.setRoot("Dialog");
+                        if(gm.getRoom().getProgress().isPlay()) {
+                            App.setRoot("puzzles");
+                        } else {
+                            ChooseDifficulty cd = new ChooseDifficulty();
+                            cd.showAndWait();
+                            gm.getRoom().getProgress().setPlay(true);
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

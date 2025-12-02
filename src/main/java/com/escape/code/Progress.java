@@ -13,6 +13,7 @@ public class Progress {
     private ArrayList<Achievement> achievements;
     private ArrayList<Item> items = new ArrayList<>();;
     private HashMap<String, String> hintsUsed;
+    private boolean isPlaying;
 
 
     public Progress(ArrayList<Puzzle> puzzles) {
@@ -23,6 +24,7 @@ public class Progress {
         this.achievements = new ArrayList<>();
         this.items = new ArrayList<>();
         this.hintsUsed = new HashMap<>();
+        this.isPlaying = false;
     }
     /*
      * Creates a new instance of the progress
@@ -31,7 +33,7 @@ public class Progress {
      * @param completionTime is the amount of time the puzzles took to complete
      * @param achievements is the achievements the user has recieved
      */
-    public Progress(ArrayList<Puzzle> puzzles, int cluesUsed, int completionTime, int currentPuzzle, ArrayList<Achievement> achievements, ArrayList<Item> items, HashMap<String, String> hintsUsed){
+    public Progress(ArrayList<Puzzle> puzzles, int cluesUsed, int completionTime, int currentPuzzle, ArrayList<Achievement> achievements, ArrayList<Item> items, HashMap<String, String> hintsUsed, boolean isPlaying){
         this.puzzlesSolved = puzzles;
         this.cluesUsed = cluesUsed;
         this.completionTime = completionTime;
@@ -39,6 +41,7 @@ public class Progress {
         this.achievements = achievements;
         this.items = items;
         this.hintsUsed = hintsUsed;
+        this.isPlaying = isPlaying;
     }
 
     // Getters
@@ -58,6 +61,14 @@ public class Progress {
             items = new ArrayList<>();
         }
         return items;
+    }
+
+    public boolean isPlay() {
+        return this.isPlaying;
+    }
+
+    public void setPlay(boolean playing) {
+        this.isPlaying = playing;
     }
     /*
      * Returns the clues used

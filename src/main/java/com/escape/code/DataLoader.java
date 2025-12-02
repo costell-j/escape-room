@@ -111,6 +111,7 @@ public class DataLoader extends DataConstants {
         int cluesUsed = ((Long)progressJSON.get(USER_CLUES_USED)).intValue();
         int completionTime = ((Long)progressJSON.get(ROOM_PROGRESS_COMPLETION_TIME)).intValue();
         int currentRoom = ((Long)progressJSON.get(USER_CURRENT_ROOM)).intValue();
+        boolean isPlaying = (boolean)progressJSON.get("isPlaying");
 
         //Puzzles Solved in Progress Object
         ArrayList<Puzzle> puzzleMap = loadPuzzlesProgress(progressJSON);
@@ -151,7 +152,7 @@ public class DataLoader extends DataConstants {
                 hintsUsed.put(hintKey, hintVal);
             }
         }
-        Progress progress = new Progress(puzzleMap, cluesUsed, completionTime, currentRoom, achievements, items, hintsUsed);
+        Progress progress = new Progress(puzzleMap, cluesUsed, completionTime, currentRoom, achievements, items, hintsUsed, isPlaying);
 
         return progress;
     }
