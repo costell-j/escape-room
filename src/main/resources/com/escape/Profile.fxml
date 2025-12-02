@@ -27,4 +27,7 @@
       </Pane>
       <Button id="back_button" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" text="Back" onAction="#btnCloseClicked" textAlignment="JUSTIFY" />
    </children>
+   <stylesheets>
+      <URL value="@styles.css" />
+   </stylesheets>
 </Pane>
