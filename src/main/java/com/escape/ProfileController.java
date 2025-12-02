@@ -39,7 +39,6 @@ public class ProfileController implements Initializable {
     @FXML
     private void btnCloseClicked() throws IOException {
         App.setRoot("puzzles");
-        gm.startTimer();
     }
 
     @Override

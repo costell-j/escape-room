@@ -15,21 +15,6 @@ public class SettingsController implements Initializable {
     private GameManager gm;
 
     @FXML
-    private void btnEasyClicked() throws IOException {
-        gm.setDifficulty(1);
-    }
-
-    @FXML
-    private void btnMediumClicked() throws IOException {
-        gm.setDifficulty(2);
-    }
-
-    @FXML
-    private void btnHardClicked() throws IOException {
-        gm.setDifficulty(3);
-    }
-
-    @FXML
     private void btnLogoutClicked() throws IOException {
         if(!gm.getUser().getUsername().equals("guest")) {
             gm.logout();
@@ -40,7 +25,6 @@ public class SettingsController implements Initializable {
     @FXML
     private void btnBackClicked() throws IOException {
         App.setRoot("puzzles");
-        gm.startTimer();
     }
 
     @FXML

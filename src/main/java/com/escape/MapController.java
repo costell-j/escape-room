@@ -16,7 +16,6 @@ public class MapController implements Initializable {
     @FXML
     private void btnCloseClicked() throws IOException {
         App.setRoot("puzzles");
-        gm.startTimer();
     }
 
     @Override
