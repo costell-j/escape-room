@@ -35,7 +35,7 @@
       <Button id="Logout_button" layoutX="463.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnLogoutClicked" text="Logout" />
       <Button id="Back_button" layoutX="83.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnBackClicked" text="Back" />
    </children>
-      <stylesheets>
+   <stylesheets>
       <URL value="@styles.css" />
    </stylesheets>
 </Pane>
