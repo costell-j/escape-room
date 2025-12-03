@@ -30,11 +30,13 @@ public class ChooseDifficulty extends Dialog {
     private void buildUI() {
         vbox = new VBox();
         header = new Label("Choose Your Difficulty");
+        vbox.getChildren().add(header);
         addDifficultyButton("easy", easy);
         addDifficultyButton("medium", medium);
         addDifficultyButton("hard", hard);
 
         getDialogPane().setContent(vbox);
+        getDialogPane().getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 
         vbox.getStyleClass().add("difficulty-box");
         header.getStyleClass().add("difficulty-header");
