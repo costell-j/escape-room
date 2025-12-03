@@ -166,7 +166,7 @@
 }
 
 #settings_image {
-    -fx-background-image: url("../../images/profileIcon.PNG");
+    -fx-background-image: url("../../images/settingsIcon.PNG");
 }
 
 #map_image {
@@ -202,7 +202,6 @@
 
 #question_label {
     -fx-font-size: 12pt;
-    -fx-font-weight: bold;
     -fx-text-fill: DarkOrchid;
 }
 
@@ -322,6 +321,7 @@
 #Volume_label {
     -fx-font-size: 12pt;
     -fx-font-family: Verdana;
+    -fx-font-weight: bold;
     -fx-text-fill: DarkOrchid;
 }
 
@@ -405,4 +405,61 @@
     -fx-font-family: Verdana;
     -fx-background-color: DarkOrchid;
     -fx-text-fill: white;
+}
+
+.difficulty-box {
+    -fx-padding: 20;
+    -fx-spacing: 15;
+    -fx-alignment: center;
+    -fx-background-color: #f7f7ff;
+    -fx-background-radius: 12;
+}
+.difficulty-header { 
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: DarkOrchid;
+}
+.difficulty-button {
+    -fx-font-size: 14px;
+    -fx-padding: 8 16;
+    -fx-background-color: #ece7ff;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+.difficulty-button:hover {
+    -fx-background-color: #e0d8ff;
+}
+.room-box {
+    -fx-padding: 10;
+    -fx-spacing: 8;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+    -fx-alignment: center;
+}
+.room-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: Darkorchid;
+}
+.room-image {
+    -fx-cursor: hand;
+}
+.room-image:hover {
+    -fx-opacity: 0.9;
+}
+.leaderboard-row {
+    -fx-padding: 6 10;
+    -fx-spacing: 20;
+    -fx-alignment: center-left;
+    -fx-background-color: #faf7ff;
+    -fx-background-radius: 8;
+}
+.lb-position {
+    -fx-font-weight: bold;
+    -fx-text-fill: darkorchid;
+}
+.lb-name {
+    -fx-text-fill: #444;
+}
+.lb-score {
+    -fx-text-fill: #444;
 }

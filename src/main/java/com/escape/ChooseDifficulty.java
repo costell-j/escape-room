@@ -35,6 +35,9 @@ public class ChooseDifficulty extends Dialog {
         addDifficultyButton("hard", hard);
 
         getDialogPane().setContent(vbox);
+
+        vbox.getStyleClass().add("difficulty-box");
+        header.getStyleClass().add("difficulty-header");
     }
 
     @FXML
@@ -60,6 +63,7 @@ public class ChooseDifficulty extends Dialog {
                 }
             }
         });
+        b.getStyleClass().add("difficulty-button");
     }
     
 }

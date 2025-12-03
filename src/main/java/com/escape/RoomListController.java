@@ -38,12 +38,15 @@ public class RoomListController implements Initializable {
         for(int i=0; i<rooms.size(); i++) {
             Room room = rooms.get(i);
             VBox vbox = new VBox();
+            vbox.getStyleClass().add("room-box");
             Label roomName = new Label(room.getName());
+            roomName.getStyleClass().add("room-label");
             roomName.setFont(new Font(14));
             roomName.setStyle("-fx-text-fill: DarkOrchid");
             vbox.getChildren().add(roomName);
             Image image = new Image(getClass().getResourceAsStream("/images/loadingScreen.png"));
             ImageView image_room = new ImageView(image);
+            image_room.getStyleClass().add("room-image");
             image_room.setFitWidth(200);
             image_room.setPreserveRatio(true);
             vbox.getChildren().add(image_room);

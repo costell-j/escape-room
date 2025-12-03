@@ -45,7 +45,9 @@ public class LeaderboardController implements Initializable {
         int count = 1;
         for(User user : users.values()) {
             HBox hbox = new HBox();
+            hbox.getStyleClass().add("leaderboard-row");
             Label position = new Label(Integer.toString(count)+".\t");
+            position.getStyleClass().add("lb-position");
             position.setFont(new Font(14));
             position.setStyle("-fx-text-fill: DarkOrchid");
             hbox.getChildren().add(position);
@@ -53,11 +55,13 @@ public class LeaderboardController implements Initializable {
             Label name = new Label(user.getUsername()+"\t");
             name.setFont(new Font(14));
             name.setStyle("-fx-text-fill: DarkOrchid");
+            name.getStyleClass().add("lb-name");
             hbox.getChildren().add(name);
 
             Label score = new Label(Double.toString(user.getScore()));
             score.setFont(new Font(14));
             score.setStyle("-fx-text-fill: DarkOrchid");
+            score.getStyleClass().add("lb-score");
             hbox.getChildren().add(score);
             
             leaderboard_grid.add(hbox, 0, count-1);
