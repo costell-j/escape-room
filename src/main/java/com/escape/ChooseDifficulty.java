@@ -23,6 +23,7 @@ public class ChooseDifficulty extends Dialog {
     private GameManager gm = GameManager.getInstance(); 
 
     public ChooseDifficulty() {
+        super();
         buildUI();
     }
 
