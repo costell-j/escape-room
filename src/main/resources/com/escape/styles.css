@@ -6,79 +6,110 @@
 
 .landing {
     -fx-background-image: url("../../images/loadingScreen.png");
-    -fx-background-position: center; 
-    -fx-background-size: 750px 580px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: cover;
     
 }
 
 .login {
     -fx-background-image: url("../../images/loginScreen.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center; 
+    -fx-background-size: cover;
 }
 
 .createAccount {
     -fx-background-image: url("../../images/loginScreen.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center; 
+    -fx-background-size: cover;
 }
 
 .roomList {
     -fx-background-image: url("../../images/loginScreen.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center; 
+    -fx-background-size: cover;
 }
 
 .puzzleOptions {
     -fx-background-image: url("../../images/puzzlesScreen.png");
     -fx-background-size: 600px 400px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: cover;
 }
 
 .puzzle {
     -fx-background-image: url("../../images/loginScreen.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: cover;
 }
 
 .profile {
     -fx-background-image: url("../../images/loginScreen.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center; 
+    -fx-background-size: cover;
 }
 
 .escaped {
     -fx-background-image: url("../../images/escapedScreen.png");
-    -fx-background-position: center; 
-    -fx-background-size: 750px 580px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center; 
+    -fx-background-size: cover;
 }
 
 .inventory {
     -fx-background-image: url("../../images/puzzlesScreen.png");
-    -fx-background-position: center; 
-    -fx-background-size: 800px 400px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center; 
+    -fx-background-size: cover;
 }
 
 .leaderboard {
     -fx-background-image: url("../../images/puzzlesScreen.png");
-    -fx-background-position: center; 
-    -fx-background-size: 600px 400px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center; 
+    -fx-background-size: cover;
 }
 
 .map {
     -fx-background-image: url("../../images/appMap.png");
-    -fx-background-position: center; 
-    -fx-background-size: 650px 400px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center; 
+    -fx-background-size: cover;
 }
 
 .roomProgress {
     -fx-background-image: url("../../images/loginScreen.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center; 
+    -fx-background-size: cover;
 }
 
 .settings {
     -fx-background-image: url("../../images/loginScreen.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: cover;
 }
 
 .dialog {
     -fx-background-image: url("../../images/dialog.png");
-    -fx-background-position: center; 
-    -fx-background-size: 800px 500px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center; 
+    -fx-background-size: cover;
 }
 
 #landing_label {
     -fx-font-size: 25pt;
     -fx-font-weight: bold;
     -fx-font-family: Verdana;
-    -fx-text-fill: DarkOrchid;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, darkOrchid, 6, 2.0, 0, 0);
 }
 
 #landing_button {
@@ -214,7 +245,8 @@
 #profile_label {
     -fx-font-size: 20pt;
     -fx-font-weight: bold;
-    -fx-text-fill: DarkOrchid;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, darkOrchid, 5, 1.0, 0, 0);
 }
 
 #username_label {
@@ -314,7 +346,7 @@
 #Setting_label {
     -fx-font-size: 23pt;
     -fx-font-weight: bold;
-    -fx-text-fill: DarkOrchid; 
+    -fx-text-fill: white; 
     -fx-alignment: center;
 }
 
@@ -322,7 +354,7 @@
     -fx-font-size: 12pt;
     -fx-font-family: Verdana;
     -fx-font-weight: bold;
-    -fx-text-fill: DarkOrchid;
+    -fx-text-fill: white;
 }
 
 #Difficulty_label {
