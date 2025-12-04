@@ -99,14 +99,14 @@ public class PuzzleRoomController implements Initializable {
     @FXML
     public void setupImages() throws IOException {
         Image map = new Image(getClass().getResourceAsStream("/images/mapIcon.PNG"));
-        Image pause = new Image(getClass().getResourceAsStream("/images/pauseIcon.PNG"));
         Image profile = new Image(getClass().getResourceAsStream("/images/profileIcon.PNG"));
         Image leaderboard = new Image(getClass().getResourceAsStream("/images/leaderboardIcon.PNG"));
         Image inventory = new Image(getClass().getResourceAsStream("/images/chestIcon.PNG"));
+        Image settings = new Image(getClass().getResourceAsStream("/images/settingsIcon.PNG"));
         
         map_image.setImage(map);
         inventory_image.setImage(inventory);
-        settings_image.setImage(pause);
+        settings_image.setImage(settings);
         profile_image.setImage(profile);
         leaderboard_image.setImage(leaderboard);
 

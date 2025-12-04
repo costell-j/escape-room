@@ -9,16 +9,16 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane styleClass="leaderboard" id="leaderboardbackground_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.escape.LeaderboardController">
+<Pane id="leaderboardbackground_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="leaderboard" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.escape.LeaderboardController">
    <children>
       <Pane id="leaderboard_pane" layoutX="100.0" layoutY="37.0" prefHeight="341.0" prefWidth="409.0">
          <children>
-            <Label alignment="CENTER" layoutX="107.0" layoutY="9.0" prefHeight="47.0" prefWidth="195.0" text="Leaderboard">
+            <Label id="leaderboard_label" alignment="CENTER" layoutX="86.0" prefHeight="47.0" prefWidth="236.0" text="Leaderboard">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button id="close_button" layoutX="316.0" layoutY="283.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="79.0" onAction="#btncloseClicked" text="Close" />
+            <Button id="close_button" layoutX="316.0" layoutY="283.0" mnemonicParsing="false" onAction="#btnCloseClicked" prefHeight="47.0" prefWidth="79.0" text="Close" />
             <GridPane fx:id="leaderboard_grid" layoutX="39.0" layoutY="56.0" prefHeight="203.0" prefWidth="345.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -38,4 +38,4 @@
    <stylesheets>
       <URL value="@styles.css" />
    </stylesheets>
-</Pane> 
+</Pane>

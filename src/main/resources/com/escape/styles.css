@@ -168,7 +168,8 @@
     -fx-font-size: 23pt;
     -fx-font-weight: bold;
     -fx-font-family: Verdana;
-    -fx-text-fill: DarkOrchid;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, darkOrchid, 5, 1.0, 0, 0);
 }
 
 #CreateAccount_label {
@@ -185,23 +186,52 @@
 }
 
 #profile_image {
-    -fx-background-image: url("../../images/profileIcon.PNG");
+    -fx-background-image: url("/images/profileIcon.PNG");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;  
+    -fx-background-position: center;
 }
 
 #leaderboard_image {
-    -fx-background-image: url("../../images/leaderboardIcon.PNG");
+    -fx-background-image: url("/images/leaderboardIcon.PNG");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;  
+    -fx-background-position: center;
 }
 
 #inventory_image {
-    -fx-background-image: url("../../images/chestIcon.PNG");
+    -fx-background-image: url("/images/chestIcon.PNG");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;  
+    -fx-background-position: center;
 }
 
 #settings_image {
-    -fx-background-image: url("../../images/settingsIcon.PNG");
+    -fx-background-image: url("/images/settingsIcon.PNG");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;  
+    -fx-background-position: center;
 }
 
 #map_image {
-    -fx-background-image: url("../../images/mapIcon.PNG");
+    -fx-background-image: url("/images/mapIcon.PNG");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;  
+    -fx-background-position: center;
+}
+
+#room5_pane {
+    -fx-background-image: url("/images/exclamation-mark-2.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;  
+    -fx-background-position: center;
+}
+
+#room6_pane {
+    -fx-background-image: url("/images/exclamation-mark-2.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;   
+    -fx-background-position: center;
 }
 
 #timer_label {
@@ -232,8 +262,9 @@
 }
 
 #question_label {
-    -fx-font-size: 12pt;
-    -fx-text-fill: DarkOrchid;
+    -fx-font-size: 10pt;
+    -fx-text-fill: white;
+    -fx-background-color: rgba(153, 50, 204, 0.6);
 }
 
 #earnedItem_label {
@@ -339,7 +370,8 @@
 #Progress {
     -fx-font-size: 23pt;
     -fx-font-weight: bold;
-    -fx-text-fill: DarkOrchid; 
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, darkOrchid, 6, 2.0, 0, 0);
     -fx-alignment: center;
 }
 
@@ -361,7 +393,8 @@
 #Setting_label {
     -fx-font-size: 23pt;
     -fx-font-weight: bold;
-    -fx-text-fill: white; 
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, darkOrchid, 5, 1.0, 0, 0); 
     -fx-alignment: center;
 }
 
@@ -454,6 +487,14 @@
     -fx-text-fill: white;
 }
 
+#leaderboard_label {
+    -fx-font-size: 23pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, darkOrchid, 5, 1.0, 0, 0); 
+    -fx-alignment: center;
+}
+
 .difficulty-box {
     -fx-padding: 20;
     -fx-spacing: 15;
@@ -503,10 +544,15 @@
 .lb-position {
     -fx-font-weight: bold;
     -fx-text-fill: darkorchid;
+    -fx-font-size: 16pt;
 }
 .lb-name {
     -fx-text-fill: #444;
+    -fx-font-size: 12pt;
 }
 .lb-score {
     -fx-text-fill: #444;
+    -fx-font-size: 12pt;
 }
+
+

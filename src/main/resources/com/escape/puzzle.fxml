@@ -11,7 +11,6 @@
    <children>
       <Pane fx:id="question_pane1" layoutX="83.0" layoutY="62.0" prefHeight="277.0" prefWidth="434.0">
          <children>
-            <Label fx:id="earnedItem_label" layoutX="95.0" layoutY="3.0" text="You've earned a ITEM" />
             <Label fx:id="question_label" alignment="CENTER" layoutX="82.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="85.0" prefWidth="270.0" text="QUESTION" wrapText="true">
                <font>
                   <Font size="10.0" />
@@ -24,6 +23,7 @@
          </children>
       </Pane>
       <Label fx:id="timer_label" layoutX="14.0" layoutY="22.0" text="" />
+      <Label fx:id="earnedItem_label" layoutX="178.0" layoutY="38.0" text="You've earned a ITEM" />
    </children>
    <stylesheets>
       <URL value="@styles.css" />
