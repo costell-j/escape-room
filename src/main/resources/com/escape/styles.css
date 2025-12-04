@@ -252,16 +252,31 @@
 #username_label {
     -fx-font-size: 10pt;
     -fx-text-fill: white;
+    -fx-font-weight: bold;
 }
 
 #difficulty_label {
     -fx-font-size: 10pt;
     -fx-text-fill: white;
+    -fx-font-weight: bold;
 }
 
 #currentroom_label {
     -fx-font-size: 10pt;
     -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+#username_txt {
+    fx-font-size: 12pt;
+}
+
+#difficulty_txt {
+    fx-font-size: 12pt;
+}
+
+#currentroom_txt {
+    fx-font-size: 12pt;
 }
 
 #back_button {
