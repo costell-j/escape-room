@@ -19,7 +19,7 @@
             <TextField fx:id="answer_textfield" layoutX="82.0" layoutY="100.0" prefHeight="77.0" prefWidth="270.0" />
             <Button id="hint_button" layoutX="82.0" layoutY="195.0" mnemonicParsing="false" onAction="#btnHintClicked" prefHeight="42.0" prefWidth="87.0" text="Hint" />
             <Button id="submit_button" layoutX="265.0" layoutY="195.0" mnemonicParsing="false" onAction="#btnSubmitClicked" prefHeight="42.0" prefWidth="87.0" text="Submit" />
-            <Button id="close_button" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#btnExitClicked" prefHeight="42.0" prefWidth="78.0" text="Exit" />
+            <Button id="close_button" layoutX="14.0" layoutY="274.0" mnemonicParsing="false" onAction="#btnExitClicked" prefHeight="42.0" prefWidth="78.0" text="Leave" />
          </children>
       </Pane>
       <Label fx:id="timer_label" layoutX="14.0" layoutY="22.0" text="" />

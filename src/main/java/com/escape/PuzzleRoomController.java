@@ -54,19 +54,14 @@ public class PuzzleRoomController implements Initializable {
         for(int i=0; i<panes.size(); i++) {
             Puzzle puzzle = puzzles.get(i);
             VBox vbox = new VBox();
-            Label puzzleName = new Label(puzzle.getName());
-            puzzleName.setFont(new Font(14));
-            puzzleName.setStyle("-fx-text-fill: DarkOrchid");
-            vbox.getChildren().add(puzzleName);
-            Image image = new Image(getClass().getResourceAsStream("/images/loadingScreen.png"));
+            Image image = new Image(getClass().getResourceAsStream("/images/lock-icon-11.png"));
             if(!puzzle.isLocked()) {
-                image = new Image(getClass().getResourceAsStream("/images/loginScreen.png"));
+                image = new Image(getClass().getResourceAsStream("/images/exclamation-mark-2.png"));
             }
             ImageView image_room = new ImageView(image);
-            image_room.setFitWidth(200);
+            image_room.setFitWidth(50);
             image_room.setPreserveRatio(true);
             vbox.getChildren().add(image_room);
-            //vbox.getStyleClass().add("book-grid-item");
             panes.get(i).getChildren().add(vbox);
 
             image_room.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -98,11 +93,11 @@ public class PuzzleRoomController implements Initializable {
 
     @FXML
     public void setupImages() throws IOException {
-        Image map = new Image(getClass().getResourceAsStream("/images/mapIcon.PNG"));
+        Image map = new Image(getClass().getResourceAsStream("/images/appMap.png"));
         Image profile = new Image(getClass().getResourceAsStream("/images/profileIcon.PNG"));
         Image leaderboard = new Image(getClass().getResourceAsStream("/images/leaderboardIcon.PNG"));
         Image inventory = new Image(getClass().getResourceAsStream("/images/chestIcon.PNG"));
-        Image settings = new Image(getClass().getResourceAsStream("/images/settingsIcon.PNG"));
+        Image settings = new Image(getClass().getResourceAsStream("/images/settingsIcon.png"));
         
         map_image.setImage(map);
         inventory_image.setImage(inventory);

@@ -34,7 +34,7 @@ public class InventoryController implements Initializable {
         for(int i=0; i<items.size(); i++) {
             Item item = items.get(i);
             VBox vbox = new VBox();
-            Image image = new Image(getClass().getResourceAsStream("/images/loadingScreen.png"));
+            Image image = new Image(getClass().getResourceAsStream("/images/keyIcon.png"));
             ImageView image_room = new ImageView(image);
             image_room.setFitWidth(100);
             image_room.setPreserveRatio(true);

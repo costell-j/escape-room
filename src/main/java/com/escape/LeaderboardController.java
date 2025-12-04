@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.text.Font;
 
 import com.escape.code.*;
@@ -45,24 +46,28 @@ public class LeaderboardController implements Initializable {
         int count = 1;
         for(User user : users.values()) {
             HBox hbox = new HBox();
+            hbox.setMinWidth(600);
             hbox.getStyleClass().add("leaderboard-row");
-            Label position = new Label(Integer.toString(count)+".\t");
+            Label position = new Label(Integer.toString(count));
             position.getStyleClass().add("lb-position");
             position.setFont(new Font(14));
-            position.setStyle("-fx-text-fill: DarkOrchid");
             hbox.getChildren().add(position);
+            HBox.setHgrow(position, Priority.ALWAYS);
+            position.setPrefWidth(300);
 
-            Label name = new Label(user.getUsername()+"\t");
+            Label name = new Label(user.getUsername());
             name.setFont(new Font(14));
-            name.setStyle("-fx-text-fill: DarkOrchid");
             name.getStyleClass().add("lb-name");
             hbox.getChildren().add(name);
+            HBox.setHgrow(name, Priority.ALWAYS);
+            name.setPrefWidth(300);
 
             Label score = new Label(Double.toString(user.getScore()));
             score.setFont(new Font(14));
-            score.setStyle("-fx-text-fill: DarkOrchid");
             score.getStyleClass().add("lb-score");
             hbox.getChildren().add(score);
+            HBox.setHgrow(score, Priority.ALWAYS);
+            score.setPrefWidth(300);
             
             leaderboard_grid.add(hbox, 0, count-1);
             count++;
