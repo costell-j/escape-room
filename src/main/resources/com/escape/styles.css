@@ -144,10 +144,11 @@
     -fx-font-size: 25pt;
     -fx-font-family: Verdana;
     -fx-text-fill: white;
+    -fx-font-weight: bold;
 }
 
 #username_label {
-    -fx-font-size: 6pt;
+    -fx-font-size: 8pt;
     -fx-font-family: Verdana;
     -fx-text-fill: white;
 }
@@ -280,7 +281,7 @@
     -fx-effect: dropshadow(gaussian, darkOrchid, 5, 1.0, 0, 0);
 }
 
-#username_label {
+#username_label1 {
     -fx-font-size: 10pt;
     -fx-text-fill: white;
     -fx-font-weight: bold;
@@ -449,8 +450,9 @@
 #story_lines {
     -fx-text-fill: white;
     -fx-font-family: Verdana;
-    -fx-font-size: 8pt;
+    -fx-font-size: 12pt;
     -fx-font-weight: bold;
+    -fx-text-alignment: center-right;
 }
 
 #roomlist_grid {
@@ -465,7 +467,6 @@
     -fx-border-color: DarkOrchid;
     -fx-border-width: 2px;
     -fx-border-style: solid;
-    -fx-opacity: .8;
 }
 
 #inventory_grid {
@@ -477,7 +478,7 @@
 #choosedoor_label {
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-font-size: 12pt;
+    -fx-font-size: 15pt;
 }
 
 #next_button {
@@ -535,8 +536,8 @@
     -fx-opacity: 0.9;
 }
 .leaderboard-row {
-    -fx-padding: 6 10;
-    -fx-spacing: 20;
+    -fx-padding: 2 6;
+    -fx-spacing: 10;
     -fx-alignment: center-left;
     -fx-background-color: #faf7ff;
     -fx-background-radius: 8;
@@ -553,6 +554,11 @@
 .lb-score {
     -fx-text-fill: #444;
     -fx-font-size: 12pt;
+}
+
+#return_button {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+    -fx-text-fill: white;
 }
 
 
