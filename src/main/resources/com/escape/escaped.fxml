@@ -23,7 +23,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="hintsUsed_label" layoutX="38.0" layoutY="188.0" text="Hints Used: 2">
+      <Label fx:id="hintsUsed_label1" layoutX="38.0" layoutY="188.0" text="Hints Used: 2">
          <font>
             <Font size="24.0" />
          </font>
